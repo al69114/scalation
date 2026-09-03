@@ -1,0 +1,4 @@
+[warn] scala-xml_2.12-2.3.0.jar no longer exists at /Users/adithyalakshmikanth/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/scala-lang/modules/scala-xml_2.12/2.3.0/scala-xml_2.12-2.3.0.jar
+[debug] not up to date. inChanged = false, force = false
+[debug] Updating ProjectRef(uri("file:/Users/adithyalakshmikanth/scalation/project/"), "scalation-build")...
+[debug] Done updating ProjectRef(uri("file:/Users/adithyalakshmikanth/scalation/project/"), "scalation-build")

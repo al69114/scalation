@@ -1,0 +1,87 @@
+[debug] > Exec(early(addDefaultCommands), None, None)
+[debug] > Exec(addDefaultCommands, None, None)
+[debug] > Exec(early(initialize), None, None)
+[debug] > Exec(initialize, None, None)
+[debug] > Exec(boot, None, None)
+[debug] > Exec(writeSbtVersion, None, None)
+[debug] > Exec(reload, None, None)
+[debug] > Exec(sbtStashOnFailure, None, None)
+[debug] > Exec(onFailure loadFailed, None, None)
+[debug] > Exec(loadp, None, None)
+[info] welcome to sbt 1.10.11 (Eclipse Adoptium Java 25.0.4.1)
+[debug] Load.defaultLoad until apply took 59.123333ms
+[debug]           Load.loadUnit: plugins took 31.229375ms
+[debug]           Load.loadUnit: defsScala took 0.118417ms
+[debug] [Loading] Scanning directory /Users/adithyalakshmikanth/scalation/project
+[debug] [Loading] Found non-root projects 
+[debug] [Loading] Done in /Users/adithyalakshmikanth/scalation/project, returning: ()
+[debug] deducing auto plugins based on known facts Set(Atom(sbt.plugins.CorePlugin)) and clauses Clauses(Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.IvyPlugin)))
+[debug] Clause(Atom(sbt.ScriptedPlugin),Set(Atom(sbt.plugins.JvmPlugin)))
+[debug] Clause(Atom(sbt.plugins.SbtPlugin),Set(Atom(sbt.ScriptedPlugin)))
+[debug] Clause(Atom(sbt.plugins.SemanticdbPlugin),Set(Atom(sbt.plugins.JvmPlugin)))
+[debug] Clause(Atom(sbt.plugins.JUnitXmlReportPlugin),Set(Atom(sbt.plugins.JvmPlugin)))
+[debug] Clause(Atom(sbt.plugins.MiniDependencyTreePlugin),Set(Atom(sbt.plugins.JvmPlugin)))
+[debug] Clause(Atom(sbt.plugins.CorePlugin),Set(Atom(sbt.plugins.IvyPlugin)))
+[debug] Clause(Atom(sbt.plugins.IvyPlugin),Set(Atom(sbt.plugins.JvmPlugin)))
+[debug] Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.SemanticdbPlugin)))
+[debug] Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.JUnitXmlReportPlugin)))
+[debug] Clause(Atom(sbt.plugins.CorePlugin),Set(Atom(sbt.plugins.Giter8TemplatePlugin)))
+[debug] Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.MiniDependencyTreePlugin))))
+[debug]   :: deduced result: Matched(sbt.plugins.CorePlugin,sbt.plugins.Giter8TemplatePlugin,sbt.plugins.IvyPlugin,sbt.plugins.JvmPlugin,sbt.plugins.MiniDependencyTreePlugin,sbt.plugins.JUnitXmlReportPlugin,sbt.plugins.SemanticdbPlugin)
+[debug] Plugins.deducer#function took 8.649625 ms
+[debug]               Load.resolveProject(scalation-build) took 23.5735ms
+[debug]             Load.loadTransitive: finalizeProject(Project(id scalation-build, base: /Users/adithyalakshmikanth/scalation/project, plugins: List(<none>))) took 46.465709ms
+[debug] [Loading] Done in /Users/adithyalakshmikanth/scalation/project, returning: (scalation-build)
+[debug]           Load.loadUnit: loadedProjectsRaw took 62.610625ms
+[debug]           Load.loadUnit: cleanEvalClasses took 0.085666ms
+[debug]         Load.loadUnit(file:/Users/adithyalakshmikanth/scalation/project/, ...) took 96.464417ms
+[debug]       Load.apply: load took 369.890958ms
+[debug]       Load.apply: resolveProjects took 4.45875ms
+[debug]       Load.apply: finalTransforms took 44.758084ms
+[debug]       Load.apply: config.delegates took 3.115ms
+[debug]       Load.apply: Def.make(settings)... took 202.053083ms
+[debug]       Load.apply: structureIndex took 51.626083ms
+[debug]       Load.apply: mkStreams took 0.697375ms
+[info] loading project definition from /Users/adithyalakshmikanth/scalation/project
+[debug] Running task... Cancel: Signal, check cycles: false, forcegc: true
+[debug]     Load.loadUnit: plugins took 1064.590833ms
+[debug]     Load.loadUnit: defsScala took 0.001834ms
+[debug] [Loading] Scanning directory /Users/adithyalakshmikanth/scalation
+[debug]       Load.loadUnit: mkEval took 2.4385ms
+[debug] [Loading] Found root project scalation w/ remaining 
+[debug] deducing auto plugins based on known facts Set(Atom(sbt.plugins.CorePlugin)) and clauses Clauses(Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.IvyPlugin)))
+[debug] Clause(Atom(sbt.ScriptedPlugin),Set(Atom(sbt.plugins.JvmPlugin)))
+[debug] Clause(Atom(sbt.plugins.SbtPlugin),Set(Atom(sbt.ScriptedPlugin)))
+[debug] Clause(Atom(sbt.plugins.SemanticdbPlugin),Set(Atom(sbt.plugins.JvmPlugin)))
+[debug] Clause(Atom(sbt.plugins.JUnitXmlReportPlugin),Set(Atom(sbt.plugins.JvmPlugin)))
+[debug] Clause(Atom(sbt.plugins.MiniDependencyTreePlugin),Set(Atom(sbt.plugins.JvmPlugin)))
+[debug] Clause(Atom(sbt.plugins.CorePlugin),Set(Atom(sbt.plugins.IvyPlugin)))
+[debug] Clause(Atom(sbt.plugins.IvyPlugin),Set(Atom(sbt.plugins.JvmPlugin)))
+[debug] Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.SemanticdbPlugin)))
+[debug] Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.JUnitXmlReportPlugin)))
+[debug] Clause(Atom(sbt.plugins.CorePlugin),Set(Atom(sbt.plugins.Giter8TemplatePlugin)))
+[debug] Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.MiniDependencyTreePlugin))))
+[debug]   :: deduced result: Matched(sbt.plugins.CorePlugin,sbt.plugins.Giter8TemplatePlugin,sbt.plugins.IvyPlugin,sbt.plugins.JvmPlugin,sbt.plugins.MiniDependencyTreePlugin,sbt.plugins.JUnitXmlReportPlugin,sbt.plugins.SemanticdbPlugin)
+[debug] Plugins.deducer#function took 1.000291 ms
+[info] loading settings for project scalation from build.sbt...
+[debug]         Load.resolveProject(scalation) took 1.223667ms
+[debug]       Load.loadTransitive: finalizeProject(Project(id scalation, base: /Users/adithyalakshmikanth/scalation, plugins: List(<none>))) took 2.962917ms
+[debug] [Loading] Done in /Users/adithyalakshmikanth/scalation, returning: (scalation)
+[debug]     Load.loadUnit: loadedProjectsRaw took 64.6515ms
+[debug]     Load.loadUnit: cleanEvalClasses took 2.54475ms
+[debug]   Load.loadUnit(file:/Users/adithyalakshmikanth/scalation/, ...) took 1132.531ms
+[debug] Load.apply: load took 1140.014709ms
+[debug] Load.apply: resolveProjects took 0.080083ms
+[debug] Load.apply: finalTransforms took 7.184791ms
+[debug] Load.apply: config.delegates took 0.235458ms
+[debug] Load.apply: Def.make(settings)... took 51.912792ms
+[debug] Load.apply: structureIndex took 13.911ms
+[debug] Load.apply: mkStreams took 0.002167ms
+[info] set current project to scalation (in build file:/Users/adithyalakshmikanth/scalation/)
+[debug] > Exec(sbtPopOnFailure, None, None)
+[debug] > Exec(resumeFromFailure, None, None)
+[debug] > Exec(notifyUsersAboutShell, None, None)
+[debug] > Exec(iflast shell, None, None)
+[debug] > Exec(runMain scalation.modeling.regressionTest12, None, None)
+[debug] Evaluating tasks: Compile / runMain
+[debug] Running task... Cancel: Signal, check cycles: false, forcegc: true

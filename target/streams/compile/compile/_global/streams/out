@@ -1,0 +1,5 @@
+[error] -- [E008] Not Found Error: /Users/adithyalakshmikanth/scalation/src/main/scala/scalation/modeling/Project1EDA.scala:103:32 
+[error] 103 |        val adjR2 = mod.fit(QoF.adj_rSq.ordinal)
+[error]     |                            ^^^^^^^^^^^
+[error]     |        value adj_rSq is not a member of object scalation.modeling.QoF
+[error] one error found
