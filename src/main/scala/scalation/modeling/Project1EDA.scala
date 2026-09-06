@@ -19,6 +19,20 @@ case class ProjectDataset (key: String, title: String, csv: String, target: Stri
 
 
 //::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+/** The three Project 1 datasets (auto_mpg, concrete, airfoil) and their metadata,
+ *  shared by every `@main` entry point below.
+ */
+private val datasets = Array (
+    ProjectDataset ("auto_mpg", "Auto MPG", "project1/data/processed/auto_mpg.csv", "mpg",
+        Array ("cylinders", "displacement", "horsepower", "weight", "acceleration", "model_year", "origin", "mpg")),
+    ProjectDataset ("concrete", "Concrete Compressive Strength", "project1/data/processed/concrete.csv", "compressive_strength_mpa",
+        Array ("cement", "blast_furnace_slag", "fly_ash", "water", "superplasticizer", "coarse_aggregate", "fine_aggregate", "age", "compressive_strength_mpa")),
+    ProjectDataset ("airfoil", "Airfoil Self-Noise", "project1/data/processed/airfoil.csv", "scaled_sound_pressure_db",
+        Array ("frequency_hz", "angle_attack_deg", "chord_length_m", "free_stream_velocity_ms", "suction_displacement_thickness_m", "scaled_sound_pressure_db"))
+)
+
+
+//::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 /** Load the Project 1 CSV files with `MatrixD.load`, print EDA summaries, and run
  *  `SimpleRegression` for the two predictors with the largest absolute target
  *  correlations. Also demonstrates `Table.load` and documents `MatrixD.loadStr`.
@@ -27,22 +41,43 @@ case class ProjectDataset (key: String, title: String, csv: String, target: Stri
  */
 @main def project1EDA (): Unit =
 
-    val makePlots = false
-
-    val datasets = Array (
-        ProjectDataset ("auto_mpg", "Auto MPG", "project1/data/processed/auto_mpg.csv", "mpg",
-            Array ("cylinders", "displacement", "horsepower", "weight", "acceleration", "model_year", "origin", "mpg")),
-        ProjectDataset ("concrete", "Concrete Compressive Strength", "project1/data/processed/concrete.csv", "compressive_strength_mpa",
-            Array ("cement", "blast_furnace_slag", "fly_ash", "water", "superplasticizer", "coarse_aggregate", "fine_aggregate", "age", "compressive_strength_mpa")),
-        ProjectDataset ("airfoil", "Airfoil Self-Noise", "project1/data/processed/airfoil.csv", "scaled_sound_pressure_db",
-            Array ("frequency_hz", "angle_attack_deg", "chord_length_m", "free_stream_velocity_ms", "suction_displacement_thickness_m", "scaled_sound_pressure_db"))
-    )
-
-    for ds <- datasets do analyze (ds, makePlots)
+    for ds <- datasets do analyze (ds, makePlots = false)
 
     demoDataLoadingTechniques ()
 
 end project1EDA
+
+
+//::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+/** Display the correlation matrix of each of the three datasets with ScalaTion's
+ *  built-in `HeatMap`. `MatrixD.loadH` reads the numeric data together with its
+ *  CSV column names.
+ *
+ *  > runMain scalation.modeling.project1HeatMaps
+ */
+@main def project1HeatMaps (): Unit =
+
+    for ds <- datasets do
+        val filePath = resolvePath (ds)
+        val (xy, columnNames) = MatrixD.loadH (filePath, sp = ',', fullPath = true)
+        val heatMap = new HeatMap (xy.corr, columnNames, s"${ds.title}: Correlation HeatMap")
+        println (s"${ds.title} correlation heat map = $heatMap")
+    end for
+
+end project1HeatMaps
+
+
+//::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+/** Run the two `SimpleRegression`s for each of the three datasets and open the
+ *  ScalaTion plots of observed `y` and fitted `y-hat` versus each selected predictor.
+ *
+ *  > runMain scalation.modeling.project1RegressionPlots
+ */
+@main def project1RegressionPlots (): Unit =
+
+    for ds <- datasets do analyze (ds, makePlots = true)
+
+end project1RegressionPlots
 
 
 //::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::

@@ -39,6 +39,12 @@ sbt "runMain scalation.modeling.project1EDA"
 
 The Scala program loads the datasets, prints statistical summaries, displays correlation matrices, fits `SimpleRegression` models for the top two predictors of each dataset, prints formatted summary statements, and demonstrates `Table.load` alongside `MatrixD.load` and `MatrixD.loadStr`.
 
+Two additional entry points open ScalaTion's GUI visualizations for all three datasets:
+```bash
+sbt "runMain scalation.modeling.project1HeatMaps"          # correlation HeatMap per dataset
+sbt "runMain scalation.modeling.project1RegressionPlots"   # y and y-hat vs. x plots for the top two predictors
+```
+
 ---
 
 ## Data Loading Mechanisms in ScalaTion
