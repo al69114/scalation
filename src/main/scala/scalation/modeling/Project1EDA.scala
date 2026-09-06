@@ -150,7 +150,14 @@ private def analyze (ds: ProjectDataset, makePlots: Boolean): Unit =
         println (f"Interpretation : Each 1-unit increase in $feature is associated with a ${b1}%.4f change in ${ds.target}.")
         println ("-------------------------\n")
 
-        if makePlots then new Plot (x(?, j), y, yp, s"${ds.title}: y and y-hat vs. $feature", lines = true)
+        if makePlots then
+            // ScalaTion's Plot.maxX uses a bare ceil (x.max), unlike minX which applies a SCALE
+            // factor -- for any predictor with max < 1 this collapses maxX to 1.0, squashing the
+            // plot. Work around it by rescaling such predictors (e.g., metre-scale quantities) by
+            // 1000 for display only; the regression itself (mod, b0, b1, qof) is unaffected.
+            val dispScale = if x(?, j).max < 1.0 then 1000.0 else 1.0
+            val dispLabel = if dispScale == 1.0 then feature else s"$feature (x1000)"
+            new Plot (x(?, j) * dispScale, y, yp, s"${ds.title}: y and y-hat vs. $dispLabel", lines = true)
     end for
 
 end analyze
