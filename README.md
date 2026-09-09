@@ -10,22 +10,22 @@ This project provides an exploratory data analysis (EDA) and simple linear regre
 
 ## Directory Structure
 
-- `data/processed/`: Clean numeric CSV files for each dataset:
+- `project1/data/processed/`: Clean numeric CSV files for each dataset:
   - `auto_mpg.csv` (392 rows × 8 columns)
   - `concrete.csv` (1,030 rows × 9 columns)
   - `airfoil.csv` (1,503 rows × 6 columns)
-- `data/raw/`: Raw source files from UCI repository.
-- `results/`: Summary statistics, correlation matrices, and regression tables.
-- `results/figures/`: High-resolution correlation heatmaps and observed-vs-fitted regression plots.
-- `report/full_report.tex`: Report containing both tools' fit reports and references to the heatmap and regression figures.
-- `report/project1_report.tex`: Comprehensive LaTeX report with dedicated sections for each dataset.
-- `analysis_statsmodels.py`: Python script performing preprocessing, statsmodels OLS regressions, plot generation, and LaTeX report authoring.
+- `project1/data/raw/`: Raw source files from UCI repository.
+- `project1/results/`: Summary statistics, correlation matrices, and regression tables.
+- `project1/results/figures/`: High-resolution correlation heatmaps and observed-vs-fitted regression plots.
+- `project1/report/full_report.tex`: Report containing both tools' fit reports and references to the heatmap and regression figures.
+- `project1/report/project1_report.tex`: Comprehensive LaTeX report with dedicated sections for each dataset.
+- `project1/analysis_statsmodels.py`: Python script performing preprocessing, statsmodels OLS regressions, plot generation, and LaTeX report authoring.
 
 ---
 
 ## Where to Find the Results
 
-From the repository root, numerical results are in `project1/results/` and PNG images are in `project1/results/figures/`. The links below are relative to this README and open the corresponding files.
+From the repository root, numerical results are in `project1/results/` and PNG images are in `project1/results/figures/`. The links below are relative to this README (at the repository root) and open the corresponding files.
 
 ### Dataset CSV Files
 
@@ -33,9 +33,9 @@ Use the processed CSV files for the EDA and regression analyses. They contain th
 
 | Dataset | Processed analysis CSV | Raw source files |
 | --- | --- | --- |
-| Auto MPG | [data/processed/auto_mpg.csv](data/processed/auto_mpg.csv) | [auto-mpg.data](data/raw/auto-mpg.data), [auto_mpg_raw.csv](data/raw/auto_mpg_raw.csv) |
-| Concrete Compressive Strength | [data/processed/concrete.csv](data/processed/concrete.csv) | [Concrete_Data.xls](data/raw/Concrete_Data.xls), [concrete_raw.csv](data/raw/concrete_raw.csv) |
-| Airfoil Self-Noise | [data/processed/airfoil.csv](data/processed/airfoil.csv) | [airfoil_self_noise.dat](data/raw/airfoil_self_noise.dat), [airfoil_raw.csv](data/raw/airfoil_raw.csv) |
+| Auto MPG | [project1/data/processed/auto_mpg.csv](project1/data/processed/auto_mpg.csv) | [auto-mpg.data](project1/data/raw/auto-mpg.data), [auto_mpg_raw.csv](project1/data/raw/auto_mpg_raw.csv) |
+| Concrete Compressive Strength | [project1/data/processed/concrete.csv](project1/data/processed/concrete.csv) | [Concrete_Data.xls](project1/data/raw/Concrete_Data.xls), [concrete_raw.csv](project1/data/raw/concrete_raw.csv) |
+| Airfoil Self-Noise | [project1/data/processed/airfoil.csv](project1/data/processed/airfoil.csv) | [airfoil_self_noise.dat](project1/data/raw/airfoil_self_noise.dat), [airfoil_raw.csv](project1/data/raw/airfoil_raw.csv) |
 
 The processed files are the CSVs loaded by the ScalaTion workflow and analyzed by the regression scripts.
 
@@ -45,11 +45,11 @@ Each CSV contains the full Pearson correlation matrix for all numeric variables,
 
 | Dataset | Correlation matrix (CSV) | Heatmap (PNG) |
 | --- | --- | --- |
-| Auto MPG | [auto_mpg_correlation.csv](results/auto_mpg_correlation.csv) | [auto_mpg_heatmap.png](results/figures/auto_mpg_heatmap.png) |
-| Concrete Compressive Strength | [concrete_correlation.csv](results/concrete_correlation.csv) | [concrete_heatmap.png](results/figures/concrete_heatmap.png) |
-| Airfoil Self-Noise | [airfoil_correlation.csv](results/airfoil_correlation.csv) | [airfoil_heatmap.png](results/figures/airfoil_heatmap.png) |
+| Auto MPG | [auto_mpg_correlation.csv](project1/results/auto_mpg_correlation.csv) | [auto_mpg_heatmap.png](project1/results/figures/auto_mpg_heatmap.png) |
+| Concrete Compressive Strength | [concrete_correlation.csv](project1/results/concrete_correlation.csv) | [concrete_heatmap.png](project1/results/figures/concrete_heatmap.png) |
+| Airfoil Self-Noise | [airfoil_correlation.csv](project1/results/airfoil_correlation.csv) | [airfoil_heatmap.png](project1/results/figures/airfoil_heatmap.png) |
 
-`report/full_report.tex` includes the annotated heatmaps in each dataset's "Correlation Analysis: Matrix and HeatMap" subsection. Immediately below each heatmap, a table ranks every predictor by absolute correlation with the target, shows an Absolute correlation column, and explains the selection of the top two predictors. A second table lists distinct predictor pairs with absolute correlation greater than 0.75, retaining the signs in its Correlation column, with an explanation of the result. If no pairs qualify, the table states this explicitly. These tables summarize selected entries of each full matrix; separate numeric tables of the complete pairwise matrices are not currently included in this report. The ScalaTion `project1EDA` command also prints the full matrices to the terminal.
+`project1/report/full_report.tex` includes the annotated heatmaps in each dataset's "Correlation Analysis: Matrix and HeatMap" subsection. Immediately below each heatmap, a table ranks every predictor by absolute correlation with the target, shows an Absolute correlation column, and explains the selection of the top two predictors. A second table lists distinct predictor pairs with absolute correlation greater than 0.75, retaining the signs in its Correlation column, with an explanation of the result. If no pairs qualify, the table states this explicitly. These tables summarize selected entries of each full matrix; separate numeric tables of the complete pairwise matrices are not currently included in this report. The ScalaTion `project1EDA` command also prints the full matrices to the terminal.
 
 ### Regression Result Plots (PNG)
 
@@ -57,16 +57,16 @@ Each plot shows observed target values (`y`) and fitted values (`y-hat`) against
 
 | Dataset | Predictor | Result plot (PNG) |
 | --- | --- | --- |
-| Auto MPG | Weight | [auto_mpg_weight_regression.png](results/figures/auto_mpg_weight_regression.png) |
-| Auto MPG | Displacement | [auto_mpg_displacement_regression.png](results/figures/auto_mpg_displacement_regression.png) |
-| Concrete Compressive Strength | Cement | [concrete_cement_regression.png](results/figures/concrete_cement_regression.png) |
-| Concrete Compressive Strength | Superplasticizer | [concrete_superplasticizer_regression.png](results/figures/concrete_superplasticizer_regression.png) |
-| Airfoil Self-Noise | Frequency | [airfoil_frequency_hz_regression.png](results/figures/airfoil_frequency_hz_regression.png) |
-| Airfoil Self-Noise | Suction displacement thickness | [airfoil_suction_displacement_thickness_m_regression.png](results/figures/airfoil_suction_displacement_thickness_m_regression.png) |
+| Auto MPG | Weight | [auto_mpg_weight_regression.png](project1/results/figures/auto_mpg_weight_regression.png) |
+| Auto MPG | Displacement | [auto_mpg_displacement_regression.png](project1/results/figures/auto_mpg_displacement_regression.png) |
+| Concrete Compressive Strength | Cement | [concrete_cement_regression.png](project1/results/figures/concrete_cement_regression.png) |
+| Concrete Compressive Strength | Superplasticizer | [concrete_superplasticizer_regression.png](project1/results/figures/concrete_superplasticizer_regression.png) |
+| Airfoil Self-Noise | Frequency | [airfoil_frequency_hz_regression.png](project1/results/figures/airfoil_frequency_hz_regression.png) |
+| Airfoil Self-Noise | Suction displacement thickness | [airfoil_suction_displacement_thickness_m_regression.png](project1/results/figures/airfoil_suction_displacement_thickness_m_regression.png) |
 
 These nine PNGs (three heatmaps and six regression plots) are generated by `analysis_statsmodels.py` using seaborn and Matplotlib, with regression fits from Statsmodels. The ScalaTion visualization commands below open interactive windows rather than saving these PNG files.
 
-All result images are in [results/figures](results/figures):
+All result images are in [project1/results/figures](project1/results/figures):
 
 - Heatmaps: `auto_mpg_heatmap.png`, `concrete_heatmap.png`, and `airfoil_heatmap.png`.
 - Regression plots: `*_regression.png`, one for each selected dataset--predictor pair.
@@ -75,11 +75,11 @@ All result images are in [results/figures](results/figures):
 
 | Dataset | Descriptive statistics (CSV) | Regression coefficients and fit metrics (CSV) |
 | --- | --- | --- |
-| Auto MPG | [auto_mpg_summary.csv](results/auto_mpg_summary.csv) | [auto_mpg_simple_regression.csv](results/auto_mpg_simple_regression.csv) |
-| Concrete Compressive Strength | [concrete_summary.csv](results/concrete_summary.csv) | [concrete_simple_regression.csv](results/concrete_simple_regression.csv) |
-| Airfoil Self-Noise | [airfoil_summary.csv](results/airfoil_summary.csv) | [airfoil_simple_regression.csv](results/airfoil_simple_regression.csv) |
+| Auto MPG | [auto_mpg_summary.csv](project1/results/auto_mpg_summary.csv) | [auto_mpg_simple_regression.csv](project1/results/auto_mpg_simple_regression.csv) |
+| Concrete Compressive Strength | [concrete_summary.csv](project1/results/concrete_summary.csv) | [concrete_simple_regression.csv](project1/results/concrete_simple_regression.csv) |
+| Airfoil Self-Noise | [airfoil_summary.csv](project1/results/airfoil_summary.csv) | [airfoil_simple_regression.csv](project1/results/airfoil_simple_regression.csv) |
 
-[simple_regression_all.csv](results/simple_regression_all.csv) combines the results for all six regressions.
+[simple_regression_all.csv](project1/results/simple_regression_all.csv) combines the results for all six regressions.
 
 ---
 
