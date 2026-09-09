@@ -58,6 +58,49 @@ The full Pearson correlation matrix is printed by \texttt{xy.corr} in ScalaTion 
 \label{fig:auto_mpg_heatmap}
 \end{figure}
 
+\begin{table}[H]
+\centering
+\small
+\begin{tabular}{rlr}
+\toprule
+Rank & Predictor & Absolute correlation \\
+\midrule
+1 & \textbf{weight} & 0.832244 \\
+2 & \textbf{displacement} & 0.805127 \\
+3 & horsepower & 0.778427 \\
+4 & cylinders & 0.777618 \\
+5 & model year & 0.580541 \\
+6 & origin & 0.565209 \\
+7 & acceleration & 0.423329 \\
+\bottomrule
+\end{tabular}
+\caption{Absolute predictor correlations with \texttt{mpg} for Auto MPG, ranked from strongest to weakest.}
+\label{tab:auto_mpg_target_corr}
+\end{table}
+
+Table~\ref{tab:auto_mpg_target_corr} lists every predictor's absolute correlation with the target. Absolute correlation measures linear association strength regardless of direction: values closer to 1 indicate stronger linear associations, while values closer to 0 indicate weaker linear associations. The signs of the correlations are shown in the heatmap. The first two predictors, shown in bold, are selected for the separate simple regressions. Weight and displacement have the strongest absolute correlations with MPG. Both correlations are negative: heavier vehicles and larger engine displacement tend to accompany lower MPG in these data. Origin is a categorical code, so its numerical correlation depends on the coding used. These correlations describe associations and do not establish causation.
+
+\begin{table}[H]
+\centering
+\small
+\begin{tabular}{llr}
+\toprule
+Feature 1 & Feature 2 & Correlation \\
+\midrule
+cylinders & displacement & 0.950823 \\
+displacement & weight & 0.932994 \\
+cylinders & weight & 0.897527 \\
+displacement & horsepower & 0.897257 \\
+horsepower & weight & 0.864538 \\
+cylinders & horsepower & 0.842983 \\
+\bottomrule
+\end{tabular}
+\caption{Strongly correlated predictor pairs for Auto MPG ($|r| > 0.75$).}
+\label{tab:auto_mpg_predictor_pairs}
+\end{table}
+
+Table~\ref{tab:auto_mpg_predictor_pairs} screens predictor pairs using an absolute correlation threshold of 0.75. Each pair appears once, self-correlations and the target are excluded, and the displayed correlations retain their signs. These pairs have strong linear associations and may provide overlapping information if included together in a multiple regression. The simple regressions here use one predictor at a time, so they do not include these pairs jointly.
+
 The two predictors with the largest absolute correlation to the target \texttt{mpg} are \texttt{weight} ($r=-0.8322$) and \texttt{displacement} ($r=-0.8051$).
 
 \subsection{SimpleRegression for the Top Two Predictors}
@@ -214,6 +257,45 @@ The full Pearson correlation matrix is printed by \texttt{xy.corr} in ScalaTion 
 \label{fig:concrete_heatmap}
 \end{figure}
 
+\begin{table}[H]
+\centering
+\small
+\begin{tabular}{rlr}
+\toprule
+Rank & Predictor & Absolute correlation \\
+\midrule
+1 & \textbf{cement} & 0.497833 \\
+2 & \textbf{superplasticizer} & 0.366102 \\
+3 & age & 0.328877 \\
+4 & water & 0.289613 \\
+5 & fine aggregate & 0.167249 \\
+6 & coarse aggregate & 0.164928 \\
+7 & blast furnace slag & 0.134824 \\
+8 & fly ash & 0.105753 \\
+\bottomrule
+\end{tabular}
+\caption{Absolute predictor correlations with \texttt{compressive\_strength\_mpa} for Concrete Compressive Strength, ranked from strongest to weakest.}
+\label{tab:concrete_target_corr}
+\end{table}
+
+Table~\ref{tab:concrete_target_corr} lists every predictor's absolute correlation with the target. Absolute correlation measures linear association strength regardless of direction: values closer to 1 indicate stronger linear associations, while values closer to 0 indicate weaker linear associations. The signs of the correlations are shown in the heatmap. The first two predictors, shown in bold, are selected for the separate simple regressions. Cement and superplasticizer have the strongest absolute correlations with compressive strength. Both correlations are positive: higher quantities are associated with higher strength in these separate pairwise comparisons. These correlations describe associations and do not establish causation.
+
+\begin{table}[H]
+\centering
+\small
+\begin{tabular}{llr}
+\toprule
+Feature 1 & Feature 2 & Correlation \\
+\midrule
+\multicolumn{3}{c}{No predictor pairs have $|r| > 0.75$.} \\
+\bottomrule
+\end{tabular}
+\caption{Strongly correlated predictor pairs for Concrete Compressive Strength ($|r| > 0.75$).}
+\label{tab:concrete_predictor_pairs}
+\end{table}
+
+Table~\ref{tab:concrete_predictor_pairs} screens predictor pairs using an absolute correlation threshold of 0.75. Each pair appears once, self-correlations and the target are excluded, and the displayed correlations retain their signs. No predictor pair exceeds this screening threshold. This does not rule out multicollinearity involving combinations of several predictors in a future multiple regression.
+
 The two predictors with the largest absolute correlation to the target \texttt{compressive\_strength\_mpa} are \texttt{cement} ($r=0.4978$) and \texttt{superplasticizer} ($r=0.3661$).
 
 \subsection{SimpleRegression for the Top Two Predictors}
@@ -365,6 +447,42 @@ The full Pearson correlation matrix is printed by \texttt{xy.corr} in ScalaTion 
 \caption{Correlation heatmap for Airfoil Self-Noise.}
 \label{fig:airfoil_heatmap}
 \end{figure}
+
+\begin{table}[H]
+\centering
+\small
+\begin{tabular}{rlr}
+\toprule
+Rank & Predictor & Absolute correlation \\
+\midrule
+1 & \textbf{frequency hz} & 0.390711 \\
+2 & \textbf{suction displacement thickness m} & 0.312670 \\
+3 & chord length m & 0.236162 \\
+4 & angle attack deg & 0.156108 \\
+5 & free stream velocity ms & 0.125103 \\
+\bottomrule
+\end{tabular}
+\caption{Absolute predictor correlations with \texttt{scaled\_sound\_pressure\_db} for Airfoil Self-Noise, ranked from strongest to weakest.}
+\label{tab:airfoil_target_corr}
+\end{table}
+
+Table~\ref{tab:airfoil_target_corr} lists every predictor's absolute correlation with the target. Absolute correlation measures linear association strength regardless of direction: values closer to 1 indicate stronger linear associations, while values closer to 0 indicate weaker linear associations. The signs of the correlations are shown in the heatmap. The first two predictors, shown in bold, are selected for the separate simple regressions. Frequency and suction-side displacement thickness have the strongest absolute correlations with scaled sound pressure level. Both correlations are negative, indicating that larger values tend to accompany lower sound pressure levels in these data. These correlations describe associations and do not establish causation.
+
+\begin{table}[H]
+\centering
+\small
+\begin{tabular}{llr}
+\toprule
+Feature 1 & Feature 2 & Correlation \\
+\midrule
+angle attack deg & suction displacement thickness m & 0.753394 \\
+\bottomrule
+\end{tabular}
+\caption{Strongly correlated predictor pairs for Airfoil Self-Noise ($|r| > 0.75$).}
+\label{tab:airfoil_predictor_pairs}
+\end{table}
+
+Table~\ref{tab:airfoil_predictor_pairs} screens predictor pairs using an absolute correlation threshold of 0.75. Each pair appears once, self-correlations and the target are excluded, and the displayed correlations retain their signs. These pairs have strong linear associations and may provide overlapping information if included together in a multiple regression. The simple regressions here use one predictor at a time, so they do not include these pairs jointly.
 
 The two predictors with the largest absolute correlation to the target \texttt{scaled\_sound\_pressure\_db} are \texttt{frequency\_hz} ($r=-0.3907$) and \texttt{suction\_displacement\_thickness\_m} ($r=-0.3127$).
 

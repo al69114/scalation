@@ -37,7 +37,7 @@ Each CSV contains the full Pearson correlation matrix for all numeric variables,
 | Concrete Compressive Strength | [concrete_correlation.csv](results/concrete_correlation.csv) | [concrete_heatmap.png](results/figures/concrete_heatmap.png) |
 | Airfoil Self-Noise | [airfoil_correlation.csv](results/airfoil_correlation.csv) | [airfoil_heatmap.png](results/figures/airfoil_heatmap.png) |
 
-`report/full_report.tex` includes the annotated heatmaps in each dataset's "Correlation Analysis: Matrix and HeatMap" subsection; it does not currently include separate numeric correlation-matrix tables. The ScalaTion `project1EDA` command also prints the full matrices to the terminal.
+`report/full_report.tex` includes the annotated heatmaps in each dataset's "Correlation Analysis: Matrix and HeatMap" subsection. Immediately below each heatmap, a table ranks every predictor by absolute correlation with the target, shows an Absolute correlation column, and explains the selection of the top two predictors. A second table lists distinct predictor pairs with absolute correlation greater than 0.75, retaining the signs in its Correlation column, with an explanation of the result. If no pairs qualify, the table states this explicitly. These tables summarize selected entries of each full matrix; separate numeric tables of the complete pairwise matrices are not currently included in this report. The ScalaTion `project1EDA` command also prints the full matrices to the terminal.
 
 ### Regression Result Plots (PNG)
 

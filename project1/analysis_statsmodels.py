@@ -258,6 +258,79 @@ def corr_matrix_to_latex(corr: pd.DataFrame) -> str:
     return f"\\resizebox{{\\textwidth}}{{!}}{{%\n{tabular}}}"
 
 
+def target_correlation_to_latex(spec: DatasetSpec, corr: pd.DataFrame) -> str:
+    """Rank predictors by absolute target correlation for the report heatmap section."""
+    ranked = corr[spec.target].drop(spec.target).sort_values(key=lambda s: s.abs(), ascending=False)
+    rows = []
+    for rank, (feature, value) in enumerate(ranked.items(), start=1):
+        name = latex_escape(feature.replace("_", " "))
+        if rank <= 2:
+            name = rf"\textbf{{{name}}}"
+        rows.append(f"{rank} & {name} & {abs(value):.6f} " + r"\\")
+    body = "\n".join(rows)
+    interpretation = {
+        "auto_mpg": "Weight and displacement have the strongest absolute correlations with MPG. Both correlations are negative: heavier vehicles and larger engine displacement tend to accompany lower MPG in these data. Origin is a categorical code, so its numerical correlation depends on the coding used.",
+        "concrete": "Cement and superplasticizer have the strongest absolute correlations with compressive strength. Both correlations are positive: higher quantities are associated with higher strength in these separate pairwise comparisons.",
+        "airfoil": "Frequency and suction-side displacement thickness have the strongest absolute correlations with scaled sound pressure level. Both correlations are negative, indicating that larger values tend to accompany lower sound pressure levels in these data.",
+    }[spec.key]
+    return rf"""\begin{{table}}[H]
+\centering
+\small
+\begin{{tabular}}{{rlr}}
+\toprule
+Rank & Predictor & Absolute correlation \\
+\midrule
+{body}
+\bottomrule
+\end{{tabular}}
+\caption{{Absolute predictor correlations with \texttt{{{latex_escape(spec.target)}}} for {spec.title}, ranked from strongest to weakest.}}
+\label{{tab:{spec.key}_target_corr}}
+\end{{table}}
+
+Table~\ref{{tab:{spec.key}_target_corr}} lists every predictor's absolute correlation with the target. Absolute correlation measures linear association strength regardless of direction: values closer to 1 indicate stronger linear associations, while values closer to 0 indicate weaker linear associations. The signs of the correlations are shown in the heatmap. The first two predictors, shown in bold, are selected for the separate simple regressions. {interpretation} These correlations describe associations and do not establish causation.
+"""
+
+
+def predictor_pairs_to_latex(spec: DatasetSpec, corr: pd.DataFrame) -> str:
+    """List each distinct predictor pair exceeding the stated correlation threshold."""
+    predictors = [name for name in corr.columns if name != spec.target]
+    pairs = [
+        (left, right, float(corr.loc[left, right]))
+        for i, left in enumerate(predictors)
+        for right in predictors[i + 1:]
+        if abs(corr.loc[left, right]) > 0.75
+    ]
+    pairs.sort(key=lambda pair: abs(pair[2]), reverse=True)
+    rows = [
+        f"{latex_escape(left.replace('_', ' '))} & {latex_escape(right.replace('_', ' '))} & {value:.6f} " + r"\\"
+        for left, right, value in pairs
+    ]
+    if not rows:
+        rows = [r"\multicolumn{3}{c}{No predictor pairs have $|r| > 0.75$.} \\"]
+    body = "\n".join(rows)
+    explanation = (
+        "These pairs have strong linear associations and may provide overlapping information if included together in a multiple regression. The simple regressions here use one predictor at a time, so they do not include these pairs jointly."
+        if pairs else
+        "No predictor pair exceeds this screening threshold. This does not rule out multicollinearity involving combinations of several predictors in a future multiple regression."
+    )
+    return rf"""\begin{{table}}[H]
+\centering
+\small
+\begin{{tabular}}{{llr}}
+\toprule
+Feature 1 & Feature 2 & Correlation \\
+\midrule
+{body}
+\bottomrule
+\end{{tabular}}
+\caption{{Strongly correlated predictor pairs for {spec.title} ($|r| > 0.75$).}}
+\label{{tab:{spec.key}_predictor_pairs}}
+\end{{table}}
+
+Table~\ref{{tab:{spec.key}_predictor_pairs}} screens predictor pairs using an absolute correlation threshold of 0.75. Each pair appears once, self-correlations and the target are excluded, and the displayed correlations retain their signs. {explanation}
+"""
+
+
 def analyze_dataset(spec: DatasetSpec, df: pd.DataFrame, notes: dict[str, str]) -> dict[str, object]:
     shape = df.shape
     if shape != spec.expected_shape:
@@ -448,6 +521,10 @@ Linear dependencies among features and the target variable were quantified using
 \caption{{Pairwise Pearson correlation matrix heatmap for {spec.title}.}}
 \label{{fig:{key}_heatmap}}
 \end{{figure}}
+
+{target_correlation_to_latex(spec, corr)}
+
+{predictor_pairs_to_latex(spec, corr)}
 
 The features ranked by absolute correlation with the target \texttt{{{latex_escape(spec.target)}}} identify \textbf{{\texttt{{{latex_escape(f1)}}}}} ($r = {m1['target_corr']:.4f}$) and \textbf{{\texttt{{{latex_escape(f2)}}}}} ($r = {m2['target_corr']:.4f}$) as the top two candidate predictor variables.
 
