@@ -9,7 +9,7 @@
 \usepackage{url}
 
 \title{\textbf{Project 1: Exploratory Data Analysis and Simple Regression}\\\large CSCI 4360 / DATA SCIENCE ML II}
-\author{Adithya Lakshmikanth, Amy Vu, Aastha Mishra, Ellie, Disha}
+\author{Adithya Lakshmikanth, Amy Vu, Aastha Mishra, Ellie Truong, Disha Dhangar}
 \date{\today}
 
 \begin{document}
@@ -57,7 +57,7 @@ cylinders & 5.472 & 1.706 & 3.000 & 4.000 & 4.000 & 8.000 & 8.000 & 0 & 0 \\
 displacement & 194.412 & 104.644 & 68.000 & 105.000 & 151.000 & 275.750 & 455.000 & 0 & 0 \\
 horsepower & 104.469 & 38.491 & 46.000 & 75.000 & 93.500 & 126.000 & 230.000 & 0 & 10 \\
 weight & 2977.584 & 849.403 & 1613.000 & 2225.250 & 2803.500 & 3614.750 & 5140.000 & 0 & 0 \\
-acceleration & 15.541 & 2.759 & 8.000 & 13.775 & 15.500 & 17.025 & 24.800 & 0 & 11 \\
+acceleration & 15.541 & 2.759 & 8.000 & 13.775 & 15.500 & 17.025 & 24.800 & 0 & 10 \\
 model\_year & 75.980 & 3.684 & 70.000 & 73.000 & 76.000 & 79.000 & 82.000 & 0 & 0 \\
 origin & 1.577 & 0.806 & 1.000 & 1.000 & 1.000 & 2.000 & 3.000 & 0 & 0 \\
 mpg & 23.446 & 7.805 & 9.000 & 17.000 & 22.750 & 29.000 & 46.600 & 0 & 0 \\
@@ -69,7 +69,30 @@ mpg & 23.446 & 7.805 & 9.000 & 17.000 & 22.750 & 29.000 & 46.600 & 0 & 0 \\
 \end{table}
 
 \subsection{Correlation Analysis}
-Linear dependencies among features and the target variable were quantified using Pearson correlation coefficients. Figure~\ref{fig:auto_mpg_heatmap} illustrates the pairwise correlation heatmap.
+Linear dependencies among features and the target variable were quantified using Pearson correlation coefficients. Table~\ref{tab:auto_mpg_corr} reports the full pairwise correlation matrix, and Figure~\ref{fig:auto_mpg_heatmap} illustrates the corresponding heatmap.
+
+\begin{table}[H]
+\centering
+\small
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{lrrrrrrrr}
+\toprule
+ & cylinders & displacement & horsepower & weight & acceleration & model\_year & origin & mpg \\
+\midrule
+cylinders & 1.00 & 0.95 & 0.84 & 0.90 & -0.50 & -0.35 & -0.57 & -0.78 \\
+displacement & 0.95 & 1.00 & 0.90 & 0.93 & -0.54 & -0.37 & -0.61 & -0.81 \\
+horsepower & 0.84 & 0.90 & 1.00 & 0.86 & -0.69 & -0.42 & -0.46 & -0.78 \\
+weight & 0.90 & 0.93 & 0.86 & 1.00 & -0.42 & -0.31 & -0.59 & -0.83 \\
+acceleration & -0.50 & -0.54 & -0.69 & -0.42 & 1.00 & 0.29 & 0.21 & 0.42 \\
+model\_year & -0.35 & -0.37 & -0.42 & -0.31 & 0.29 & 1.00 & 0.18 & 0.58 \\
+origin & -0.57 & -0.61 & -0.46 & -0.59 & 0.21 & 0.18 & 1.00 & 0.57 \\
+mpg & -0.78 & -0.81 & -0.78 & -0.83 & 0.42 & 0.58 & 0.57 & 1.00 \\
+\bottomrule
+\end{tabular}
+}
+\caption{Pearson correlation matrix for Auto MPG.}
+\label{tab:auto_mpg_corr}
+\end{table}
 
 \begin{figure}[H]
 \centering
@@ -155,7 +178,31 @@ compressive\_strength\_mpa & 35.818 & 16.706 & 2.332 & 23.707 & 34.443 & 46.136 
 \end{table}
 
 \subsection{Correlation Analysis}
-Linear dependencies among features and the target variable were quantified using Pearson correlation coefficients. Figure~\ref{fig:concrete_heatmap} illustrates the pairwise correlation heatmap.
+Linear dependencies among features and the target variable were quantified using Pearson correlation coefficients. Table~\ref{tab:concrete_corr} reports the full pairwise correlation matrix, and Figure~\ref{fig:concrete_heatmap} illustrates the corresponding heatmap.
+
+\begin{table}[H]
+\centering
+\small
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{lrrrrrrrrr}
+\toprule
+ & cement & blast\_furnace\_slag & fly\_ash & water & superplasticizer & coarse\_aggregate & fine\_aggregate & age & compressive\_strength\_mpa \\
+\midrule
+cement & 1.00 & -0.28 & -0.40 & -0.08 & 0.09 & -0.11 & -0.22 & 0.08 & 0.50 \\
+blast\_furnace\_slag & -0.28 & 1.00 & -0.32 & 0.11 & 0.04 & -0.28 & -0.28 & -0.04 & 0.13 \\
+fly\_ash & -0.40 & -0.32 & 1.00 & -0.26 & 0.38 & -0.01 & 0.08 & -0.15 & -0.11 \\
+water & -0.08 & 0.11 & -0.26 & 1.00 & -0.66 & -0.18 & -0.45 & 0.28 & -0.29 \\
+superplasticizer & 0.09 & 0.04 & 0.38 & -0.66 & 1.00 & -0.27 & 0.22 & -0.19 & 0.37 \\
+coarse\_aggregate & -0.11 & -0.28 & -0.01 & -0.18 & -0.27 & 1.00 & -0.18 & -0.00 & -0.16 \\
+fine\_aggregate & -0.22 & -0.28 & 0.08 & -0.45 & 0.22 & -0.18 & 1.00 & -0.16 & -0.17 \\
+age & 0.08 & -0.04 & -0.15 & 0.28 & -0.19 & -0.00 & -0.16 & 1.00 & 0.33 \\
+compressive\_strength\_mpa & 0.50 & 0.13 & -0.11 & -0.29 & 0.37 & -0.16 & -0.17 & 0.33 & 1.00 \\
+\bottomrule
+\end{tabular}
+}
+\caption{Pearson correlation matrix for Concrete Compressive Strength.}
+\label{tab:concrete_corr}
+\end{table}
 
 \begin{figure}[H]
 \centering
@@ -238,7 +285,28 @@ scaled\_sound\_pressure\_db & 124.836 & 6.899 & 103.380 & 120.191 & 125.721 & 12
 \end{table}
 
 \subsection{Correlation Analysis}
-Linear dependencies among features and the target variable were quantified using Pearson correlation coefficients. Figure~\ref{fig:airfoil_heatmap} illustrates the pairwise correlation heatmap.
+Linear dependencies among features and the target variable were quantified using Pearson correlation coefficients. Table~\ref{tab:airfoil_corr} reports the full pairwise correlation matrix, and Figure~\ref{fig:airfoil_heatmap} illustrates the corresponding heatmap.
+
+\begin{table}[H]
+\centering
+\small
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{lrrrrrr}
+\toprule
+ & frequency\_hz & angle\_attack\_deg & chord\_length\_m & free\_stream\_velocity\_ms & suction\_displacement\_thickness\_m & scaled\_sound\_pressure\_db \\
+\midrule
+frequency\_hz & 1.00 & -0.27 & -0.00 & 0.13 & -0.23 & -0.39 \\
+angle\_attack\_deg & -0.27 & 1.00 & -0.50 & 0.06 & 0.75 & -0.16 \\
+chord\_length\_m & -0.00 & -0.50 & 1.00 & 0.00 & -0.22 & -0.24 \\
+free\_stream\_velocity\_ms & 0.13 & 0.06 & 0.00 & 1.00 & -0.00 & 0.13 \\
+suction\_displacement\_thickness\_m & -0.23 & 0.75 & -0.22 & -0.00 & 1.00 & -0.31 \\
+scaled\_sound\_pressure\_db & -0.39 & -0.16 & -0.24 & 0.13 & -0.31 & 1.00 \\
+\bottomrule
+\end{tabular}
+}
+\caption{Pearson correlation matrix for Airfoil Self-Noise.}
+\label{tab:airfoil_corr}
+\end{table}
 
 \begin{figure}[H]
 \centering

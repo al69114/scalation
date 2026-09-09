@@ -228,7 +228,8 @@ def iqr_outlier_summary(df: pd.DataFrame) -> pd.Series:
         q1, q3 = df[col].quantile([0.25, 0.75])
         iqr = q3 - q1
         lo, hi = q1 - 1.5 * iqr, q3 + 1.5 * iqr
-        counts[col] = int(((df[col] < lo) | (df[col] > hi)).sum())
+        eps = 1e-9  # guard against float64 noise flagging values exactly at the Tukey fence
+        counts[col] = int(((df[col] < lo - eps) | (df[col] > hi + eps)).sum())
     return pd.Series(counts, name="iqr_outliers")
 
 
@@ -247,6 +248,14 @@ def table_to_latex(df: pd.DataFrame, columns: list[str], float_format: str = "%.
     table.index = [latex_escape(str(x)) for x in table.index]
     table.columns = [latex_escape(str(x)) for x in table.columns]
     return table.to_latex(float_format=float_format, escape=False)
+
+
+def corr_matrix_to_latex(corr: pd.DataFrame) -> str:
+    table = corr.copy()
+    table.index = [latex_escape(str(x)) for x in table.index]
+    table.columns = [latex_escape(str(x)) for x in table.columns]
+    tabular = table.to_latex(float_format="%.2f", escape=False)
+    return f"\\resizebox{{\\textwidth}}{{!}}{{%\n{tabular}}}"
 
 
 def analyze_dataset(spec: DatasetSpec, df: pd.DataFrame, notes: dict[str, str]) -> dict[str, object]:
@@ -423,7 +432,15 @@ Descriptive statistical summaries for all features and the target variable are p
 \end{{table}}
 
 \subsection{{Correlation Analysis}}
-Linear dependencies among features and the target variable were quantified using Pearson correlation coefficients. Figure~\ref{{fig:{key}_heatmap}} illustrates the pairwise correlation heatmap.
+Linear dependencies among features and the target variable were quantified using Pearson correlation coefficients. Table~\ref{{tab:{key}_corr}} reports the full pairwise correlation matrix, and Figure~\ref{{fig:{key}_heatmap}} illustrates the corresponding heatmap.
+
+\begin{{table}}[H]
+\centering
+\small
+{corr_matrix_to_latex(corr)}
+\caption{{Pearson correlation matrix for {spec.title}.}}
+\label{{tab:{key}_corr}}
+\end{{table}}
 
 \begin{{figure}}[H]
 \centering
@@ -476,7 +493,7 @@ Separate univariate simple linear regressions were fitted for the top two predic
 \usepackage{{url}}
 
 \title{{\textbf{{Project 1: Exploratory Data Analysis and Simple Regression}}\\\large CSCI 4360 / DATA SCIENCE ML II}}
-\author{{Adithya Lakshmikanth}}
+\author{{Adithya Lakshmikanth, Amy Vu, Aastha Mishra, Ellie Truong, Disha Dhangar}}
 \date{{\today}}
 
 \begin{{document}}

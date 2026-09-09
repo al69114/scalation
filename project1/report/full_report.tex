@@ -7,7 +7,7 @@
 \usepackage{amssymb}
 
 \title{Project 1}
-\author{Adithya lakshmikanth}
+\author{Adithya Lakshmikanth, Amy Vu, Aastha Mishra, Ellie Truong, Disha Dhangar}
 \date{September 2026}
 
 \begin{document}
@@ -23,8 +23,8 @@ This report presents an exploratory data analysis (EDA) and simple linear regres
 \subsection{Preprocessing: String Values, Missing Values, and Outliers}
 \begin{itemize}
     \item \textbf{String Values:} The raw UCI file appends a 9th free-text field (car make/model, e.g.\ ``chevrolet chevelle malibu'') after the 8 numeric fields. This identifier column was dropped before regression since it carries no quantitative information; \texttt{origin} was kept as-is since it is already the standard numeric UCI code (1 = USA, 2 = Europe, 3 = Japan).
-    \item \textbf{Missing Values:} The raw 398-row file contains 6 rows with \texttt{?} in the \texttt{horsepower} field (pre-1980 records lacking a reported value). These 6 incomplete rows were dropped (not imputed), yielding the standard 392-row, 8-column benchmark matrix.
-    \item \textbf{Outliers:} Tukey's 1.5$\times$IQR rule flags 10 outliers in \texttt{horsepower} (bounds $[-1.5, 202.5]$, all above 202.5~hp) and 11 in \texttt{acceleration} (bounds $[8.9, 21.9]$). These were retained rather than removed: they represent genuine high-performance vehicles, not data-entry errors, and removing them would bias the regression by truncating real automotive variation.
+    \item \textbf{Missing Values:} The raw 398-row file contains 6 rows with \texttt{?} in the \texttt{horsepower} field (model years 1971, 1974, 1980, 1980, 1981, and 1982). These 6 incomplete rows were dropped (not imputed), yielding the standard 392-row, 8-column benchmark matrix.
+    \item \textbf{Outliers:} Tukey's 1.5$\times$IQR rule flags 10 outliers in \texttt{horsepower} (bounds $[-1.5, 202.5]$, all above 202.5~hp) and 10 in \texttt{acceleration} (bounds $[8.9, 21.9]$). Flagged observations were retained to preserve the observed range; an IQR flag alone was not considered sufficient reason for deletion.
 \end{itemize}
 
 \subsection{Statistical Summaries for Each Feature/Variable}
@@ -39,7 +39,7 @@ cylinders & 5.4719 & 1.7058 & 3.0000 & 4.0000 & 4.0000 & 8.0000 & 8.0000 & 0 & 0
 displacement & 194.4120 & 104.6440 & 68.0000 & 105.0000 & 151.0000 & 275.7500 & 455.0000 & 0 & 0 \\
 horsepower & 104.4694 & 38.4912 & 46.0000 & 75.0000 & 93.5000 & 126.0000 & 230.0000 & 0 & 10 \\
 weight & 2977.5842 & 849.4026 & 1613.0000 & 2225.2500 & 2803.5000 & 3614.7500 & 5140.0000 & 0 & 0 \\
-acceleration & 15.5413 & 2.7589 & 8.0000 & 13.7750 & 15.5000 & 17.0250 & 24.8000 & 0 & 11 \\
+acceleration & 15.5413 & 2.7589 & 8.0000 & 13.7750 & 15.5000 & 17.0250 & 24.8000 & 0 & 10 \\
 model\_year & 75.9796 & 3.6837 & 70.0000 & 73.0000 & 76.0000 & 79.0000 & 82.0000 & 0 & 0 \\
 origin & 1.5765 & 0.8055 & 1.0000 & 1.0000 & 1.0000 & 2.0000 & 3.0000 & 0 & 0 \\
 mpg & 23.4459 & 7.8050 & 9.0000 & 17.0000 & 22.7500 & 29.0000 & 46.6000 & 0 & 0 \\
@@ -170,14 +170,14 @@ Notes:
 
 
 \subsection{Discussion}
-Both top predictors, vehicle weight and engine displacement, show strong negative linear association with fuel economy, consistent with basic automotive thermodynamics: heavier vehicles and larger engines consume more fuel per mile. The observed-vs-fitted scatter plots show visible curvature -- mpg falls steeply at low weight and levels off at high weight -- indicating the true relationship is better modeled as reciprocal (gallons per mile) or with a polynomial term than by a straight line.
+Both top predictors, vehicle weight and engine displacement, show strong negative linear association with fuel economy, consistent with basic automotive thermodynamics: heavier vehicles and larger engines consume more fuel per mile. The observed-vs-fitted scatter plots show visible curvature -- mpg falls steeply at low weight and levels off at high weight. The visible curvature suggests that reciprocal or polynomial models may improve fit.
 
 
 \section{Concrete Compressive Strength Dataset}
 
 \subsection{Preprocessing: String Values, Missing Values, and Outliers}
 \begin{itemize}
-    \item \textbf{String Values:} All 9 columns are numeric ingredient quantities (kg/m$^3$) or a curing duration (days); the only text encountered was the original Excel header row, which was renamed to clean snake\_case identifiers. No categorical/string encoding was required.
+    \item \textbf{String Values:} The dataset contains seven ingredient quantities measured in kg/m$^3$, curing age in days, and compressive strength in MPa; the only text encountered was the original Excel header row, which was renamed to clean snake\_case identifiers. No categorical/string encoding was required.
     \item \textbf{Missing Values:} Zero missing values across all 1{,}030 mixture observations; no imputation or row deletion was necessary.
     \item \textbf{Outliers:} Tukey's IQR rule flags 59 instances in \texttt{age} (mixes cured up to 365 days), 10 in \texttt{superplasticizer}, 9 in \texttt{water}, 5 in \texttt{fine\_aggregate}, 2 in \texttt{blast\_furnace\_slag}, and 4 in the target \texttt{compressive\_strength\_mpa}. These reflect legitimate specialized high-strength mix designs and extended curing trials and were retained.
 \end{itemize}
@@ -339,7 +339,7 @@ Cement content ($R^2=0.248$) is the strongest single predictor of compressive st
 \subsection{Statistical Summaries for Each Feature/Variable}
 \begin{table}[H]
 \centering
-\small
+\resizebox{\textwidth}{!}{%
 \begin{tabular}{lrrrrrrrrr}
 \toprule
 Variable & mean & std & min & 25\% & 50\% & 75\% & max & missing & outliers \\
@@ -351,7 +351,8 @@ free\_stream\_velocity\_ms & 50.8607 & 15.5728 & 31.7000 & 39.6000 & 39.6000 & 7
 suction\_displacement\_thickness\_m & 0.0111 & 0.0132 & 0.0004 & 0.0025 & 0.0050 & 0.0156 & 0.0584 & 0 & 124 \\
 scaled\_sound\_pressure\_db & 124.8359 & 6.8987 & 103.3800 & 120.1910 & 125.7210 & 129.9955 & 140.9870 & 0 & 4 \\
 \bottomrule
-\end{tabular}
+\end{tabular}%
+}
 \caption{Descriptive statistics for Airfoil Self-Noise ($n=1503$, $p=6$ columns).}
 \end{table}
 
@@ -415,7 +416,7 @@ Notes:
 strong multicollinearity or other numerical problems.
 \end{verbatim}
 
-\textbf{Summary statement:} $\widehat{\text{scaled\_sound\_pressure\_db}} = 127.3037 - 0.0009 \cdot \text{frequency\_hz}$, with $R^2 = 0.1527$ (adj.\ $R^2 = 0.1521$), RMSE $= 6.3482$, on $n = 1503$ observations. Each 1-unit increase in \texttt{frequency\_hz} is associated with a $-0.0009$ change in \texttt{scaled\_sound\_pressure\_db}.
+\textbf{Summary statement:} $\widehat{\text{scaled\_sound\_pressure\_db}} = 127.3037 - 0.000854979 \cdot \text{frequency\_hz}$, with $R^2 = 0.1527$ (adj.\ $R^2 = 0.1521$), RMSE $= 6.3482$, on $n = 1503$ observations. Each 1-unit increase in \texttt{frequency\_hz} is associated with a $-0.000854979$ change in \texttt{scaled\_sound\_pressure\_db}.
 
 \begin{figure}[H]
 \centering
@@ -477,6 +478,6 @@ Notes:
 
 
 \subsection{Discussion}
-Frequency and suction-side displacement thickness both show moderate negative association with sound pressure level: higher-frequency acoustic energy dissipates faster, and thicker boundary layers cushion surface interactions. The two univariate models explain only 15.3\% and 9.8\% of the variance respectively, reflecting that self-noise depends jointly on vortex shedding, boundary-layer separation, and attack angle -- physics that a single-variable linear model cannot capture, motivating multiple regression.
+Frequency and suction-side displacement thickness are negatively associated with sound pressure level. Their separate linear models explain approximately 15.3\% and 9.8\% of the observed variance. These associations do not establish causal mechanisms.
 
 \end{document}
