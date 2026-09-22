@@ -1,0 +1,542 @@
+[info] welcome to sbt 1.10.11 (Homebrew Java 21.0.10)
+[info] loading global plugins from /Users/aasthamishra/.sbt/1.0/plugins
+[info] loading project definition from /Users/aasthamishra/UGA/CS Classes/Fall 2026/CSCI6360 - Data Science and ML 2/scalation/project
+[info] loading settings for project scalation from build.sbt...
+[info] set current project to scalation (in build file:/Users/aasthamishra/UGA/CS%20Classes/Fall%202026/CSCI6360%20-%20Data%20Science%20and%20ML%202/scalation/)
+[info] running (fork) scalation.modeling.Project2_Regression 
+-------------------------------------
+| Project 2 - Regression - auto_mpg |
+-------------------------------------
+readFileIntoArray: data/auto_mpg.csv
+readFileIntoArray: number lines = 393
+readFileIntoArray: lines 0 = cylinders,displacement,horsepower,weight,acceleration,modelyear,origin,mpg
+readFileIntoArray: lines 1 = 8.0,307.0,130.0,3504.0,12.0,70.0,1.0,18.0
+load: read in an 392-by-8 matrix from data/auto_mpg.csv
+-----------------------------------------------------------------------------------------------------------------------
+| auto_mpg: predictors = cylinders, displacement, horsepower, weight, acceleration, modelyear, origin, response = mpg |
+-----------------------------------------------------------------------------------------------------------------------
+-------------------------------------
+| auto_mpg Full Multiple Regression |
+-------------------------------------
+DEBUG @ Predictor.trainNTest: b = VectorD(-17.2184,	-0.493376,	0.0198956,	-0.0169511,	-0.00647404,	0.0805758,	0.750773,	1.42614)
+b = VectorD(-17.2184,	-0.493376,	0.0198956,	-0.0169511,	-0.00647404,	0.0805758,	0.750773,	1.42614), fn = [Ljava.lang.String;@32464a14
+
+REPORT
+    ----------------------------------------------------------------------------
+    modelName  mn  = Regression_7.0
+    ----------------------------------------------------------------------------
+    hparameter hp  = HyperParameter(factorization -> (Fac_QR,Fac_QR))
+    ----------------------------------------------------------------------------
+    features   fn  = Array(cylinders, displacement, horsepower, weight, acceleration, modelyear, origin, y)
+    ----------------------------------------------------------------------------
+    parameter  b   = VectorD(-17.2184,	-0.493376,	0.0198956,	-0.0169511,	-0.00647404,	0.0805758,	0.750773,	1.42614)
+    ----------------------------------------------------------------------------
+    fitMap     qof = LinkedHashMap(rSq -> 0.821478, rSqBar -> 0.818224, sst -> 23818.993469, sse -> 4252.212530, sde -> 3.297760, rse -> 3.327682, mse0 -> 10.847481, rmse -> 3.293551, mae -> 2.499310, smape -> 11.469335, bmae -> 25.919168, m -> 392.000000, dfr -> 7.000000, df -> 384.000000, fStat -> 252.428045, aic -> -1007.474750, bic -> -975.704655, mape -> 11.573811, mase -> 1.042904, smapeC -> 11.510151, picp -> -1.000000, pinc -> -1.000000, ace -> -1.000000, pinaw -> -1.000000, mis -> -1.000000, wis -> -1.000000)
+    ----------------------------------------------------------------------------
+        
+VizFrame: run Plot Regression_7.0 predictions: yy black/actual vs. yp red/predicted
+-----------------------
+| auto_mpg Fit Report |
+-----------------------
+b = VectorD(-17.2184,	-0.493376,	0.0198956,	-0.0169511,	-0.00647404,	0.0805758,	0.750773,	1.42614), fn = [Ljava.lang.String;@32464a14
+
+REPORT
+    ----------------------------------------------------------------------------
+    modelName  mn  = Regression_7.0
+    ----------------------------------------------------------------------------
+    hparameter hp  = HyperParameter(factorization -> (Fac_QR,Fac_QR))
+    ----------------------------------------------------------------------------
+    features   fn  = Array(cylinders, displacement, horsepower, weight, acceleration, modelyear, origin, y)
+    ----------------------------------------------------------------------------
+    parameter  b   = VectorD(-17.2184,	-0.493376,	0.0198956,	-0.0169511,	-0.00647404,	0.0805758,	0.750773,	1.42614)
+    ----------------------------------------------------------------------------
+    fitMap     qof = LinkedHashMap(rSq -> 0.821478, rSqBar -> 0.818224, sst -> 23818.993469, sse -> 4252.212530, sde -> 3.297760, rse -> 3.327682, mse0 -> 10.847481, rmse -> 3.293551, mae -> 2.499310, smape -> 11.469335, bmae -> 25.919168, m -> 392.000000, dfr -> 7.000000, df -> 384.000000, fStat -> 252.428045, aic -> -1007.474750, bic -> -975.704655, mape -> 11.573811, mase -> 1.042904, smapeC -> 11.510151, picp -> -1.000000, pinc -> -1.000000, ace -> -1.000000, pinaw -> -1.000000, mis -> -1.000000, wis -> -1.000000)
+    ----------------------------------------------------------------------------
+        
+fname = Array(cylinders, displacement, horsepower, weight, acceleration, modelyear, origin, y)
+SUMMARY
+    Parameters/Coefficients:
+    Var      Estimate    Std. Error 	 t value 	 Pr(>|t|) 	 VIF
+----------------------------------------------------------------------------------
+    x0	 -17.218435	 4.644294	 -3.707438	 0.000209	 NA
+    x1	 -0.493376	 0.323282	 -1.526147	 0.126973	 10.737535
+    x2	 0.019896	 0.007515	 2.647430	 0.008111	 21.836792
+    x3	 -0.016951	 0.013787	 -1.229512	 0.218880	 9.943693
+    x4	 -0.006474	 0.000652	 -9.928787	 0.000000	 10.831260
+    x5	 0.080576	 0.098845	 0.815174	 0.414973	 2.625806
+    x6	 0.750773	 0.050973	 14.728795	 0.000000	 1.244952
+    x7	 1.426140	 0.278136	 5.127492	 0.000000	 1.772386
+
+    Residual standard error: 3.327682 on 384.0 degrees of freedom
+    Multiple R-squared:  0.821478,	Adjusted R-squared:  0.818224
+    F-statistic: 252.42804529131928 on 7.0 and 384.0 DF,  p-value: -0.0
+----------------------------------------------------------------------------------
+        
+--------------------------------------------
+| auto_mpg Simple Regression: mpg ~ weight |
+--------------------------------------------
+xSimple dimensions = 392
+xSimple_ dimensions = 392 x 2
+DEBUG @ Predictor.trainNTest: b = VectorD(46.2165,	-0.00764734)
+b = VectorD(46.2165,	-0.00764734), fn = [Ljava.lang.String;@f381794
+
+REPORT
+    ----------------------------------------------------------------------------
+    modelName  mn  = Regression_1.0
+    ----------------------------------------------------------------------------
+    hparameter hp  = HyperParameter(factorization -> (Fac_QR,Fac_QR))
+    ----------------------------------------------------------------------------
+    features   fn  = Array(Intercept, weight)
+    ----------------------------------------------------------------------------
+    parameter  b   = VectorD(46.2165,	-0.00764734)
+    ----------------------------------------------------------------------------
+    fitMap     qof = LinkedHashMap(rSq -> 0.692630, rSqBar -> 0.691842, sst -> 23818.993469, sse -> 7321.233706, sde -> 4.327168, rse -> 4.332712, mse0 -> 18.676617, rmse -> 4.321645, mae -> 3.278702, smape -> 14.140828, bmae -> 29.224578, m -> 392.000000, dfr -> 1.000000, df -> 390.000000, fStat -> 878.830886, aic -> -1125.969274, bic -> -1118.026751, mape -> 14.413211, mase -> 1.175904, smapeC -> 14.151032, picp -> -1.000000, pinc -> -1.000000, ace -> -1.000000, pinaw -> -1.000000, mis -> -1.000000, wis -> -1.000000)
+    ----------------------------------------------------------------------------
+        
+VizFrame: run Plot Regression_1.0 predictions: yy black/actual vs. yp red/predicted
+--------------------------------
+| auto_mpg - weight Fit Report |
+--------------------------------
+b = VectorD(46.2165,	-0.00764734), fn = [Ljava.lang.String;@f381794
+
+REPORT
+    ----------------------------------------------------------------------------
+    modelName  mn  = Regression_1.0
+    ----------------------------------------------------------------------------
+    hparameter hp  = HyperParameter(factorization -> (Fac_QR,Fac_QR))
+    ----------------------------------------------------------------------------
+    features   fn  = Array(Intercept, weight)
+    ----------------------------------------------------------------------------
+    parameter  b   = VectorD(46.2165,	-0.00764734)
+    ----------------------------------------------------------------------------
+    fitMap     qof = LinkedHashMap(rSq -> 0.692630, rSqBar -> 0.691842, sst -> 23818.993469, sse -> 7321.233706, sde -> 4.327168, rse -> 4.332712, mse0 -> 18.676617, rmse -> 4.321645, mae -> 3.278702, smape -> 14.140828, bmae -> 29.224578, m -> 392.000000, dfr -> 1.000000, df -> 390.000000, fStat -> 878.830886, aic -> -1125.969274, bic -> -1118.026751, mape -> 14.413211, mase -> 1.175904, smapeC -> 14.151032, picp -> -1.000000, pinc -> -1.000000, ace -> -1.000000, pinaw -> -1.000000, mis -> -1.000000, wis -> -1.000000)
+    ----------------------------------------------------------------------------
+        
+fname = Array(Intercept, weight)
+SUMMARY
+    Parameters/Coefficients:
+    Var      Estimate    Std. Error 	 t value 	 Pr(>|t|) 	 VIF
+----------------------------------------------------------------------------------
+    x0	 46.216525	 0.798672	 57.866681	 0.000000	 NA
+    x1	 -0.007647	 0.000258	 -29.645082	 0.000000	 1.000000
+
+    Residual standard error: 4.332712 on 390.0 degrees of freedom
+    Multiple R-squared:  0.692630,	Adjusted R-squared:  0.691842
+    F-statistic: 878.8308864132069 on 1.0 and 390.0 DF,  p-value: -0.0
+----------------------------------------------------------------------------------
+        
+
+Simple Regression: mpg = intercept + coefficient * weight
+--------------------------------------------------
+| auto_mpg Simple Regression: mpg ~ displacement |
+--------------------------------------------------
+xSimple dimensions = 392
+xSimple_ dimensions = 392 x 2
+DEBUG @ Predictor.trainNTest: b = VectorD(35.1206,	-0.0600514)
+b = VectorD(35.1206,	-0.0600514), fn = [Ljava.lang.String;@61d6015a
+
+REPORT
+    ----------------------------------------------------------------------------
+    modelName  mn  = Regression_1.0
+    ----------------------------------------------------------------------------
+    hparameter hp  = HyperParameter(factorization -> (Fac_QR,Fac_QR))
+    ----------------------------------------------------------------------------
+    features   fn  = Array(Intercept, displacement)
+    ----------------------------------------------------------------------------
+    parameter  b   = VectorD(35.1206,	-0.0600514)
+    ----------------------------------------------------------------------------
+    fitMap     qof = LinkedHashMap(rSq -> 0.648229, rSqBar -> 0.647327, sst -> 23818.993469, sse -> 8378.821617, sde -> 4.629170, rse -> 4.635101, mse0 -> 21.374545, rmse -> 4.623261, mae -> 3.506273, smape -> 15.257579, bmae -> 30.616313, m -> 392.000000, dfr -> 1.000000, df -> 390.000000, fStat -> 718.677076, aic -> -1152.415247, bic -> -1144.472723, mape -> 15.556335, mase -> 1.231903, smapeC -> 15.267783, picp -> -1.000000, pinc -> -1.000000, ace -> -1.000000, pinaw -> -1.000000, mis -> -1.000000, wis -> -1.000000)
+    ----------------------------------------------------------------------------
+        
+VizFrame: run Plot Regression_1.0 predictions: yy black/actual vs. yp red/predicted
+--------------------------------------
+| auto_mpg - displacement Fit Report |
+--------------------------------------
+b = VectorD(35.1206,	-0.0600514), fn = [Ljava.lang.String;@61d6015a
+
+REPORT
+    ----------------------------------------------------------------------------
+    modelName  mn  = Regression_1.0
+    ----------------------------------------------------------------------------
+    hparameter hp  = HyperParameter(factorization -> (Fac_QR,Fac_QR))
+    ----------------------------------------------------------------------------
+    features   fn  = Array(Intercept, displacement)
+    ----------------------------------------------------------------------------
+    parameter  b   = VectorD(35.1206,	-0.0600514)
+    ----------------------------------------------------------------------------
+    fitMap     qof = LinkedHashMap(rSq -> 0.648229, rSqBar -> 0.647327, sst -> 23818.993469, sse -> 8378.821617, sde -> 4.629170, rse -> 4.635101, mse0 -> 21.374545, rmse -> 4.623261, mae -> 3.506273, smape -> 15.257579, bmae -> 30.616313, m -> 392.000000, dfr -> 1.000000, df -> 390.000000, fStat -> 718.677076, aic -> -1152.415247, bic -> -1144.472723, mape -> 15.556335, mase -> 1.231903, smapeC -> 15.267783, picp -> -1.000000, pinc -> -1.000000, ace -> -1.000000, pinaw -> -1.000000, mis -> -1.000000, wis -> -1.000000)
+    ----------------------------------------------------------------------------
+        
+fname = Array(Intercept, displacement)
+SUMMARY
+    Parameters/Coefficients:
+    Var      Estimate    Std. Error 	 t value 	 Pr(>|t|) 	 VIF
+----------------------------------------------------------------------------------
+    x0	 35.120636	 0.494428	 71.032840	 0.000000	 NA
+    x1	 -0.060051	 0.002240	 -26.808153	 0.000000	 1.000000
+
+    Residual standard error: 4.635101 on 390.0 degrees of freedom
+    Multiple R-squared:  0.648229,	Adjusted R-squared:  0.647327
+    F-statistic: 718.6770763503424 on 1.0 and 390.0 DF,  p-value: -0.0
+----------------------------------------------------------------------------------
+        
+
+Simple Regression: mpg = intercept + coefficient * displacement
+-------------------------------------
+| Project 2 - Regression - concrete |
+-------------------------------------
+readFileIntoArray: data/concrete.csv
+readFileIntoArray: number lines = 1031
+readFileIntoArray: lines 0 = cement,blast_furnace_slag,fly_ash,water,superplasticizer,coarse_aggregate,fine_aggregate,age,compressive_strength_mpa
+readFileIntoArray: lines 1 = 540.0,0.0,0.0,162.0,2.5,1040.0,676.0,28,79.98611076
+load: read 999 data rows so far ...
+load: read in an 1030-by-9 matrix from data/concrete.csv
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------
+| concrete: predictors = cement, blast_furnace_slag, fly_ash, water, superplasticizer, coarse_aggregate, fine_aggregate, age, response = compressive_strength_mpa |
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------
+-------------------------------------
+| concrete Full Multiple Regression |
+-------------------------------------
+DEBUG @ Predictor.trainNTest: b = VectorD(-23.1638,	0.119785,	0.103847,	0.0879431,	-0.150298,	0.290687,	0.0180302,	0.0201545,	0.114226)
+b = VectorD(-23.1638,	0.119785,	0.103847,	0.0879431,	-0.150298,	0.290687,	0.0180302,	0.0201545,	0.114226), fn = [Ljava.lang.String;@4ef37659
+
+REPORT
+    ----------------------------------------------------------------------------
+    modelName  mn  = Regression_8.0
+    ----------------------------------------------------------------------------
+    hparameter hp  = HyperParameter(factorization -> (Fac_QR,Fac_QR))
+    ----------------------------------------------------------------------------
+    features   fn  = Array(cement, blast_furnace_slag, fly_ash, water, superplasticizer, coarse_aggregate, fine_aggregate, age, y)
+    ----------------------------------------------------------------------------
+    parameter  b   = VectorD(-23.1638,	0.119785,	0.103847,	0.0879431,	-0.150298,	0.290687,	0.0180302,	0.0201545,	0.114226)
+    ----------------------------------------------------------------------------
+    fitMap     qof = LinkedHashMap(rSq -> 0.615465, rSqBar -> 0.612452, sst -> 287173.028478, sse -> 110428.156817, sde -> 10.359343, rse -> 10.399849, mse0 -> 107.211803, rmse -> 10.354313, mae -> 8.214899, smape -> 25.620627, bmae -> 46.290124, m -> 1030.000000, dfr -> 8.000000, df -> 1021.000000, fStat -> 204.269137, aic -> -3851.031956, bic -> -3806.596129, mape -> 31.309849, mase -> 1.030101, smapeC -> 25.638103, picp -> -1.000000, pinc -> -1.000000, ace -> -1.000000, pinaw -> -1.000000, mis -> -1.000000, wis -> -1.000000)
+    ----------------------------------------------------------------------------
+        
+VizFrame: run Plot Regression_8.0 predictions: yy black/actual vs. yp red/predicted
+-----------------------
+| concrete Fit Report |
+-----------------------
+b = VectorD(-23.1638,	0.119785,	0.103847,	0.0879431,	-0.150298,	0.290687,	0.0180302,	0.0201545,	0.114226), fn = [Ljava.lang.String;@4ef37659
+
+REPORT
+    ----------------------------------------------------------------------------
+    modelName  mn  = Regression_8.0
+    ----------------------------------------------------------------------------
+    hparameter hp  = HyperParameter(factorization -> (Fac_QR,Fac_QR))
+    ----------------------------------------------------------------------------
+    features   fn  = Array(cement, blast_furnace_slag, fly_ash, water, superplasticizer, coarse_aggregate, fine_aggregate, age, y)
+    ----------------------------------------------------------------------------
+    parameter  b   = VectorD(-23.1638,	0.119785,	0.103847,	0.0879431,	-0.150298,	0.290687,	0.0180302,	0.0201545,	0.114226)
+    ----------------------------------------------------------------------------
+    fitMap     qof = LinkedHashMap(rSq -> 0.615465, rSqBar -> 0.612452, sst -> 287173.028478, sse -> 110428.156817, sde -> 10.359343, rse -> 10.399849, mse0 -> 107.211803, rmse -> 10.354313, mae -> 8.214899, smape -> 25.620627, bmae -> 46.290124, m -> 1030.000000, dfr -> 8.000000, df -> 1021.000000, fStat -> 204.269137, aic -> -3851.031956, bic -> -3806.596129, mape -> 31.309849, mase -> 1.030101, smapeC -> 25.638103, picp -> -1.000000, pinc -> -1.000000, ace -> -1.000000, pinaw -> -1.000000, mis -> -1.000000, wis -> -1.000000)
+    ----------------------------------------------------------------------------
+        
+fname = Array(cement, blast_furnace_slag, fly_ash, water, superplasticizer, coarse_aggregate, fine_aggregate, age, y)
+SUMMARY
+    Parameters/Coefficients:
+    Var      Estimate    Std. Error 	 t value 	 Pr(>|t|) 	 VIF
+----------------------------------------------------------------------------------
+    x0	 -23.163756	 26.588421	 -0.871197	 0.383647	 NA
+    x1	 0.119785	 0.008489	 14.110032	 0.000000	 7.488657
+    x2	 0.103847	 0.010136	 10.245169	 0.000000	 7.276529
+    x3	 0.087943	 0.012585	 6.987866	 0.000000	 6.171455
+    x4	 -0.150298	 0.040179	 -3.740684	 0.000184	 7.004663
+    x5	 0.290687	 0.093460	 3.110286	 0.001869	 2.965297
+    x6	 0.018030	 0.009394	 1.919287	 0.054948	 5.076044
+    x7	 0.020154	 0.010703	 1.883121	 0.059684	 7.005346
+    x8	 0.114226	 0.005427	 21.045741	 0.000000	 1.118357
+
+    Residual standard error: 10.399849 on 1021.0 degrees of freedom
+    Multiple R-squared:  0.615465,	Adjusted R-squared:  0.612452
+    F-statistic: 204.2691365684438 on 8.0 and 1021.0 DF,  p-value: -0.0
+----------------------------------------------------------------------------------
+        
+-----------------------------------------------------------------
+| concrete Simple Regression: compressive_strength_mpa ~ cement |
+-----------------------------------------------------------------
+xSimple dimensions = 1030
+xSimple_ dimensions = 1030 x 2
+DEBUG @ Predictor.trainNTest: b = VectorD(13.4428,	0.0795796)
+b = VectorD(13.4428,	0.0795796), fn = [Ljava.lang.String;@1bb266b3
+
+REPORT
+    ----------------------------------------------------------------------------
+    modelName  mn  = Regression_1.0
+    ----------------------------------------------------------------------------
+    hparameter hp  = HyperParameter(factorization -> (Fac_QR,Fac_QR))
+    ----------------------------------------------------------------------------
+    features   fn  = Array(Intercept, cement)
+    ----------------------------------------------------------------------------
+    parameter  b   = VectorD(13.4428,	0.0795796)
+    ----------------------------------------------------------------------------
+    fitMap     qof = LinkedHashMap(rSq -> 0.247837, rSqBar -> 0.247106, sst -> 287173.028478, sse -> 216000.806188, sde -> 14.488386, rse -> 14.495431, mse0 -> 209.709521, rmse -> 14.481351, mae -> 11.851871, smape -> 36.311902, bmae -> 49.246705, m -> 1030.000000, dfr -> 1.000000, df -> 1028.000000, fStat -> 338.725794, aic -> -4210.554208, bic -> -4200.679580, mape -> 49.910284, mase -> 1.095895, smapeC -> 36.315785, picp -> -1.000000, pinc -> -1.000000, ace -> -1.000000, pinaw -> -1.000000, mis -> -1.000000, wis -> -1.000000)
+    ----------------------------------------------------------------------------
+        
+VizFrame: run Plot Regression_1.0 predictions: yy black/actual vs. yp red/predicted
+--------------------------------
+| concrete - cement Fit Report |
+--------------------------------
+b = VectorD(13.4428,	0.0795796), fn = [Ljava.lang.String;@1bb266b3
+
+REPORT
+    ----------------------------------------------------------------------------
+    modelName  mn  = Regression_1.0
+    ----------------------------------------------------------------------------
+    hparameter hp  = HyperParameter(factorization -> (Fac_QR,Fac_QR))
+    ----------------------------------------------------------------------------
+    features   fn  = Array(Intercept, cement)
+    ----------------------------------------------------------------------------
+    parameter  b   = VectorD(13.4428,	0.0795796)
+    ----------------------------------------------------------------------------
+    fitMap     qof = LinkedHashMap(rSq -> 0.247837, rSqBar -> 0.247106, sst -> 287173.028478, sse -> 216000.806188, sde -> 14.488386, rse -> 14.495431, mse0 -> 209.709521, rmse -> 14.481351, mae -> 11.851871, smape -> 36.311902, bmae -> 49.246705, m -> 1030.000000, dfr -> 1.000000, df -> 1028.000000, fStat -> 338.725794, aic -> -4210.554208, bic -> -4200.679580, mape -> 49.910284, mase -> 1.095895, smapeC -> 36.315785, picp -> -1.000000, pinc -> -1.000000, ace -> -1.000000, pinaw -> -1.000000, mis -> -1.000000, wis -> -1.000000)
+    ----------------------------------------------------------------------------
+        
+fname = Array(Intercept, cement)
+SUMMARY
+    Parameters/Coefficients:
+    Var      Estimate    Std. Error 	 t value 	 Pr(>|t|) 	 VIF
+----------------------------------------------------------------------------------
+    x0	 13.442795	 1.296925	 10.365129	 0.000000	 NA
+    x1	 0.079580	 0.004324	 18.404505	 0.000000	 1.000000
+
+    Residual standard error: 14.495431 on 1028.0 degrees of freedom
+    Multiple R-squared:  0.247837,	Adjusted R-squared:  0.247106
+    F-statistic: 338.7257936916482 on 1.0 and 1028.0 DF,  p-value: -0.0
+----------------------------------------------------------------------------------
+        
+
+Simple Regression: compressive_strength_mpa = intercept + coefficient * cement
+---------------------------------------------------------------------------
+| concrete Simple Regression: compressive_strength_mpa ~ superplasticizer |
+---------------------------------------------------------------------------
+xSimple dimensions = 1030
+xSimple_ dimensions = 1030 x 2
+DEBUG @ Predictor.trainNTest: b = VectorD(29.4668,	1.02385)
+b = VectorD(29.4668,	1.02385), fn = [Ljava.lang.String;@5939a379
+
+REPORT
+    ----------------------------------------------------------------------------
+    modelName  mn  = Regression_1.0
+    ----------------------------------------------------------------------------
+    hparameter hp  = HyperParameter(factorization -> (Fac_QR,Fac_QR))
+    ----------------------------------------------------------------------------
+    features   fn  = Array(Intercept, superplasticizer)
+    ----------------------------------------------------------------------------
+    parameter  b   = VectorD(29.4668,	1.02385)
+    ----------------------------------------------------------------------------
+    fitMap     qof = LinkedHashMap(rSq -> 0.134031, rSqBar -> 0.133189, sst -> 287173.028478, sse -> 248682.971207, sde -> 15.545881, rse -> 15.553440, mse0 -> 241.439778, rmse -> 15.538333, mae -> 12.615474, smape -> 38.158411, bmae -> 48.282956, m -> 1030.000000, dfr -> 1.000000, df -> 1028.000000, fStat -> 159.109322, aic -> -4283.116028, bic -> -4273.241400, mape -> 54.595327, mase -> 1.074448, smapeC -> 38.162294, picp -> -1.000000, pinc -> -1.000000, ace -> -1.000000, pinaw -> -1.000000, mis -> -1.000000, wis -> -1.000000)
+    ----------------------------------------------------------------------------
+        
+VizFrame: run Plot Regression_1.0 predictions: yy black/actual vs. yp red/predicted
+------------------------------------------
+| concrete - superplasticizer Fit Report |
+------------------------------------------
+b = VectorD(29.4668,	1.02385), fn = [Ljava.lang.String;@5939a379
+
+REPORT
+    ----------------------------------------------------------------------------
+    modelName  mn  = Regression_1.0
+    ----------------------------------------------------------------------------
+    hparameter hp  = HyperParameter(factorization -> (Fac_QR,Fac_QR))
+    ----------------------------------------------------------------------------
+    features   fn  = Array(Intercept, superplasticizer)
+    ----------------------------------------------------------------------------
+    parameter  b   = VectorD(29.4668,	1.02385)
+    ----------------------------------------------------------------------------
+    fitMap     qof = LinkedHashMap(rSq -> 0.134031, rSqBar -> 0.133189, sst -> 287173.028478, sse -> 248682.971207, sde -> 15.545881, rse -> 15.553440, mse0 -> 241.439778, rmse -> 15.538333, mae -> 12.615474, smape -> 38.158411, bmae -> 48.282956, m -> 1030.000000, dfr -> 1.000000, df -> 1028.000000, fStat -> 159.109322, aic -> -4283.116028, bic -> -4273.241400, mape -> 54.595327, mase -> 1.074448, smapeC -> 38.162294, picp -> -1.000000, pinc -> -1.000000, ace -> -1.000000, pinaw -> -1.000000, mis -> -1.000000, wis -> -1.000000)
+    ----------------------------------------------------------------------------
+        
+fname = Array(Intercept, superplasticizer)
+SUMMARY
+    Parameters/Coefficients:
+    Var      Estimate    Std. Error 	 t value 	 Pr(>|t|) 	 VIF
+----------------------------------------------------------------------------------
+    x0	 29.466751	 0.698839	 42.165264	 0.000000	 NA
+    x1	 1.023855	 0.081169	 12.613854	 0.000000	 1.000000
+
+    Residual standard error: 15.553440 on 1028.0 degrees of freedom
+    Multiple R-squared:  0.134031,	Adjusted R-squared:  0.133189
+    F-statistic: 159.10932173110194 on 1.0 and 1028.0 DF,  p-value: -0.0
+----------------------------------------------------------------------------------
+        
+
+Simple Regression: compressive_strength_mpa = intercept + coefficient * superplasticizer
+------------------------------------
+| Project 2 - Regression - airfoil |
+------------------------------------
+readFileIntoArray: data/airfoil.csv
+readFileIntoArray: number lines = 1504
+readFileIntoArray: lines 0 = frequency_hz,angle_attack_deg,chord_length_m,free_stream_velocity_ms,suction_displacement_thickness_m,scaled_sound_pressure_db
+readFileIntoArray: lines 1 = 800,0.0,0.3048,71.3,0.00266337,126.201
+load: read 999 data rows so far ...
+load: read in an 1503-by-6 matrix from data/airfoil.csv
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+| airfoil: predictors = frequency_hz, angle_attack_deg, chord_length_m, free_stream_velocity_ms, suction_displacement_thickness_m, response = scaled_sound_pressure_db |
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+------------------------------------
+| airfoil Full Multiple Regression |
+------------------------------------
+DEBUG @ Predictor.trainNTest: b = VectorD(132.834,	-0.00128221,	-0.421912,	-35.6880,	0.0998540,	-147.301)
+b = VectorD(132.834,	-0.00128221,	-0.421912,	-35.6880,	0.0998540,	-147.301), fn = [Ljava.lang.String;@2177849e
+
+REPORT
+    ----------------------------------------------------------------------------
+    modelName  mn  = Regression_5.0
+    ----------------------------------------------------------------------------
+    hparameter hp  = HyperParameter(factorization -> (Fac_QR,Fac_QR))
+    ----------------------------------------------------------------------------
+    features   fn  = Array(frequency_hz, angle_attack_deg, chord_length_m, free_stream_velocity_ms, suction_displacement_thickness_m, y)
+    ----------------------------------------------------------------------------
+    parameter  b   = VectorD(132.834,	-0.00128221,	-0.421912,	-35.6880,	0.0998540,	-147.301)
+    ----------------------------------------------------------------------------
+    fitMap     qof = LinkedHashMap(rSq -> 0.515710, rSqBar -> 0.514092, sst -> 71482.377701, sse -> 34618.219133, sde -> 4.800842, rse -> 4.808853, mse0 -> 23.032747, rmse -> 4.799244, mae -> 3.728517, smape -> 2.988658, bmae -> 6.169359, m -> 1503.000000, dfr -> 5.000000, df -> 1497.000000, fStat -> 318.824288, aic -> -4478.057739, bic -> -4446.166428, mape -> 2.994523, mase -> 1.610859, smapeC -> 2.996642, picp -> -1.000000, pinc -> -1.000000, ace -> -1.000000, pinaw -> -1.000000, mis -> -1.000000, wis -> -1.000000)
+    ----------------------------------------------------------------------------
+        
+VizFrame: run Plot Regression_5.0 predictions: yy black/actual vs. yp red/predicted
+----------------------
+| airfoil Fit Report |
+----------------------
+b = VectorD(132.834,	-0.00128221,	-0.421912,	-35.6880,	0.0998540,	-147.301), fn = [Ljava.lang.String;@2177849e
+
+REPORT
+    ----------------------------------------------------------------------------
+    modelName  mn  = Regression_5.0
+    ----------------------------------------------------------------------------
+    hparameter hp  = HyperParameter(factorization -> (Fac_QR,Fac_QR))
+    ----------------------------------------------------------------------------
+    features   fn  = Array(frequency_hz, angle_attack_deg, chord_length_m, free_stream_velocity_ms, suction_displacement_thickness_m, y)
+    ----------------------------------------------------------------------------
+    parameter  b   = VectorD(132.834,	-0.00128221,	-0.421912,	-35.6880,	0.0998540,	-147.301)
+    ----------------------------------------------------------------------------
+    fitMap     qof = LinkedHashMap(rSq -> 0.515710, rSqBar -> 0.514092, sst -> 71482.377701, sse -> 34618.219133, sde -> 4.800842, rse -> 4.808853, mse0 -> 23.032747, rmse -> 4.799244, mae -> 3.728517, smape -> 2.988658, bmae -> 6.169359, m -> 1503.000000, dfr -> 5.000000, df -> 1497.000000, fStat -> 318.824288, aic -> -4478.057739, bic -> -4446.166428, mape -> 2.994523, mase -> 1.610859, smapeC -> 2.996642, picp -> -1.000000, pinc -> -1.000000, ace -> -1.000000, pinaw -> -1.000000, mis -> -1.000000, wis -> -1.000000)
+    ----------------------------------------------------------------------------
+        
+fname = Array(frequency_hz, angle_attack_deg, chord_length_m, free_stream_velocity_ms, suction_displacement_thickness_m, y)
+SUMMARY
+    Parameters/Coefficients:
+    Var      Estimate    Std. Error 	 t value 	 Pr(>|t|) 	 VIF
+----------------------------------------------------------------------------------
+    x0	 132.833806	 0.544701	 243.865682	 0.000000	 NA
+    x1	 -0.001282	 0.000042	 -30.452267	 0.000000	 1.144444
+    x2	 -0.421912	 0.038896	 -10.847149	 0.000000	 3.441658
+    x3	 -35.688001	 1.630432	 -21.888679	 0.000000	 1.510754
+    x4	 0.099854	 0.008132	 12.278758	 0.000000	 1.041698
+    x5	 -147.300519	 15.014668	 -9.810441	 0.000000	 2.532127
+
+    Residual standard error: 4.808853 on 1497.0 degrees of freedom
+    Multiple R-squared:  0.515710,	Adjusted R-squared:  0.514092
+    F-statistic: 318.8242882478476 on 5.0 and 1497.0 DF,  p-value: -0.0
+----------------------------------------------------------------------------------
+        
+----------------------------------------------------------------------
+| airfoil Simple Regression: scaled_sound_pressure_db ~ frequency_hz |
+----------------------------------------------------------------------
+xSimple dimensions = 1503
+xSimple_ dimensions = 1503 x 2
+DEBUG @ Predictor.trainNTest: b = VectorD(127.304,	-0.000854979)
+b = VectorD(127.304,	-0.000854979), fn = [Ljava.lang.String;@355ce81c
+
+REPORT
+    ----------------------------------------------------------------------------
+    modelName  mn  = Regression_1.0
+    ----------------------------------------------------------------------------
+    hparameter hp  = HyperParameter(factorization -> (Fac_QR,Fac_QR))
+    ----------------------------------------------------------------------------
+    features   fn  = Array(Intercept, frequency_hz)
+    ----------------------------------------------------------------------------
+    parameter  b   = VectorD(127.304,	-0.000854979)
+    ----------------------------------------------------------------------------
+    fitMap     qof = LinkedHashMap(rSq -> 0.152655, rSqBar -> 0.152091, sst -> 71482.377701, sse -> 60570.206223, sde -> 6.350305, rse -> 6.352420, mse0 -> 40.299538, rmse -> 6.348192, mae -> 5.068696, smape -> 4.086777, bmae -> 7.995140, m -> 1503.000000, dfr -> 1.000000, df -> 1501.000000, fStat -> 270.416272, aic -> -4906.464137, bic -> -4895.833700, mape -> 4.107156, mase -> 2.087582, smapeC -> 4.089439, picp -> -1.000000, pinc -> -1.000000, ace -> -1.000000, pinaw -> -1.000000, mis -> -1.000000, wis -> -1.000000)
+    ----------------------------------------------------------------------------
+        
+VizFrame: run Plot Regression_1.0 predictions: yy black/actual vs. yp red/predicted
+-------------------------------------
+| airfoil - frequency_hz Fit Report |
+-------------------------------------
+b = VectorD(127.304,	-0.000854979), fn = [Ljava.lang.String;@355ce81c
+
+REPORT
+    ----------------------------------------------------------------------------
+    modelName  mn  = Regression_1.0
+    ----------------------------------------------------------------------------
+    hparameter hp  = HyperParameter(factorization -> (Fac_QR,Fac_QR))
+    ----------------------------------------------------------------------------
+    features   fn  = Array(Intercept, frequency_hz)
+    ----------------------------------------------------------------------------
+    parameter  b   = VectorD(127.304,	-0.000854979)
+    ----------------------------------------------------------------------------
+    fitMap     qof = LinkedHashMap(rSq -> 0.152655, rSqBar -> 0.152091, sst -> 71482.377701, sse -> 60570.206223, sde -> 6.350305, rse -> 6.352420, mse0 -> 40.299538, rmse -> 6.348192, mae -> 5.068696, smape -> 4.086777, bmae -> 7.995140, m -> 1503.000000, dfr -> 1.000000, df -> 1501.000000, fStat -> 270.416272, aic -> -4906.464137, bic -> -4895.833700, mape -> 4.107156, mase -> 2.087582, smapeC -> 4.089439, picp -> -1.000000, pinc -> -1.000000, ace -> -1.000000, pinaw -> -1.000000, mis -> -1.000000, wis -> -1.000000)
+    ----------------------------------------------------------------------------
+        
+fname = Array(Intercept, frequency_hz)
+SUMMARY
+    Parameters/Coefficients:
+    Var      Estimate    Std. Error 	 t value 	 Pr(>|t|) 	 VIF
+----------------------------------------------------------------------------------
+    x0	 127.303738	 0.222192	 572.944445	 0.000000	 NA
+    x1	 -0.000855	 0.000052	 -16.444339	 0.000000	 1.000000
+
+    Residual standard error: 6.352420 on 1501.0 degrees of freedom
+    Multiple R-squared:  0.152655,	Adjusted R-squared:  0.152091
+    F-statistic: 270.4162724626159 on 1.0 and 1501.0 DF,  p-value: -0.0
+----------------------------------------------------------------------------------
+        
+
+Simple Regression: scaled_sound_pressure_db = intercept + coefficient * frequency_hz
+------------------------------------------------------------------------------------------
+| airfoil Simple Regression: scaled_sound_pressure_db ~ suction_displacement_thickness_m |
+------------------------------------------------------------------------------------------
+xSimple dimensions = 1503
+xSimple_ dimensions = 1503 x 2
+DEBUG @ Predictor.trainNTest: b = VectorD(126.663,	-164.027)
+b = VectorD(126.663,	-164.027), fn = [Ljava.lang.String;@5fa07e12
+
+REPORT
+    ----------------------------------------------------------------------------
+    modelName  mn  = Regression_1.0
+    ----------------------------------------------------------------------------
+    hparameter hp  = HyperParameter(factorization -> (Fac_QR,Fac_QR))
+    ----------------------------------------------------------------------------
+    features   fn  = Array(Intercept, suction_displacement_thickness_m)
+    ----------------------------------------------------------------------------
+    parameter  b   = VectorD(126.663,	-164.027)
+    ----------------------------------------------------------------------------
+    fitMap     qof = LinkedHashMap(rSq -> 0.097762, rSqBar -> 0.097161, sst -> 71482.377701, sse -> 64494.101755, sde -> 6.552772, rse -> 6.554954, mse0 -> 42.910247, rmse -> 6.550591, mae -> 5.317605, smape -> 4.284487, bmae -> 8.076464, m -> 1503.000000, dfr -> 1.000000, df -> 1501.000000, fStat -> 162.641263, aic -> -4953.636279, bic -> -4943.005842, mape -> 4.315273, mase -> 2.108816, smapeC -> 4.287148, picp -> -1.000000, pinc -> -1.000000, ace -> -1.000000, pinaw -> -1.000000, mis -> -1.000000, wis -> -1.000000)
+    ----------------------------------------------------------------------------
+        
+VizFrame: run Plot Regression_1.0 predictions: yy black/actual vs. yp red/predicted
+---------------------------------------------------------
+| airfoil - suction_displacement_thickness_m Fit Report |
+---------------------------------------------------------
+b = VectorD(126.663,	-164.027), fn = [Ljava.lang.String;@5fa07e12
+
+REPORT
+    ----------------------------------------------------------------------------
+    modelName  mn  = Regression_1.0
+    ----------------------------------------------------------------------------
+    hparameter hp  = HyperParameter(factorization -> (Fac_QR,Fac_QR))
+    ----------------------------------------------------------------------------
+    features   fn  = Array(Intercept, suction_displacement_thickness_m)
+    ----------------------------------------------------------------------------
+    parameter  b   = VectorD(126.663,	-164.027)
+    ----------------------------------------------------------------------------
+    fitMap     qof = LinkedHashMap(rSq -> 0.097762, rSqBar -> 0.097161, sst -> 71482.377701, sse -> 64494.101755, sde -> 6.552772, rse -> 6.554954, mse0 -> 42.910247, rmse -> 6.550591, mae -> 5.317605, smape -> 4.284487, bmae -> 8.076464, m -> 1503.000000, dfr -> 1.000000, df -> 1501.000000, fStat -> 162.641263, aic -> -4953.636279, bic -> -4943.005842, mape -> 4.315273, mase -> 2.108816, smapeC -> 4.287148, picp -> -1.000000, pinc -> -1.000000, ace -> -1.000000, pinaw -> -1.000000, mis -> -1.000000, wis -> -1.000000)
+    ----------------------------------------------------------------------------
+        
+fname = Array(Intercept, suction_displacement_thickness_m)
+SUMMARY
+    Parameters/Coefficients:
+    Var      Estimate    Std. Error 	 t value 	 Pr(>|t|) 	 VIF
+----------------------------------------------------------------------------------
+    x0	 126.663189	 0.221623	 571.526554	 0.000000	 NA
+    x1	 -164.027463	 12.861784	 -12.753088	 0.000000	 1.000000
+
+    Residual standard error: 6.554954 on 1501.0 degrees of freedom
+    Multiple R-squared:  0.097762,	Adjusted R-squared:  0.097161
+    F-statistic: 162.6412634574276 on 1.0 and 1501.0 DF,  p-value: -0.0
+----------------------------------------------------------------------------------
+        
+
+Simple Regression: scaled_sound_pressure_db = intercept + coefficient * suction_displacement_thickness_m
+[success] Total time: 3 s, completed Sep 21, 2026, 10:44:42 PM

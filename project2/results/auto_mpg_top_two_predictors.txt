@@ -1,0 +1,4 @@
+Top two predictors based on absolute correlation:
+
+weight: correlation = -0.832244, |correlation| = 0.832244
+displacement: correlation = -0.805127, |correlation| = 0.805127

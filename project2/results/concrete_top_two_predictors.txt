@@ -1,0 +1,4 @@
+Top two predictors based on absolute correlation:
+
+cement: correlation = 0.497833, |correlation| = 0.497833
+superplasticizer: correlation = 0.366102, |correlation| = 0.366102

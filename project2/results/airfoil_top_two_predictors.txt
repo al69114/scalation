@@ -1,0 +1,4 @@
+Top two predictors based on absolute correlation:
+
+frequency_hz: correlation = -0.390711, |correlation| = 0.390711
+suction_displacement_thickness_m: correlation = -0.312670, |correlation| = 0.312670
