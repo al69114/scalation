@@ -1,0 +1,2 @@
+PASS auto_mpg: split, 13 CV candidates, 5 models, full/test predictions and metrics; lambda=-0.5
+PASS concrete: split, 13 CV candidates, 5 models, full/test predictions and metrics; lambda=1.25
