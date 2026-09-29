@@ -1,0 +1,146 @@
+% NOTE: requires four PNGs in a folder named "Forward Selection Images"
+% (fs_auto_mpg_r2_vs_n.png, fs_auto_mpg_actual_vs_pred.png,
+%  fs_concrete_r2_vs_n.png, fs_concrete_actual_vs_pred.png)
+
+\section{Forward Feature Selection}
+
+Forward feature selection was run in ScalaTion on two datasets, Auto MPG ($n = 392$) and Concrete ($n = 1{,}030$). For each dataset, the rows were shuffled once with a fixed random seed (42), and a multiple regression model with an intercept column was built over the available predictors. ScalaTion's \texttt{forwardSelAll} routine then started from an intercept-only model and added one variable at a time, at each step choosing the addition that maximized adjusted $R^2$ (\texttt{QoF.rSqBar}). Every candidate model was evaluated with the default 5-fold cross-validation, so $R^2_{cv}$ is the average out-of-sample $R^2$ across the five folds. The best model is the step where adjusted $R^2$ is maximized over the full selection path, and that subset of variables was refit with \texttt{trainNtest()} on the full dataset.
+
+\subsection{ScalaTion}
+
+\subsubsection{Auto MPG}
+
+Forward selection considered the seven predictors (cylinders, displacement, horsepower, weight, acceleration, model year, and origin) for MPG. Table~\ref{tab:fs-auto-path} lists the variable added at each step along with the metrics reported by \texttt{forwardSelAll} (all values in \%), and Figure~\ref{fig:fs-auto-path} plots them against the number of predictors.
+
+\begin{table}[H]
+    \centering
+    \caption{Forward selection path for Auto MPG (values in \%). Adjusted $R^2$ peaks at step 6.}
+    \label{tab:fs-auto-path}
+    \begin{tabular}{clcccc}
+        \hline
+        Step & Variable added & $R^2$ & Adjusted $R^2$ & sMAPE & $R^2_{cv}$ \\
+        \hline
+        0 & intercept & $-0.000$ & $-0.000$ & 28.410 & $-1.283$ \\
+        1 & weight & 70.660 & 70.585 & 13.919 & 68.892 \\
+        2 & model year & 81.461 & 81.366 & 11.867 & 80.384 \\
+        3 & origin & 82.532 & 82.397 & 11.187 & 80.984 \\
+        4 & cylinders & 82.583 & 82.403 & 11.113 & 80.784 \\
+        5 & displacement & 82.779 & 82.556 & 11.068 & 80.851 \\
+        6 & horsepower & 82.856 & \textbf{82.588} & 11.173 & 81.063 \\
+        7 & acceleration & 82.866 & 82.554 & 11.187 & 80.855 \\
+        \hline
+    \end{tabular}
+\end{table}
+
+\begin{figure}[H]
+    \centering
+    \figorbox{0.6\textwidth}{Forward Selection Images/fs_auto_mpg_r2_vs_n.png}
+    \caption{Auto MPG forward selection: $R^2$ (red), adjusted $R^2$ (green), sMAPE (blue), and $R^2_{cv}$ (black) versus the number of predictors.}
+    \label{fig:fs-auto-path}
+\end{figure}
+
+Adjusted $R^2$ rises sharply with the addition of weight and model year, then flattens. Origin, cylinders, displacement, and horsepower each add only a fraction of a percentage point, and adding acceleration at step 7 decreases adjusted $R^2$ (from 82.588 to 82.554) even though raw $R^2$ still increases slightly. This is the expected behavior of adjusted $R^2$, which penalizes predictors that do not sufficiently improve the fit, and it signals that acceleration is not worth including. sMAPE is also lowest at step 5 rather than improving continuously, which supports the conclusion that the search has saturated.
+
+\vspace{0.3cm}
+
+The maximum adjusted $R^2$ occurs at step 6, so the best model keeps six predictors (weight, model year, origin, cylinders, displacement, and horsepower) plus the intercept and drops only acceleration. Refitting this subset on all 392 observations with \texttt{trainNtest()} gives the coefficients in Table~\ref{tab:fs-auto-coef} and the actual versus predicted plot in Figure~\ref{fig:fs-auto-fit}.
+
+\begin{table}[H]
+    \centering
+    \caption{Coefficients of the best Auto MPG forward selection model (full-data refit).}
+    \label{tab:fs-auto-coef}
+    \begin{tabular}{lc}
+        \hline
+        Variable & Coefficient \\
+        \hline
+        intercept & $-15.563492$ \\
+        weight & $-0.006218$ \\
+        model year & 0.747516 \\
+        origin & 1.428242 \\
+        cylinders & $-0.506685$ \\
+        displacement & 0.019269 \\
+        horsepower & $-0.023895$ \\
+        \hline
+    \end{tabular}
+\end{table}
+
+\begin{figure}[H]
+    \centering
+    \figorbox{0.6\textwidth}{Forward Selection Images/fs_auto_mpg_actual_vs_pred.png}
+    \caption{Actual (black) and predicted (red) MPG for the best Auto MPG forward selection model, with observations sorted by actual value.}
+    \label{fig:fs-auto-fit}
+\end{figure}
+
+The selected model achieved an $R^2$ of 0.8212, an adjusted $R^2$ of 0.8184, and an RMSE of 3.296 MPG on the full dataset. Its 5-fold cross-validated $R^2_{cv}$ was 0.8106, which is the more honest estimate of out-of-sample performance. This is a large improvement over the best simple regression (weight alone, $R^2 = 0.6926$), and it is essentially the same fit as the full seven-predictor model from the multiple regression section (adjusted $R^2$ of 0.8182), so dropping acceleration costs nothing. Heavier cars and cars with more cylinders are associated with lower MPG, while later model years are associated with higher MPG, which is consistent with improvements in fuel efficiency over the 1970--1982 sample period. The displacement coefficient is slightly positive even though displacement is negatively correlated with MPG on its own. This is likely because weight, cylinders, and displacement are strongly correlated with one another, so once weight and cylinders are in the model, displacement no longer plays its marginal role.
+
+\subsubsection{Concrete}
+
+Forward selection considered all eight predictors (cement, blast furnace slag, fly ash, water, superplasticizer, coarse aggregate, fine aggregate, and age) for compressive strength. Table~\ref{tab:fs-concrete-path} lists the selection path, and Figure~\ref{fig:fs-concrete-path} plots the metrics against the number of predictors.
+
+\begin{table}[H]
+    \centering
+    \caption{Forward selection path for Concrete (values in \%). Adjusted $R^2$ peaks at step 8.}
+    \label{tab:fs-concrete-path}
+    \begin{tabular}{clcccc}
+        \hline
+        Step & Variable added & $R^2$ & Adjusted $R^2$ & sMAPE & $R^2_{cv}$ \\
+        \hline
+        0 & intercept & $-0.000$ & $-0.000$ & 40.080 & $-1.465$ \\
+        1 & cement & 24.566 & 24.493 & 36.919 & 22.857 \\
+        2 & superplasticizer & 35.429 & 35.303 & 34.587 & 33.061 \\
+        3 & age & 48.513 & 48.363 & 30.110 & 46.730 \\
+        4 & blast furnace slag & 54.989 & 54.813 & 28.171 & 53.311 \\
+        5 & water & 58.501 & 58.299 & 27.518 & 56.647 \\
+        6 & fly ash & 61.754 & 61.530 & 26.216 & 59.805 \\
+        7 & fine aggregate & 61.785 & 61.524 & 26.162 & 59.789 \\
+        8 & coarse aggregate & 61.888 & \textbf{61.589} & 26.070 & 59.749 \\
+        \hline
+    \end{tabular}
+\end{table}
+
+\begin{figure}[H]
+    \centering
+    \figorbox{0.6\textwidth}{Forward Selection Images/fs_concrete_r2_vs_n.png}
+    \caption{Concrete forward selection: $R^2$ (red), adjusted $R^2$ (green), sMAPE (blue), and $R^2_{cv}$ (black) versus the number of predictors.}
+    \label{fig:fs-concrete-path}
+\end{figure}
+
+Unlike Auto MPG, adjusted $R^2$ for Concrete keeps increasing through nearly the whole path. The one exception is a tiny dip at step 7 (61.530 to 61.524), and step 8 then reaches the maximum, so the full model narrowly wins. The largest gains come from cement and superplasticizer, the two predictors most correlated with compressive strength, followed by a large jump from age. Blast furnace slag, water, and fly ash then add roughly 6.5, 3.5, and 3.2 points of adjusted $R^2$ respectively, while fine and coarse aggregate together add less than 0.1 points, which appears as the flat tail of the curve in Figure~\ref{fig:fs-concrete-path}. sMAPE drops from 40.1\% for the intercept-only model to about 26\% by step 6 and barely changes afterward.
+
+\vspace{0.3cm}
+
+Because adjusted $R^2$ is highest at step 8, the best model keeps all eight predictors plus the intercept. Table~\ref{tab:fs-concrete-coef} gives the coefficients from the full-data refit, and Figure~\ref{fig:fs-concrete-fit} shows the actual versus predicted values.
+
+\begin{table}[H]
+    \centering
+    \caption{Coefficients of the best Concrete forward selection model (full-data refit).}
+    \label{tab:fs-concrete-coef}
+    \begin{tabular}{lc}
+        \hline
+        Variable & Coefficient \\
+        \hline
+        intercept & $-23.163756$ \\
+        cement & 0.119785 \\
+        superplasticizer & 0.290687 \\
+        age & 0.114226 \\
+        blast furnace slag & 0.103847 \\
+        water & $-0.150298$ \\
+        fly ash & 0.087943 \\
+        fine aggregate & 0.020154 \\
+        coarse aggregate & 0.018030 \\
+        \hline
+    \end{tabular}
+\end{table}
+
+\begin{figure}[H]
+    \centering
+    \figorbox{0.6\textwidth}{Forward Selection Images/fs_concrete_actual_vs_pred.png}
+    \caption{Actual (black) and predicted (red) compressive strength for the best Concrete forward selection model, with observations sorted by actual value.}
+    \label{fig:fs-concrete-fit}
+\end{figure}
+
+The selected model achieved an $R^2$ of 0.6155, an adjusted $R^2$ of 0.6125, and an RMSE of 10.354 MPa on the full dataset, with a cross-validated $R^2_{cv}$ of 0.5975. This is a marked improvement over the best simple regression (cement alone, $R^2 = 0.2478$) and matches the full multiple regression model. All coefficients are positive except water, which agrees with domain expectations: a higher water content at fixed cement, meaning a higher water-to-cement ratio, is associated with lower strength. The actual versus predicted plot shows much wider scatter than for Auto MPG, particularly for mid-range strengths, which is consistent with the moderate $R^2$ and suggests that a large share of the variability is not captured by linear terms alone.
+
+\subsection{Summary}
+
+In both datasets, forward selection guided by adjusted $R^2$ chose the same leading predictors as the correlation analysis in the multiple regression section: weight came first for Auto MPG, and cement and superplasticizer came first for Concrete. The two datasets behave differently after that. For Auto MPG, adjusted $R^2$ saturates quickly and declines when acceleration is forced in, so selection stops at six of seven predictors. For Concrete, adjusted $R^2$ keeps climbing, however modestly, to the full model, so no variables are excluded. In both cases the selected model performs about as well as the full multiple regression model, and the cross-validated $R^2_{cv}$ (0.8106 and 0.5975) is a little lower than the full-data $R^2$, as expected. This highlights why adjusted $R^2$ is a better selection criterion than raw $R^2$, which never decreases as predictors are added.
