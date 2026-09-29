@@ -1,0 +1,26 @@
+A. Exact rounding-interval consistency (not proof of holdout independence)
+  auto_mpg: feasible (n, predictors, residual df) = [(78, 23, 54)]
+  concrete: feasible (n, predictors, residual df) = [(206, 17, 188)]
+  airfoil: feasible (n, predictors, residual df) = [(300, 41, 258)]
+
+B. Printed coefficient arithmetic, allowing rounding of BOTH estimate and SE
+  auto_mpg: t arithmetic 12/12; p compatibility: normal 12/12, training Student-t 3/12, evaluation Student-t 3/12
+  concrete: t arithmetic 10/10; p compatibility: normal 10/10, training Student-t 10/10, evaluation Student-t 10/10
+  airfoil: t arithmetic 22/22; p compatibility: normal 22/22, training Student-t 18/22, evaluation Student-t 17/22
+  P-value compatibility does not verify SE calculation or post-selection inference.
+
+C. Independent Statsmodels refit of recovered ScalaTion terms and test rows
+  auto_mpg: R2, RMSE, MAE = (np.float64(0.8827457899702886), np.float64(2.6101105293439644), np.float64(1.9913616997751))
+    max absolute difference from Scala predictions: 6.32e-09
+    final test rows also used by reconstructed feature selection: 61/78
+  concrete: R2, RMSE, MAE = (np.float64(0.8180567462074927), np.float64(6.962578354265979), np.float64(5.6184200083701406))
+    max absolute difference from Scala predictions: 1.49e-10
+    final test rows also used by reconstructed feature selection: 156/206
+  Airfoil exact refit unavailable: custom term and complete coefficients are missing.
+
+D. Independent models: split FIRST, select terms only on training data
+  These are new models, not validation of the report's exact model.
+  auto_mpg: 24 terms, n_test=79, R2=0.874861, RMSE=2.527288, MAE=1.895710, plain OLS R2=0.790150
+  concrete: 34 terms, n_test=206, R2=0.870775, RMSE=5.770519, MAE=4.757381, plain OLS R2=0.627542
+  airfoil: 35 terms, n_test=301, R2=0.734782, RMSE=3.645142, MAE=2.911601, plain OLS R2=0.558298
+  Similar or higher accuracy does not prove the reported models are unbiased or correct.

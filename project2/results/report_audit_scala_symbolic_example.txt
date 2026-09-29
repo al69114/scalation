@@ -1,0 +1,41 @@
+-------------------------------
+| AutoMPG Symbolic Regression |
+-------------------------------
+DEBUG @ SymbolicRegression.buildMatrix: add custom terms = ArraySeq()
+DEBUG @ MatrixD.crossAll: create matrix with dims = (392, 15)
+-------------------------------------------------------------------------------
+| In-Sample Test: SymbolicRegression_LinkedHashSet(-2.0, -1.0, 0.5, 2.0)_null |
+-------------------------------------------------------------------------------
+DEBUG @ Predictor.trainNTest: b = VectorD(-1.02807e+06,	1862.93,	-215317,	131145,	5.12575e+07,	-4302.57,	-5.67068e+08,	-2283.69,	7145.90,	-6469.39,	-80475.8,	807.615,	3.39916e+07,	-399.983,	-1.26021,	-6.53368,	0.567010,	-22.0550,	84862.0,	3.49592,	-2.88917e-05,	0.000102946,	1.96990e-06,	-0.0157155,	-10.2916,	-0.0300470,	0.0196285,	7.12655e-05,	0.00116335,	-1.90220e-05,	1.85440e-05,	0.226648,	-0.000969161,	-0.0167050,	0.000172618,	-0.156546,	0.00552004,	-0.000701173,	-0.000432711,	0.0529475)
+b = VectorD(-1.02807e+06,	1862.93,	-215317,	131145,	5.12575e+07,	-4302.57,	-5.67068e+08,	-2283.69,	7145.90,	-6469.39,	-80475.8,	807.615,	3.39916e+07,	-399.983,	-1.26021,	-6.53368,	0.567010,	-22.0550,	84862.0,	3.49592,	-2.88917e-05,	0.000102946,	1.96990e-06,	-0.0157155,	-10.2916,	-0.0300470,	0.0196285,	7.12655e-05,	0.00116335,	-1.90220e-05,	1.85440e-05,	0.226648,	-0.000969161,	-0.0167050,	0.000172618,	-0.156546,	0.00552004,	-0.000701173,	-0.000432711,	0.0529475), fn = [Ljava.lang.String;@de3a06f
+
+REPORT
+    ----------------------------------------------------------------------------
+    modelName  mn  = SymbolicRegression_LinkedHashSet(-2.0, -1.0, 0.5, 2.0)_null
+    ----------------------------------------------------------------------------
+    hparameter hp  = HyperParameter(factorization -> (Fac_QR,Fac_QR))
+    ----------------------------------------------------------------------------
+    features   fn  = Array(one, cylinders^-2.0, displacement^-2.0, horsepower^-2.0, weight^-2.0, acceleration^-2.0, modelyear^-2.0, cylinders^-1.0, displacement^-1.0, horsepower^-1.0, weight^-1.0, acceleration^-1.0, modelyear^-1.0, cylinders^0.5, displacement^0.5, horsepower^0.5, weight^0.5, acceleration^0.5, modelyear^0.5, cylinders^2.0, displacement^2.0, horsepower^2.0, weight^2.0, acceleration^2.0, modelyear^2.0, displacement_cylinders, horsepower_cylinders, horsepower_displacement, weight_cylinders, weight_displacement, weight_horsepower, acceleration_cylinders, acceleration_displacement, acceleration_horsepower, acceleration_weight, modelyear_cylinders, modelyear_displacement, modelyear_horsepower, modelyear_weight, modelyear_acceleration)
+    ----------------------------------------------------------------------------
+    parameter  b   = VectorD(-1.02807e+06,	1862.93,	-215317,	131145,	5.12575e+07,	-4302.57,	-5.67068e+08,	-2283.69,	7145.90,	-6469.39,	-80475.8,	807.615,	3.39916e+07,	-399.983,	-1.26021,	-6.53368,	0.567010,	-22.0550,	84862.0,	3.49592,	-2.88917e-05,	0.000102946,	1.96990e-06,	-0.0157155,	-10.2916,	-0.0300470,	0.0196285,	7.12655e-05,	0.00116335,	-1.90220e-05,	1.85440e-05,	0.226648,	-0.000969161,	-0.0167050,	0.000172618,	-0.156546,	0.00552004,	-0.000701173,	-0.000432711,	0.0529475)
+    ----------------------------------------------------------------------------
+    fitMap     qof = LinkedHashMap(rSq -> 0.904133, rSqBar -> 0.893512, sst -> 23818.993469, sse -> 2283.449745, sde -> 2.416614, rse -> 2.546973, mse0 -> 5.825127, rmse -> 2.413530, mae -> 1.789153, smape -> 7.599825, bmae -> 24.180048, m -> 392.000000, dfr -> 39.000000, df -> 352.000000, fStat -> 85.122122, aic -> -821.611339, bic -> -662.760865, mape -> 7.686262, mase -> 0.972928, smapeC -> 7.803907, picp -> -1.000000, pinc -> -1.000000, ace -> -1.000000, pinaw -> -1.000000, mis -> -1.000000, wis -> -1.000000)
+    ----------------------------------------------------------------------------
+        
+Exception in thread "main" java.awt.HeadlessException
+	at java.desktop/java.awt.GraphicsEnvironment.checkHeadless(GraphicsEnvironment.java:164)
+	at java.desktop/java.awt.Window.<init>(Window.java:553)
+	at java.desktop/java.awt.Frame.<init>(Frame.java:428)
+	at java.desktop/javax.swing.JFrame.<init>(JFrame.java:224)
+	at scalation.scala2d.Frame.<init>(Base.scala:55)
+	at scalation.scala2d.VizFrame.<init>(VizFrame.scala:23)
+	at scalation.mathstat.Plot.<init>(Plot.scala:37)
+	at scalation.modeling.Predictor$.plotPrediction(Predictor.scala:717)
+	at scalation.modeling.Predictor.trainNtest(Predictor.scala:174)
+	at scalation.modeling.Predictor.trainNtest$(Predictor.scala:78)
+	at scalation.modeling.Regression.trainNtest(Regression.scala:47)
+	at scalation.modeling.Predictor.inSample_Test(Predictor.scala:587)
+	at scalation.modeling.Predictor.inSample_Test$(Predictor.scala:78)
+	at scalation.modeling.Regression.inSample_Test(Regression.scala:47)
+	at scalation.modeling.SymbolicRegression$package$.symbolicRegressionTest(SymbolicRegression.scala:384)
+	at scalation.modeling.symbolicRegressionTest.main(SymbolicRegression.scala:377)

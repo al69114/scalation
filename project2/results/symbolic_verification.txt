@@ -1,0 +1,25 @@
+==============================================================================
+A. Internal consistency of the reported ScalaTion metrics
+==============================================================================
+auto_mpg  implied n =   77 (20% of data), terms k =  23, df =   53 | adj R2 0.8318 vs 0.8328, F 17.34 vs 17.68 -> CONSISTENT
+concrete  implied n =  207 (20% of data), terms k =  17, df =  189 | adj R2 0.8016 vs 0.8015, F 49.97 vs 49.69 -> CONSISTENT
+airfoil   implied n =  303 (20% of data), terms k =  41, df =  261 | adj R2 0.6327 vs 0.6321, F 13.69 vs 13.53 -> CONSISTENT
+-> n is about 20% of each dataset, so the reported metrics are held-out TEST-set values.
+
+==============================================================================
+B. Coefficient tables: t = estimate / SE and p from t
+==============================================================================
+auto_mpg  12 rows checked (training df = 291): all consistent
+concrete  10 rows checked (training df = 805): 1 mismatch(es)
+    Slag^2: t 6.3 vs 6.45, p <0.001 vs 0.0000
+airfoil   22 rows checked (training df = 1158): all consistent
+
+==============================================================================
+C. Independent ScalaTion-style symbolic regression (test-set metrics)
+==============================================================================
+dataset   terms  test R2    RMSE | reported R2    RMSE | plain OLS R2
+auto_mpg     24   0.8806   2.468 |      0.8827   2.610 |       0.7902
+concrete     34   0.8708   5.771 |      0.8180   6.965 |       0.6275
+airfoil      35   0.7346   3.646 |      0.6826   3.965 |       0.5583
+-> Different splits and search settings mean the numbers will not match exactly;
+   the check is whether the reported accuracy is in the same range.

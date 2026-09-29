@@ -1,15 +1,2 @@
 [debug] Created transactional ClassFileManager with tempDir = /Users/adithyalakshmikanth/scalation/target/scala-3.8.4/classes.bak
-[debug] About to delete class files:
-[debug] We backup class files:
-[debug] Registering generated classes:
-[debug] 	Project2_Forward$package$.class
-[debug] 	Project2_Forward$package$Summary$1.class
-[debug] 	Project2_Forward$package$Summary$3$.class
-[debug] 	Project2_Forward$package.class
-[debug] 	project2_Forward.class
-[debug] 	Project2_Forward$package$.tasty
-[debug] 	Project2_Forward$package$Summary$1.tasty
-[debug] 	Project2_Forward$package$Summary$3$.tasty
-[debug] 	Project2_Forward$package.tasty
-[debug] 	project2_Forward.tasty
 [debug] Removing the temporary directory used for backing up class files: /Users/adithyalakshmikanth/scalation/target/scala-3.8.4/classes.bak

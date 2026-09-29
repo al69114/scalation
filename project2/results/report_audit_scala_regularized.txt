@@ -1,0 +1,112 @@
+readFileIntoArray: data/auto_mpg.csv
+readFileIntoArray: number lines = 393
+readFileIntoArray: lines 0 = cylinders,displacement,horsepower,weight,acceleration,modelyear,origin,mpg
+readFileIntoArray: lines 1 = 8.0,307.0,130.0,3504.0,12.0,70.0,1.0,18.0
+load: read in an 392-by-8 matrix from data/auto_mpg.csv
+--------------------
+| RIDGE REGRESSION |
+--------------------
+Ridge lambda tuning:
+| RidgeRegression with lambda = 0.1 has sse = 713.7525699365118 |
+| RidgeRegression with lambda = 0.2 has sse = 713.5365867814872 |
+| RidgeRegression with lambda = 0.4 has sse = 713.1495239145677 |
+| RidgeRegression with lambda = 0.8 has sse = 712.5362970863046 |
+| RidgeRegression with lambda = 1.6 has sse = 711.8303659095648 |
+| RidgeRegression with lambda = 3.2 has sse = 711.8153255080763 |
+| RidgeRegression with lambda = 6.4 has sse = 714.4740228233744 |
+| RidgeRegression with lambda = 12.8 has sse = 722.4991830313115 |
+| RidgeRegression with lambda = 25.6 has sse = 737.7183111025892 |
+| RidgeRegression with lambda = 51.2 has sse = 762.7016504571261 |
+| RidgeRegression with lambda = 102.4 has sse = 807.6552158726756 |
+| RidgeRegression with lambda = 204.8 has sse = 897.1513975453229 |
+| RidgeRegression with lambda = 409.6 has sse = 1076.40580565289 |
+| RidgeRegression with lambda = 819.2 has sse = 1409.7306277835444 |
+| RidgeRegression with lambda = 1638.4 has sse = 1919.7235723580118 |
+| RidgeRegression with lambda = 3276.8 has sse = 2505.485491122153 |
+| RidgeRegression with lambda = 6553.6 has sse = 3010.629751886936 |
+| RidgeRegression with lambda = 13107.2 has sse = 3359.4603911741638 |
+| RidgeRegression with lambda = 26214.4 has sse = 3567.8769296775936 |
+| RidgeRegression with lambda = 52428.8 has sse = 3682.349877269195 |
+
+Best Ridge Lambda: 3.2
+Best Ridge CV SSE: 711.8153
+
+Ridge coefficients:
+Intercept = 23.416561
+cylinders       -1.078994
+displacement    1.232053
+horsepower      -0.542461
+weight          -4.738602
+acceleration    0.007586
+model_year      2.651239
+origin          1.139237
+
+Ridge actual vs predicted MPG:
+Actual: 34.300  Predicted: 31.613
+Actual: 19.000  Predicted: 26.525
+Actual: 15.000  Predicted: 15.493
+Actual: 33.700  Predicted: 33.805
+Actual: 29.800  Predicted: 33.607
+
+Ridge RMSE: 3.556045
+Ridge R²:   0.779972
+--------------------
+| LASSO REGRESSION |
+--------------------
+Lasso lambda tuning:
+| LassoRegression with lambda = 3.2 has sse = 716.4706211833529 |
+| LassoRegression with lambda = 6.4 has sse = 715.9913823683123 |
+| LassoRegression with lambda = 12.8 has sse = 716.2214580015408 |
+| LassoRegression with lambda = 25.6 has sse = 715.414402699883 |
+| LassoRegression with lambda = 51.2 has sse = 718.6457373741941 |
+| LassoRegression with lambda = 102.4 has sse = 739.1994583170452 |
+| LassoRegression with lambda = 204.8 has sse = 827.8038274144692 |
+| LassoRegression with lambda = 409.6 has sse = 1147.4621449313456 |
+| LassoRegression with lambda = 819.2 has sse = 2378.1516869310367 |
+| LassoRegression with lambda = 1638.4 has sse = 6140.51301731296 |
+| LassoRegression with lambda = 3276.8 has sse = 14132.35192204406 |
+| LassoRegression with lambda = 6553.6 has sse = 37826.29469091059 |
+| LassoRegression with lambda = 13107.2 has sse = 37826.29469091059 |
+| LassoRegression with lambda = 26214.4 has sse = 37826.29469091059 |
+| LassoRegression with lambda = 52428.8 has sse = 37826.29469091059 |
+| LassoRegression with lambda = 104857.6 has sse = 37826.29469091059 |
+| LassoRegression with lambda = 209715.2 has sse = 37826.29469091059 |
+| LassoRegression with lambda = 419430.4 has sse = 37826.29469091059 |
+| LassoRegression with lambda = 838860.8 has sse = 37826.29469091059 |
+| LassoRegression with lambda = 1677721.6 has sse = 37826.29469091059 |
+
+Best Lasso Lambda: 25.6
+Best Lasso CV SSE: 715.4144
+DEBUG @ LassoRegression.train: LassoAdmm estimates parameter b = VectorD(23.3350,	-0.250666,	-0.143925,	-0.121958,	-4.64340,	0.0505250,	2.60157,	0.943053)
+
+Lasso coefficients:
+const           23.335032
+cylinders       -0.250666
+displacement    -0.143925
+horsepower      -0.121958
+weight          -4.643400
+acceleration    0.050525
+model_year      2.601568
+origin          0.943053
+
+Lasso actual vs predicted MPG:
+Actual: 34.300  Predicted: 31.550
+Actual: 19.000  Predicted: 26.369
+Actual: 15.000  Predicted: 15.727
+Actual: 33.700  Predicted: 33.301
+Actual: 29.800  Predicted: 33.434
+
+Lasso RMSE: 3.544011
+Lasso R²:   0.781459
+-----------
+| SUMMARY |
+-----------
+Ridge lambda = 3.200000
+Ridge CV SSE = 711.815326
+Ridge RMSE   = 3.556045
+Ridge R²     = 0.779972
+
+Lasso lambda = 25.600000
+Lasso CV SSE = 715.414403
+Lasso RMSE   = 3.544011
+Lasso R²     = 0.781459

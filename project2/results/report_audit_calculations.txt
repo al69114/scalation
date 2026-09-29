@@ -1,0 +1,79 @@
+
+auto_mpg: full-data OLS
+R2=0.8214780765, adjusted R2=0.8182237706, residual SE=3.3276823964, F=252.4280452913
+              coefficient        SE          t             p
+const          -17.218435  4.644294  -3.707438  2.401841e-04
+cylinders       -0.493376  0.323282  -1.526147  1.277965e-01
+displacement     0.019896  0.007515   2.647430  8.444649e-03
+horsepower      -0.016951  0.013787  -1.229512  2.196328e-01
+weight          -0.006474  0.000652  -9.928787  7.874953e-21
+acceleration     0.080576  0.098845   0.815174  4.154780e-01
+modelyear        0.750773  0.050973  14.728795  3.055983e-39
+origin           1.426140  0.278136   5.127492  4.665681e-07
+Printed PySR equation on stated test split:
+MSE=7.5595587229, RMSE=2.7494651703, MAE=2.0550223078, R2=0.8518912159
+
+concrete: full-data OLS
+R2=0.6154647343, adjusted R2=0.6124517253, residual SE=10.3998491672, F=204.2691365684
+                    coefficient         SE          t             p
+const                -23.163756  26.588421  -0.871197  3.838513e-01
+cement                 0.119785   0.008489  14.110032  1.962842e-41
+blast_furnace_slag     0.103847   0.010136  10.245169  1.633083e-23
+fly_ash                0.087943   0.012585   6.987866  5.029952e-12
+water                 -0.150298   0.040179  -3.740684  1.937337e-04
+superplasticizer       0.290687   0.093460   3.110286  1.920901e-03
+coarse_aggregate       0.018030   0.009394   1.919287  5.522656e-02
+fine_aggregate         0.020154   0.010703   1.883121  5.996805e-02
+age                    0.114226   0.005427  21.045741  5.841045e-82
+Printed PySR equation on stated test split:
+MSE=42.3303862356, RMSE=6.5061806181, MAE=5.3606017073, R2=0.8357256772
+
+airfoil: full-data OLS
+R2=0.5157097421, adjusted R2=0.5140922062, residual SE=4.8088525535, F=318.8242882478
+                                  coefficient         SE           t              p
+const                              132.833806   0.544701  243.865682   0.000000e+00
+frequency_hz                        -0.001282   0.000042  -30.452267  6.421817e-159
+angle_attack_deg                    -0.421912   0.038896  -10.847149   1.923376e-26
+chord_length_m                     -35.688001   1.630432  -21.888679   2.286839e-92
+free_stream_velocity_ms              0.099854   0.008132   12.278758   4.340636e-33
+suction_displacement_thickness_m  -147.300519  15.014668   -9.810441   4.617244e-22
+Printed PySR equation on stated test split:
+MSE=9.2244384836, RMSE=3.0371760706, MAE=2.3528911514, R2=0.8158742452
+
+auto_mpg: forward selection, selection n=313, full n=392
+step, added, R2 %, reported-formula adjusted R2 %, correct adjusted R2 %, sMAPE
+1, weight, 70.660, 70.585, 70.566, 13.919
+2, modelyear, 81.461, 81.366, 81.341, 11.867
+3, origin, 82.532, 82.397, 82.363, 11.187
+4, cylinders, 82.583, 82.403, 82.357, 11.113
+5, displacement, 82.779, 82.556, 82.499, 11.068
+6, horsepower, 82.856, 82.588, 82.519, 11.173
+7, acceleration, 82.866, 82.554, 82.473, 11.187
+Selected columns including intercept: [0, 4, 6, 7, 1, 2, 3]
+Full-data refit R2, adjusted R2, RMSE: 0.8211691458525576 0.8183821715022079 3.296399917482244
+Refit coefficients: [-1.55634923e+01 -6.21831095e-03  7.47515952e-01  1.42824188e+00
+ -5.06685137e-01  1.92692857e-02 -2.38950294e-02]
+PASS auto_mpg: split, 13 CV candidates, 5 models, full/test predictions and metrics; lambda=-0.5
+
+concrete: forward selection, selection n=823, full n=1030
+step, added, R2 %, reported-formula adjusted R2 %, correct adjusted R2 %, sMAPE
+1, cement, 24.566, 24.493, 24.475, 36.919
+2, superplasticizer, 35.429, 35.303, 35.271, 34.587
+3, age, 48.513, 48.363, 48.325, 30.110
+4, blast_furnace_slag, 54.989, 54.813, 54.769, 28.171
+5, water, 58.501, 58.299, 58.247, 27.518
+6, fly_ash, 61.754, 61.530, 61.473, 26.216
+7, fine_aggregate, 61.785, 61.524, 61.457, 26.162
+8, coarse_aggregate, 61.888, 61.589, 61.513, 26.070
+Selected columns including intercept: [0, 1, 5, 8, 2, 4, 3, 7, 6]
+Full-data refit R2, adjusted R2, RMSE: 0.6154647342687214 0.6124517253305722 10.354313243016426
+Refit coefficients: [-2.31637558e+01  1.19785255e-01  2.90686943e-01  1.14225620e-01
+  1.03847249e-01 -1.50297904e-01  8.79430817e-02  2.01544557e-02
+  1.80301836e-02]
+PASS concrete: split, 13 CV candidates, 5 models, full/test predictions and metrics; lambda=1.25
+
+Statsmodels regularized notebook rerun:
+ridge alpha 0.01 RMSE 3.2973096237408797 R2 0.7869881168144173
+CV RMSE: [np.float64(3.3532224114244267), np.float64(3.3489564196909543), np.float64(3.4184209473894667), np.float64(3.8973294891637282), np.float64(6.135601783745157), np.float64(7.655898124089342)]
+lasso alpha 0.01 RMSE 3.2906920560669057 R2 0.7878422713750637
+CV RMSE: [np.float64(3.353555973380125), np.float64(3.343701838957565), np.float64(3.351754816759162), np.float64(3.610394275175492), np.float64(7.914108118272145), np.float64(7.914108118272145)]
