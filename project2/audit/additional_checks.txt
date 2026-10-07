@@ -1,0 +1,10 @@
+auto_mpg: independent full-data OLS R2=0.8214780765; adjusted=0.8182237706
+  simple weight: R2=0.6926304331
+  simple displacement: R2=0.6482294003
+concrete: independent full-data OLS R2=0.6154647343; adjusted=0.6124517253
+  simple cement: R2=0.2478374194
+  simple superplasticizer: R2=0.1340308924
+  full-precision notebook equation: MSE=42.3303540650, RMSE=6.5061781458, MAE=5.3606035490, R2=0.8357258021
+airfoil: independent full-data OLS R2=0.5157097421; adjusted=0.5140922062
+  simple frequency_hz: R2=0.1526554072
+  simple suction_displacement_thickness_m: R2=0.0977622202

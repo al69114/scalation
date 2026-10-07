@@ -1,0 +1,2379 @@
+[info] welcome to sbt 1.10.11 (Eclipse Adoptium Java 25.0.4.1)
+[info] loading project definition from /Users/adithyalakshmikanth/scalation/project
+[info] loading settings for project scalation from build.sbt...
+[info] set current project to scalation (in build file:/Users/adithyalakshmikanth/scalation/)
+[info] compiling 613 Scala sources to /Users/adithyalakshmikanth/scalation/target/scala-3.8.4/classes ...
+[info] done compiling
+[info] running (fork) scalation.modeling.project2AirfoilSymbolic 
+readFileIntoArray: /Users/adithyalakshmikanth/scalation/data/airfoil.csv
+readFileIntoArray: number lines = 1504
+readFileIntoArray: lines 0 = frequency_hz,angle_attack_deg,chord_length_m,free_stream_velocity_ms,suction_displacement_thickness_m,scaled_sound_pressure_db
+readFileIntoArray: lines 1 = 800,0.0,0.3048,71.3,0.00266337,126.201
+load: read 999 data rows so far ...
+load: read in an 1503-by-6 matrix from airfoil.csv
+Rows: 1503
+Columns: 6
+Target column index: 5
+Number of target values: 1503
+Number of predictors: 5
+Predictors: frequency, attack_angle, chord_length, velocity, displacement_thickness
+Transformation powers: 0.0, 0.5, 1.0, 2.0
+DEBUG @ SymbolicRegression.buildMatrix: add custom terms = ArraySeq(Array((2,1.0), (0,-1.0), (4,-1.5)))
+DEBUG @ MatrixD.crossAll: create matrix with dims = (1503, 10)
+DEBUG @ MatrixD.crossAll3: create matrix with dims = (1503, 10)
+Airfoil symbolic regression model created.
+DEBUG @ Regression.validate: n_test = 300, rando = true
+LinkedHashMap(rSq -> 0.700507, rSqBar -> 0.652913, sst -> 13805.490439, sse -> 4134.648629, sde -> 3.717814, rse -> 4.003220, mse0 -> 13.782162, rmse -> 3.712433, mae -> 2.957499, smape -> 2.365661, bmae -> 8.589507, m -> 300.000000, dfr -> 41.000000, df -> 258.000000, fStat -> 14.718431, aic -> -735.187848, bic -> -579.628984, mape -> 2.366273, mase -> 0.923403, smapeC -> 2.645661, picp -> -1.000000, pinc -> -1.000000, ace -> -1.000000, pinaw -> -1.000000, mis -> -1.000000, wis -> -1.000000)
+Base-model test metrics: VectorD(0.700507,	0.652913,	13805.5,	4134.65,	3.71781,	4.00322,	13.7822,	3.71243,	2.95750,	2.36566,	8.58951,	300.000,	41.0000,	258.000,	14.7184,	-735.188,	-579.629,	2.36627,	0.923403,	2.64566,	-1.00000,	-1.00000,	-1.00000,	-1.00000,	-1.00000,	-1.00000)
+DEBUG @ FeatureSelection.selectFeatures: select features based on QoF metric with index qk = 19
+DEBUG @ Regression.buildModel: 1503 by 1
+DEBUG @ Regression.validate: n_test = 300, rando = true
+LinkedHashMap(rSq -> -0.000035, rSqBar -> -0.000035, sst -> 13805.490439, sse -> 13805.968479, sde -> 6.795014, rse -> 6.795131, mse0 -> 46.019895, rmse -> 6.783796, mae -> 5.626195, smape -> 4.530151, bmae -> 8.539411, m -> 300.000000, dfr -> 0.000000, df -> 299.000000, fStat -> 0.000000, aic -> -998.122996, bic -> -994.419214, mape -> 4.566107, mase -> 0.918018, smapeC -> 4.536817, picp -> -1.000000, pinc -> -1.000000, ace -> -1.000000, pinaw -> -1.000000, mis -> -1.000000, wis -> -1.000000)
+-------------------------------------------------------------------------------
+| forwardSelAll: (l = 0) INITIAL variable (0, one) => cols = LinkedHashSet(0) |
+-------------------------------------------------------------------------------
+DEBUG @ Regression.buildModel: 1503 by 2
+DEBUG @ Regression.buildModel: 1503 by 2
+DEBUG @ Regression.buildModel: 1503 by 2
+DEBUG @ Regression.buildModel: 1503 by 2
+DEBUG @ Regression.buildModel: 1503 by 2
+DEBUG @ Regression.buildModel: 1503 by 2
+DEBUG @ Regression.buildModel: 1503 by 2
+DEBUG @ Regression.buildModel: 1503 by 2
+DEBUG @ Regression.buildModel: 1503 by 2
+DEBUG @ Regression.buildModel: 1503 by 2
+DEBUG @ Regression.buildModel: 1503 by 2
+DEBUG @ Regression.buildModel: 1503 by 2
+DEBUG @ Regression.buildModel: 1503 by 2
+DEBUG @ Regression.buildModel: 1503 by 2
+DEBUG @ Regression.buildModel: 1503 by 2
+DEBUG @ Regression.buildModel: 1503 by 2
+DEBUG @ Regression.buildModel: 1503 by 2
+DEBUG @ Regression.buildModel: 1503 by 2
+DEBUG @ Regression.buildModel: 1503 by 2
+DEBUG @ Regression.buildModel: 1503 by 2
+DEBUG @ Regression.buildModel: 1503 by 2
+DEBUG @ Regression.buildModel: 1503 by 2
+DEBUG @ Regression.buildModel: 1503 by 2
+DEBUG @ Regression.buildModel: 1503 by 2
+DEBUG @ Regression.buildModel: 1503 by 2
+DEBUG @ Regression.buildModel: 1503 by 2
+DEBUG @ Regression.buildModel: 1503 by 2
+DEBUG @ Regression.buildModel: 1503 by 2
+DEBUG @ Regression.buildModel: 1503 by 2
+DEBUG @ Regression.buildModel: 1503 by 2
+DEBUG @ Regression.buildModel: 1503 by 2
+DEBUG @ Regression.buildModel: 1503 by 2
+DEBUG @ Regression.buildModel: 1503 by 2
+DEBUG @ Regression.buildModel: 1503 by 2
+DEBUG @ Regression.buildModel: 1503 by 2
+DEBUG @ Regression.buildModel: 1503 by 2
+DEBUG @ Regression.buildModel: 1503 by 2
+DEBUG @ Regression.buildModel: 1503 by 2
+DEBUG @ Regression.buildModel: 1503 by 2
+DEBUG @ Regression.buildModel: 1503 by 2
+DEBUG @ Regression.buildModel: 1503 by 2
+DEBUG @ Regression.validate: n_test = 300, rando = true
+LinkedHashMap(rSq -> 0.455751, rSqBar -> 0.453925, sst -> 13805.490439, sse -> 7513.618793, sde -> 5.011314, rse -> 5.021303, mse0 -> 25.045396, rmse -> 5.004538, mae -> 4.052829, smape -> 3.275012, bmae -> 8.551009, m -> 300.000000, dfr -> 1.000000, df -> 298.000000, fStat -> 249.543902, aic -> -904.796104, bic -> -897.388539, mape -> 3.268074, mase -> 0.919265, smapeC -> 3.288345, picp -> -1.000000, pinc -> -1.000000, ace -> -1.000000, pinaw -> -1.000000, mis -> -1.000000, wis -> -1.000000)
+----------------------------------------------------------------------------------------------------------------------------------------------
+| forwardSelAll: (l = 1) ADD variable (37, displacement_thickness_chord_length_frequency) => cols = LinkedHashSet(0, 37) @ 3.174606128951153 |
+----------------------------------------------------------------------------------------------------------------------------------------------
+DEBUG @ Regression.buildModel: 1503 by 3
+DEBUG @ Regression.buildModel: 1503 by 3
+DEBUG @ Regression.buildModel: 1503 by 3
+DEBUG @ Regression.buildModel: 1503 by 3
+DEBUG @ Regression.buildModel: 1503 by 3
+DEBUG @ Regression.buildModel: 1503 by 3
+DEBUG @ Regression.buildModel: 1503 by 3
+DEBUG @ Regression.buildModel: 1503 by 3
+DEBUG @ Regression.buildModel: 1503 by 3
+DEBUG @ Regression.buildModel: 1503 by 3
+DEBUG @ Regression.buildModel: 1503 by 3
+DEBUG @ Regression.buildModel: 1503 by 3
+DEBUG @ Regression.buildModel: 1503 by 3
+DEBUG @ Regression.buildModel: 1503 by 3
+DEBUG @ Regression.buildModel: 1503 by 3
+DEBUG @ Regression.buildModel: 1503 by 3
+DEBUG @ Regression.buildModel: 1503 by 3
+DEBUG @ Regression.buildModel: 1503 by 3
+DEBUG @ Regression.buildModel: 1503 by 3
+DEBUG @ Regression.buildModel: 1503 by 3
+DEBUG @ Regression.buildModel: 1503 by 3
+DEBUG @ Regression.buildModel: 1503 by 3
+DEBUG @ Regression.buildModel: 1503 by 3
+DEBUG @ Regression.buildModel: 1503 by 3
+DEBUG @ Regression.buildModel: 1503 by 3
+DEBUG @ Regression.buildModel: 1503 by 3
+DEBUG @ Regression.buildModel: 1503 by 3
+DEBUG @ Regression.buildModel: 1503 by 3
+DEBUG @ Regression.buildModel: 1503 by 3
+DEBUG @ Regression.buildModel: 1503 by 3
+DEBUG @ Regression.buildModel: 1503 by 3
+DEBUG @ Regression.buildModel: 1503 by 3
+DEBUG @ Regression.buildModel: 1503 by 3
+DEBUG @ Regression.buildModel: 1503 by 3
+DEBUG @ Regression.buildModel: 1503 by 3
+DEBUG @ Regression.buildModel: 1503 by 3
+DEBUG @ Regression.buildModel: 1503 by 3
+DEBUG @ Regression.buildModel: 1503 by 3
+DEBUG @ Regression.buildModel: 1503 by 3
+DEBUG @ Regression.buildModel: 1503 by 3
+DEBUG @ Regression.validate: n_test = 300, rando = true
+LinkedHashMap(rSq -> 0.528972, rSqBar -> 0.525800, sst -> 13805.490439, sse -> 6502.775241, sde -> 4.663512, rse -> 4.679195, mse0 -> 21.675917, rmse -> 4.655740, mae -> 3.748053, smape -> 3.012407, bmae -> 8.661287, m -> 300.000000, dfr -> 2.000000, df -> 297.000000, fStat -> 166.767752, aic -> -881.114262, bic -> -870.002914, mape -> 3.015710, mase -> 0.931120, smapeC -> 3.032407, picp -> -1.000000, pinc -> -1.000000, ace -> -1.000000, pinaw -> -1.000000, mis -> -1.000000, wis -> -1.000000)
+---------------------------------------------------------------------------------------------------------------------------
+| forwardSelAll: (l = 2) ADD variable (23, chord_length_frequency) => cols = LinkedHashSet(0, 37, 23) @ 2.902491556371168 |
+---------------------------------------------------------------------------------------------------------------------------
+DEBUG @ Regression.buildModel: 1503 by 4
+DEBUG @ Regression.buildModel: 1503 by 4
+DEBUG @ Regression.buildModel: 1503 by 4
+DEBUG @ Regression.buildModel: 1503 by 4
+DEBUG @ Regression.buildModel: 1503 by 4
+DEBUG @ Regression.buildModel: 1503 by 4
+DEBUG @ Regression.buildModel: 1503 by 4
+DEBUG @ Regression.buildModel: 1503 by 4
+DEBUG @ Regression.buildModel: 1503 by 4
+DEBUG @ Regression.buildModel: 1503 by 4
+DEBUG @ Regression.buildModel: 1503 by 4
+DEBUG @ Regression.buildModel: 1503 by 4
+DEBUG @ Regression.buildModel: 1503 by 4
+DEBUG @ Regression.buildModel: 1503 by 4
+DEBUG @ Regression.buildModel: 1503 by 4
+DEBUG @ Regression.buildModel: 1503 by 4
+DEBUG @ Regression.buildModel: 1503 by 4
+DEBUG @ Regression.buildModel: 1503 by 4
+DEBUG @ Regression.buildModel: 1503 by 4
+DEBUG @ Regression.buildModel: 1503 by 4
+DEBUG @ Regression.buildModel: 1503 by 4
+DEBUG @ Regression.buildModel: 1503 by 4
+DEBUG @ Regression.buildModel: 1503 by 4
+DEBUG @ Regression.buildModel: 1503 by 4
+DEBUG @ Regression.buildModel: 1503 by 4
+DEBUG @ Regression.buildModel: 1503 by 4
+DEBUG @ Regression.buildModel: 1503 by 4
+DEBUG @ Regression.buildModel: 1503 by 4
+DEBUG @ Regression.buildModel: 1503 by 4
+DEBUG @ Regression.buildModel: 1503 by 4
+DEBUG @ Regression.buildModel: 1503 by 4
+DEBUG @ Regression.buildModel: 1503 by 4
+DEBUG @ Regression.buildModel: 1503 by 4
+DEBUG @ Regression.buildModel: 1503 by 4
+DEBUG @ Regression.buildModel: 1503 by 4
+DEBUG @ Regression.buildModel: 1503 by 4
+DEBUG @ Regression.buildModel: 1503 by 4
+DEBUG @ Regression.buildModel: 1503 by 4
+DEBUG @ Regression.buildModel: 1503 by 4
+DEBUG @ Regression.validate: n_test = 300, rando = true
+LinkedHashMap(rSq -> 0.557619, rSqBar -> 0.553136, sst -> 13805.490439, sse -> 6107.281245, sde -> 4.519472, rse -> 4.542324, mse0 -> 20.357604, rmse -> 4.511940, mae -> 3.597720, smape -> 2.890910, bmae -> 8.506110, m -> 300.000000, dfr -> 3.000000, df -> 296.000000, fStat -> 124.369029, aic -> -869.907839, bic -> -855.092709, mape -> 2.892106, mase -> 0.914438, smapeC -> 2.917576, picp -> -1.000000, pinc -> -1.000000, ace -> -1.000000, pinaw -> -1.000000, mis -> -1.000000, wis -> -1.000000)
+-------------------------------------------------------------------------------------------------------------------------
+| forwardSelAll: (l = 3) ADD variable (17, attack_angle^2.0) => cols = LinkedHashSet(0, 37, 23, 17) @ 2.778146680176123 |
+-------------------------------------------------------------------------------------------------------------------------
+DEBUG @ Regression.buildModel: 1503 by 5
+DEBUG @ Regression.buildModel: 1503 by 5
+DEBUG @ Regression.buildModel: 1503 by 5
+DEBUG @ Regression.buildModel: 1503 by 5
+DEBUG @ Regression.buildModel: 1503 by 5
+DEBUG @ Regression.buildModel: 1503 by 5
+DEBUG @ Regression.buildModel: 1503 by 5
+DEBUG @ Regression.buildModel: 1503 by 5
+DEBUG @ Regression.buildModel: 1503 by 5
+DEBUG @ Regression.buildModel: 1503 by 5
+DEBUG @ Regression.buildModel: 1503 by 5
+DEBUG @ Regression.buildModel: 1503 by 5
+DEBUG @ Regression.buildModel: 1503 by 5
+DEBUG @ Regression.buildModel: 1503 by 5
+DEBUG @ Regression.buildModel: 1503 by 5
+DEBUG @ Regression.buildModel: 1503 by 5
+DEBUG @ Regression.buildModel: 1503 by 5
+DEBUG @ Regression.buildModel: 1503 by 5
+DEBUG @ Regression.buildModel: 1503 by 5
+DEBUG @ Regression.buildModel: 1503 by 5
+DEBUG @ Regression.buildModel: 1503 by 5
+DEBUG @ Regression.buildModel: 1503 by 5
+DEBUG @ Regression.buildModel: 1503 by 5
+DEBUG @ Regression.buildModel: 1503 by 5
+DEBUG @ Regression.buildModel: 1503 by 5
+DEBUG @ Regression.buildModel: 1503 by 5
+DEBUG @ Regression.buildModel: 1503 by 5
+DEBUG @ Regression.buildModel: 1503 by 5
+DEBUG @ Regression.buildModel: 1503 by 5
+DEBUG @ Regression.buildModel: 1503 by 5
+DEBUG @ Regression.buildModel: 1503 by 5
+DEBUG @ Regression.buildModel: 1503 by 5
+DEBUG @ Regression.buildModel: 1503 by 5
+DEBUG @ Regression.buildModel: 1503 by 5
+DEBUG @ Regression.buildModel: 1503 by 5
+DEBUG @ Regression.buildModel: 1503 by 5
+DEBUG @ Regression.buildModel: 1503 by 5
+DEBUG @ Regression.buildModel: 1503 by 5
+DEBUG @ Regression.validate: n_test = 300, rando = true
+LinkedHashMap(rSq -> 0.582178, rSqBar -> 0.576512, sst -> 13805.490439, sse -> 5768.243465, sde -> 4.390715, rse -> 4.421919, mse0 -> 19.227478, rmse -> 4.384915, mae -> 3.461665, smape -> 2.773323, bmae -> 8.527799, m -> 300.000000, dfr -> 4.000000, df -> 295.000000, fStat -> 102.760393, aic -> -859.408711, bic -> -840.889799, mape -> 2.777446, mase -> 0.916769, smapeC -> 2.806656, picp -> -1.000000, pinc -> -1.000000, ace -> -1.000000, pinaw -> -1.000000, mis -> -1.000000, wis -> -1.000000)
+--------------------------------------------------------------------------------------------------------------------------------------------
+| forwardSelAll: (l = 4) ADD variable (34, velocity_chord_length_frequency) => cols = LinkedHashSet(0, 37, 23, 17, 34) @ 2.639184935592354 |
+--------------------------------------------------------------------------------------------------------------------------------------------
+DEBUG @ Regression.buildModel: 1503 by 6
+DEBUG @ Regression.buildModel: 1503 by 6
+DEBUG @ Regression.buildModel: 1503 by 6
+DEBUG @ Regression.buildModel: 1503 by 6
+DEBUG @ Regression.buildModel: 1503 by 6
+DEBUG @ Regression.buildModel: 1503 by 6
+DEBUG @ Regression.buildModel: 1503 by 6
+DEBUG @ Regression.buildModel: 1503 by 6
+DEBUG @ Regression.buildModel: 1503 by 6
+DEBUG @ Regression.buildModel: 1503 by 6
+DEBUG @ Regression.buildModel: 1503 by 6
+DEBUG @ Regression.buildModel: 1503 by 6
+DEBUG @ Regression.buildModel: 1503 by 6
+DEBUG @ Regression.buildModel: 1503 by 6
+DEBUG @ Regression.buildModel: 1503 by 6
+DEBUG @ Regression.buildModel: 1503 by 6
+DEBUG @ Regression.buildModel: 1503 by 6
+DEBUG @ Regression.buildModel: 1503 by 6
+DEBUG @ Regression.buildModel: 1503 by 6
+DEBUG @ Regression.buildModel: 1503 by 6
+DEBUG @ Regression.buildModel: 1503 by 6
+DEBUG @ Regression.buildModel: 1503 by 6
+DEBUG @ Regression.buildModel: 1503 by 6
+DEBUG @ Regression.buildModel: 1503 by 6
+DEBUG @ Regression.buildModel: 1503 by 6
+DEBUG @ Regression.buildModel: 1503 by 6
+DEBUG @ Regression.buildModel: 1503 by 6
+DEBUG @ Regression.buildModel: 1503 by 6
+DEBUG @ Regression.buildModel: 1503 by 6
+DEBUG @ Regression.buildModel: 1503 by 6
+DEBUG @ Regression.buildModel: 1503 by 6
+DEBUG @ Regression.buildModel: 1503 by 6
+DEBUG @ Regression.buildModel: 1503 by 6
+DEBUG @ Regression.buildModel: 1503 by 6
+DEBUG @ Regression.buildModel: 1503 by 6
+DEBUG @ Regression.buildModel: 1503 by 6
+DEBUG @ Regression.buildModel: 1503 by 6
+DEBUG @ Regression.validate: n_test = 300, rando = true
+LinkedHashMap(rSq -> 0.595349, rSqBar -> 0.588467, sst -> 13805.490439, sse -> 5586.404927, sde -> 4.319238, rse -> 4.359057, mse0 -> 18.621350, rmse -> 4.315246, mae -> 3.388676, smape -> 2.721287, bmae -> 8.647391, m -> 300.000000, dfr -> 5.000000, df -> 294.000000, fStat -> 86.510418, aic -> -853.014546, bic -> -830.791851, mape -> 2.726869, mase -> 0.929626, smapeC -> 2.761287, picp -> -1.000000, pinc -> -1.000000, ace -> -1.000000, pinaw -> -1.000000, mis -> -1.000000, wis -> -1.000000)
+-------------------------------------------------------------------------------------------------------------------------------------
+| forwardSelAll: (l = 5) ADD variable (21, x2^1.0x0^-1.0x4^-1.5) => cols = LinkedHashSet(0, 37, 23, 17, 34, 21) @ 2.566605152542156 |
+-------------------------------------------------------------------------------------------------------------------------------------
+DEBUG @ Regression.buildModel: 1503 by 7
+DEBUG @ Regression.buildModel: 1503 by 7
+DEBUG @ Regression.buildModel: 1503 by 7
+DEBUG @ Regression.buildModel: 1503 by 7
+DEBUG @ Regression.buildModel: 1503 by 7
+DEBUG @ Regression.buildModel: 1503 by 7
+DEBUG @ Regression.buildModel: 1503 by 7
+DEBUG @ Regression.buildModel: 1503 by 7
+DEBUG @ Regression.buildModel: 1503 by 7
+DEBUG @ Regression.buildModel: 1503 by 7
+DEBUG @ Regression.buildModel: 1503 by 7
+DEBUG @ Regression.buildModel: 1503 by 7
+DEBUG @ Regression.buildModel: 1503 by 7
+DEBUG @ Regression.buildModel: 1503 by 7
+DEBUG @ Regression.buildModel: 1503 by 7
+DEBUG @ Regression.buildModel: 1503 by 7
+DEBUG @ Regression.buildModel: 1503 by 7
+DEBUG @ Regression.buildModel: 1503 by 7
+DEBUG @ Regression.buildModel: 1503 by 7
+DEBUG @ Regression.buildModel: 1503 by 7
+DEBUG @ Regression.buildModel: 1503 by 7
+DEBUG @ Regression.buildModel: 1503 by 7
+DEBUG @ Regression.buildModel: 1503 by 7
+DEBUG @ Regression.buildModel: 1503 by 7
+DEBUG @ Regression.buildModel: 1503 by 7
+DEBUG @ Regression.buildModel: 1503 by 7
+DEBUG @ Regression.buildModel: 1503 by 7
+DEBUG @ Regression.buildModel: 1503 by 7
+DEBUG @ Regression.buildModel: 1503 by 7
+DEBUG @ Regression.buildModel: 1503 by 7
+DEBUG @ Regression.buildModel: 1503 by 7
+DEBUG @ Regression.buildModel: 1503 by 7
+DEBUG @ Regression.buildModel: 1503 by 7
+DEBUG @ Regression.buildModel: 1503 by 7
+DEBUG @ Regression.buildModel: 1503 by 7
+DEBUG @ Regression.buildModel: 1503 by 7
+DEBUG @ Regression.validate: n_test = 300, rando = true
+LinkedHashMap(rSq -> 0.609290, rSqBar -> 0.601289, sst -> 13805.490439, sse -> 5393.938484, sde -> 4.245454, rse -> 4.290611, mse0 -> 17.979795, rmse -> 4.240259, mae -> 3.362696, smape -> 2.705313, bmae -> 8.782832, m -> 300.000000, dfr -> 6.000000, df -> 293.000000, fStat -> 76.152912, aic -> -846.246863, bic -> -820.320386, mape -> 2.710309, mase -> 0.944186, smapeC -> 2.751979, picp -> -1.000000, pinc -> -1.000000, ace -> -1.000000, pinaw -> -1.000000, mis -> -1.000000, wis -> -1.000000)
+--------------------------------------------------------------------------------------------------------------------------------------------------------
+| forwardSelAll: (l = 6) ADD variable (32, chord_length_attack_angle_frequency) => cols = LinkedHashSet(0, 37, 23, 17, 34, 21, 32) @ 2.469406158948015 |
+--------------------------------------------------------------------------------------------------------------------------------------------------------
+DEBUG @ Regression.buildModel: 1503 by 8
+DEBUG @ Regression.buildModel: 1503 by 8
+DEBUG @ Regression.buildModel: 1503 by 8
+DEBUG @ Regression.buildModel: 1503 by 8
+DEBUG @ Regression.buildModel: 1503 by 8
+DEBUG @ Regression.buildModel: 1503 by 8
+DEBUG @ Regression.buildModel: 1503 by 8
+DEBUG @ Regression.buildModel: 1503 by 8
+DEBUG @ Regression.buildModel: 1503 by 8
+DEBUG @ Regression.buildModel: 1503 by 8
+DEBUG @ Regression.buildModel: 1503 by 8
+DEBUG @ Regression.buildModel: 1503 by 8
+DEBUG @ Regression.buildModel: 1503 by 8
+DEBUG @ Regression.buildModel: 1503 by 8
+DEBUG @ Regression.buildModel: 1503 by 8
+DEBUG @ Regression.buildModel: 1503 by 8
+DEBUG @ Regression.buildModel: 1503 by 8
+DEBUG @ Regression.buildModel: 1503 by 8
+DEBUG @ Regression.buildModel: 1503 by 8
+DEBUG @ Regression.buildModel: 1503 by 8
+DEBUG @ Regression.buildModel: 1503 by 8
+DEBUG @ Regression.buildModel: 1503 by 8
+DEBUG @ Regression.buildModel: 1503 by 8
+DEBUG @ Regression.buildModel: 1503 by 8
+DEBUG @ Regression.buildModel: 1503 by 8
+DEBUG @ Regression.buildModel: 1503 by 8
+DEBUG @ Regression.buildModel: 1503 by 8
+DEBUG @ Regression.buildModel: 1503 by 8
+DEBUG @ Regression.buildModel: 1503 by 8
+DEBUG @ Regression.buildModel: 1503 by 8
+DEBUG @ Regression.buildModel: 1503 by 8
+DEBUG @ Regression.buildModel: 1503 by 8
+DEBUG @ Regression.buildModel: 1503 by 8
+DEBUG @ Regression.buildModel: 1503 by 8
+DEBUG @ Regression.buildModel: 1503 by 8
+DEBUG @ Regression.validate: n_test = 300, rando = true
+LinkedHashMap(rSq -> 0.620412, rSqBar -> 0.611313, sst -> 13805.490439, sse -> 5240.394997, sde -> 4.182755, rse -> 4.236338, mse0 -> 17.467983, rmse -> 4.179472, mae -> 3.274707, smape -> 2.627663, bmae -> 8.622169, m -> 300.000000, dfr -> 7.000000, df -> 292.000000, fStat -> 68.179372, aic -> -839.826332, bic -> -810.196073, mape -> 2.635222, mase -> 0.926915, smapeC -> 2.680996, picp -> -1.000000, pinc -> -1.000000, ace -> -1.000000, pinaw -> -1.000000, mis -> -1.000000, wis -> -1.000000)
+---------------------------------------------------------------------------------------------------------------------------------------------------
+| forwardSelAll: (l = 7) ADD variable (20, displacement_thickness^2.0) => cols = LinkedHashSet(0, 37, 23, 17, 34, 21, 32, 20) @ 2.435640628320128 |
+---------------------------------------------------------------------------------------------------------------------------------------------------
+DEBUG @ Regression.buildModel: 1503 by 9
+DEBUG @ Regression.buildModel: 1503 by 9
+DEBUG @ Regression.buildModel: 1503 by 9
+DEBUG @ Regression.buildModel: 1503 by 9
+DEBUG @ Regression.buildModel: 1503 by 9
+DEBUG @ Regression.buildModel: 1503 by 9
+DEBUG @ Regression.buildModel: 1503 by 9
+DEBUG @ Regression.buildModel: 1503 by 9
+DEBUG @ Regression.buildModel: 1503 by 9
+DEBUG @ Regression.buildModel: 1503 by 9
+DEBUG @ Regression.buildModel: 1503 by 9
+DEBUG @ Regression.buildModel: 1503 by 9
+DEBUG @ Regression.buildModel: 1503 by 9
+DEBUG @ Regression.buildModel: 1503 by 9
+DEBUG @ Regression.buildModel: 1503 by 9
+DEBUG @ Regression.buildModel: 1503 by 9
+DEBUG @ Regression.buildModel: 1503 by 9
+DEBUG @ Regression.buildModel: 1503 by 9
+DEBUG @ Regression.buildModel: 1503 by 9
+DEBUG @ Regression.buildModel: 1503 by 9
+DEBUG @ Regression.buildModel: 1503 by 9
+DEBUG @ Regression.buildModel: 1503 by 9
+DEBUG @ Regression.buildModel: 1503 by 9
+DEBUG @ Regression.buildModel: 1503 by 9
+DEBUG @ Regression.buildModel: 1503 by 9
+DEBUG @ Regression.buildModel: 1503 by 9
+DEBUG @ Regression.buildModel: 1503 by 9
+DEBUG @ Regression.buildModel: 1503 by 9
+DEBUG @ Regression.buildModel: 1503 by 9
+DEBUG @ Regression.buildModel: 1503 by 9
+DEBUG @ Regression.buildModel: 1503 by 9
+DEBUG @ Regression.buildModel: 1503 by 9
+DEBUG @ Regression.buildModel: 1503 by 9
+DEBUG @ Regression.buildModel: 1503 by 9
+DEBUG @ Regression.validate: n_test = 300, rando = true
+LinkedHashMap(rSq -> 0.636319, rSqBar -> 0.626321, sst -> 13805.490439, sse -> 5020.796227, sde -> 4.095886, rse -> 4.153745, mse0 -> 16.735987, rmse -> 4.090964, mae -> 3.222350, smape -> 2.586123, bmae -> 8.575277, m -> 300.000000, dfr -> 8.000000, df -> 291.000000, fStat -> 63.643940, aic -> -831.234558, bic -> -797.900516, mape -> 2.591869, mase -> 0.921873, smapeC -> 2.646123, picp -> -1.000000, pinc -> -1.000000, ace -> -1.000000, pinaw -> -1.000000, mis -> -1.000000, wis -> -1.000000)
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+| forwardSelAll: (l = 8) ADD variable (40, displacement_thickness_velocity_attack_angle) => cols = LinkedHashSet(0, 37, 23, 17, 34, 21, 32, 20, 40) @ 2.4035500014593962 |
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+DEBUG @ Regression.buildModel: 1503 by 10
+DEBUG @ Regression.buildModel: 1503 by 10
+DEBUG @ Regression.buildModel: 1503 by 10
+DEBUG @ Regression.buildModel: 1503 by 10
+DEBUG @ Regression.buildModel: 1503 by 10
+DEBUG @ Regression.buildModel: 1503 by 10
+DEBUG @ Regression.buildModel: 1503 by 10
+DEBUG @ Regression.buildModel: 1503 by 10
+DEBUG @ Regression.buildModel: 1503 by 10
+DEBUG @ Regression.buildModel: 1503 by 10
+DEBUG @ Regression.buildModel: 1503 by 10
+DEBUG @ Regression.buildModel: 1503 by 10
+DEBUG @ Regression.buildModel: 1503 by 10
+DEBUG @ Regression.buildModel: 1503 by 10
+DEBUG @ Regression.buildModel: 1503 by 10
+DEBUG @ Regression.buildModel: 1503 by 10
+DEBUG @ Regression.buildModel: 1503 by 10
+DEBUG @ Regression.buildModel: 1503 by 10
+DEBUG @ Regression.buildModel: 1503 by 10
+DEBUG @ Regression.buildModel: 1503 by 10
+DEBUG @ Regression.buildModel: 1503 by 10
+DEBUG @ Regression.buildModel: 1503 by 10
+DEBUG @ Regression.buildModel: 1503 by 10
+DEBUG @ Regression.buildModel: 1503 by 10
+DEBUG @ Regression.buildModel: 1503 by 10
+DEBUG @ Regression.buildModel: 1503 by 10
+DEBUG @ Regression.buildModel: 1503 by 10
+DEBUG @ Regression.buildModel: 1503 by 10
+DEBUG @ Regression.buildModel: 1503 by 10
+DEBUG @ Regression.buildModel: 1503 by 10
+DEBUG @ Regression.buildModel: 1503 by 10
+DEBUG @ Regression.buildModel: 1503 by 10
+DEBUG @ Regression.buildModel: 1503 by 10
+DEBUG @ Regression.validate: n_test = 300, rando = true
+LinkedHashMap(rSq -> 0.643918, rSqBar -> 0.632867, sst -> 13805.490439, sse -> 4915.888592, sde -> 4.054746, rse -> 4.117201, mse0 -> 16.386295, rmse -> 4.047999, mae -> 3.154929, smape -> 2.531967, bmae -> 8.613555, m -> 300.000000, dfr -> 9.000000, df -> 290.000000, fStat -> 58.268759, aic -> -825.951376, bic -> -788.913551, mape -> 2.534562, mase -> 0.925989, smapeC -> 2.598634, picp -> -1.000000, pinc -> -1.000000, ace -> -1.000000, pinaw -> -1.000000, mis -> -1.000000, wis -> -1.000000)
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+| forwardSelAll: (l = 9) ADD variable (28, displacement_thickness_frequency) => cols = LinkedHashSet(0, 37, 23, 17, 34, 21, 32, 20, 40, 28) @ 2.377809351627914 |
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+DEBUG @ Regression.buildModel: 1503 by 11
+DEBUG @ Regression.buildModel: 1503 by 11
+DEBUG @ Regression.buildModel: 1503 by 11
+DEBUG @ Regression.buildModel: 1503 by 11
+DEBUG @ Regression.buildModel: 1503 by 11
+DEBUG @ Regression.buildModel: 1503 by 11
+DEBUG @ Regression.buildModel: 1503 by 11
+DEBUG @ Regression.buildModel: 1503 by 11
+DEBUG @ Regression.buildModel: 1503 by 11
+DEBUG @ Regression.buildModel: 1503 by 11
+DEBUG @ Regression.buildModel: 1503 by 11
+DEBUG @ Regression.buildModel: 1503 by 11
+DEBUG @ Regression.buildModel: 1503 by 11
+DEBUG @ Regression.buildModel: 1503 by 11
+DEBUG @ Regression.buildModel: 1503 by 11
+DEBUG @ Regression.buildModel: 1503 by 11
+DEBUG @ Regression.buildModel: 1503 by 11
+DEBUG @ Regression.buildModel: 1503 by 11
+DEBUG @ Regression.buildModel: 1503 by 11
+DEBUG @ Regression.buildModel: 1503 by 11
+DEBUG @ Regression.buildModel: 1503 by 11
+DEBUG @ Regression.buildModel: 1503 by 11
+DEBUG @ Regression.buildModel: 1503 by 11
+DEBUG @ Regression.buildModel: 1503 by 11
+DEBUG @ Regression.buildModel: 1503 by 11
+DEBUG @ Regression.buildModel: 1503 by 11
+DEBUG @ Regression.buildModel: 1503 by 11
+DEBUG @ Regression.buildModel: 1503 by 11
+DEBUG @ Regression.buildModel: 1503 by 11
+DEBUG @ Regression.buildModel: 1503 by 11
+DEBUG @ Regression.buildModel: 1503 by 11
+DEBUG @ Regression.buildModel: 1503 by 11
+DEBUG @ Regression.validate: n_test = 300, rando = true
+LinkedHashMap(rSq -> 0.638248, rSqBar -> 0.625731, sst -> 13805.490439, sse -> 4994.164646, sde -> 4.086917, rse -> 4.157024, mse0 -> 16.647215, rmse -> 4.080100, mae -> 3.175202, smape -> 2.547102, bmae -> 8.565478, m -> 300.000000, dfr -> 10.000000, df -> 289.000000, fStat -> 50.988971, aic -> -826.705818, bic -> -785.964211, mape -> 2.550919, mase -> 0.920820, smapeC -> 2.620435, picp -> -1.000000, pinc -> -1.000000, ace -> -1.000000, pinaw -> -1.000000, mis -> -1.000000, wis -> -1.000000)
+------------------------------------------------------------------------------------------------------------------------------------------------------
+| forwardSelAll: (l = 10) ADD variable (13, chord_length^0.5) => cols = LinkedHashSet(0, 37, 23, 17, 34, 21, 32, 20, 40, 28, 13) @ 2.362573364642486 |
+------------------------------------------------------------------------------------------------------------------------------------------------------
+DEBUG @ Regression.buildModel: 1503 by 12
+DEBUG @ Regression.buildModel: 1503 by 12
+DEBUG @ Regression.buildModel: 1503 by 12
+DEBUG @ Regression.buildModel: 1503 by 12
+DEBUG @ Regression.buildModel: 1503 by 12
+DEBUG @ Regression.buildModel: 1503 by 12
+DEBUG @ Regression.buildModel: 1503 by 12
+DEBUG @ Regression.buildModel: 1503 by 12
+DEBUG @ Regression.buildModel: 1503 by 12
+DEBUG @ Regression.buildModel: 1503 by 12
+DEBUG @ Regression.buildModel: 1503 by 12
+DEBUG @ Regression.buildModel: 1503 by 12
+DEBUG @ Regression.buildModel: 1503 by 12
+DEBUG @ Regression.buildModel: 1503 by 12
+DEBUG @ Regression.buildModel: 1503 by 12
+DEBUG @ Regression.buildModel: 1503 by 12
+DEBUG @ Regression.buildModel: 1503 by 12
+DEBUG @ Regression.buildModel: 1503 by 12
+DEBUG @ Regression.buildModel: 1503 by 12
+DEBUG @ Regression.buildModel: 1503 by 12
+DEBUG @ Regression.buildModel: 1503 by 12
+DEBUG @ Regression.buildModel: 1503 by 12
+DEBUG @ Regression.buildModel: 1503 by 12
+DEBUG @ Regression.buildModel: 1503 by 12
+DEBUG @ Regression.buildModel: 1503 by 12
+DEBUG @ Regression.buildModel: 1503 by 12
+DEBUG @ Regression.buildModel: 1503 by 12
+DEBUG @ Regression.buildModel: 1503 by 12
+DEBUG @ Regression.buildModel: 1503 by 12
+DEBUG @ Regression.buildModel: 1503 by 12
+DEBUG @ Regression.buildModel: 1503 by 12
+DEBUG @ Regression.validate: n_test = 300, rando = true
+LinkedHashMap(rSq -> 0.666204, rSqBar -> 0.653455, sst -> 13805.490439, sse -> 4608.217358, sde -> 3.925771, rse -> 4.000094, mse0 -> 15.360725, rmse -> 3.919276, mae -> 3.021792, smape -> 2.412703, bmae -> 8.487509, m -> 300.000000, dfr -> 11.000000, df -> 288.000000, fStat -> 52.254769, aic -> -811.709335, bic -> -767.263945, mape -> 2.417756, mase -> 0.912438, smapeC -> 2.492703, picp -> -1.000000, pinc -> -1.000000, ace -> -1.000000, pinaw -> -1.000000, mis -> -1.000000, wis -> -1.000000)
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+| forwardSelAll: (l = 11) ADD variable (36, displacement_thickness_attack_angle_frequency) => cols = LinkedHashSet(0, 37, 23, 17, 34, 21, 32, 20, 40, 28, 13, 36) @ 2.3411655184060547 |
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+DEBUG @ Regression.buildModel: 1503 by 13
+DEBUG @ Regression.buildModel: 1503 by 13
+DEBUG @ Regression.buildModel: 1503 by 13
+DEBUG @ Regression.buildModel: 1503 by 13
+DEBUG @ Regression.buildModel: 1503 by 13
+DEBUG @ Regression.buildModel: 1503 by 13
+DEBUG @ Regression.buildModel: 1503 by 13
+DEBUG @ Regression.buildModel: 1503 by 13
+DEBUG @ Regression.buildModel: 1503 by 13
+DEBUG @ Regression.buildModel: 1503 by 13
+DEBUG @ Regression.buildModel: 1503 by 13
+DEBUG @ Regression.buildModel: 1503 by 13
+DEBUG @ Regression.buildModel: 1503 by 13
+DEBUG @ Regression.buildModel: 1503 by 13
+DEBUG @ Regression.buildModel: 1503 by 13
+DEBUG @ Regression.buildModel: 1503 by 13
+DEBUG @ Regression.buildModel: 1503 by 13
+DEBUG @ Regression.buildModel: 1503 by 13
+DEBUG @ Regression.buildModel: 1503 by 13
+DEBUG @ Regression.buildModel: 1503 by 13
+DEBUG @ Regression.buildModel: 1503 by 13
+DEBUG @ Regression.buildModel: 1503 by 13
+DEBUG @ Regression.buildModel: 1503 by 13
+DEBUG @ Regression.buildModel: 1503 by 13
+DEBUG @ Regression.buildModel: 1503 by 13
+DEBUG @ Regression.buildModel: 1503 by 13
+DEBUG @ Regression.buildModel: 1503 by 13
+DEBUG @ Regression.buildModel: 1503 by 13
+DEBUG @ Regression.buildModel: 1503 by 13
+DEBUG @ Regression.buildModel: 1503 by 13
+DEBUG @ Regression.validate: n_test = 300, rando = true
+LinkedHashMap(rSq -> 0.663132, rSqBar -> 0.649046, sst -> 13805.490439, sse -> 4650.633669, sde -> 3.943737, rse -> 4.025456, mse0 -> 15.502112, rmse -> 3.937272, mae -> 3.053716, smape -> 2.440146, bmae -> 8.443656, m -> 300.000000, dfr -> 12.000000, df -> 287.000000, fStat -> 47.080392, aic -> -811.406567, bic -> -763.257395, mape -> 2.445356, mase -> 0.907724, smapeC -> 2.526813, picp -> -1.000000, pinc -> -1.000000, ace -> -1.000000, pinaw -> -1.000000, mis -> -1.000000, wis -> -1.000000)
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+| forwardSelAll: (l = 12) ADD variable (35, velocity_chord_length_attack_angle) => cols = LinkedHashSet(0, 37, 23, 17, 34, 21, 32, 20, 40, 28, 13, 36, 35) @ 2.3232966482129664 |
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+DEBUG @ Regression.buildModel: 1503 by 14
+DEBUG @ Regression.buildModel: 1503 by 14
+DEBUG @ Regression.buildModel: 1503 by 14
+DEBUG @ Regression.buildModel: 1503 by 14
+DEBUG @ Regression.buildModel: 1503 by 14
+DEBUG @ Regression.buildModel: 1503 by 14
+DEBUG @ Regression.buildModel: 1503 by 14
+DEBUG @ Regression.buildModel: 1503 by 14
+DEBUG @ Regression.buildModel: 1503 by 14
+DEBUG @ Regression.buildModel: 1503 by 14
+DEBUG @ Regression.buildModel: 1503 by 14
+DEBUG @ Regression.buildModel: 1503 by 14
+DEBUG @ Regression.buildModel: 1503 by 14
+DEBUG @ Regression.buildModel: 1503 by 14
+DEBUG @ Regression.buildModel: 1503 by 14
+DEBUG @ Regression.buildModel: 1503 by 14
+DEBUG @ Regression.buildModel: 1503 by 14
+DEBUG @ Regression.buildModel: 1503 by 14
+DEBUG @ Regression.buildModel: 1503 by 14
+DEBUG @ Regression.buildModel: 1503 by 14
+DEBUG @ Regression.buildModel: 1503 by 14
+DEBUG @ Regression.buildModel: 1503 by 14
+DEBUG @ Regression.buildModel: 1503 by 14
+DEBUG @ Regression.buildModel: 1503 by 14
+DEBUG @ Regression.buildModel: 1503 by 14
+DEBUG @ Regression.buildModel: 1503 by 14
+DEBUG @ Regression.buildModel: 1503 by 14
+DEBUG @ Regression.buildModel: 1503 by 14
+DEBUG @ Regression.buildModel: 1503 by 14
+DEBUG @ Regression.validate: n_test = 300, rando = true
+LinkedHashMap(rSq -> 0.665826, rSqBar -> 0.650636, sst -> 13805.490439, sse -> 4613.438484, sde -> 3.928031, rse -> 4.016330, mse0 -> 15.378128, rmse -> 3.921496, mae -> 3.042429, smape -> 2.431455, bmae -> 8.456857, m -> 300.000000, dfr -> 13.000000, df -> 286.000000, fStat -> 43.833931, aic -> -808.202073, bic -> -756.349118, mape -> 2.435465, mase -> 0.909143, smapeC -> 2.524788, picp -> -1.000000, pinc -> -1.000000, ace -> -1.000000, pinaw -> -1.000000, mis -> -1.000000, wis -> -1.000000)
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
+| forwardSelAll: (l = 13) ADD variable (9, log1p(velocity)) => cols = LinkedHashSet(0, 37, 23, 17, 34, 21, 32, 20, 40, 28, 13, 36, 35, 9) @ 2.3161348760000884 |
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
+DEBUG @ Regression.buildModel: 1503 by 15
+DEBUG @ Regression.buildModel: 1503 by 15
+DEBUG @ Regression.buildModel: 1503 by 15
+DEBUG @ Regression.buildModel: 1503 by 15
+DEBUG @ Regression.buildModel: 1503 by 15
+DEBUG @ Regression.buildModel: 1503 by 15
+DEBUG @ Regression.buildModel: 1503 by 15
+DEBUG @ Regression.buildModel: 1503 by 15
+DEBUG @ Regression.buildModel: 1503 by 15
+DEBUG @ Regression.buildModel: 1503 by 15
+DEBUG @ Regression.buildModel: 1503 by 15
+DEBUG @ Regression.buildModel: 1503 by 15
+DEBUG @ Regression.buildModel: 1503 by 15
+DEBUG @ Regression.buildModel: 1503 by 15
+DEBUG @ Regression.buildModel: 1503 by 15
+DEBUG @ Regression.buildModel: 1503 by 15
+DEBUG @ Regression.buildModel: 1503 by 15
+DEBUG @ Regression.buildModel: 1503 by 15
+DEBUG @ Regression.buildModel: 1503 by 15
+DEBUG @ Regression.buildModel: 1503 by 15
+DEBUG @ Regression.buildModel: 1503 by 15
+DEBUG @ Regression.buildModel: 1503 by 15
+DEBUG @ Regression.buildModel: 1503 by 15
+DEBUG @ Regression.buildModel: 1503 by 15
+DEBUG @ Regression.buildModel: 1503 by 15
+DEBUG @ Regression.buildModel: 1503 by 15
+DEBUG @ Regression.buildModel: 1503 by 15
+DEBUG @ Regression.buildModel: 1503 by 15
+DEBUG @ Regression.validate: n_test = 300, rando = true
+LinkedHashMap(rSq -> 0.666933, rSqBar -> 0.650572, sst -> 13805.490439, sse -> 4598.152114, sde -> 3.921516, rse -> 4.016699, mse0 -> 15.327174, rmse -> 3.914993, mae -> 3.029040, smape -> 2.420876, bmae -> 8.451879, m -> 300.000000, dfr -> 14.000000, df -> 285.000000, fStat -> 40.763136, aic -> -805.715585, bic -> -750.158848, mape -> 2.424651, mase -> 0.908608, smapeC -> 2.520876, picp -> -1.000000, pinc -> -1.000000, ace -> -1.000000, pinaw -> -1.000000, mis -> -1.000000, wis -> -1.000000)
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+| forwardSelAll: (l = 14) ADD variable (5, displacement_thickness) => cols = LinkedHashSet(0, 37, 23, 17, 34, 21, 32, 20, 40, 28, 13, 36, 35, 9, 5) @ 2.308413474835122 |
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+DEBUG @ Regression.buildModel: 1503 by 16
+DEBUG @ Regression.buildModel: 1503 by 16
+DEBUG @ Regression.buildModel: 1503 by 16
+DEBUG @ Regression.buildModel: 1503 by 16
+DEBUG @ Regression.buildModel: 1503 by 16
+DEBUG @ Regression.buildModel: 1503 by 16
+DEBUG @ Regression.buildModel: 1503 by 16
+DEBUG @ Regression.buildModel: 1503 by 16
+DEBUG @ Regression.buildModel: 1503 by 16
+DEBUG @ Regression.buildModel: 1503 by 16
+DEBUG @ Regression.buildModel: 1503 by 16
+DEBUG @ Regression.buildModel: 1503 by 16
+DEBUG @ Regression.buildModel: 1503 by 16
+DEBUG @ Regression.buildModel: 1503 by 16
+DEBUG @ Regression.buildModel: 1503 by 16
+DEBUG @ Regression.buildModel: 1503 by 16
+DEBUG @ Regression.buildModel: 1503 by 16
+DEBUG @ Regression.buildModel: 1503 by 16
+DEBUG @ Regression.buildModel: 1503 by 16
+DEBUG @ Regression.buildModel: 1503 by 16
+DEBUG @ Regression.buildModel: 1503 by 16
+DEBUG @ Regression.buildModel: 1503 by 16
+DEBUG @ Regression.buildModel: 1503 by 16
+DEBUG @ Regression.buildModel: 1503 by 16
+DEBUG @ Regression.buildModel: 1503 by 16
+DEBUG @ Regression.buildModel: 1503 by 16
+DEBUG @ Regression.buildModel: 1503 by 16
+DEBUG @ Regression.validate: n_test = 300, rando = true
+LinkedHashMap(rSq -> 0.667207, rSqBar -> 0.649630, sst -> 13805.490439, sse -> 4594.371441, sde -> 3.919887, rse -> 4.022109, mse0 -> 15.314571, rmse -> 3.913384, mae -> 3.031139, smape -> 2.423272, bmae -> 8.426628, m -> 300.000000, dfr -> 15.000000, df -> 284.000000, fStat -> 37.958878, aic -> -803.945897, bic -> -744.685378, mape -> 2.426291, mase -> 0.905893, smapeC -> 2.529939, picp -> -1.000000, pinc -> -1.000000, ace -> -1.000000, pinaw -> -1.000000, mis -> -1.000000, wis -> -1.000000)
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+| forwardSelAll: (l = 15) ADD variable (38, displacement_thickness_chord_length_attack_angle) => cols = LinkedHashSet(0, 37, 23, 17, 34, 21, 32, 20, 40, 28, 13, 36, 35, 9, 5, 38) @ 2.294684471934963 |
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+DEBUG @ Regression.buildModel: 1503 by 17
+DEBUG @ Regression.buildModel: 1503 by 17
+DEBUG @ Regression.buildModel: 1503 by 17
+DEBUG @ Regression.buildModel: 1503 by 17
+DEBUG @ Regression.buildModel: 1503 by 17
+DEBUG @ Regression.buildModel: 1503 by 17
+DEBUG @ Regression.buildModel: 1503 by 17
+DEBUG @ Regression.buildModel: 1503 by 17
+DEBUG @ Regression.buildModel: 1503 by 17
+DEBUG @ Regression.buildModel: 1503 by 17
+DEBUG @ Regression.buildModel: 1503 by 17
+DEBUG @ Regression.buildModel: 1503 by 17
+DEBUG @ Regression.buildModel: 1503 by 17
+DEBUG @ Regression.buildModel: 1503 by 17
+DEBUG @ Regression.buildModel: 1503 by 17
+DEBUG @ Regression.buildModel: 1503 by 17
+DEBUG @ Regression.buildModel: 1503 by 17
+DEBUG @ Regression.buildModel: 1503 by 17
+DEBUG @ Regression.buildModel: 1503 by 17
+DEBUG @ Regression.buildModel: 1503 by 17
+DEBUG @ Regression.buildModel: 1503 by 17
+DEBUG @ Regression.buildModel: 1503 by 17
+DEBUG @ Regression.buildModel: 1503 by 17
+DEBUG @ Regression.buildModel: 1503 by 17
+DEBUG @ Regression.buildModel: 1503 by 17
+DEBUG @ Regression.buildModel: 1503 by 17
+DEBUG @ Regression.validate: n_test = 300, rando = true
+LinkedHashMap(rSq -> 0.667377, rSqBar -> 0.648571, sst -> 13805.490439, sse -> 4592.026157, sde -> 3.918902, rse -> 4.028181, mse0 -> 15.306754, rmse -> 3.912385, mae -> 3.032094, smape -> 2.424718, bmae -> 8.417247, m -> 300.000000, dfr -> 16.000000, df -> 283.000000, fStat -> 35.488289, aic -> -801.949992, bic -> -738.985690, mape -> 2.427707, mase -> 0.904885, smapeC -> 2.538052, picp -> -1.000000, pinc -> -1.000000, ace -> -1.000000, pinaw -> -1.000000, mis -> -1.000000, wis -> -1.000000)
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+| forwardSelAll: (l = 16) ADD variable (8, log1p(chord_length)) => cols = LinkedHashSet(0, 37, 23, 17, 34, 21, 32, 20, 40, 28, 13, 36, 35, 9, 5, 38, 8) @ 2.287898751442446 |
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+DEBUG @ Regression.buildModel: 1503 by 18
+DEBUG @ Regression.buildModel: 1503 by 18
+DEBUG @ Regression.buildModel: 1503 by 18
+DEBUG @ Regression.buildModel: 1503 by 18
+DEBUG @ Regression.buildModel: 1503 by 18
+DEBUG @ Regression.buildModel: 1503 by 18
+DEBUG @ Regression.buildModel: 1503 by 18
+DEBUG @ Regression.buildModel: 1503 by 18
+DEBUG @ Regression.buildModel: 1503 by 18
+DEBUG @ Regression.buildModel: 1503 by 18
+DEBUG @ Regression.buildModel: 1503 by 18
+DEBUG @ Regression.buildModel: 1503 by 18
+DEBUG @ Regression.buildModel: 1503 by 18
+DEBUG @ Regression.buildModel: 1503 by 18
+DEBUG @ Regression.buildModel: 1503 by 18
+DEBUG @ Regression.buildModel: 1503 by 18
+DEBUG @ Regression.buildModel: 1503 by 18
+DEBUG @ Regression.buildModel: 1503 by 18
+DEBUG @ Regression.buildModel: 1503 by 18
+DEBUG @ Regression.buildModel: 1503 by 18
+DEBUG @ Regression.buildModel: 1503 by 18
+DEBUG @ Regression.buildModel: 1503 by 18
+DEBUG @ Regression.buildModel: 1503 by 18
+DEBUG @ Regression.buildModel: 1503 by 18
+DEBUG @ Regression.buildModel: 1503 by 18
+DEBUG @ Regression.validate: n_test = 300, rando = true
+LinkedHashMap(rSq -> 0.672057, rSqBar -> 0.652288, sst -> 13805.490439, sse -> 4527.412452, sde -> 3.890950, rse -> 4.006826, mse0 -> 15.091375, rmse -> 3.884762, mae -> 3.047625, smape -> 2.435732, bmae -> 8.466419, m -> 300.000000, dfr -> 17.000000, df -> 282.000000, fStat -> 33.994460, aic -> -798.073154, bic -> -731.405070, mape -> 2.437481, mase -> 0.910171, smapeC -> 2.555732, picp -> -1.000000, pinc -> -1.000000, ace -> -1.000000, pinaw -> -1.000000, mis -> -1.000000, wis -> -1.000000)
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+| forwardSelAll: (l = 17) ADD variable (12, attack_angle^0.5) => cols = LinkedHashSet(0, 37, 23, 17, 34, 21, 32, 20, 40, 28, 13, 36, 35, 9, 5, 38, 8, 12) @ 2.2789800630824795 |
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+DEBUG @ Regression.buildModel: 1503 by 19
+DEBUG @ Regression.buildModel: 1503 by 19
+DEBUG @ Regression.buildModel: 1503 by 19
+DEBUG @ Regression.buildModel: 1503 by 19
+DEBUG @ Regression.buildModel: 1503 by 19
+DEBUG @ Regression.buildModel: 1503 by 19
+DEBUG @ Regression.buildModel: 1503 by 19
+DEBUG @ Regression.buildModel: 1503 by 19
+DEBUG @ Regression.buildModel: 1503 by 19
+DEBUG @ Regression.buildModel: 1503 by 19
+DEBUG @ Regression.buildModel: 1503 by 19
+DEBUG @ Regression.buildModel: 1503 by 19
+DEBUG @ Regression.buildModel: 1503 by 19
+DEBUG @ Regression.buildModel: 1503 by 19
+DEBUG @ Regression.buildModel: 1503 by 19
+DEBUG @ Regression.buildModel: 1503 by 19
+DEBUG @ Regression.buildModel: 1503 by 19
+DEBUG @ Regression.buildModel: 1503 by 19
+DEBUG @ Regression.buildModel: 1503 by 19
+DEBUG @ Regression.buildModel: 1503 by 19
+DEBUG @ Regression.buildModel: 1503 by 19
+DEBUG @ Regression.buildModel: 1503 by 19
+DEBUG @ Regression.buildModel: 1503 by 19
+DEBUG @ Regression.buildModel: 1503 by 19
+DEBUG @ Regression.validate: n_test = 300, rando = true
+LinkedHashMap(rSq -> 0.677750, rSqBar -> 0.657108, sst -> 13805.490439, sse -> 4448.817107, sde -> 3.856498, rse -> 3.978956, mse0 -> 14.829390, rmse -> 3.850895, mae -> 3.019470, smape -> 2.413519, bmae -> 8.445871, m -> 300.000000, dfr -> 18.000000, df -> 281.000000, fStat -> 32.833012, aic -> -793.199115, bic -> -722.827248, mape -> 2.414580, mase -> 0.907962, smapeC -> 2.540185, picp -> -1.000000, pinc -> -1.000000, ace -> -1.000000, pinaw -> -1.000000, mis -> -1.000000, wis -> -1.000000)
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+| forwardSelAll: (l = 18) ADD variable (1, frequency) => cols = LinkedHashSet(0, 37, 23, 17, 34, 21, 32, 20, 40, 28, 13, 36, 35, 9, 5, 38, 8, 12, 1) @ 2.2670138249503684 |
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+DEBUG @ Regression.buildModel: 1503 by 20
+DEBUG @ Regression.buildModel: 1503 by 20
+DEBUG @ Regression.buildModel: 1503 by 20
+DEBUG @ Regression.buildModel: 1503 by 20
+DEBUG @ Regression.buildModel: 1503 by 20
+DEBUG @ Regression.buildModel: 1503 by 20
+DEBUG @ Regression.buildModel: 1503 by 20
+DEBUG @ Regression.buildModel: 1503 by 20
+DEBUG @ Regression.buildModel: 1503 by 20
+DEBUG @ Regression.buildModel: 1503 by 20
+DEBUG @ Regression.buildModel: 1503 by 20
+DEBUG @ Regression.buildModel: 1503 by 20
+DEBUG @ Regression.buildModel: 1503 by 20
+DEBUG @ Regression.buildModel: 1503 by 20
+DEBUG @ Regression.buildModel: 1503 by 20
+DEBUG @ Regression.buildModel: 1503 by 20
+DEBUG @ Regression.buildModel: 1503 by 20
+DEBUG @ Regression.buildModel: 1503 by 20
+DEBUG @ Regression.buildModel: 1503 by 20
+DEBUG @ Regression.buildModel: 1503 by 20
+DEBUG @ Regression.buildModel: 1503 by 20
+DEBUG @ Regression.buildModel: 1503 by 20
+DEBUG @ Regression.buildModel: 1503 by 20
+DEBUG @ Regression.validate: n_test = 300, rando = true
+LinkedHashMap(rSq -> 0.691520, rSqBar -> 0.670588, sst -> 13805.490439, sse -> 4258.711230, sde -> 3.773633, rse -> 3.899959, mse0 -> 14.195704, rmse -> 3.767719, mae -> 2.975463, smape -> 2.378968, bmae -> 8.444829, m -> 300.000000, dfr -> 19.000000, df -> 280.000000, fStat -> 33.035670, aic -> -784.259037, bic -> -710.183388, mape -> 2.379658, mase -> 0.907850, smapeC -> 2.512301, picp -> -1.000000, pinc -> -1.000000, ace -> -1.000000, pinaw -> -1.000000, mis -> -1.000000, wis -> -1.000000)
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+| forwardSelAll: (l = 19) ADD variable (22, attack_angle_frequency) => cols = LinkedHashSet(0, 37, 23, 17, 34, 21, 32, 20, 40, 28, 13, 36, 35, 9, 5, 38, 8, 12, 1, 22) @ 2.258685286948267 |
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+DEBUG @ Regression.buildModel: 1503 by 21
+DEBUG @ Regression.buildModel: 1503 by 21
+DEBUG @ Regression.buildModel: 1503 by 21
+DEBUG @ Regression.buildModel: 1503 by 21
+DEBUG @ Regression.buildModel: 1503 by 21
+DEBUG @ Regression.buildModel: 1503 by 21
+DEBUG @ Regression.buildModel: 1503 by 21
+DEBUG @ Regression.buildModel: 1503 by 21
+DEBUG @ Regression.buildModel: 1503 by 21
+DEBUG @ Regression.buildModel: 1503 by 21
+DEBUG @ Regression.buildModel: 1503 by 21
+DEBUG @ Regression.buildModel: 1503 by 21
+DEBUG @ Regression.buildModel: 1503 by 21
+DEBUG @ Regression.buildModel: 1503 by 21
+DEBUG @ Regression.buildModel: 1503 by 21
+DEBUG @ Regression.buildModel: 1503 by 21
+DEBUG @ Regression.buildModel: 1503 by 21
+DEBUG @ Regression.buildModel: 1503 by 21
+DEBUG @ Regression.buildModel: 1503 by 21
+DEBUG @ Regression.buildModel: 1503 by 21
+DEBUG @ Regression.buildModel: 1503 by 21
+DEBUG @ Regression.buildModel: 1503 by 21
+DEBUG @ Regression.validate: n_test = 300, rando = true
+LinkedHashMap(rSq -> 0.687913, rSqBar -> 0.665541, sst -> 13805.490439, sse -> 4308.519939, sde -> 3.795857, rse -> 3.929723, mse0 -> 14.361733, rmse -> 3.789688, mae -> 2.980448, smape -> 2.383490, bmae -> 8.478052, m -> 300.000000, dfr -> 20.000000, df -> 279.000000, fStat -> 30.749014, aic -> -784.324608, bic -> -706.545177, mape -> 2.384336, mase -> 0.911421, smapeC -> 2.523490, picp -> -1.000000, pinc -> -1.000000, ace -> -1.000000, pinaw -> -1.000000, mis -> -1.000000, wis -> -1.000000)
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+| forwardSelAll: (l = 20) ADD variable (24, chord_length_attack_angle) => cols = LinkedHashSet(0, 37, 23, 17, 34, 21, 32, 20, 40, 28, 13, 36, 35, 9, 5, 38, 8, 12, 1, 22, 24) @ 2.2529975487769067 |
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+DEBUG @ Regression.buildModel: 1503 by 22
+DEBUG @ Regression.buildModel: 1503 by 22
+DEBUG @ Regression.buildModel: 1503 by 22
+DEBUG @ Regression.buildModel: 1503 by 22
+DEBUG @ Regression.buildModel: 1503 by 22
+DEBUG @ Regression.buildModel: 1503 by 22
+DEBUG @ Regression.buildModel: 1503 by 22
+DEBUG @ Regression.buildModel: 1503 by 22
+DEBUG @ Regression.buildModel: 1503 by 22
+DEBUG @ Regression.buildModel: 1503 by 22
+DEBUG @ Regression.buildModel: 1503 by 22
+DEBUG @ Regression.buildModel: 1503 by 22
+DEBUG @ Regression.buildModel: 1503 by 22
+DEBUG @ Regression.buildModel: 1503 by 22
+DEBUG @ Regression.buildModel: 1503 by 22
+DEBUG @ Regression.buildModel: 1503 by 22
+DEBUG @ Regression.buildModel: 1503 by 22
+DEBUG @ Regression.buildModel: 1503 by 22
+DEBUG @ Regression.buildModel: 1503 by 22
+DEBUG @ Regression.buildModel: 1503 by 22
+DEBUG @ Regression.buildModel: 1503 by 22
+DEBUG @ Regression.validate: n_test = 300, rando = true
+LinkedHashMap(rSq -> 0.683826, rSqBar -> 0.659942, sst -> 13805.490439, sse -> 4364.939764, sde -> 3.820531, rse -> 3.962477, mse0 -> 14.549799, rmse -> 3.814420, mae -> 2.975539, smape -> 2.376951, bmae -> 8.424437, m -> 300.000000, dfr -> 21.000000, df -> 278.000000, fStat -> 28.631531, aic -> -784.546290, bic -> -703.063076, mape -> 2.378560, mase -> 0.905658, smapeC -> 2.523618, picp -> -1.000000, pinc -> -1.000000, ace -> -1.000000, pinaw -> -1.000000, mis -> -1.000000, wis -> -1.000000)
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+| forwardSelAll: (l = 21) ADD variable (16, frequency^2.0) => cols = LinkedHashSet(0, 37, 23, 17, 34, 21, 32, 20, 40, 28, 13, 36, 35, 9, 5, 38, 8, 12, 1, 22, 24, 16) @ 2.2501224412223086 |
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+DEBUG @ Regression.buildModel: 1503 by 23
+DEBUG @ Regression.buildModel: 1503 by 23
+DEBUG @ Regression.buildModel: 1503 by 23
+DEBUG @ Regression.buildModel: 1503 by 23
+DEBUG @ Regression.buildModel: 1503 by 23
+DEBUG @ Regression.buildModel: 1503 by 23
+DEBUG @ Regression.buildModel: 1503 by 23
+DEBUG @ Regression.buildModel: 1503 by 23
+DEBUG @ Regression.buildModel: 1503 by 23
+DEBUG @ Regression.buildModel: 1503 by 23
+DEBUG @ Regression.buildModel: 1503 by 23
+DEBUG @ Regression.buildModel: 1503 by 23
+DEBUG @ Regression.buildModel: 1503 by 23
+DEBUG @ Regression.buildModel: 1503 by 23
+DEBUG @ Regression.buildModel: 1503 by 23
+DEBUG @ Regression.buildModel: 1503 by 23
+DEBUG @ Regression.buildModel: 1503 by 23
+DEBUG @ Regression.buildModel: 1503 by 23
+DEBUG @ Regression.buildModel: 1503 by 23
+DEBUG @ Regression.buildModel: 1503 by 23
+DEBUG @ Regression.validate: n_test = 300, rando = true
+LinkedHashMap(rSq -> 0.685103, rSqBar -> 0.660093, sst -> 13805.490439, sse -> 4347.309620, sde -> 3.812910, rse -> 3.961598, mse0 -> 14.491032, rmse -> 3.806709, mae -> 2.977654, smape -> 2.378348, bmae -> 8.422147, m -> 300.000000, dfr -> 22.000000, df -> 277.000000, fStat -> 27.393286, aic -> -781.907422, bic -> -696.720425, mape -> 2.379851, mase -> 0.905411, smapeC -> 2.531681, picp -> -1.000000, pinc -> -1.000000, ace -> -1.000000, pinaw -> -1.000000, mis -> -1.000000, wis -> -1.000000)
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+| forwardSelAll: (l = 22) ADD variable (25, velocity_frequency) => cols = LinkedHashSet(0, 37, 23, 17, 34, 21, 32, 20, 40, 28, 13, 36, 35, 9, 5, 38, 8, 12, 1, 22, 24, 16, 25) @ 2.248164668970678 |
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+DEBUG @ Regression.buildModel: 1503 by 24
+DEBUG @ Regression.buildModel: 1503 by 24
+DEBUG @ Regression.buildModel: 1503 by 24
+DEBUG @ Regression.buildModel: 1503 by 24
+DEBUG @ Regression.buildModel: 1503 by 24
+DEBUG @ Regression.buildModel: 1503 by 24
+DEBUG @ Regression.buildModel: 1503 by 24
+DEBUG @ Regression.buildModel: 1503 by 24
+DEBUG @ Regression.buildModel: 1503 by 24
+DEBUG @ Regression.buildModel: 1503 by 24
+DEBUG @ Regression.buildModel: 1503 by 24
+DEBUG @ Regression.buildModel: 1503 by 24
+DEBUG @ Regression.buildModel: 1503 by 24
+DEBUG @ Regression.buildModel: 1503 by 24
+DEBUG @ Regression.buildModel: 1503 by 24
+DEBUG @ Regression.buildModel: 1503 by 24
+DEBUG @ Regression.buildModel: 1503 by 24
+DEBUG @ Regression.buildModel: 1503 by 24
+DEBUG @ Regression.buildModel: 1503 by 24
+DEBUG @ Regression.validate: n_test = 300, rando = true
+LinkedHashMap(rSq -> 0.690188, rSqBar -> 0.664370, sst -> 13805.490439, sse -> 4277.106778, sde -> 3.781660, rse -> 3.936593, mse0 -> 14.257023, rmse -> 3.775847, mae -> 2.948949, smape -> 2.357088, bmae -> 8.372432, m -> 300.000000, dfr -> 23.000000, df -> 276.000000, fStat -> 26.733166, aic -> -777.406404, bic -> -688.515624, mape -> 2.357824, mase -> 0.900067, smapeC -> 2.517088, picp -> -1.000000, pinc -> -1.000000, ace -> -1.000000, pinaw -> -1.000000, mis -> -1.000000, wis -> -1.000000)
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+| forwardSelAll: (l = 23) ADD variable (27, velocity_chord_length) => cols = LinkedHashSet(0, 37, 23, 17, 34, 21, 32, 20, 40, 28, 13, 36, 35, 9, 5, 38, 8, 12, 1, 22, 24, 16, 25, 27) @ 2.243977238030318 |
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+DEBUG @ Regression.buildModel: 1503 by 25
+DEBUG @ Regression.buildModel: 1503 by 25
+DEBUG @ Regression.buildModel: 1503 by 25
+DEBUG @ Regression.buildModel: 1503 by 25
+DEBUG @ Regression.buildModel: 1503 by 25
+DEBUG @ Regression.buildModel: 1503 by 25
+DEBUG @ Regression.buildModel: 1503 by 25
+DEBUG @ Regression.buildModel: 1503 by 25
+DEBUG @ Regression.buildModel: 1503 by 25
+DEBUG @ Regression.buildModel: 1503 by 25
+DEBUG @ Regression.buildModel: 1503 by 25
+DEBUG @ Regression.buildModel: 1503 by 25
+DEBUG @ Regression.buildModel: 1503 by 25
+DEBUG @ Regression.buildModel: 1503 by 25
+DEBUG @ Regression.buildModel: 1503 by 25
+DEBUG @ Regression.buildModel: 1503 by 25
+DEBUG @ Regression.buildModel: 1503 by 25
+DEBUG @ Regression.buildModel: 1503 by 25
+DEBUG @ Regression.validate: n_test = 300, rando = true
+LinkedHashMap(rSq -> 0.691190, rSqBar -> 0.664239, sst -> 13805.490439, sse -> 4263.279062, sde -> 3.775707, rse -> 3.937364, mse0 -> 14.210930, rmse -> 3.769739, mae -> 2.957180, smape -> 2.364222, bmae -> 8.384298, m -> 300.000000, dfr -> 24.000000, df -> 275.000000, fStat -> 25.646418, aic -> -774.880590, bic -> -682.286028, mape -> 2.364978, mase -> 0.901343, smapeC -> 2.530889, picp -> -1.000000, pinc -> -1.000000, ace -> -1.000000, pinaw -> -1.000000, mis -> -1.000000, wis -> -1.000000)
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+| forwardSelAll: (l = 24) ADD variable (41, displacement_thickness_velocity_chord_length) => cols = LinkedHashSet(0, 37, 23, 17, 34, 21, 32, 20, 40, 28, 13, 36, 35, 9, 5, 38, 8, 12, 1, 22, 24, 16, 25, 27, 41) @ 2.243320828250385 |
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+DEBUG @ Regression.buildModel: 1503 by 26
+DEBUG @ Regression.buildModel: 1503 by 26
+DEBUG @ Regression.buildModel: 1503 by 26
+DEBUG @ Regression.buildModel: 1503 by 26
+DEBUG @ Regression.buildModel: 1503 by 26
+DEBUG @ Regression.buildModel: 1503 by 26
+DEBUG @ Regression.buildModel: 1503 by 26
+DEBUG @ Regression.buildModel: 1503 by 26
+DEBUG @ Regression.buildModel: 1503 by 26
+DEBUG @ Regression.buildModel: 1503 by 26
+DEBUG @ Regression.buildModel: 1503 by 26
+DEBUG @ Regression.buildModel: 1503 by 26
+DEBUG @ Regression.buildModel: 1503 by 26
+DEBUG @ Regression.buildModel: 1503 by 26
+DEBUG @ Regression.buildModel: 1503 by 26
+DEBUG @ Regression.buildModel: 1503 by 26
+DEBUG @ Regression.buildModel: 1503 by 26
+DEBUG @ Regression.validate: n_test = 300, rando = true
+LinkedHashMap(rSq -> 0.691996, rSqBar -> 0.663893, sst -> 13805.490439, sse -> 4252.149411, sde -> 3.770616, rse -> 3.939390, mse0 -> 14.173831, rmse -> 3.764815, mae -> 2.949176, smape -> 2.358230, bmae -> 8.389104, m -> 300.000000, dfr -> 25.000000, df -> 274.000000, fStat -> 24.623927, aic -> -772.453231, bic -> -676.154886, mape -> 2.358994, mase -> 0.901859, smapeC -> 2.531563, picp -> -1.000000, pinc -> -1.000000, ace -> -1.000000, pinaw -> -1.000000, mis -> -1.000000, wis -> -1.000000)
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+| forwardSelAll: (l = 25) ADD variable (18, chord_length^2.0) => cols = LinkedHashSet(0, 37, 23, 17, 34, 21, 32, 20, 40, 28, 13, 36, 35, 9, 5, 38, 8, 12, 1, 22, 24, 16, 25, 27, 41, 18) @ 2.243598459842713 |
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+DEBUG @ Regression.buildModel: 1503 by 27
+DEBUG @ Regression.buildModel: 1503 by 27
+DEBUG @ Regression.buildModel: 1503 by 27
+DEBUG @ Regression.buildModel: 1503 by 27
+DEBUG @ Regression.buildModel: 1503 by 27
+DEBUG @ Regression.buildModel: 1503 by 27
+DEBUG @ Regression.buildModel: 1503 by 27
+DEBUG @ Regression.buildModel: 1503 by 27
+DEBUG @ Regression.buildModel: 1503 by 27
+DEBUG @ Regression.buildModel: 1503 by 27
+DEBUG @ Regression.buildModel: 1503 by 27
+DEBUG @ Regression.buildModel: 1503 by 27
+DEBUG @ Regression.buildModel: 1503 by 27
+DEBUG @ Regression.buildModel: 1503 by 27
+DEBUG @ Regression.buildModel: 1503 by 27
+DEBUG @ Regression.buildModel: 1503 by 27
+DEBUG @ Regression.validate: n_test = 300, rando = true
+LinkedHashMap(rSq -> 0.692656, rSqBar -> 0.663385, sst -> 13805.490439, sse -> 4243.039705, sde -> 3.766327, rse -> 3.942369, mse0 -> 14.143466, rmse -> 3.760780, mae -> 2.950253, smape -> 2.358953, bmae -> 8.381882, m -> 300.000000, dfr -> 26.000000, df -> 273.000000, fStat -> 23.663633, aic -> -770.118602, bic -> -670.116475, mape -> 2.359432, mase -> 0.901083, smapeC -> 2.538953, picp -> -1.000000, pinc -> -1.000000, ace -> -1.000000, pinaw -> -1.000000, mis -> -1.000000, wis -> -1.000000)
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+| forwardSelAll: (l = 26) ADD variable (19, velocity^2.0) => cols = LinkedHashSet(0, 37, 23, 17, 34, 21, 32, 20, 40, 28, 13, 36, 35, 9, 5, 38, 8, 12, 1, 22, 24, 16, 25, 27, 41, 18, 19) @ 2.2437748373824817 |
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+DEBUG @ Regression.buildModel: 1503 by 28
+DEBUG @ Regression.buildModel: 1503 by 28
+DEBUG @ Regression.buildModel: 1503 by 28
+DEBUG @ Regression.buildModel: 1503 by 28
+DEBUG @ Regression.buildModel: 1503 by 28
+DEBUG @ Regression.buildModel: 1503 by 28
+DEBUG @ Regression.buildModel: 1503 by 28
+DEBUG @ Regression.buildModel: 1503 by 28
+DEBUG @ Regression.buildModel: 1503 by 28
+DEBUG @ Regression.buildModel: 1503 by 28
+DEBUG @ Regression.buildModel: 1503 by 28
+DEBUG @ Regression.buildModel: 1503 by 28
+DEBUG @ Regression.buildModel: 1503 by 28
+DEBUG @ Regression.buildModel: 1503 by 28
+DEBUG @ Regression.buildModel: 1503 by 28
+DEBUG @ Regression.validate: n_test = 300, rando = true
+LinkedHashMap(rSq -> 0.691211, rSqBar -> 0.660560, sst -> 13805.490439, sse -> 4262.977172, sde -> 3.775276, rse -> 3.958877, mse0 -> 14.209924, rmse -> 3.769605, mae -> 2.952854, smape -> 2.361716, bmae -> 8.384532, m -> 300.000000, dfr -> 27.000000, df -> 272.000000, fStat -> 22.550434, aic -> -768.941056, bic -> -665.235147, mape -> 2.362263, mase -> 0.901368, smapeC -> 2.548382, picp -> -1.000000, pinc -> -1.000000, ace -> -1.000000, pinaw -> -1.000000, mis -> -1.000000, wis -> -1.000000)
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+| forwardSelAll: (l = 27) ADD variable (14, velocity^0.5) => cols = LinkedHashSet(0, 37, 23, 17, 34, 21, 32, 20, 40, 28, 13, 36, 35, 9, 5, 38, 8, 12, 1, 22, 24, 16, 25, 27, 41, 18, 19, 14) @ 2.242522534989583 |
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+DEBUG @ Regression.buildModel: 1503 by 29
+DEBUG @ Regression.buildModel: 1503 by 29
+DEBUG @ Regression.buildModel: 1503 by 29
+DEBUG @ Regression.buildModel: 1503 by 29
+DEBUG @ Regression.buildModel: 1503 by 29
+DEBUG @ Regression.buildModel: 1503 by 29
+DEBUG @ Regression.buildModel: 1503 by 29
+DEBUG @ Regression.buildModel: 1503 by 29
+DEBUG @ Regression.buildModel: 1503 by 29
+DEBUG @ Regression.buildModel: 1503 by 29
+DEBUG @ Regression.buildModel: 1503 by 29
+DEBUG @ Regression.buildModel: 1503 by 29
+DEBUG @ Regression.buildModel: 1503 by 29
+DEBUG @ Regression.buildModel: 1503 by 29
+DEBUG @ Regression.validate: n_test = 300, rando = true
+LinkedHashMap(rSq -> 0.692641, rSqBar -> 0.660885, sst -> 13805.490439, sse -> 4243.235175, sde -> 3.765233, rse -> 3.956980, mse0 -> 14.144117, rmse -> 3.760867, mae -> 2.951647, smape -> 2.361921, bmae -> 8.376052, m -> 300.000000, dfr -> 28.000000, df -> 271.000000, fStat -> 21.810945, aic -> -766.191630, bic -> -658.781938, mape -> 2.361167, mase -> 0.900456, smapeC -> 2.555254, picp -> -1.000000, pinc -> -1.000000, ace -> -1.000000, pinaw -> -1.000000, mis -> -1.000000, wis -> -1.000000)
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+| forwardSelAll: (l = 28) ADD variable (2, attack_angle) => cols = LinkedHashSet(0, 37, 23, 17, 34, 21, 32, 20, 40, 28, 13, 36, 35, 9, 5, 38, 8, 12, 1, 22, 24, 16, 25, 27, 41, 18, 19, 14, 2) @ 2.243144231175251 |
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+DEBUG @ Regression.buildModel: 1503 by 30
+DEBUG @ Regression.buildModel: 1503 by 30
+DEBUG @ Regression.buildModel: 1503 by 30
+DEBUG @ Regression.buildModel: 1503 by 30
+DEBUG @ Regression.buildModel: 1503 by 30
+DEBUG @ Regression.buildModel: 1503 by 30
+DEBUG @ Regression.buildModel: 1503 by 30
+DEBUG @ Regression.buildModel: 1503 by 30
+DEBUG @ Regression.buildModel: 1503 by 30
+DEBUG @ Regression.buildModel: 1503 by 30
+DEBUG @ Regression.buildModel: 1503 by 30
+DEBUG @ Regression.buildModel: 1503 by 30
+DEBUG @ Regression.buildModel: 1503 by 30
+DEBUG @ Regression.validate: n_test = 300, rando = true
+LinkedHashMap(rSq -> 0.693398, rSqBar -> 0.660466, sst -> 13805.490439, sse -> 4232.794635, sde -> 3.760519, rse -> 3.959421, mse0 -> 14.109315, rmse -> 3.756237, mae -> 2.948829, smape -> 2.359474, bmae -> 8.370956, m -> 300.000000, dfr -> 29.000000, df -> 270.000000, fStat -> 21.055852, aic -> -763.783292, bic -> -652.669818, mape -> 2.358587, mase -> 0.899908, smapeC -> 2.559474, picp -> -1.000000, pinc -> -1.000000, ace -> -1.000000, pinaw -> -1.000000, mis -> -1.000000, wis -> -1.000000)
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+| forwardSelAll: (l = 29) ADD variable (15, displacement_thickness^0.5) => cols = LinkedHashSet(0, 37, 23, 17, 34, 21, 32, 20, 40, 28, 13, 36, 35, 9, 5, 38, 8, 12, 1, 22, 24, 16, 25, 27, 41, 18, 19, 14, 2, 15) @ 2.243297824293775 |
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+DEBUG @ Regression.buildModel: 1503 by 31
+DEBUG @ Regression.buildModel: 1503 by 31
+DEBUG @ Regression.buildModel: 1503 by 31
+DEBUG @ Regression.buildModel: 1503 by 31
+DEBUG @ Regression.buildModel: 1503 by 31
+DEBUG @ Regression.buildModel: 1503 by 31
+DEBUG @ Regression.buildModel: 1503 by 31
+DEBUG @ Regression.buildModel: 1503 by 31
+DEBUG @ Regression.buildModel: 1503 by 31
+DEBUG @ Regression.buildModel: 1503 by 31
+DEBUG @ Regression.buildModel: 1503 by 31
+DEBUG @ Regression.buildModel: 1503 by 31
+DEBUG @ Regression.validate: n_test = 300, rando = true
+LinkedHashMap(rSq -> 0.687699, rSqBar -> 0.652870, sst -> 13805.490439, sse -> 4311.465091, sde -> 3.795638, rse -> 4.003467, mse0 -> 14.371550, rmse -> 3.790983, mae -> 2.971528, smape -> 2.378243, bmae -> 8.414194, m -> 300.000000, dfr -> 30.000000, df -> 269.000000, fStat -> 19.744973, aic -> -764.947717, bic -> -650.130461, mape -> 2.377577, mase -> 0.904556, smapeC -> 2.584910, picp -> -1.000000, pinc -> -1.000000, ace -> -1.000000, pinaw -> -1.000000, mis -> -1.000000, wis -> -1.000000)
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+| forwardSelAll: (l = 30) ADD variable (7, log1p(attack_angle)) => cols = LinkedHashSet(0, 37, 23, 17, 34, 21, 32, 20, 40, 28, 13, 36, 35, 9, 5, 38, 8, 12, 1, 22, 24, 16, 25, 27, 41, 18, 19, 14, 2, 15, 7) @ 2.2418421702351967 |
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+DEBUG @ Regression.buildModel: 1503 by 32
+DEBUG @ Regression.buildModel: 1503 by 32
+DEBUG @ Regression.buildModel: 1503 by 32
+DEBUG @ Regression.buildModel: 1503 by 32
+DEBUG @ Regression.buildModel: 1503 by 32
+DEBUG @ Regression.buildModel: 1503 by 32
+DEBUG @ Regression.buildModel: 1503 by 32
+DEBUG @ Regression.buildModel: 1503 by 32
+DEBUG @ Regression.buildModel: 1503 by 32
+DEBUG @ Regression.buildModel: 1503 by 32
+DEBUG @ Regression.buildModel: 1503 by 32
+DEBUG @ Regression.validate: n_test = 300, rando = true
+LinkedHashMap(rSq -> 0.685405, rSqBar -> 0.649015, sst -> 13805.490439, sse -> 4343.140124, sde -> 3.810080, rse -> 4.025636, mse0 -> 14.477134, rmse -> 3.804883, mae -> 2.986419, smape -> 2.390223, bmae -> 8.434425, m -> 300.000000, dfr -> 31.000000, df -> 268.000000, fStat -> 18.835115, aic -> -764.424707, bic -> -645.903668, mape -> 2.390018, mase -> 0.906731, smapeC -> 2.603556, picp -> -1.000000, pinc -> -1.000000, ace -> -1.000000, pinaw -> -1.000000, mis -> -1.000000, wis -> -1.000000)
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+| forwardSelAll: (l = 31) ADD variable (10, log1p(displacement_thickness)) => cols = LinkedHashSet(0, 37, 23, 17, 34, 21, 32, 20, 40, 28, 13, 36, 35, 9, 5, 38, 8, 12, 1, 22, 24, 16, 25, 27, 41, 18, 19, 14, 2, 15, 7, 10) @ 2.241020996873359 |
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+DEBUG @ Regression.buildModel: 1503 by 33
+DEBUG @ Regression.buildModel: 1503 by 33
+DEBUG @ Regression.buildModel: 1503 by 33
+DEBUG @ Regression.buildModel: 1503 by 33
+DEBUG @ Regression.buildModel: 1503 by 33
+DEBUG @ Regression.buildModel: 1503 by 33
+DEBUG @ Regression.buildModel: 1503 by 33
+DEBUG @ Regression.buildModel: 1503 by 33
+DEBUG @ Regression.buildModel: 1503 by 33
+DEBUG @ Regression.buildModel: 1503 by 33
+DEBUG @ Regression.validate: n_test = 300, rando = true
+LinkedHashMap(rSq -> 0.685018, rSqBar -> 0.647268, sst -> 13805.490439, sse -> 4348.475058, sde -> 3.812303, rse -> 4.035644, mse0 -> 14.494917, rmse -> 3.807219, mae -> 3.003207, smape -> 2.403107, bmae -> 8.417742, m -> 300.000000, dfr -> 32.000000, df -> 267.000000, fStat -> 18.145895, aic -> -762.667141, bic -> -640.442320, mape -> 2.403061, mase -> 0.904938, smapeC -> 2.623107, picp -> -1.000000, pinc -> -1.000000, ace -> -1.000000, pinaw -> -1.000000, mis -> -1.000000, wis -> -1.000000)
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+| forwardSelAll: (l = 32) ADD variable (31, displacement_thickness_velocity) => cols = LinkedHashSet(0, 37, 23, 17, 34, 21, 32, 20, 40, 28, 13, 36, 35, 9, 5, 38, 8, 12, 1, 22, 24, 16, 25, 27, 41, 18, 19, 14, 2, 15, 7, 10, 31) @ 2.239786691960388 |
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+DEBUG @ Regression.buildModel: 1503 by 34
+DEBUG @ Regression.buildModel: 1503 by 34
+DEBUG @ Regression.buildModel: 1503 by 34
+DEBUG @ Regression.buildModel: 1503 by 34
+DEBUG @ Regression.buildModel: 1503 by 34
+DEBUG @ Regression.buildModel: 1503 by 34
+DEBUG @ Regression.buildModel: 1503 by 34
+DEBUG @ Regression.buildModel: 1503 by 34
+DEBUG @ Regression.buildModel: 1503 by 34
+DEBUG @ Regression.validate: n_test = 300, rando = true
+LinkedHashMap(rSq -> 0.692969, rSqBar -> 0.654879, sst -> 13805.490439, sse -> 4238.712958, sde -> 3.764701, rse -> 3.991868, mse0 -> 14.129043, rmse -> 3.758862, mae -> 2.974637, smape -> 2.379855, bmae -> 8.449481, m -> 300.000000, dfr -> 33.000000, df -> 266.000000, fStat -> 18.192792, aic -> -756.368122, bic -> -630.439517, mape -> 2.381005, mase -> 0.908350, smapeC -> 2.606522, picp -> -1.000000, pinc -> -1.000000, ace -> -1.000000, pinaw -> -1.000000, mis -> -1.000000, wis -> -1.000000)
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+| forwardSelAll: (l = 33) ADD variable (26, velocity_attack_angle) => cols = LinkedHashSet(0, 37, 23, 17, 34, 21, 32, 20, 40, 28, 13, 36, 35, 9, 5, 38, 8, 12, 1, 22, 24, 16, 25, 27, 41, 18, 19, 14, 2, 15, 7, 10, 31, 26) @ 2.237902906662517 |
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+DEBUG @ Regression.buildModel: 1503 by 35
+DEBUG @ Regression.buildModel: 1503 by 35
+DEBUG @ Regression.buildModel: 1503 by 35
+DEBUG @ Regression.buildModel: 1503 by 35
+DEBUG @ Regression.buildModel: 1503 by 35
+DEBUG @ Regression.buildModel: 1503 by 35
+DEBUG @ Regression.buildModel: 1503 by 35
+DEBUG @ Regression.buildModel: 1503 by 35
+DEBUG @ Regression.validate: n_test = 300, rando = true
+LinkedHashMap(rSq -> 0.692983, rSqBar -> 0.653593, sst -> 13805.490439, sse -> 4238.515812, sde -> 3.764607, rse -> 3.999300, mse0 -> 14.128386, rmse -> 3.758775, mae -> 2.971469, smape -> 2.377337, bmae -> 8.445697, m -> 300.000000, dfr -> 34.000000, df -> 265.000000, fStat -> 17.592509, aic -> -754.401112, bic -> -624.768726, mape -> 2.378419, mase -> 0.907943, smapeC -> 2.610670, picp -> -1.000000, pinc -> -1.000000, ace -> -1.000000, pinaw -> -1.000000, mis -> -1.000000, wis -> -1.000000)
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+| forwardSelAll: (l = 34) ADD variable (3, chord_length) => cols = LinkedHashSet(0, 37, 23, 17, 34, 21, 32, 20, 40, 28, 13, 36, 35, 9, 5, 38, 8, 12, 1, 22, 24, 16, 25, 27, 41, 18, 19, 14, 2, 15, 7, 10, 31, 26, 3) @ 2.237895218649456 |
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+DEBUG @ Regression.buildModel: 1503 by 36
+DEBUG @ Regression.buildModel: 1503 by 36
+DEBUG @ Regression.buildModel: 1503 by 36
+DEBUG @ Regression.buildModel: 1503 by 36
+DEBUG @ Regression.buildModel: 1503 by 36
+DEBUG @ Regression.buildModel: 1503 by 36
+DEBUG @ Regression.buildModel: 1503 by 36
+DEBUG @ Regression.validate: n_test = 300, rando = true
+LinkedHashMap(rSq -> 0.690318, rSqBar -> 0.649261, sst -> 13805.490439, sse -> 4275.316649, sde -> 3.781182, rse -> 4.024224, mse0 -> 14.251055, rmse -> 3.775057, mae -> 2.979934, smape -> 2.384167, bmae -> 8.475885, m -> 300.000000, dfr -> 35.000000, df -> 264.000000, fStat -> 16.813898, aic -> -753.897410, bic -> -620.561241, mape -> 2.385927, mase -> 0.911188, smapeC -> 2.624167, picp -> -1.000000, pinc -> -1.000000, ace -> -1.000000, pinaw -> -1.000000, mis -> -1.000000, wis -> -1.000000)
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+| forwardSelAll: (l = 35) ADD variable (39, displacement_thickness_velocity_frequency) => cols = LinkedHashSet(0, 37, 23, 17, 34, 21, 32, 20, 40, 28, 13, 36, 35, 9, 5, 38, 8, 12, 1, 22, 24, 16, 25, 27, 41, 18, 19, 14, 2, 15, 7, 10, 31, 26, 3, 39) @ 2.2395122325393144 |
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+DEBUG @ Regression.buildModel: 1503 by 37
+DEBUG @ Regression.buildModel: 1503 by 37
+DEBUG @ Regression.buildModel: 1503 by 37
+DEBUG @ Regression.buildModel: 1503 by 37
+DEBUG @ Regression.buildModel: 1503 by 37
+DEBUG @ Regression.buildModel: 1503 by 37
+DEBUG @ Regression.validate: n_test = 300, rando = true
+LinkedHashMap(rSq -> 0.695481, rSqBar -> 0.653798, sst -> 13805.490439, sse -> 4204.028426, sde -> 3.749265, rse -> 3.998112, mse0 -> 14.013428, rmse -> 3.743451, mae -> 2.952623, smape -> 2.362905, bmae -> 8.492667, m -> 300.000000, dfr -> 36.000000, df -> 263.000000, fStat -> 16.684952, aic -> -749.074379, bic -> -612.034427, mape -> 2.364043, mase -> 0.912993, smapeC -> 2.609571, picp -> -1.000000, pinc -> -1.000000, ace -> -1.000000, pinaw -> -1.000000, mis -> -1.000000, wis -> -1.000000)
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+| forwardSelAll: (l = 36) ADD variable (33, velocity_attack_angle_frequency) => cols = LinkedHashSet(0, 37, 23, 17, 34, 21, 32, 20, 40, 28, 13, 36, 35, 9, 5, 38, 8, 12, 1, 22, 24, 16, 25, 27, 41, 18, 19, 14, 2, 15, 7, 10, 31, 26, 3, 39, 33) @ 2.241858022406646 |
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+DEBUG @ Regression.buildModel: 1503 by 38
+DEBUG @ Regression.buildModel: 1503 by 38
+DEBUG @ Regression.buildModel: 1503 by 38
+DEBUG @ Regression.buildModel: 1503 by 38
+DEBUG @ Regression.buildModel: 1503 by 38
+DEBUG @ Regression.validate: n_test = 300, rando = true
+LinkedHashMap(rSq -> 0.698316, rSqBar -> 0.655711, sst -> 13805.490439, sse -> 4164.900000, sde -> 3.731949, rse -> 3.987050, mse0 -> 13.883000, rmse -> 3.725990, mae -> 2.938898, smape -> 2.351080, bmae -> 8.493098, m -> 300.000000, dfr -> 37.000000, df -> 262.000000, fStat -> 16.390742, aic -> -745.481374, bic -> -604.737640, mape -> 2.352361, mase -> 0.913039, smapeC -> 2.604413, picp -> -1.000000, pinc -> -1.000000, ace -> -1.000000, pinaw -> -1.000000, mis -> -1.000000, wis -> -1.000000)
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+| forwardSelAll: (l = 37) ADD variable (30, displacement_thickness_chord_length) => cols = LinkedHashSet(0, 37, 23, 17, 34, 21, 32, 20, 40, 28, 13, 36, 35, 9, 5, 38, 8, 12, 1, 22, 24, 16, 25, 27, 41, 18, 19, 14, 2, 15, 7, 10, 31, 26, 3, 39, 33, 30) @ 2.244457352943949 |
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+DEBUG @ Regression.buildModel: 1503 by 39
+DEBUG @ Regression.buildModel: 1503 by 39
+DEBUG @ Regression.buildModel: 1503 by 39
+DEBUG @ Regression.buildModel: 1503 by 39
+DEBUG @ Regression.validate: n_test = 300, rando = true
+LinkedHashMap(rSq -> 0.696247, rSqBar -> 0.652023, sst -> 13805.490439, sse -> 4193.455808, sde -> 3.744673, rse -> 4.008351, mse0 -> 13.978186, rmse -> 3.738741, mae -> 2.950684, smape -> 2.360509, bmae -> 8.496061, m -> 300.000000, dfr -> 38.000000, df -> 261.000000, fStat -> 15.743459, aic -> -744.654644, bic -> -600.207127, mape -> 2.361799, mase -> 0.913358, smapeC -> 2.620509, picp -> -1.000000, pinc -> -1.000000, ace -> -1.000000, pinaw -> -1.000000, mis -> -1.000000, wis -> -1.000000)
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+| forwardSelAll: (l = 38) ADD variable (29, displacement_thickness_attack_angle) => cols = LinkedHashSet(0, 37, 23, 17, 34, 21, 32, 20, 40, 28, 13, 36, 35, 9, 5, 38, 8, 12, 1, 22, 24, 16, 25, 27, 41, 18, 19, 14, 2, 15, 7, 10, 31, 26, 3, 39, 33, 30, 29) @ 2.2466744515507027 |
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+DEBUG @ Regression.buildModel: 1503 by 40
+DEBUG @ Regression.buildModel: 1503 by 40
+DEBUG @ Regression.buildModel: 1503 by 40
+DEBUG @ Regression.validate: n_test = 300, rando = true
+LinkedHashMap(rSq -> 0.696218, rSqBar -> 0.650651, sst -> 13805.490439, sse -> 4193.857117, sde -> 3.744525, rse -> 4.016244, mse0 -> 13.979524, rmse -> 3.738920, mae -> 2.951131, smape -> 2.360807, bmae -> 8.494255, m -> 300.000000, dfr -> 39.000000, df -> 260.000000, fStat -> 15.278908, aic -> -742.670955, bic -> -594.519656, mape -> 2.361709, mase -> 0.913163, smapeC -> 2.627474, picp -> -1.000000, pinc -> -1.000000, ace -> -1.000000, pinaw -> -1.000000, mis -> -1.000000, wis -> -1.000000)
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+| forwardSelAll: (l = 39) ADD variable (4, velocity) => cols = LinkedHashSet(0, 37, 23, 17, 34, 21, 32, 20, 40, 28, 13, 36, 35, 9, 5, 38, 8, 12, 1, 22, 24, 16, 25, 27, 41, 18, 19, 14, 2, 15, 7, 10, 31, 26, 3, 39, 33, 30, 29, 4) @ 2.249454237363265 |
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+DEBUG @ Regression.buildModel: 1503 by 41
+DEBUG @ Regression.buildModel: 1503 by 41
+DEBUG @ Regression.validate: n_test = 300, rando = true
+LinkedHashMap(rSq -> 0.693384, rSqBar -> 0.646030, sst -> 13805.490439, sse -> 4232.982659, sde -> 3.761823, rse -> 4.042717, mse0 -> 14.109942, rmse -> 3.756320, mae -> 2.994765, smape -> 2.398299, bmae -> 8.544047, m -> 300.000000, dfr -> 40.000000, df -> 259.000000, fStat -> 14.642627, aic -> -742.575084, bic -> -590.720002, mape -> 2.398802, mase -> 0.918516, smapeC -> 2.671632, picp -> -1.000000, pinc -> -1.000000, ace -> -1.000000, pinaw -> -1.000000, mis -> -1.000000, wis -> -1.000000)
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+| forwardSelAll: (l = 40) ADD variable (6, log1p(frequency)) => cols = LinkedHashSet(0, 37, 23, 17, 34, 21, 32, 20, 40, 28, 13, 36, 35, 9, 5, 38, 8, 12, 1, 22, 24, 16, 25, 27, 41, 18, 19, 14, 2, 15, 7, 10, 31, 26, 3, 39, 33, 30, 29, 4, 6) @ 2.255072391298656 |
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+DEBUG @ Regression.buildModel: 1503 by 42
+DEBUG @ Regression.validate: n_test = 300, rando = true
+LinkedHashMap(rSq -> 0.700510, rSqBar -> 0.652917, sst -> 13805.490439, sse -> 4134.601340, sde -> 3.717816, rse -> 4.003197, mse0 -> 13.782004, rmse -> 3.712412, mae -> 2.957450, smape -> 2.365624, bmae -> 8.589598, m -> 300.000000, dfr -> 41.000000, df -> 258.000000, fStat -> 14.718671, aic -> -737.130109, bic -> -581.571245, mape -> 2.366257, mase -> 0.923413, smapeC -> 2.645624, picp -> -1.000000, pinc -> -1.000000, ace -> -1.000000, pinaw -> -1.000000, mis -> -1.000000, wis -> -1.000000)
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+| forwardSelAll: (l = 41) ADD variable (11, frequency^0.5) => cols = LinkedHashSet(0, 37, 23, 17, 34, 21, 32, 20, 40, 28, 13, 36, 35, 9, 5, 38, 8, 12, 1, 22, 24, 16, 25, 27, 41, 18, 19, 14, 2, 15, 7, 10, 31, 26, 3, 39, 33, 30, 29, 4, 6, 11) @ 2.202886439229349 |
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Forward-selection path: 0, 37, 23, 17, 34, 21, 32, 20, 40, 28, 13, 36, 35, 9, 5, 38, 8, 12, 1, 22, 24, 16, 25, 27, 41, 18, 19, 14, 2, 15, 7, 10, 31, 26, 3, 39, 33, 30, 29, 4, 6, 11
+DEBUG @ Regression.validate: n_test = 300, rando = true
+LinkedHashMap(rSq -> 0.682573, rSqBar -> 0.632130, sst -> 14855.887559, sse -> 4715.654094, sde -> 3.970948, rse -> 4.275246, mse0 -> 15.718847, rmse -> 3.964700, mae -> 2.928889, smape -> 2.338785, bmae -> 8.639433, m -> 300.000000, dfr -> 41.000000, df -> 258.000000, fStat -> 13.531373, aic -> -761.788584, bic -> -606.229720, mape -> 2.339148, mase -> 0.915407, smapeC -> 2.618785, picp -> -1.000000, pinc -> -1.000000, ace -> -1.000000, pinaw -> -1.000000, mis -> -1.000000, wis -> -1.000000)
+WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
+WARNING: sun.misc.Unsafe::objectFieldOffset has been called by scala.runtime.LazyVals$ (file:/Users/adithyalakshmikanth/scalation/target/bg-jobs/sbt_3b326253/target/0988085d/97ac0ce1/scala-library-3.8.4.jar)
+WARNING: Please consider reporting this to the maintainers of class scala.runtime.LazyVals$
+WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
+fname = Array(one, displacement_thickness_chord_length_frequency, chord_length_frequency, attack_angle^2.0, velocity_chord_length_frequency, x2^1.0x0^-1.0x4^-1.5, chord_length_attack_angle_frequency, displacement_thickness^2.0, displacement_thickness_velocity_attack_angle, displacement_thickness_frequency, chord_length^0.5, displacement_thickness_attack_angle_frequency, velocity_chord_length_attack_angle, log1p(velocity), displacement_thickness, displacement_thickness_chord_length_attack_angle, log1p(chord_length), attack_angle^0.5, frequency, attack_angle_frequency, chord_length_attack_angle, frequency^2.0, velocity_frequency, velocity_chord_length, displacement_thickness_velocity_chord_length, chord_length^2.0, velocity^2.0, velocity^0.5, attack_angle, displacement_thickness^0.5, log1p(attack_angle), log1p(displacement_thickness), displacement_thickness_velocity, velocity_attack_angle, chord_length, displacement_thickness_velocity_frequency, velocity_attack_angle_frequency, displacement_thickness_chord_length, displacement_thickness_attack_angle, velocity, log1p(frequency), frequency^0.5)
+SUMMARY
+    Parameters/Coefficients:
+    Var      Estimate    Std. Error 	 t value 	 Pr(>|t|) 	 VIF
+----------------------------------------------------------------------------------
+    x0	 -306781381583.134200	 73199.844347	 -4191011.392456	 0.000000	 NA
+    x1	 0.778829	 0.163956	 4.750225	 0.000002	 49.404723
+    x2	 -0.012697	 0.001625	 -7.811560	 0.000000	 78.221226
+    x3	 0.149866	 0.030203	 4.961911	 0.000001	 918.736227
+    x4	 0.000171	 0.000027	 6.343262	 0.000000	 82.956089
+    x5	 -2.273846	 0.268509	 -8.468401	 0.000000	 4.607287
+    x6	 -0.001591	 0.000197	 -8.093917	 0.000000	 14.290960
+    x7	 -175484.513010	 180533.277253	 -0.972034	 0.331034	 1027734.287045
+    x8	 -0.689617	 0.248508	 -2.775036	 0.005520	 626.958599
+    x9	 -0.188798	 0.045568	 -4.143212	 0.000034	 249.080000
+    x10	 -20.424704	 75.958745	 -0.268892	 0.788013	 8360.662326
+    x11	 0.007144	 0.001924	 3.712723	 0.000205	 93.887141
+    x12	 0.127505	 0.035206	 3.621642	 0.000293	 98.069754
+    x13	 587746954623.748400	 140239.858045	 4191012.190245	 0.000000	 Infinity
+    x14	 372621.189984	 385738.355410	 0.965995	 0.334047	 2113828633.411035
+    x15	 519.465237	 225.993563	 2.298584	 0.021529	 1785.653971
+    x16	 -3154.517992	 3536.879037	 -0.891893	 0.372450	 6768820.409409
+    x17	 -24.905906	 7.645197	 -3.257719	 0.001123	 9539.422403
+    x18	 0.005765	 0.001415	 4.074540	 0.000046	 1634.317348
+    x19	 0.000079	 0.000054	 1.452099	 0.146474	 102.854919
+    x20	 0.338317	 2.202550	 0.153603	 0.877923	 117.262197
+    x21	 -0.000000	 0.000000	 -2.299517	 0.021476	 110.641820
+    x22	 -0.000019	 0.000005	 -3.556642	 0.000376	 92.499468
+    x23	 -0.777845	 0.171560	 -4.533950	 0.000006	 69.834812
+    x24	 -57.037916	 25.849083	 -2.206574	 0.027344	 374.173548
+    x25	 -981.401409	 1131.138584	 -0.867623	 0.385601	 97814.396447
+    x26	 -37822094.262557	 9.024576	 -4191010.728598	 0.000000	 Infinity
+    x27	 -430762614619.590150	 102782.480128	 -4191012.068237	 0.000000	 Infinity
+    x28	 -3.551937	 0.840728	 -4.224835	 0.000024	 2033.542653
+    x29	 280.216184	 124.825464	 2.244864	 0.024777	 3838.241559
+    x30	 35.041500	 10.333594	 3.391027	 0.000696	 9008.280697
+    x31	 -373648.957371	 386448.358633	 -0.966879	 0.333604	 2030778053.458986
+    x32	 18.715158	 5.592299	 3.346595	 0.000818	 1285.264203
+    x33	 -0.015079	 0.004499	 -3.351723	 0.000803	 194.568621
+    x34	 3080.814914	 3330.036543	 0.925159	 0.354883	 7972833.707638
+    x35	 -0.000908	 0.000452	 -2.009006	 0.044537	 69.552127
+    x36	 0.000001	 0.000001	 1.668052	 0.095305	 94.951408
+    x37	 -6170.313718	 2631.660556	 -2.344647	 0.019045	 1361.947194
+    x38	 -28.414981	 23.055906	 -1.232438	 0.217785	 1842.198836
+    x39	 22725755689.058240	 5422.498648	 4191011.775629	 0.000000	 Infinity
+    x40	 8.661366	 1.863160	 4.648750	 0.000003	 334.878545
+    x41	 -0.925728	 0.208560	 -4.438663	 0.000009	 2326.092217
+
+    Residual standard error: 4.275246 on 258.0 degrees of freedom
+    Multiple R-squared:  0.682573,	Adjusted R-squared:  0.632130
+    F-statistic: 13.531372895193696 on 41.0 and 258.0 DF,  p-value: 0.0
+----------------------------------------------------------------------------------
+        
+Selected-model test metrics: VectorD(0.682573,	0.632130,	14855.9,	4715.65,	3.97095,	4.27525,	15.7188,	3.96470,	2.92889,	2.33879,	8.63943,	300.000,	41.0000,	258.000,	13.5314,	-761.789,	-606.230,	2.33915,	0.915407,	2.61879,	-1.00000,	-1.00000,	-1.00000,	-1.00000,	-1.00000,	-1.00000)
+[success] Total time: 116 s (0:01:56.0), completed Oct 6, 2026, 8:20:58 PM
+[info] running (fork) scalation.modeling.project2ConcreteSymbolic 
+readFileIntoArray: /Users/adithyalakshmikanth/scalation/data/concrete.csv
+readFileIntoArray: number lines = 1031
+readFileIntoArray: lines 0 = cement,blast_furnace_slag,fly_ash,water,superplasticizer,coarse_aggregate,fine_aggregate,age,compressive_strength_mpa
+readFileIntoArray: lines 1 = 540.0,0.0,0.0,162.0,2.5,1040.0,676.0,28,79.98611076
+load: read 999 data rows so far ...
+load: read in an 1030-by-9 matrix from concrete.csv
+Rows: 1030
+Columns: 9
+Target column index: 8
+Number of target values: 1030
+Number of predictors: 8
+Predictors: cement, slag, fly_ash, water, superplasticizer, coarse_aggregate, fine_aggregate, age
+Transformation powers: 0.5, 1.0, 2.0
+DEBUG @ SymbolicRegression.buildMatrix: add custom terms = ArraySeq()
+Concrete symbolic regression model created.
+DEBUG @ Regression.validate: n_test = 206, rando = true
+LinkedHashMap(rSq -> 0.837863, rSqBar -> 0.816364, sst -> 53458.602994, sse -> 8667.642874, sde -> 6.398348, rse -> 6.920082, mse0 -> 42.075936, rmse -> 6.486597, mae -> 5.024465, smape -> 15.914743, bmae -> 57.563681, m -> 206.000000, dfr -> 24.000000, df -> 181.000000, fStat -> 38.972359, aic -> -627.521551, bic -> -544.324647, mape -> 17.281557, mase -> 0.974427, smapeC -> 16.157462, picp -> -1.000000, pinc -> -1.000000, ace -> -1.000000, pinaw -> -1.000000, mis -> -1.000000, wis -> -1.000000)
+DEBUG @ FeatureSelection.selectFeatures: select features based on QoF metric with index qk = 19
+DEBUG @ Regression.buildModel: 1030 by 1
+DEBUG @ Regression.validate: n_test = 206, rando = true
+LinkedHashMap(rSq -> -0.012082, rSqBar -> -0.012082, sst -> 53458.602994, sse -> 54104.492619, sde -> 16.148488, rse -> 16.245749, mse0 -> 262.643168, rmse -> 16.206269, mae -> 13.086947, smape -> 39.948297, bmae -> 51.592511, m -> 206.000000, dfr -> 0.000000, df -> 205.000000, fStat -> 0.000000, aic -> -864.273490, bic -> -860.945614, mape -> 58.266495, mase -> 0.873348, smapeC -> 39.958006, picp -> -1.000000, pinc -> -1.000000, ace -> -1.000000, pinaw -> -1.000000, mis -> -1.000000, wis -> -1.000000)
+-------------------------------------------------------------------------------
+| forwardSelAll: (l = 0) INITIAL variable (0, one) => cols = LinkedHashSet(0) |
+-------------------------------------------------------------------------------
+DEBUG @ Regression.buildModel: 1030 by 2
+DEBUG @ Regression.buildModel: 1030 by 2
+DEBUG @ Regression.buildModel: 1030 by 2
+DEBUG @ Regression.buildModel: 1030 by 2
+DEBUG @ Regression.buildModel: 1030 by 2
+DEBUG @ Regression.buildModel: 1030 by 2
+DEBUG @ Regression.buildModel: 1030 by 2
+DEBUG @ Regression.buildModel: 1030 by 2
+DEBUG @ Regression.buildModel: 1030 by 2
+DEBUG @ Regression.buildModel: 1030 by 2
+DEBUG @ Regression.buildModel: 1030 by 2
+DEBUG @ Regression.buildModel: 1030 by 2
+DEBUG @ Regression.buildModel: 1030 by 2
+DEBUG @ Regression.buildModel: 1030 by 2
+DEBUG @ Regression.buildModel: 1030 by 2
+DEBUG @ Regression.buildModel: 1030 by 2
+DEBUG @ Regression.buildModel: 1030 by 2
+DEBUG @ Regression.buildModel: 1030 by 2
+DEBUG @ Regression.buildModel: 1030 by 2
+DEBUG @ Regression.buildModel: 1030 by 2
+DEBUG @ Regression.buildModel: 1030 by 2
+DEBUG @ Regression.buildModel: 1030 by 2
+DEBUG @ Regression.buildModel: 1030 by 2
+DEBUG @ Regression.buildModel: 1030 by 2
+DEBUG @ Regression.validate: n_test = 206, rando = true
+LinkedHashMap(rSq -> 0.216953, rSqBar -> 0.213115, sst -> 53458.602994, sse -> 41860.594003, sde -> 14.172228, rse -> 14.324768, mse0 -> 203.206767, rmse -> 14.255061, mae -> 11.285358, smape -> 34.966734, bmae -> 55.028913, m -> 206.000000, dfr -> 1.000000, df -> 204.000000, fStat -> 56.520790, aic -> -836.633255, bic -> -829.977503, mape -> 46.499602, mase -> 0.931519, smapeC -> 34.986151, picp -> -1.000000, pinc -> -1.000000, ace -> -1.000000, pinaw -> -1.000000, mis -> -1.000000, wis -> -1.000000)
+--------------------------------------------------------------------------------------------------------
+| forwardSelAll: (l = 1) ADD variable (16, age^0.5) => cols = LinkedHashSet(0, 16) @ 36.99279298928113 |
+--------------------------------------------------------------------------------------------------------
+DEBUG @ Regression.buildModel: 1030 by 3
+DEBUG @ Regression.buildModel: 1030 by 3
+DEBUG @ Regression.buildModel: 1030 by 3
+DEBUG @ Regression.buildModel: 1030 by 3
+DEBUG @ Regression.buildModel: 1030 by 3
+DEBUG @ Regression.buildModel: 1030 by 3
+DEBUG @ Regression.buildModel: 1030 by 3
+DEBUG @ Regression.buildModel: 1030 by 3
+DEBUG @ Regression.buildModel: 1030 by 3
+DEBUG @ Regression.buildModel: 1030 by 3
+DEBUG @ Regression.buildModel: 1030 by 3
+DEBUG @ Regression.buildModel: 1030 by 3
+DEBUG @ Regression.buildModel: 1030 by 3
+DEBUG @ Regression.buildModel: 1030 by 3
+DEBUG @ Regression.buildModel: 1030 by 3
+DEBUG @ Regression.buildModel: 1030 by 3
+DEBUG @ Regression.buildModel: 1030 by 3
+DEBUG @ Regression.buildModel: 1030 by 3
+DEBUG @ Regression.buildModel: 1030 by 3
+DEBUG @ Regression.buildModel: 1030 by 3
+DEBUG @ Regression.buildModel: 1030 by 3
+DEBUG @ Regression.buildModel: 1030 by 3
+DEBUG @ Regression.buildModel: 1030 by 3
+DEBUG @ Regression.validate: n_test = 206, rando = true
+LinkedHashMap(rSq -> 0.356072, rSqBar -> 0.349727, sst -> 53458.602994, sse -> 34423.514651, sde -> 12.886854, rse -> 13.022057, mse0 -> 167.104440, rmse -> 12.926888, mae -> 10.111217, smape -> 31.352638, bmae -> 52.307438, m -> 206.000000, dfr -> 2.000000, df -> 203.000000, fStat -> 56.126212, aic -> -814.241349, bic -> -804.257721, mape -> 39.562983, mase -> 0.885450, smapeC -> 31.381764, picp -> -1.000000, pinc -> -1.000000, ace -> -1.000000, pinaw -> -1.000000, mis -> -1.000000, wis -> -1.000000)
+--------------------------------------------------------------------------------------------------------------------
+| forwardSelAll: (l = 2) ADD variable (5, superplasticizer) => cols = LinkedHashSet(0, 16, 5) @ 28.939322746867653 |
+--------------------------------------------------------------------------------------------------------------------
+DEBUG @ Regression.buildModel: 1030 by 4
+DEBUG @ Regression.buildModel: 1030 by 4
+DEBUG @ Regression.buildModel: 1030 by 4
+DEBUG @ Regression.buildModel: 1030 by 4
+DEBUG @ Regression.buildModel: 1030 by 4
+DEBUG @ Regression.buildModel: 1030 by 4
+DEBUG @ Regression.buildModel: 1030 by 4
+DEBUG @ Regression.buildModel: 1030 by 4
+DEBUG @ Regression.buildModel: 1030 by 4
+DEBUG @ Regression.buildModel: 1030 by 4
+DEBUG @ Regression.buildModel: 1030 by 4
+DEBUG @ Regression.buildModel: 1030 by 4
+DEBUG @ Regression.buildModel: 1030 by 4
+DEBUG @ Regression.buildModel: 1030 by 4
+DEBUG @ Regression.buildModel: 1030 by 4
+DEBUG @ Regression.buildModel: 1030 by 4
+DEBUG @ Regression.buildModel: 1030 by 4
+DEBUG @ Regression.buildModel: 1030 by 4
+DEBUG @ Regression.buildModel: 1030 by 4
+DEBUG @ Regression.buildModel: 1030 by 4
+DEBUG @ Regression.buildModel: 1030 by 4
+DEBUG @ Regression.buildModel: 1030 by 4
+DEBUG @ Regression.validate: n_test = 206, rando = true
+LinkedHashMap(rSq -> 0.546873, rSqBar -> 0.540143, sst -> 53458.602994, sse -> 24223.534514, sde -> 10.835303, rse -> 10.950730, mse0 -> 117.589973, rmse -> 10.843891, mae -> 8.329726, smape -> 26.000158, bmae -> 52.229390, m -> 206.000000, dfr -> 3.000000, df -> 202.000000, fStat -> 81.263724, aic -> -775.461809, bic -> -762.150305, mape -> 31.091110, mase -> 0.884129, smapeC -> 26.038993, picp -> -1.000000, pinc -> -1.000000, ace -> -1.000000, pinaw -> -1.000000, mis -> -1.000000, wis -> -1.000000)
+-------------------------------------------------------------------------------------------------------------------
+| forwardSelAll: (l = 3) ADD variable (17, cement^2.0) => cols = LinkedHashSet(0, 16, 5, 17) @ 24.182993686512184 |
+-------------------------------------------------------------------------------------------------------------------
+DEBUG @ Regression.buildModel: 1030 by 5
+DEBUG @ Regression.buildModel: 1030 by 5
+DEBUG @ Regression.buildModel: 1030 by 5
+DEBUG @ Regression.buildModel: 1030 by 5
+DEBUG @ Regression.buildModel: 1030 by 5
+DEBUG @ Regression.buildModel: 1030 by 5
+DEBUG @ Regression.buildModel: 1030 by 5
+DEBUG @ Regression.buildModel: 1030 by 5
+DEBUG @ Regression.buildModel: 1030 by 5
+DEBUG @ Regression.buildModel: 1030 by 5
+DEBUG @ Regression.buildModel: 1030 by 5
+DEBUG @ Regression.buildModel: 1030 by 5
+DEBUG @ Regression.buildModel: 1030 by 5
+DEBUG @ Regression.buildModel: 1030 by 5
+DEBUG @ Regression.buildModel: 1030 by 5
+DEBUG @ Regression.buildModel: 1030 by 5
+DEBUG @ Regression.buildModel: 1030 by 5
+DEBUG @ Regression.buildModel: 1030 by 5
+DEBUG @ Regression.buildModel: 1030 by 5
+DEBUG @ Regression.buildModel: 1030 by 5
+DEBUG @ Regression.buildModel: 1030 by 5
+DEBUG @ Regression.validate: n_test = 206, rando = true
+LinkedHashMap(rSq -> 0.662029, rSqBar -> 0.655303, sst -> 53458.602994, sse -> 18067.445294, sde -> 9.327880, rse -> 9.480917, mse0 -> 87.706045, rmse -> 9.365151, mae -> 6.998204, smape -> 21.208041, bmae -> 55.107446, m -> 206.000000, dfr -> 4.000000, df -> 201.000000, fStat -> 98.431496, aic -> -743.734680, bic -> -727.095299, mape -> 24.668851, mase -> 0.932848, smapeC -> 21.256585, picp -> -1.000000, pinc -> -1.000000, ace -> -1.000000, pinaw -> -1.000000, mis -> -1.000000, wis -> -1.000000)
+--------------------------------------------------------------------------------------------------------------
+| forwardSelAll: (l = 4) ADD variable (8, age) => cols = LinkedHashSet(0, 16, 5, 17, 8) @ 19.664999983133814 |
+--------------------------------------------------------------------------------------------------------------
+DEBUG @ Regression.buildModel: 1030 by 6
+DEBUG @ Regression.buildModel: 1030 by 6
+DEBUG @ Regression.buildModel: 1030 by 6
+DEBUG @ Regression.buildModel: 1030 by 6
+DEBUG @ Regression.buildModel: 1030 by 6
+DEBUG @ Regression.buildModel: 1030 by 6
+DEBUG @ Regression.buildModel: 1030 by 6
+DEBUG @ Regression.buildModel: 1030 by 6
+DEBUG @ Regression.buildModel: 1030 by 6
+DEBUG @ Regression.buildModel: 1030 by 6
+DEBUG @ Regression.buildModel: 1030 by 6
+DEBUG @ Regression.buildModel: 1030 by 6
+DEBUG @ Regression.buildModel: 1030 by 6
+DEBUG @ Regression.buildModel: 1030 by 6
+DEBUG @ Regression.buildModel: 1030 by 6
+DEBUG @ Regression.buildModel: 1030 by 6
+DEBUG @ Regression.buildModel: 1030 by 6
+DEBUG @ Regression.buildModel: 1030 by 6
+DEBUG @ Regression.buildModel: 1030 by 6
+DEBUG @ Regression.buildModel: 1030 by 6
+DEBUG @ Regression.validate: n_test = 206, rando = true
+LinkedHashMap(rSq -> 0.715859, rSqBar -> 0.708756, sst -> 53458.602994, sse -> 15189.775578, sde -> 8.579228, rse -> 8.714865, mse0 -> 73.736775, rmse -> 8.587012, mae -> 6.354531, smape -> 19.119593, bmae -> 56.364601, m -> 206.000000, dfr -> 5.000000, df -> 200.000000, fStat -> 100.775228, aic -> -724.047563, bic -> -704.080306, mape -> 21.776415, mase -> 0.954129, smapeC -> 19.177846, picp -> -1.000000, pinc -> -1.000000, ace -> -1.000000, pinaw -> -1.000000, mis -> -1.000000, wis -> -1.000000)
+-----------------------------------------------------------------------------------------------------------------------
+| forwardSelAll: (l = 5) ADD variable (18, slag^2.0) => cols = LinkedHashSet(0, 16, 5, 17, 8, 18) @ 17.38556739575372 |
+-----------------------------------------------------------------------------------------------------------------------
+DEBUG @ Regression.buildModel: 1030 by 7
+DEBUG @ Regression.buildModel: 1030 by 7
+DEBUG @ Regression.buildModel: 1030 by 7
+DEBUG @ Regression.buildModel: 1030 by 7
+DEBUG @ Regression.buildModel: 1030 by 7
+DEBUG @ Regression.buildModel: 1030 by 7
+DEBUG @ Regression.buildModel: 1030 by 7
+DEBUG @ Regression.buildModel: 1030 by 7
+DEBUG @ Regression.buildModel: 1030 by 7
+DEBUG @ Regression.buildModel: 1030 by 7
+DEBUG @ Regression.buildModel: 1030 by 7
+DEBUG @ Regression.buildModel: 1030 by 7
+DEBUG @ Regression.buildModel: 1030 by 7
+DEBUG @ Regression.buildModel: 1030 by 7
+DEBUG @ Regression.buildModel: 1030 by 7
+DEBUG @ Regression.buildModel: 1030 by 7
+DEBUG @ Regression.buildModel: 1030 by 7
+DEBUG @ Regression.buildModel: 1030 by 7
+DEBUG @ Regression.buildModel: 1030 by 7
+DEBUG @ Regression.validate: n_test = 206, rando = true
+LinkedHashMap(rSq -> 0.713396, rSqBar -> 0.704755, sst -> 53458.602994, sse -> 15321.457860, sde -> 8.616066, rse -> 8.774523, mse0 -> 74.376009, rmse -> 8.624153, mae -> 6.339338, smape -> 18.960485, bmae -> 56.181787, m -> 206.000000, dfr -> 6.000000, df -> 199.000000, fStat -> 82.556242, aic -> -723.788608, bic -> -700.493474, mape -> 21.749873, mase -> 0.951034, smapeC -> 19.028446, picp -> -1.000000, pinc -> -1.000000, ace -> -1.000000, pinaw -> -1.000000, mis -> -1.000000, wis -> -1.000000)
+-------------------------------------------------------------------------------------------------------------------------------
+| forwardSelAll: (l = 6) ADD variable (19, fly_ash^2.0) => cols = LinkedHashSet(0, 16, 5, 17, 8, 18, 19) @ 16.881978817174637 |
+-------------------------------------------------------------------------------------------------------------------------------
+DEBUG @ Regression.buildModel: 1030 by 8
+DEBUG @ Regression.buildModel: 1030 by 8
+DEBUG @ Regression.buildModel: 1030 by 8
+DEBUG @ Regression.buildModel: 1030 by 8
+DEBUG @ Regression.buildModel: 1030 by 8
+DEBUG @ Regression.buildModel: 1030 by 8
+DEBUG @ Regression.buildModel: 1030 by 8
+DEBUG @ Regression.buildModel: 1030 by 8
+DEBUG @ Regression.buildModel: 1030 by 8
+DEBUG @ Regression.buildModel: 1030 by 8
+DEBUG @ Regression.buildModel: 1030 by 8
+DEBUG @ Regression.buildModel: 1030 by 8
+DEBUG @ Regression.buildModel: 1030 by 8
+DEBUG @ Regression.buildModel: 1030 by 8
+DEBUG @ Regression.buildModel: 1030 by 8
+DEBUG @ Regression.buildModel: 1030 by 8
+DEBUG @ Regression.buildModel: 1030 by 8
+DEBUG @ Regression.buildModel: 1030 by 8
+DEBUG @ Regression.validate: n_test = 206, rando = true
+LinkedHashMap(rSq -> 0.735899, rSqBar -> 0.726562, sst -> 53458.602994, sse -> 14118.493951, sde -> 8.265651, rse -> 8.444260, mse0 -> 68.536378, rmse -> 8.278670, mae -> 6.191279, smape -> 18.658742, bmae -> 56.522901, m -> 206.000000, dfr -> 7.000000, df -> 198.000000, fStat -> 78.815990, aic -> -712.656272, bic -> -686.033262, mape -> 20.901382, mase -> 0.956808, smapeC -> 18.736411, picp -> -1.000000, pinc -> -1.000000, ace -> -1.000000, pinaw -> -1.000000, mis -> -1.000000, wis -> -1.000000)
+--------------------------------------------------------------------------------------------------------------------------------
+| forwardSelAll: (l = 7) ADD variable (12, water^0.5) => cols = LinkedHashSet(0, 16, 5, 17, 8, 18, 19, 12) @ 16.73018986732097 |
+--------------------------------------------------------------------------------------------------------------------------------
+DEBUG @ Regression.buildModel: 1030 by 9
+DEBUG @ Regression.buildModel: 1030 by 9
+DEBUG @ Regression.buildModel: 1030 by 9
+DEBUG @ Regression.buildModel: 1030 by 9
+DEBUG @ Regression.buildModel: 1030 by 9
+DEBUG @ Regression.buildModel: 1030 by 9
+DEBUG @ Regression.buildModel: 1030 by 9
+DEBUG @ Regression.buildModel: 1030 by 9
+DEBUG @ Regression.buildModel: 1030 by 9
+DEBUG @ Regression.buildModel: 1030 by 9
+DEBUG @ Regression.buildModel: 1030 by 9
+DEBUG @ Regression.buildModel: 1030 by 9
+DEBUG @ Regression.buildModel: 1030 by 9
+DEBUG @ Regression.buildModel: 1030 by 9
+DEBUG @ Regression.buildModel: 1030 by 9
+DEBUG @ Regression.buildModel: 1030 by 9
+DEBUG @ Regression.buildModel: 1030 by 9
+DEBUG @ Regression.validate: n_test = 206, rando = true
+LinkedHashMap(rSq -> 0.766665, rSqBar -> 0.757190, sst -> 53458.602994, sse -> 12473.750608, sde -> 7.760177, rse -> 7.957294, mse0 -> 60.552187, rmse -> 7.781529, mae -> 5.862975, smape -> 17.735457, bmae -> 56.662939, m -> 206.000000, dfr -> 8.000000, df -> 197.000000, fStat -> 80.910066, aic -> -698.222197, bic -> -668.271312, mape -> 19.705551, mase -> 0.959179, smapeC -> 17.822836, picp -> -1.000000, pinc -> -1.000000, ace -> -1.000000, pinaw -> -1.000000, mis -> -1.000000, wis -> -1.000000)
+------------------------------------------------------------------------------------------------------------------------------------------------
+| forwardSelAll: (l = 8) ADD variable (21, superplasticizer^2.0) => cols = LinkedHashSet(0, 16, 5, 17, 8, 18, 19, 12, 21) @ 16.657770412726858 |
+------------------------------------------------------------------------------------------------------------------------------------------------
+DEBUG @ Regression.buildModel: 1030 by 10
+DEBUG @ Regression.buildModel: 1030 by 10
+DEBUG @ Regression.buildModel: 1030 by 10
+DEBUG @ Regression.buildModel: 1030 by 10
+DEBUG @ Regression.buildModel: 1030 by 10
+DEBUG @ Regression.buildModel: 1030 by 10
+DEBUG @ Regression.buildModel: 1030 by 10
+DEBUG @ Regression.buildModel: 1030 by 10
+DEBUG @ Regression.buildModel: 1030 by 10
+DEBUG @ Regression.buildModel: 1030 by 10
+DEBUG @ Regression.buildModel: 1030 by 10
+DEBUG @ Regression.buildModel: 1030 by 10
+DEBUG @ Regression.buildModel: 1030 by 10
+DEBUG @ Regression.buildModel: 1030 by 10
+DEBUG @ Regression.buildModel: 1030 by 10
+DEBUG @ Regression.buildModel: 1030 by 10
+DEBUG @ Regression.validate: n_test = 206, rando = true
+LinkedHashMap(rSq -> 0.766982, rSqBar -> 0.756282, sst -> 53458.602994, sse -> 12456.836397, sde -> 7.753662, rse -> 7.972157, mse0 -> 60.470080, rmse -> 7.776251, mae -> 5.881349, smape -> 17.797671, bmae -> 56.906448, m -> 206.000000, dfr -> 9.000000, df -> 196.000000, fStat -> 71.681712, aic -> -696.274403, bic -> -662.995641, mape -> 19.664039, mase -> 0.963301, smapeC -> 17.894758, picp -> -1.000000, pinc -> -1.000000, ace -> -1.000000, pinaw -> -1.000000, mis -> -1.000000, wis -> -1.000000)
+-------------------------------------------------------------------------------------------------------------------------------------
+| forwardSelAll: (l = 9) ADD variable (3, fly_ash) => cols = LinkedHashSet(0, 16, 5, 17, 8, 18, 19, 12, 21, 3) @ 16.324539995789607 |
+-------------------------------------------------------------------------------------------------------------------------------------
+DEBUG @ Regression.buildModel: 1030 by 11
+DEBUG @ Regression.buildModel: 1030 by 11
+DEBUG @ Regression.buildModel: 1030 by 11
+DEBUG @ Regression.buildModel: 1030 by 11
+DEBUG @ Regression.buildModel: 1030 by 11
+DEBUG @ Regression.buildModel: 1030 by 11
+DEBUG @ Regression.buildModel: 1030 by 11
+DEBUG @ Regression.buildModel: 1030 by 11
+DEBUG @ Regression.buildModel: 1030 by 11
+DEBUG @ Regression.buildModel: 1030 by 11
+DEBUG @ Regression.buildModel: 1030 by 11
+DEBUG @ Regression.buildModel: 1030 by 11
+DEBUG @ Regression.buildModel: 1030 by 11
+DEBUG @ Regression.buildModel: 1030 by 11
+DEBUG @ Regression.buildModel: 1030 by 11
+DEBUG @ Regression.validate: n_test = 206, rando = true
+LinkedHashMap(rSq -> 0.770039, rSqBar -> 0.758246, sst -> 53458.602994, sse -> 12293.419269, sde -> 7.701317, rse -> 7.939973, mse0 -> 59.676793, rmse -> 7.725076, mae -> 5.844917, smape -> 17.735521, bmae -> 56.968180, m -> 206.000000, dfr -> 10.000000, df -> 195.000000, fStat -> 65.296812, aic -> -692.688091, bic -> -656.081453, mape -> 19.585618, mase -> 0.964346, smapeC -> 17.842317, picp -> -1.000000, pinc -> -1.000000, ace -> -1.000000, pinaw -> -1.000000, mis -> -1.000000, wis -> -1.000000)
+-------------------------------------------------------------------------------------------------------------------------------------------------------
+| forwardSelAll: (l = 10) ADD variable (22, coarse_aggregate^2.0) => cols = LinkedHashSet(0, 16, 5, 17, 8, 18, 19, 12, 21, 3, 22) @ 16.26787812502147 |
+-------------------------------------------------------------------------------------------------------------------------------------------------------
+DEBUG @ Regression.buildModel: 1030 by 12
+DEBUG @ Regression.buildModel: 1030 by 12
+DEBUG @ Regression.buildModel: 1030 by 12
+DEBUG @ Regression.buildModel: 1030 by 12
+DEBUG @ Regression.buildModel: 1030 by 12
+DEBUG @ Regression.buildModel: 1030 by 12
+DEBUG @ Regression.buildModel: 1030 by 12
+DEBUG @ Regression.buildModel: 1030 by 12
+DEBUG @ Regression.buildModel: 1030 by 12
+DEBUG @ Regression.buildModel: 1030 by 12
+DEBUG @ Regression.buildModel: 1030 by 12
+DEBUG @ Regression.buildModel: 1030 by 12
+DEBUG @ Regression.buildModel: 1030 by 12
+DEBUG @ Regression.buildModel: 1030 by 12
+DEBUG @ Regression.validate: n_test = 206, rando = true
+LinkedHashMap(rSq -> 0.774735, rSqBar -> 0.761962, sst -> 53458.602994, sse -> 12042.358066, sde -> 7.624833, rse -> 7.878706, mse0 -> 58.458049, rmse -> 7.645786, mae -> 5.850058, smape -> 17.939403, bmae -> 58.088107, m -> 206.000000, dfr -> 11.000000, df -> 194.000000, fStat -> 60.655226, aic -> -689.424263, bic -> -649.489749, mape -> 19.664179, mase -> 0.983304, smapeC -> 18.055908, picp -> -1.000000, pinc -> -1.000000, ace -> -1.000000, pinaw -> -1.000000, mis -> -1.000000, wis -> -1.000000)
+----------------------------------------------------------------------------------------------------------------------------------------------------------
+| forwardSelAll: (l = 11) ADD variable (15, fine_aggregate^0.5) => cols = LinkedHashSet(0, 16, 5, 17, 8, 18, 19, 12, 21, 3, 22, 15) @ 16.083555735566893 |
+----------------------------------------------------------------------------------------------------------------------------------------------------------
+DEBUG @ Regression.buildModel: 1030 by 13
+DEBUG @ Regression.buildModel: 1030 by 13
+DEBUG @ Regression.buildModel: 1030 by 13
+DEBUG @ Regression.buildModel: 1030 by 13
+DEBUG @ Regression.buildModel: 1030 by 13
+DEBUG @ Regression.buildModel: 1030 by 13
+DEBUG @ Regression.buildModel: 1030 by 13
+DEBUG @ Regression.buildModel: 1030 by 13
+DEBUG @ Regression.buildModel: 1030 by 13
+DEBUG @ Regression.buildModel: 1030 by 13
+DEBUG @ Regression.buildModel: 1030 by 13
+DEBUG @ Regression.buildModel: 1030 by 13
+DEBUG @ Regression.buildModel: 1030 by 13
+DEBUG @ Regression.validate: n_test = 206, rando = true
+LinkedHashMap(rSq -> 0.775349, rSqBar -> 0.761382, sst -> 53458.602994, sse -> 12009.506335, sde -> 7.616806, rse -> 7.888309, mse0 -> 58.298574, rmse -> 7.635350, mae -> 5.842632, smape -> 17.959301, bmae -> 58.094606, m -> 206.000000, dfr -> 12.000000, df -> 193.000000, fStat -> 55.509329, aic -> -687.202817, bic -> -643.940426, mape -> 19.690892, mase -> 0.983414, smapeC -> 18.085515, picp -> -1.000000, pinc -> -1.000000, ace -> -1.000000, pinaw -> -1.000000, mis -> -1.000000, wis -> -1.000000)
+-------------------------------------------------------------------------------------------------------------------------------------------------------
+| forwardSelAll: (l = 12) ADD variable (11, fly_ash^0.5) => cols = LinkedHashSet(0, 16, 5, 17, 8, 18, 19, 12, 21, 3, 22, 15, 11) @ 16.013197128881686 |
+-------------------------------------------------------------------------------------------------------------------------------------------------------
+DEBUG @ Regression.buildModel: 1030 by 14
+DEBUG @ Regression.buildModel: 1030 by 14
+DEBUG @ Regression.buildModel: 1030 by 14
+DEBUG @ Regression.buildModel: 1030 by 14
+DEBUG @ Regression.buildModel: 1030 by 14
+DEBUG @ Regression.buildModel: 1030 by 14
+DEBUG @ Regression.buildModel: 1030 by 14
+DEBUG @ Regression.buildModel: 1030 by 14
+DEBUG @ Regression.buildModel: 1030 by 14
+DEBUG @ Regression.buildModel: 1030 by 14
+DEBUG @ Regression.buildModel: 1030 by 14
+DEBUG @ Regression.buildModel: 1030 by 14
+DEBUG @ Regression.validate: n_test = 206, rando = true
+LinkedHashMap(rSq -> 0.781858, rSqBar -> 0.767088, sst -> 53458.602994, sse -> 11661.546818, sde -> 7.501188, rse -> 7.793409, mse0 -> 56.609451, rmse -> 7.523925, mae -> 5.721161, smape -> 17.461379, bmae -> 57.959495, m -> 206.000000, dfr -> 13.000000, df -> 192.000000, fStat -> 52.935548, aic -> -681.714427, bic -> -635.124161, mape -> 19.186440, mase -> 0.981127, smapeC -> 17.597301, picp -> -1.000000, pinc -> -1.000000, ace -> -1.000000, pinaw -> -1.000000, mis -> -1.000000, wis -> -1.000000)
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+| forwardSelAll: (l = 13) ADD variable (13, superplasticizer^0.5) => cols = LinkedHashSet(0, 16, 5, 17, 8, 18, 19, 12, 21, 3, 22, 15, 11, 13) @ 15.966213330324983 |
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+DEBUG @ Regression.buildModel: 1030 by 15
+DEBUG @ Regression.buildModel: 1030 by 15
+DEBUG @ Regression.buildModel: 1030 by 15
+DEBUG @ Regression.buildModel: 1030 by 15
+DEBUG @ Regression.buildModel: 1030 by 15
+DEBUG @ Regression.buildModel: 1030 by 15
+DEBUG @ Regression.buildModel: 1030 by 15
+DEBUG @ Regression.buildModel: 1030 by 15
+DEBUG @ Regression.buildModel: 1030 by 15
+DEBUG @ Regression.buildModel: 1030 by 15
+DEBUG @ Regression.buildModel: 1030 by 15
+DEBUG @ Regression.validate: n_test = 206, rando = true
+LinkedHashMap(rSq -> 0.780477, rSqBar -> 0.764386, sst -> 53458.602994, sse -> 11735.390288, sde -> 7.525530, rse -> 7.838484, mse0 -> 56.967914, rmse -> 7.547709, mae -> 5.724699, smape -> 17.440163, bmae -> 58.006435, m -> 206.000000, dfr -> 14.000000, df -> 191.000000, fStat -> 48.504891, aic -> -680.582517, bic -> -630.664374, mape -> 19.164232, mase -> 0.981921, smapeC -> 17.585794, picp -> -1.000000, pinc -> -1.000000, ace -> -1.000000, pinaw -> -1.000000, mis -> -1.000000, wis -> -1.000000)
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+| forwardSelAll: (l = 14) ADD variable (14, coarse_aggregate^0.5) => cols = LinkedHashSet(0, 16, 5, 17, 8, 18, 19, 12, 21, 3, 22, 15, 11, 13, 14) @ 15.939982359906553 |
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+DEBUG @ Regression.buildModel: 1030 by 16
+DEBUG @ Regression.buildModel: 1030 by 16
+DEBUG @ Regression.buildModel: 1030 by 16
+DEBUG @ Regression.buildModel: 1030 by 16
+DEBUG @ Regression.buildModel: 1030 by 16
+DEBUG @ Regression.buildModel: 1030 by 16
+DEBUG @ Regression.buildModel: 1030 by 16
+DEBUG @ Regression.buildModel: 1030 by 16
+DEBUG @ Regression.buildModel: 1030 by 16
+DEBUG @ Regression.buildModel: 1030 by 16
+DEBUG @ Regression.validate: n_test = 206, rando = true
+LinkedHashMap(rSq -> 0.779043, rSqBar -> 0.761598, sst -> 53458.602994, sse -> 11812.078953, sde -> 7.551787, rse -> 7.884722, mse0 -> 57.340189, rmse -> 7.572330, mae -> 5.751833, smape -> 17.501044, bmae -> 58.029425, m -> 206.000000, dfr -> 15.000000, df -> 190.000000, fStat -> 44.659593, aic -> -679.462391, bic -> -626.216372, mape -> 19.225030, mase -> 0.982311, smapeC -> 17.656384, picp -> -1.000000, pinc -> -1.000000, ace -> -1.000000, pinaw -> -1.000000, mis -> -1.000000, wis -> -1.000000)
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+| forwardSelAll: (l = 15) ADD variable (6, coarse_aggregate) => cols = LinkedHashSet(0, 16, 5, 17, 8, 18, 19, 12, 21, 3, 22, 15, 11, 13, 14, 6) @ 15.834727915308756 |
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+DEBUG @ Regression.buildModel: 1030 by 17
+DEBUG @ Regression.buildModel: 1030 by 17
+DEBUG @ Regression.buildModel: 1030 by 17
+DEBUG @ Regression.buildModel: 1030 by 17
+DEBUG @ Regression.buildModel: 1030 by 17
+DEBUG @ Regression.buildModel: 1030 by 17
+DEBUG @ Regression.buildModel: 1030 by 17
+DEBUG @ Regression.buildModel: 1030 by 17
+DEBUG @ Regression.buildModel: 1030 by 17
+DEBUG @ Regression.validate: n_test = 206, rando = true
+LinkedHashMap(rSq -> 0.780045, rSqBar -> 0.761424, sst -> 53458.602994, sse -> 11758.503015, sde -> 7.534581, rse -> 7.887604, mse0 -> 57.080112, rmse -> 7.555138, mae -> 5.719231, smape -> 17.404922, bmae -> 57.911411, m -> 206.000000, dfr -> 16.000000, df -> 189.000000, fStat -> 41.891594, aic -> -676.987301, bic -> -620.413407, mape -> 19.136277, mase -> 0.980313, smapeC -> 17.569970, picp -> -1.000000, pinc -> -1.000000, ace -> -1.000000, pinaw -> -1.000000, mis -> -1.000000, wis -> -1.000000)
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
+| forwardSelAll: (l = 16) ADD variable (4, water) => cols = LinkedHashSet(0, 16, 5, 17, 8, 18, 19, 12, 21, 3, 22, 15, 11, 13, 14, 6, 4) @ 15.85583158633434 |
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
+DEBUG @ Regression.buildModel: 1030 by 18
+DEBUG @ Regression.buildModel: 1030 by 18
+DEBUG @ Regression.buildModel: 1030 by 18
+DEBUG @ Regression.buildModel: 1030 by 18
+DEBUG @ Regression.buildModel: 1030 by 18
+DEBUG @ Regression.buildModel: 1030 by 18
+DEBUG @ Regression.buildModel: 1030 by 18
+DEBUG @ Regression.buildModel: 1030 by 18
+DEBUG @ Regression.validate: n_test = 206, rando = true
+LinkedHashMap(rSq -> 0.796714, rSqBar -> 0.778332, sst -> 53458.602994, sse -> 10867.389772, sde -> 7.246155, rse -> 7.602977, mse0 -> 52.754319, rmse -> 7.263217, mae -> 5.663935, smape -> 17.485204, bmae -> 57.458207, m -> 206.000000, dfr -> 17.000000, df -> 188.000000, fStat -> 43.341476, aic -> -666.052209, bic -> -606.150438, mape -> 19.130112, mase -> 0.972641, smapeC -> 17.659961, picp -> -1.000000, pinc -> -1.000000, ace -> -1.000000, pinaw -> -1.000000, mis -> -1.000000, wis -> -1.000000)
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+| forwardSelAll: (l = 17) ADD variable (20, water^2.0) => cols = LinkedHashSet(0, 16, 5, 17, 8, 18, 19, 12, 21, 3, 22, 15, 11, 13, 14, 6, 4, 20) @ 15.70680203657632 |
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+DEBUG @ Regression.buildModel: 1030 by 19
+DEBUG @ Regression.buildModel: 1030 by 19
+DEBUG @ Regression.buildModel: 1030 by 19
+DEBUG @ Regression.buildModel: 1030 by 19
+DEBUG @ Regression.buildModel: 1030 by 19
+DEBUG @ Regression.buildModel: 1030 by 19
+DEBUG @ Regression.buildModel: 1030 by 19
+DEBUG @ Regression.validate: n_test = 206, rando = true
+LinkedHashMap(rSq -> 0.801748, rSqBar -> 0.782665, sst -> 53458.602994, sse -> 10598.273683, sde -> 7.166324, rse -> 7.528297, mse0 -> 51.447931, rmse -> 7.172721, mae -> 5.661110, smape -> 18.038463, bmae -> 57.611530, m -> 206.000000, dfr -> 18.000000, df -> 187.000000, fStat -> 42.013559, aic -> -661.686491, bic -> -598.456843, mape -> 19.617806, mase -> 0.975237, smapeC -> 18.222929, picp -> -1.000000, pinc -> -1.000000, ace -> -1.000000, pinaw -> -1.000000, mis -> -1.000000, wis -> -1.000000)
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+| forwardSelAll: (l = 18) ADD variable (10, slag^0.5) => cols = LinkedHashSet(0, 16, 5, 17, 8, 18, 19, 12, 21, 3, 22, 15, 11, 13, 14, 6, 4, 20, 10) @ 15.799939514756987 |
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+DEBUG @ Regression.buildModel: 1030 by 20
+DEBUG @ Regression.buildModel: 1030 by 20
+DEBUG @ Regression.buildModel: 1030 by 20
+DEBUG @ Regression.buildModel: 1030 by 20
+DEBUG @ Regression.buildModel: 1030 by 20
+DEBUG @ Regression.buildModel: 1030 by 20
+DEBUG @ Regression.validate: n_test = 206, rando = true
+LinkedHashMap(rSq -> 0.824345, rSqBar -> 0.806401, sst -> 53458.602994, sse -> 9390.291267, sde -> 6.717026, rse -> 7.105310, mse0 -> 45.583938, rmse -> 6.751588, mae -> 5.199634, smape -> 16.149371, bmae -> 57.033995, m -> 206.000000, dfr -> 19.000000, df -> 186.000000, fStat -> 45.941661, aic -> -646.038550, bic -> -579.481027, mape -> 17.737535, mase -> 0.965460, smapeC -> 16.343546, picp -> -1.000000, pinc -> -1.000000, ace -> -1.000000, pinaw -> -1.000000, mis -> -1.000000, wis -> -1.000000)
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+| forwardSelAll: (l = 19) ADD variable (1, cement) => cols = LinkedHashSet(0, 16, 5, 17, 8, 18, 19, 12, 21, 3, 22, 15, 11, 13, 14, 6, 4, 20, 10, 1) @ 15.756979299088439 |
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+DEBUG @ Regression.buildModel: 1030 by 21
+DEBUG @ Regression.buildModel: 1030 by 21
+DEBUG @ Regression.buildModel: 1030 by 21
+DEBUG @ Regression.buildModel: 1030 by 21
+DEBUG @ Regression.buildModel: 1030 by 21
+DEBUG @ Regression.validate: n_test = 206, rando = true
+LinkedHashMap(rSq -> 0.827990, rSqBar -> 0.809394, sst -> 53458.602994, sse -> 9195.420392, sde -> 6.646797, rse -> 7.050176, mse0 -> 44.637963, rmse -> 6.681165, mae -> 5.104737, smape -> 15.866553, bmae -> 57.384661, m -> 206.000000, dfr -> 20.000000, df -> 185.000000, fStat -> 44.525908, aic -> -642.065130, bic -> -572.179731, mape -> 17.161031, mase -> 0.971396, smapeC -> 16.070437, picp -> -1.000000, pinc -> -1.000000, ace -> -1.000000, pinaw -> -1.000000, mis -> -1.000000, wis -> -1.000000)
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+| forwardSelAll: (l = 20) ADD variable (2, slag) => cols = LinkedHashSet(0, 16, 5, 17, 8, 18, 19, 12, 21, 3, 22, 15, 11, 13, 14, 6, 4, 20, 10, 1, 2) @ 15.81866158364378 |
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+DEBUG @ Regression.buildModel: 1030 by 22
+DEBUG @ Regression.buildModel: 1030 by 22
+DEBUG @ Regression.buildModel: 1030 by 22
+DEBUG @ Regression.buildModel: 1030 by 22
+DEBUG @ Regression.validate: n_test = 206, rando = true
+LinkedHashMap(rSq -> 0.827489, rSqBar -> 0.807800, sst -> 53458.602994, sse -> 9222.195458, sde -> 6.656817, rse -> 7.079592, mse0 -> 44.767939, rmse -> 6.690885, mae -> 5.125695, smape -> 15.914668, bmae -> 57.341349, m -> 206.000000, dfr -> 21.000000, df -> 184.000000, fStat -> 42.028516, aic -> -640.404904, bic -> -567.191628, mape -> 17.244956, mase -> 0.970663, smapeC -> 16.128260, picp -> -1.000000, pinc -> -1.000000, ace -> -1.000000, pinaw -> -1.000000, mis -> -1.000000, wis -> -1.000000)
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+| forwardSelAll: (l = 21) ADD variable (9, cement^0.5) => cols = LinkedHashSet(0, 16, 5, 17, 8, 18, 19, 12, 21, 3, 22, 15, 11, 13, 14, 6, 4, 20, 10, 1, 2, 9) @ 15.882891816940333 |
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+DEBUG @ Regression.buildModel: 1030 by 23
+DEBUG @ Regression.buildModel: 1030 by 23
+DEBUG @ Regression.buildModel: 1030 by 23
+DEBUG @ Regression.validate: n_test = 206, rando = true
+LinkedHashMap(rSq -> 0.830561, rSqBar -> 0.810192, sst -> 53458.602994, sse -> 9057.951118, sde -> 6.588115, rse -> 7.035410, mse0 -> 43.970636, rmse -> 6.631036, mae -> 5.104041, smape -> 15.984498, bmae -> 57.901363, m -> 206.000000, dfr -> 22.000000, df -> 183.000000, fStat -> 40.774419, aic -> -636.687806, bic -> -560.146654, mape -> 17.304601, mase -> 0.980143, smapeC -> 16.207799, picp -> -1.000000, pinc -> -1.000000, ace -> -1.000000, pinaw -> -1.000000, mis -> -1.000000, wis -> -1.000000)
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+| forwardSelAll: (l = 22) ADD variable (23, fine_aggregate^2.0) => cols = LinkedHashSet(0, 16, 5, 17, 8, 18, 19, 12, 21, 3, 22, 15, 11, 13, 14, 6, 4, 20, 10, 1, 2, 9, 23) @ 16.29537741643037 |
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+DEBUG @ Regression.buildModel: 1030 by 24
+DEBUG @ Regression.buildModel: 1030 by 24
+DEBUG @ Regression.validate: n_test = 206, rando = true
+LinkedHashMap(rSq -> 0.837675, rSqBar -> 0.817161, sst -> 53458.602994, sse -> 8677.689011, sde -> 6.436961, rse -> 6.905042, mse0 -> 42.124704, rmse -> 6.490355, mae -> 5.032823, smape -> 16.020239, bmae -> 57.497308, m -> 206.000000, dfr -> 23.000000, df -> 182.000000, fStat -> 40.834987, aic -> -630.991871, bic -> -551.122843, mape -> 17.182299, mase -> 0.973303, smapeC -> 16.253249, picp -> -1.000000, pinc -> -1.000000, ace -> -1.000000, pinaw -> -1.000000, mis -> -1.000000, wis -> -1.000000)
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+| forwardSelAll: (l = 23) ADD variable (24, age^2.0) => cols = LinkedHashSet(0, 16, 5, 17, 8, 18, 19, 12, 21, 3, 22, 15, 11, 13, 14, 6, 4, 20, 10, 1, 2, 9, 23, 24) @ 16.3949602883569 |
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+DEBUG @ Regression.buildModel: 1030 by 25
+DEBUG @ Regression.validate: n_test = 206, rando = true
+LinkedHashMap(rSq -> 0.837863, rSqBar -> 0.816364, sst -> 53458.602994, sse -> 8667.642874, sde -> 6.398348, rse -> 6.920082, mse0 -> 42.075936, rmse -> 6.486597, mae -> 5.024465, smape -> 15.914743, bmae -> 57.563681, m -> 206.000000, dfr -> 24.000000, df -> 181.000000, fStat -> 38.972359, aic -> -629.711830, bic -> -546.514926, mape -> 17.281557, mase -> 0.974427, smapeC -> 16.157462, picp -> -1.000000, pinc -> -1.000000, ace -> -1.000000, pinaw -> -1.000000, mis -> -1.000000, wis -> -1.000000)
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+| forwardSelAll: (l = 24) ADD variable (7, fine_aggregate) => cols = LinkedHashSet(0, 16, 5, 17, 8, 18, 19, 12, 21, 3, 22, 15, 11, 13, 14, 6, 4, 20, 10, 1, 2, 9, 23, 24, 7) @ 16.65014667069475 |
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Selection path: 0, 16, 5, 17, 8, 18, 19, 12, 21, 3, 22, 15, 11, 13, 14, 6, 4, 20, 10, 1, 2, 9, 23, 24, 7
+DEBUG @ Regression.validate: n_test = 206, rando = true
+LinkedHashMap(rSq -> 0.818057, rSqBar -> 0.801604, sst -> 54887.247775, sse -> 9986.364452, sde -> 6.979264, rse -> 7.288276, mse0 -> 48.477497, rmse -> 6.962578, mae -> 5.618420, smape -> 20.089905, bmae -> 53.158261, m -> 206.000000, dfr -> 17.000000, df -> 188.000000, fStat -> 49.722894, aic -> -656.310104, bic -> -596.408333, mape -> 21.222641, mase -> 0.974719, smapeC -> 20.264662, picp -> -1.000000, pinc -> -1.000000, ace -> -1.000000, pinaw -> -1.000000, mis -> -1.000000, wis -> -1.000000)
+WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
+WARNING: sun.misc.Unsafe::objectFieldOffset has been called by scala.runtime.LazyVals$ (file:/Users/adithyalakshmikanth/scalation/target/bg-jobs/sbt_3b326253/target/0988085d/97ac0ce1/scala-library-3.8.4.jar)
+WARNING: Please consider reporting this to the maintainers of class scala.runtime.LazyVals$
+WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
+fname = Array(one, age^0.5, superplasticizer, cement^2.0, age, slag^2.0, fly_ash^2.0, water^0.5, superplasticizer^2.0, fly_ash, coarse_aggregate^2.0, fine_aggregate^0.5, fly_ash^0.5, superplasticizer^0.5, coarse_aggregate^0.5, coarse_aggregate, water, water^2.0)
+SUMMARY
+    Parameters/Coefficients:
+    Var      Estimate    Std. Error 	 t value 	 Pr(>|t|) 	 VIF
+----------------------------------------------------------------------------------
+    x0	 -1836.928912	 2301.200764	 -0.798248	 0.424727	 NA
+    x1	 6.659486	 0.207322	 32.121490	 0.000000	 10.262560
+    x2	 -1.616160	 0.466801	 -3.462205	 0.000536	 150.621079
+    x3	 0.000105	 0.000007	 14.132437	 0.000000	 4.595552
+    x4	 -0.244137	 0.011895	 -20.525160	 0.000000	 10.936590
+    x5	 0.000141	 0.000022	 6.299389	 0.000000	 3.872825
+    x6	 -0.000014	 0.000290	 -0.048434	 0.961371	 146.681518
+    x7	 564.870981	 79.248893	 7.127809	 0.000000	 77039.761527
+    x8	 0.007507	 0.009810	 0.765232	 0.444133	 27.237042
+    x9	 -0.108336	 0.110813	 -0.977649	 0.328248	 974.229163
+    x10	 -0.000318	 0.000818	 -0.388283	 0.697807	 296425.177109
+    x11	 -2.109283	 0.351631	 -5.998570	 0.000000	 5.088325
+    x12	 0.911727	 0.845034	 1.078925	 0.280621	 420.129169
+    x13	 6.604811	 1.214178	 5.439740	 0.000000	 70.578420
+    x14	 -70.473624	 196.141472	 -0.359300	 0.719371	 1164757.883200
+    x15	 1.717493	 4.741120	 0.362255	 0.717162	 2632514.250302
+    x16	 -32.465788	 4.457320	 -7.283702	 0.000000	 175523.660704
+    x17	 0.030384	 0.004132	 7.352542	 0.000000	 20214.082861
+
+    Residual standard error: 7.288276 on 188.0 degrees of freedom
+    Multiple R-squared:  0.818057,	Adjusted R-squared:  0.801604
+    F-statistic: 49.722894390225996 on 17.0 and 188.0 DF,  p-value: 0.0
+----------------------------------------------------------------------------------
+        
+Selected-model test metrics: VectorD(0.818057,	0.801604,	54887.2,	9986.36,	6.97926,	7.28828,	48.4775,	6.96258,	5.61842,	20.0899,	53.1583,	206.000,	17.0000,	188.000,	49.7229,	-656.310,	-596.408,	21.2226,	0.974719,	20.2647,	-1.00000,	-1.00000,	-1.00000,	-1.00000,	-1.00000,	-1.00000)
+Test metrics: VectorD(0.837863,	0.816364,	53458.6,	8667.64,	6.39835,	6.92008,	42.0759,	6.48660,	5.02447,	15.9147,	57.5637,	206.000,	24.0000,	181.000,	38.9724,	-627.522,	-544.325,	17.2816,	0.974427,	16.1575,	-1.00000,	-1.00000,	-1.00000,	-1.00000,	-1.00000,	-1.00000)
+[success] Total time: 2 s, completed Oct 6, 2026, 8:20:59 PM
+[info] running (fork) scalation.modeling.project2Symbolic 
+readFileIntoArray: /Users/adithyalakshmikanth/scalation/data/auto_mpg.csv
+readFileIntoArray: number lines = 393
+readFileIntoArray: lines 0 = cylinders,displacement,horsepower,weight,acceleration,modelyear,origin,mpg
+readFileIntoArray: lines 1 = 8.0,307.0,130.0,3504.0,12.0,70.0,1.0,18.0
+load: read in an 392-by-8 matrix from auto_mpg.csv
+Rows: 392
+Columns: 8
+Target column index: 7
+Number of values in y: 392
+Number of predictor columns in x: 7
+Transformation powers: -2.0, -1.0, 0.5, 2.0
+Predictors: displacement, cylinders, horsepower, weight, acceleration, model_year, origin
+DEBUG @ SymbolicRegression.buildMatrix: add custom terms = ArraySeq()
+Symbolic regression model created.
+DEBUG @ Regression.validate: n_test = 78, rando = true
+LinkedHashMap(rSq -> 0.856759, rSqBar -> 0.774907, sst -> 4731.234872, sse -> 677.705973, sde -> 2.952685, rse -> 3.718970, mse0 -> 8.688538, rmse -> 2.947633, mae -> 2.030434, smape -> 8.620592, bmae -> 36.598726, m -> 78.000000, dfr -> 28.000000, df -> 49.000000, fStat -> 10.467188, aic -> -136.997146, bic -> -68.652590, mape -> 8.550695, mase -> 0.961746, smapeC -> 9.364182, picp -> -1.000000, pinc -> -1.000000, ace -> -1.000000, pinaw -> -1.000000, mis -> -1.000000, wis -> -1.000000)
+DEBUG @ FeatureSelection.selectFeatures: select features based on QoF metric with index qk = 19
+DEBUG @ Regression.buildModel: 392 by 1
+DEBUG @ Regression.validate: n_test = 78, rando = true
+LinkedHashMap(rSq -> -0.009164, rSqBar -> -0.009164, sst -> 4731.234872, sse -> 4774.590716, sde -> 7.838661, rse -> 7.874495, mse0 -> 61.212701, rmse -> 7.823855, mae -> 6.684027, smape -> 29.845851, bmae -> 42.843962, m -> 78.000000, dfr -> 0.000000, df -> 77.000000, fStat -> 0.000000, aic -> -269.138103, bic -> -266.781394, mape -> 35.018836, mase -> 1.125859, smapeC -> 29.871492, picp -> -1.000000, pinc -> -1.000000, ace -> -1.000000, pinaw -> -1.000000, mis -> -1.000000, wis -> -1.000000)
+-------------------------------------------------------------------------------
+| forwardSelAll: (l = 0) INITIAL variable (0, one) => cols = LinkedHashSet(0) |
+-------------------------------------------------------------------------------
+DEBUG @ Regression.buildModel: 392 by 2
+DEBUG @ Regression.buildModel: 392 by 2
+DEBUG @ Regression.buildModel: 392 by 2
+DEBUG @ Regression.buildModel: 392 by 2
+DEBUG @ Regression.buildModel: 392 by 2
+DEBUG @ Regression.buildModel: 392 by 2
+DEBUG @ Regression.buildModel: 392 by 2
+DEBUG @ Regression.buildModel: 392 by 2
+DEBUG @ Regression.buildModel: 392 by 2
+DEBUG @ Regression.buildModel: 392 by 2
+DEBUG @ Regression.buildModel: 392 by 2
+DEBUG @ Regression.buildModel: 392 by 2
+DEBUG @ Regression.buildModel: 392 by 2
+DEBUG @ Regression.buildModel: 392 by 2
+DEBUG @ Regression.buildModel: 392 by 2
+DEBUG @ Regression.buildModel: 392 by 2
+DEBUG @ Regression.buildModel: 392 by 2
+DEBUG @ Regression.buildModel: 392 by 2
+DEBUG @ Regression.buildModel: 392 by 2
+DEBUG @ Regression.buildModel: 392 by 2
+DEBUG @ Regression.buildModel: 392 by 2
+DEBUG @ Regression.buildModel: 392 by 2
+DEBUG @ Regression.buildModel: 392 by 2
+DEBUG @ Regression.buildModel: 392 by 2
+DEBUG @ Regression.buildModel: 392 by 2
+DEBUG @ Regression.buildModel: 392 by 2
+DEBUG @ Regression.buildModel: 392 by 2
+DEBUG @ Regression.buildModel: 392 by 2
+DEBUG @ Regression.validate: n_test = 78, rando = true
+LinkedHashMap(rSq -> 0.707288, rSqBar -> 0.703437, sst -> 4731.234872, sse -> 1384.887232, sde -> 4.231388, rse -> 4.268747, mse0 -> 17.754965, rmse -> 4.213664, mae -> 2.955918, smape -> 12.359937, bmae -> 41.412055, m -> 78.000000, dfr -> 1.000000, df -> 76.000000, fStat -> 183.641249, aic -> -229.098294, bic -> -224.384876, mape -> 12.378648, mase -> 1.088231, smapeC -> 12.411219, picp -> -1.000000, pinc -> -1.000000, ace -> -1.000000, pinaw -> -1.000000, mis -> -1.000000, wis -> -1.000000)
+-------------------------------------------------------------------------------------------------------------
+| forwardSelAll: (l = 1) ADD variable (11, weight^-1.0) => cols = LinkedHashSet(0, 11) @ 10.378372842491382 |
+-------------------------------------------------------------------------------------------------------------
+DEBUG @ Regression.buildModel: 392 by 3
+DEBUG @ Regression.buildModel: 392 by 3
+DEBUG @ Regression.buildModel: 392 by 3
+DEBUG @ Regression.buildModel: 392 by 3
+DEBUG @ Regression.buildModel: 392 by 3
+DEBUG @ Regression.buildModel: 392 by 3
+DEBUG @ Regression.buildModel: 392 by 3
+DEBUG @ Regression.buildModel: 392 by 3
+DEBUG @ Regression.buildModel: 392 by 3
+DEBUG @ Regression.buildModel: 392 by 3
+DEBUG @ Regression.buildModel: 392 by 3
+DEBUG @ Regression.buildModel: 392 by 3
+DEBUG @ Regression.buildModel: 392 by 3
+DEBUG @ Regression.buildModel: 392 by 3
+DEBUG @ Regression.buildModel: 392 by 3
+DEBUG @ Regression.buildModel: 392 by 3
+DEBUG @ Regression.buildModel: 392 by 3
+DEBUG @ Regression.buildModel: 392 by 3
+DEBUG @ Regression.buildModel: 392 by 3
+DEBUG @ Regression.buildModel: 392 by 3
+DEBUG @ Regression.buildModel: 392 by 3
+DEBUG @ Regression.buildModel: 392 by 3
+DEBUG @ Regression.buildModel: 392 by 3
+DEBUG @ Regression.buildModel: 392 by 3
+DEBUG @ Regression.buildModel: 392 by 3
+DEBUG @ Regression.buildModel: 392 by 3
+DEBUG @ Regression.buildModel: 392 by 3
+DEBUG @ Regression.validate: n_test = 78, rando = true
+LinkedHashMap(rSq -> 0.860589, rSqBar -> 0.856871, sst -> 4731.234872, sse -> 659.588176, sde -> 2.921720, rse -> 2.965554, mse0 -> 8.456259, rmse -> 2.907965, mae -> 1.964342, smape -> 8.391108, bmae -> 36.597286, m -> 78.000000, dfr -> 2.000000, df -> 75.000000, fStat -> 231.488005, aic -> -191.018032, bic -> -183.947905, mape -> 8.342541, mase -> 0.961708, smapeC -> 8.468031, picp -> -1.000000, pinc -> -1.000000, ace -> -1.000000, pinaw -> -1.000000, mis -> -1.000000, wis -> -1.000000)
+-------------------------------------------------------------------------------------------------------------------
+| forwardSelAll: (l = 2) ADD variable (27, model_year^2.0) => cols = LinkedHashSet(0, 11, 27) @ 8.562462314945533 |
+-------------------------------------------------------------------------------------------------------------------
+DEBUG @ Regression.buildModel: 392 by 4
+DEBUG @ Regression.buildModel: 392 by 4
+DEBUG @ Regression.buildModel: 392 by 4
+DEBUG @ Regression.buildModel: 392 by 4
+DEBUG @ Regression.buildModel: 392 by 4
+DEBUG @ Regression.buildModel: 392 by 4
+DEBUG @ Regression.buildModel: 392 by 4
+DEBUG @ Regression.buildModel: 392 by 4
+DEBUG @ Regression.buildModel: 392 by 4
+DEBUG @ Regression.buildModel: 392 by 4
+DEBUG @ Regression.buildModel: 392 by 4
+DEBUG @ Regression.buildModel: 392 by 4
+DEBUG @ Regression.buildModel: 392 by 4
+DEBUG @ Regression.buildModel: 392 by 4
+DEBUG @ Regression.buildModel: 392 by 4
+DEBUG @ Regression.buildModel: 392 by 4
+DEBUG @ Regression.buildModel: 392 by 4
+DEBUG @ Regression.buildModel: 392 by 4
+DEBUG @ Regression.buildModel: 392 by 4
+DEBUG @ Regression.buildModel: 392 by 4
+DEBUG @ Regression.buildModel: 392 by 4
+DEBUG @ Regression.buildModel: 392 by 4
+DEBUG @ Regression.buildModel: 392 by 4
+DEBUG @ Regression.buildModel: 392 by 4
+DEBUG @ Regression.buildModel: 392 by 4
+DEBUG @ Regression.buildModel: 392 by 4
+DEBUG @ Regression.validate: n_test = 78, rando = true
+LinkedHashMap(rSq -> 0.874200, rSqBar -> 0.869100, sst -> 4731.234872, sse -> 595.188207, sde -> 2.779096, rse -> 2.836033, mse0 -> 7.630618, rmse -> 2.762357, mae -> 1.851107, smape -> 7.914547, bmae -> 36.155052, m -> 78.000000, dfr -> 3.000000, df -> 74.000000, fStat -> 171.412140, aic -> -185.064290, bic -> -175.637455, mape -> 7.939218, mase -> 0.950087, smapeC -> 8.017111, picp -> -1.000000, pinc -> -1.000000, ace -> -1.000000, pinaw -> -1.000000, mis -> -1.000000, wis -> -1.000000)
+----------------------------------------------------------------------------------------------------------------------
+| forwardSelAll: (l = 3) ADD variable (20, model_year^0.5) => cols = LinkedHashSet(0, 11, 27, 20) @ 8.40859360308675 |
+----------------------------------------------------------------------------------------------------------------------
+DEBUG @ Regression.buildModel: 392 by 5
+DEBUG @ Regression.buildModel: 392 by 5
+DEBUG @ Regression.buildModel: 392 by 5
+DEBUG @ Regression.buildModel: 392 by 5
+DEBUG @ Regression.buildModel: 392 by 5
+DEBUG @ Regression.buildModel: 392 by 5
+DEBUG @ Regression.buildModel: 392 by 5
+DEBUG @ Regression.buildModel: 392 by 5
+DEBUG @ Regression.buildModel: 392 by 5
+DEBUG @ Regression.buildModel: 392 by 5
+DEBUG @ Regression.buildModel: 392 by 5
+DEBUG @ Regression.buildModel: 392 by 5
+DEBUG @ Regression.buildModel: 392 by 5
+DEBUG @ Regression.buildModel: 392 by 5
+DEBUG @ Regression.buildModel: 392 by 5
+DEBUG @ Regression.buildModel: 392 by 5
+DEBUG @ Regression.buildModel: 392 by 5
+DEBUG @ Regression.buildModel: 392 by 5
+DEBUG @ Regression.buildModel: 392 by 5
+DEBUG @ Regression.buildModel: 392 by 5
+DEBUG @ Regression.buildModel: 392 by 5
+DEBUG @ Regression.buildModel: 392 by 5
+DEBUG @ Regression.buildModel: 392 by 5
+DEBUG @ Regression.buildModel: 392 by 5
+DEBUG @ Regression.buildModel: 392 by 5
+DEBUG @ Regression.validate: n_test = 78, rando = true
+LinkedHashMap(rSq -> 0.876911, rSqBar -> 0.870167, sst -> 4731.234872, sse -> 582.362229, sde -> 2.748155, rse -> 2.824458, mse0 -> 7.466182, rmse -> 2.732432, mae -> 1.826134, smape -> 7.830171, bmae -> 35.686285, m -> 78.000000, dfr -> 4.000000, df -> 73.000000, fStat -> 130.016890, aic -> -182.124705, bic -> -170.341161, mape -> 7.874822, mase -> 0.937768, smapeC -> 7.958376, picp -> -1.000000, pinc -> -1.000000, ace -> -1.000000, pinaw -> -1.000000, mis -> -1.000000, wis -> -1.000000)
+-------------------------------------------------------------------------------------------------------------------------
+| forwardSelAll: (l = 4) ADD variable (9, cylinders^-1.0) => cols = LinkedHashSet(0, 11, 27, 20, 9) @ 8.253104441760229 |
+-------------------------------------------------------------------------------------------------------------------------
+DEBUG @ Regression.buildModel: 392 by 6
+DEBUG @ Regression.buildModel: 392 by 6
+DEBUG @ Regression.buildModel: 392 by 6
+DEBUG @ Regression.buildModel: 392 by 6
+DEBUG @ Regression.buildModel: 392 by 6
+DEBUG @ Regression.buildModel: 392 by 6
+DEBUG @ Regression.buildModel: 392 by 6
+DEBUG @ Regression.buildModel: 392 by 6
+DEBUG @ Regression.buildModel: 392 by 6
+DEBUG @ Regression.buildModel: 392 by 6
+DEBUG @ Regression.buildModel: 392 by 6
+DEBUG @ Regression.buildModel: 392 by 6
+DEBUG @ Regression.buildModel: 392 by 6
+DEBUG @ Regression.buildModel: 392 by 6
+DEBUG @ Regression.buildModel: 392 by 6
+DEBUG @ Regression.buildModel: 392 by 6
+DEBUG @ Regression.buildModel: 392 by 6
+DEBUG @ Regression.buildModel: 392 by 6
+DEBUG @ Regression.buildModel: 392 by 6
+DEBUG @ Regression.buildModel: 392 by 6
+DEBUG @ Regression.buildModel: 392 by 6
+DEBUG @ Regression.buildModel: 392 by 6
+DEBUG @ Regression.buildModel: 392 by 6
+DEBUG @ Regression.buildModel: 392 by 6
+DEBUG @ Regression.validate: n_test = 78, rando = true
+LinkedHashMap(rSq -> 0.875312, rSqBar -> 0.866653, sst -> 4731.234872, sse -> 589.929262, sde -> 2.766582, rse -> 2.862422, mse0 -> 7.563196, rmse -> 2.750126, mae -> 1.847456, smape -> 7.978253, bmae -> 35.533159, m -> 78.000000, dfr -> 5.000000, df -> 72.000000, fStat -> 101.088053, aic -> -180.931182, bic -> -166.790929, mape -> 8.038825, mase -> 0.933744, smapeC -> 8.132099, picp -> -1.000000, pinc -> -1.000000, ace -> -1.000000, pinaw -> -1.000000, mis -> -1.000000, wis -> -1.000000)
+--------------------------------------------------------------------------------------------------------------------------
+| forwardSelAll: (l = 5) ADD variable (25, weight^2.0) => cols = LinkedHashSet(0, 11, 27, 20, 9, 25) @ 8.161411301298036 |
+--------------------------------------------------------------------------------------------------------------------------
+DEBUG @ Regression.buildModel: 392 by 7
+DEBUG @ Regression.buildModel: 392 by 7
+DEBUG @ Regression.buildModel: 392 by 7
+DEBUG @ Regression.buildModel: 392 by 7
+DEBUG @ Regression.buildModel: 392 by 7
+DEBUG @ Regression.buildModel: 392 by 7
+DEBUG @ Regression.buildModel: 392 by 7
+DEBUG @ Regression.buildModel: 392 by 7
+DEBUG @ Regression.buildModel: 392 by 7
+DEBUG @ Regression.buildModel: 392 by 7
+DEBUG @ Regression.buildModel: 392 by 7
+DEBUG @ Regression.buildModel: 392 by 7
+DEBUG @ Regression.buildModel: 392 by 7
+DEBUG @ Regression.buildModel: 392 by 7
+DEBUG @ Regression.buildModel: 392 by 7
+DEBUG @ Regression.buildModel: 392 by 7
+DEBUG @ Regression.buildModel: 392 by 7
+DEBUG @ Regression.buildModel: 392 by 7
+DEBUG @ Regression.buildModel: 392 by 7
+DEBUG @ Regression.buildModel: 392 by 7
+DEBUG @ Regression.buildModel: 392 by 7
+DEBUG @ Regression.buildModel: 392 by 7
+DEBUG @ Regression.buildModel: 392 by 7
+DEBUG @ Regression.validate: n_test = 78, rando = true
+LinkedHashMap(rSq -> 0.881263, rSqBar -> 0.871229, sst -> 4731.234872, sse -> 561.773429, sde -> 2.700224, rse -> 2.812881, mse0 -> 7.202223, rmse -> 2.683696, mae -> 1.821137, smape -> 7.913788, bmae -> 35.738134, m -> 78.000000, dfr -> 6.000000, df -> 71.000000, fStat -> 87.826559, aic -> -176.794287, bic -> -160.297325, mape -> 7.965513, mase -> 0.939131, smapeC -> 8.093276, picp -> -1.000000, pinc -> -1.000000, ace -> -1.000000, pinaw -> -1.000000, mis -> -1.000000, wis -> -1.000000)
+----------------------------------------------------------------------------------------------------------------------------------
+| forwardSelAll: (l = 6) ADD variable (17, horsepower^0.5) => cols = LinkedHashSet(0, 11, 27, 20, 9, 25, 17) @ 8.027425759144805 |
+----------------------------------------------------------------------------------------------------------------------------------
+DEBUG @ Regression.buildModel: 392 by 8
+DEBUG @ Regression.buildModel: 392 by 8
+DEBUG @ Regression.buildModel: 392 by 8
+DEBUG @ Regression.buildModel: 392 by 8
+DEBUG @ Regression.buildModel: 392 by 8
+DEBUG @ Regression.buildModel: 392 by 8
+DEBUG @ Regression.buildModel: 392 by 8
+DEBUG @ Regression.buildModel: 392 by 8
+DEBUG @ Regression.buildModel: 392 by 8
+DEBUG @ Regression.buildModel: 392 by 8
+DEBUG @ Regression.buildModel: 392 by 8
+DEBUG @ Regression.buildModel: 392 by 8
+DEBUG @ Regression.buildModel: 392 by 8
+DEBUG @ Regression.buildModel: 392 by 8
+DEBUG @ Regression.buildModel: 392 by 8
+DEBUG @ Regression.buildModel: 392 by 8
+DEBUG @ Regression.buildModel: 392 by 8
+DEBUG @ Regression.buildModel: 392 by 8
+DEBUG @ Regression.buildModel: 392 by 8
+DEBUG @ Regression.buildModel: 392 by 8
+DEBUG @ Regression.buildModel: 392 by 8
+DEBUG @ Regression.buildModel: 392 by 8
+DEBUG @ Regression.validate: n_test = 78, rando = true
+LinkedHashMap(rSq -> 0.881452, rSqBar -> 0.869598, sst -> 4731.234872, sse -> 560.876913, sde -> 2.696653, rse -> 2.830641, mse0 -> 7.190730, rmse -> 2.681554, mae -> 1.791662, smape -> 7.400747, bmae -> 35.362271, m -> 78.000000, dfr -> 7.000000, df -> 70.000000, fStat -> 74.354245, aic -> -175.422972, bic -> -156.569302, mape -> 7.385528, mase -> 0.929254, smapeC -> 7.605875, picp -> -1.000000, pinc -> -1.000000, ace -> -1.000000, pinaw -> -1.000000, mis -> -1.000000, wis -> -1.000000)
+-----------------------------------------------------------------------------------------------------------------------------------------
+| forwardSelAll: (l = 7) ADD variable (12, acceleration^-1.0) => cols = LinkedHashSet(0, 11, 27, 20, 9, 25, 17, 12) @ 7.696746592991727 |
+-----------------------------------------------------------------------------------------------------------------------------------------
+DEBUG @ Regression.buildModel: 392 by 9
+DEBUG @ Regression.buildModel: 392 by 9
+DEBUG @ Regression.buildModel: 392 by 9
+DEBUG @ Regression.buildModel: 392 by 9
+DEBUG @ Regression.buildModel: 392 by 9
+DEBUG @ Regression.buildModel: 392 by 9
+DEBUG @ Regression.buildModel: 392 by 9
+DEBUG @ Regression.buildModel: 392 by 9
+DEBUG @ Regression.buildModel: 392 by 9
+DEBUG @ Regression.buildModel: 392 by 9
+DEBUG @ Regression.buildModel: 392 by 9
+DEBUG @ Regression.buildModel: 392 by 9
+DEBUG @ Regression.buildModel: 392 by 9
+DEBUG @ Regression.buildModel: 392 by 9
+DEBUG @ Regression.buildModel: 392 by 9
+DEBUG @ Regression.buildModel: 392 by 9
+DEBUG @ Regression.buildModel: 392 by 9
+DEBUG @ Regression.buildModel: 392 by 9
+DEBUG @ Regression.buildModel: 392 by 9
+DEBUG @ Regression.buildModel: 392 by 9
+DEBUG @ Regression.buildModel: 392 by 9
+DEBUG @ Regression.validate: n_test = 78, rando = true
+LinkedHashMap(rSq -> 0.874935, rSqBar -> 0.860434, sst -> 4731.234872, sse -> 591.713416, sde -> 2.769825, rse -> 2.928405, mse0 -> 7.586069, rmse -> 2.754282, mae -> 1.894670, smape -> 7.935348, bmae -> 35.472084, m -> 78.000000, dfr -> 8.000000, df -> 69.000000, fStat -> 60.338961, aic -> -177.349355, bic -> -156.138976, mape -> 7.924528, mase -> 0.932140, smapeC -> 8.166118, picp -> -1.000000, pinc -> -1.000000, ace -> -1.000000, pinaw -> -1.000000, mis -> -1.000000, wis -> -1.000000)
+----------------------------------------------------------------------------------------------------------------------------------------
+| forwardSelAll: (l = 8) ADD variable (2, cylinders^-2.0) => cols = LinkedHashSet(0, 11, 27, 20, 9, 25, 17, 12, 2) @ 7.667483203398795 |
+----------------------------------------------------------------------------------------------------------------------------------------
+DEBUG @ Regression.buildModel: 392 by 10
+DEBUG @ Regression.buildModel: 392 by 10
+DEBUG @ Regression.buildModel: 392 by 10
+DEBUG @ Regression.buildModel: 392 by 10
+DEBUG @ Regression.buildModel: 392 by 10
+DEBUG @ Regression.buildModel: 392 by 10
+DEBUG @ Regression.buildModel: 392 by 10
+DEBUG @ Regression.buildModel: 392 by 10
+DEBUG @ Regression.buildModel: 392 by 10
+DEBUG @ Regression.buildModel: 392 by 10
+DEBUG @ Regression.buildModel: 392 by 10
+DEBUG @ Regression.buildModel: 392 by 10
+DEBUG @ Regression.buildModel: 392 by 10
+DEBUG @ Regression.buildModel: 392 by 10
+DEBUG @ Regression.buildModel: 392 by 10
+DEBUG @ Regression.buildModel: 392 by 10
+DEBUG @ Regression.buildModel: 392 by 10
+DEBUG @ Regression.buildModel: 392 by 10
+DEBUG @ Regression.buildModel: 392 by 10
+DEBUG @ Regression.buildModel: 392 by 10
+DEBUG @ Regression.validate: n_test = 78, rando = true
+LinkedHashMap(rSq -> 0.876668, rSqBar -> 0.860345, sst -> 4731.234872, sse -> 583.513242, sde -> 2.742243, rse -> 2.929348, mse0 -> 7.480939, rmse -> 2.735131, mae -> 1.903096, smape -> 7.868445, bmae -> 35.800784, m -> 78.000000, dfr -> 9.000000, df -> 68.000000, fStat -> 53.706307, aic -> -174.683735, bic -> -151.116647, mape -> 7.798636, mase -> 0.940777, smapeC -> 8.124855, picp -> -1.000000, pinc -> -1.000000, ace -> -1.000000, pinaw -> -1.000000, mis -> -1.000000, wis -> -1.000000)
+---------------------------------------------------------------------------------------------------------------------------------------------
+| forwardSelAll: (l = 9) ADD variable (23, cylinders^2.0) => cols = LinkedHashSet(0, 11, 27, 20, 9, 25, 17, 12, 2, 23) @ 7.6194740454420264 |
+---------------------------------------------------------------------------------------------------------------------------------------------
+DEBUG @ Regression.buildModel: 392 by 11
+DEBUG @ Regression.buildModel: 392 by 11
+DEBUG @ Regression.buildModel: 392 by 11
+DEBUG @ Regression.buildModel: 392 by 11
+DEBUG @ Regression.buildModel: 392 by 11
+DEBUG @ Regression.buildModel: 392 by 11
+DEBUG @ Regression.buildModel: 392 by 11
+DEBUG @ Regression.buildModel: 392 by 11
+DEBUG @ Regression.buildModel: 392 by 11
+DEBUG @ Regression.buildModel: 392 by 11
+DEBUG @ Regression.buildModel: 392 by 11
+DEBUG @ Regression.buildModel: 392 by 11
+DEBUG @ Regression.buildModel: 392 by 11
+DEBUG @ Regression.buildModel: 392 by 11
+DEBUG @ Regression.buildModel: 392 by 11
+DEBUG @ Regression.buildModel: 392 by 11
+DEBUG @ Regression.buildModel: 392 by 11
+DEBUG @ Regression.buildModel: 392 by 11
+DEBUG @ Regression.buildModel: 392 by 11
+DEBUG @ Regression.validate: n_test = 78, rando = true
+LinkedHashMap(rSq -> 0.876772, rSqBar -> 0.858380, sst -> 4731.234872, sse -> 583.021280, sde -> 2.740795, rse -> 2.949883, mse0 -> 7.474632, rmse -> 2.733977, mae -> 1.901221, smape -> 7.860704, bmae -> 35.807934, m -> 78.000000, dfr -> 10.000000, df -> 67.000000, fStat -> 47.670698, aic -> -172.640998, bic -> -146.717201, mape -> 7.789030, mase -> 0.940965, smapeC -> 8.142755, picp -> -1.000000, pinc -> -1.000000, ace -> -1.000000, pinaw -> -1.000000, mis -> -1.000000, wis -> -1.000000)
+----------------------------------------------------------------------------------------------------------------------------------------------
+| forwardSelAll: (l = 10) ADD variable (18, weight^0.5) => cols = LinkedHashSet(0, 11, 27, 20, 9, 25, 17, 12, 2, 23, 18) @ 7.596311843013561 |
+----------------------------------------------------------------------------------------------------------------------------------------------
+DEBUG @ Regression.buildModel: 392 by 12
+DEBUG @ Regression.buildModel: 392 by 12
+DEBUG @ Regression.buildModel: 392 by 12
+DEBUG @ Regression.buildModel: 392 by 12
+DEBUG @ Regression.buildModel: 392 by 12
+DEBUG @ Regression.buildModel: 392 by 12
+DEBUG @ Regression.buildModel: 392 by 12
+DEBUG @ Regression.buildModel: 392 by 12
+DEBUG @ Regression.buildModel: 392 by 12
+DEBUG @ Regression.buildModel: 392 by 12
+DEBUG @ Regression.buildModel: 392 by 12
+DEBUG @ Regression.buildModel: 392 by 12
+DEBUG @ Regression.buildModel: 392 by 12
+DEBUG @ Regression.buildModel: 392 by 12
+DEBUG @ Regression.buildModel: 392 by 12
+DEBUG @ Regression.buildModel: 392 by 12
+DEBUG @ Regression.buildModel: 392 by 12
+DEBUG @ Regression.buildModel: 392 by 12
+DEBUG @ Regression.validate: n_test = 78, rando = true
+LinkedHashMap(rSq -> 0.859758, rSqBar -> 0.836384, sst -> 4731.234872, sse -> 663.519272, sde -> 2.922970, rse -> 3.170697, mse0 -> 8.506657, rmse -> 2.916617, mae -> 2.024293, smape -> 8.337283, bmae -> 36.190292, m -> 78.000000, dfr -> 11.000000, df -> 66.000000, fStat -> 36.783097, aic -> -179.533519, bic -> -151.253013, mape -> 8.234243, mase -> 0.951013, smapeC -> 8.644975, picp -> -1.000000, pinc -> -1.000000, ace -> -1.000000, pinaw -> -1.000000, mis -> -1.000000, wis -> -1.000000)
+-------------------------------------------------------------------------------------------------------------------------------------------------
+| forwardSelAll: (l = 11) ADD variable (4, weight^-2.0) => cols = LinkedHashSet(0, 11, 27, 20, 9, 25, 17, 12, 2, 23, 18, 4) @ 7.578137407642814 |
+-------------------------------------------------------------------------------------------------------------------------------------------------
+DEBUG @ Regression.buildModel: 392 by 13
+DEBUG @ Regression.buildModel: 392 by 13
+DEBUG @ Regression.buildModel: 392 by 13
+DEBUG @ Regression.buildModel: 392 by 13
+DEBUG @ Regression.buildModel: 392 by 13
+DEBUG @ Regression.buildModel: 392 by 13
+DEBUG @ Regression.buildModel: 392 by 13
+DEBUG @ Regression.buildModel: 392 by 13
+DEBUG @ Regression.buildModel: 392 by 13
+DEBUG @ Regression.buildModel: 392 by 13
+DEBUG @ Regression.buildModel: 392 by 13
+DEBUG @ Regression.buildModel: 392 by 13
+DEBUG @ Regression.buildModel: 392 by 13
+DEBUG @ Regression.buildModel: 392 by 13
+DEBUG @ Regression.buildModel: 392 by 13
+DEBUG @ Regression.buildModel: 392 by 13
+DEBUG @ Regression.buildModel: 392 by 13
+DEBUG @ Regression.validate: n_test = 78, rando = true
+LinkedHashMap(rSq -> 0.835275, rSqBar -> 0.804864, sst -> 4731.234872, sse -> 779.351695, sde -> 3.169896, rse -> 3.462662, mse0 -> 9.991688, rmse -> 3.160963, mae -> 2.054335, smape -> 8.142082, bmae -> 36.130078, m -> 78.000000, dfr -> 12.000000, df -> 65.000000, fStat -> 27.466462, aic -> -190.302179, bic -> -159.664964, mape -> 8.026330, mase -> 0.949430, smapeC -> 8.475415, picp -> -1.000000, pinc -> -1.000000, ace -> -1.000000, pinaw -> -1.000000, mis -> -1.000000, wis -> -1.000000)
+--------------------------------------------------------------------------------------------------------------------------------------------------------
+| forwardSelAll: (l = 12) ADD variable (3, horsepower^-2.0) => cols = LinkedHashSet(0, 11, 27, 20, 9, 25, 17, 12, 2, 23, 18, 4, 3) @ 7.557030564654379 |
+--------------------------------------------------------------------------------------------------------------------------------------------------------
+DEBUG @ Regression.buildModel: 392 by 14
+DEBUG @ Regression.buildModel: 392 by 14
+DEBUG @ Regression.buildModel: 392 by 14
+DEBUG @ Regression.buildModel: 392 by 14
+DEBUG @ Regression.buildModel: 392 by 14
+DEBUG @ Regression.buildModel: 392 by 14
+DEBUG @ Regression.buildModel: 392 by 14
+DEBUG @ Regression.buildModel: 392 by 14
+DEBUG @ Regression.buildModel: 392 by 14
+DEBUG @ Regression.buildModel: 392 by 14
+DEBUG @ Regression.buildModel: 392 by 14
+DEBUG @ Regression.buildModel: 392 by 14
+DEBUG @ Regression.buildModel: 392 by 14
+DEBUG @ Regression.buildModel: 392 by 14
+DEBUG @ Regression.buildModel: 392 by 14
+DEBUG @ Regression.buildModel: 392 by 14
+DEBUG @ Regression.validate: n_test = 78, rando = true
+LinkedHashMap(rSq -> 0.833738, rSqBar -> 0.799965, sst -> 4731.234872, sse -> 786.626789, sde -> 3.184352, rse -> 3.505858, mse0 -> 10.084959, rmse -> 3.175682, mae -> 2.056206, smape -> 8.119469, bmae -> 36.116686, m -> 78.000000, dfr -> 13.000000, df -> 64.000000, fStat -> 24.687195, aic -> -189.650538, bic -> -156.656615, mape -> 8.006435, mase -> 0.949078, smapeC -> 8.478443, picp -> -1.000000, pinc -> -1.000000, ace -> -1.000000, pinaw -> -1.000000, mis -> -1.000000, wis -> -1.000000)
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+| forwardSelAll: (l = 13) ADD variable (10, horsepower^-1.0) => cols = LinkedHashSet(0, 11, 27, 20, 9, 25, 17, 12, 2, 23, 18, 4, 3, 10) @ 7.5262720190345 |
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+DEBUG @ Regression.buildModel: 392 by 15
+DEBUG @ Regression.buildModel: 392 by 15
+DEBUG @ Regression.buildModel: 392 by 15
+DEBUG @ Regression.buildModel: 392 by 15
+DEBUG @ Regression.buildModel: 392 by 15
+DEBUG @ Regression.buildModel: 392 by 15
+DEBUG @ Regression.buildModel: 392 by 15
+DEBUG @ Regression.buildModel: 392 by 15
+DEBUG @ Regression.buildModel: 392 by 15
+DEBUG @ Regression.buildModel: 392 by 15
+DEBUG @ Regression.buildModel: 392 by 15
+DEBUG @ Regression.buildModel: 392 by 15
+DEBUG @ Regression.buildModel: 392 by 15
+DEBUG @ Regression.buildModel: 392 by 15
+DEBUG @ Regression.buildModel: 392 by 15
+DEBUG @ Regression.validate: n_test = 78, rando = true
+LinkedHashMap(rSq -> 0.832763, rSqBar -> 0.795599, sst -> 4731.234872, sse -> 791.237375, sde -> 3.193577, rse -> 3.543914, mse0 -> 10.144069, rmse -> 3.184975, mae -> 2.059327, smape -> 8.116743, bmae -> 36.170639, m -> 78.000000, dfr -> 14.000000, df -> 63.000000, fStat -> 22.407926, aic -> -188.259486, bic -> -152.908854, mape -> 8.003994, mase -> 0.950496, smapeC -> 8.501359, picp -> -1.000000, pinc -> -1.000000, ace -> -1.000000, pinaw -> -1.000000, mis -> -1.000000, wis -> -1.000000)
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+| forwardSelAll: (l = 14) ADD variable (5, acceleration^-2.0) => cols = LinkedHashSet(0, 11, 27, 20, 9, 25, 17, 12, 2, 23, 18, 4, 3, 10, 5) @ 7.478912911520662 |
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+DEBUG @ Regression.buildModel: 392 by 16
+DEBUG @ Regression.buildModel: 392 by 16
+DEBUG @ Regression.buildModel: 392 by 16
+DEBUG @ Regression.buildModel: 392 by 16
+DEBUG @ Regression.buildModel: 392 by 16
+DEBUG @ Regression.buildModel: 392 by 16
+DEBUG @ Regression.buildModel: 392 by 16
+DEBUG @ Regression.buildModel: 392 by 16
+DEBUG @ Regression.buildModel: 392 by 16
+DEBUG @ Regression.buildModel: 392 by 16
+DEBUG @ Regression.buildModel: 392 by 16
+DEBUG @ Regression.buildModel: 392 by 16
+DEBUG @ Regression.buildModel: 392 by 16
+DEBUG @ Regression.buildModel: 392 by 16
+DEBUG @ Regression.validate: n_test = 78, rando = true
+LinkedHashMap(rSq -> 0.836511, rSqBar -> 0.796957, sst -> 4731.234872, sse -> 773.506068, sde -> 3.153834, rse -> 3.532125, mse0 -> 9.916744, rmse -> 3.149086, mae -> 2.042881, smape -> 8.051688, bmae -> 35.919488, m -> 78.000000, dfr -> 15.000000, df -> 62.000000, fStat -> 21.148654, aic -> -184.332685, bic -> -146.625343, mape -> 7.932051, mase -> 0.943896, smapeC -> 8.461944, picp -> -1.000000, pinc -> -1.000000, ace -> -1.000000, pinaw -> -1.000000, mis -> -1.000000, wis -> -1.000000)
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------
+| forwardSelAll: (l = 15) ADD variable (26, acceleration^2.0) => cols = LinkedHashSet(0, 11, 27, 20, 9, 25, 17, 12, 2, 23, 18, 4, 3, 10, 5, 26) @ 7.472901103347619 |
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------
+DEBUG @ Regression.buildModel: 392 by 17
+DEBUG @ Regression.buildModel: 392 by 17
+DEBUG @ Regression.buildModel: 392 by 17
+DEBUG @ Regression.buildModel: 392 by 17
+DEBUG @ Regression.buildModel: 392 by 17
+DEBUG @ Regression.buildModel: 392 by 17
+DEBUG @ Regression.buildModel: 392 by 17
+DEBUG @ Regression.buildModel: 392 by 17
+DEBUG @ Regression.buildModel: 392 by 17
+DEBUG @ Regression.buildModel: 392 by 17
+DEBUG @ Regression.buildModel: 392 by 17
+DEBUG @ Regression.buildModel: 392 by 17
+DEBUG @ Regression.buildModel: 392 by 17
+DEBUG @ Regression.validate: n_test = 78, rando = true
+LinkedHashMap(rSq -> 0.840151, rSqBar -> 0.798224, sst -> 4731.234872, sse -> 756.281405, sde -> 3.127604, rse -> 3.521087, mse0 -> 9.695915, rmse -> 3.113826, mae -> 2.080680, smape -> 8.462825, bmae -> 36.182009, m -> 78.000000, dfr -> 16.000000, df -> 61.000000, fStat -> 20.038189, aic -> -180.433626, bic -> -140.369576, mape -> 8.399782, mase -> 0.950795, smapeC -> 8.898722, picp -> -1.000000, pinc -> -1.000000, ace -> -1.000000, pinaw -> -1.000000, mis -> -1.000000, wis -> -1.000000)
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+| forwardSelAll: (l = 16) ADD variable (13, model_year^-1.0) => cols = LinkedHashSet(0, 11, 27, 20, 9, 25, 17, 12, 2, 23, 18, 4, 3, 10, 5, 26, 13) @ 7.47248615086154 |
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+DEBUG @ Regression.buildModel: 392 by 18
+DEBUG @ Regression.buildModel: 392 by 18
+DEBUG @ Regression.buildModel: 392 by 18
+DEBUG @ Regression.buildModel: 392 by 18
+DEBUG @ Regression.buildModel: 392 by 18
+DEBUG @ Regression.buildModel: 392 by 18
+DEBUG @ Regression.buildModel: 392 by 18
+DEBUG @ Regression.buildModel: 392 by 18
+DEBUG @ Regression.buildModel: 392 by 18
+DEBUG @ Regression.buildModel: 392 by 18
+DEBUG @ Regression.buildModel: 392 by 18
+DEBUG @ Regression.buildModel: 392 by 18
+DEBUG @ Regression.validate: n_test = 78, rando = true
+LinkedHashMap(rSq -> 0.840575, rSqBar -> 0.795405, sst -> 4731.234872, sse -> 754.276959, sde -> 3.124926, rse -> 3.545600, mse0 -> 9.670217, rmse -> 3.109697, mae -> 2.088333, smape -> 8.519434, bmae -> 36.217438, m -> 78.000000, dfr -> 17.000000, df -> 60.000000, fStat -> 18.608976, aic -> -178.611896, bic -> -136.191137, mape -> 8.469431, mase -> 0.951726, smapeC -> 8.980972, picp -> -1.000000, pinc -> -1.000000, ace -> -1.000000, pinaw -> -1.000000, mis -> -1.000000, wis -> -1.000000)
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+| forwardSelAll: (l = 17) ADD variable (6, model_year^-2.0) => cols = LinkedHashSet(0, 11, 27, 20, 9, 25, 17, 12, 2, 23, 18, 4, 3, 10, 5, 26, 13, 6) @ 7.468841821705488 |
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+DEBUG @ Regression.buildModel: 392 by 19
+DEBUG @ Regression.buildModel: 392 by 19
+DEBUG @ Regression.buildModel: 392 by 19
+DEBUG @ Regression.buildModel: 392 by 19
+DEBUG @ Regression.buildModel: 392 by 19
+DEBUG @ Regression.buildModel: 392 by 19
+DEBUG @ Regression.buildModel: 392 by 19
+DEBUG @ Regression.buildModel: 392 by 19
+DEBUG @ Regression.buildModel: 392 by 19
+DEBUG @ Regression.buildModel: 392 by 19
+DEBUG @ Regression.buildModel: 392 by 19
+DEBUG @ Regression.validate: n_test = 78, rando = true
+LinkedHashMap(rSq -> 0.841295, rSqBar -> 0.792877, sst -> 4731.234872, sse -> 750.868518, sde -> 3.117161, rse -> 3.567434, mse0 -> 9.626519, rmse -> 3.102663, mae -> 2.093060, smape -> 8.576430, bmae -> 36.231668, m -> 78.000000, dfr -> 18.000000, df -> 59.000000, fStat -> 17.375554, aic -> -176.256255, bic -> -131.478787, mape -> 8.531035, mase -> 0.952100, smapeC -> 9.063609, picp -> -1.000000, pinc -> -1.000000, ace -> -1.000000, pinaw -> -1.000000, mis -> -1.000000, wis -> -1.000000)
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+| forwardSelAll: (l = 18) ADD variable (22, displacement^2.0) => cols = LinkedHashSet(0, 11, 27, 20, 9, 25, 17, 12, 2, 23, 18, 4, 3, 10, 5, 26, 13, 6, 22) @ 7.458935776626086 |
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+DEBUG @ Regression.buildModel: 392 by 20
+DEBUG @ Regression.buildModel: 392 by 20
+DEBUG @ Regression.buildModel: 392 by 20
+DEBUG @ Regression.buildModel: 392 by 20
+DEBUG @ Regression.buildModel: 392 by 20
+DEBUG @ Regression.buildModel: 392 by 20
+DEBUG @ Regression.buildModel: 392 by 20
+DEBUG @ Regression.buildModel: 392 by 20
+DEBUG @ Regression.buildModel: 392 by 20
+DEBUG @ Regression.buildModel: 392 by 20
+DEBUG @ Regression.validate: n_test = 78, rando = true
+LinkedHashMap(rSq -> 0.846022, rSqBar -> 0.795581, sst -> 4731.234872, sse -> 728.505048, sde -> 3.068542, rse -> 3.544070, mse0 -> 9.339808, rmse -> 3.056110, mae -> 2.053156, smape -> 8.431735, bmae -> 36.178412, m -> 78.000000, dfr -> 19.000000, df -> 58.000000, fStat -> 16.772512, aic -> -171.781549, bic -> -124.647373, mape -> 8.379662, mase -> 0.950700, smapeC -> 8.944555, picp -> -1.000000, pinc -> -1.000000, ace -> -1.000000, pinaw -> -1.000000, mis -> -1.000000, wis -> -1.000000)
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+| forwardSelAll: (l = 19) ADD variable (28, origin^2.0) => cols = LinkedHashSet(0, 11, 27, 20, 9, 25, 17, 12, 2, 23, 18, 4, 3, 10, 5, 26, 13, 6, 22, 28) @ 7.456888585389961 |
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+DEBUG @ Regression.buildModel: 392 by 21
+DEBUG @ Regression.buildModel: 392 by 21
+DEBUG @ Regression.buildModel: 392 by 21
+DEBUG @ Regression.buildModel: 392 by 21
+DEBUG @ Regression.buildModel: 392 by 21
+DEBUG @ Regression.buildModel: 392 by 21
+DEBUG @ Regression.buildModel: 392 by 21
+DEBUG @ Regression.buildModel: 392 by 21
+DEBUG @ Regression.buildModel: 392 by 21
+DEBUG @ Regression.validate: n_test = 78, rando = true
+LinkedHashMap(rSq -> 0.844267, rSqBar -> 0.789624, sst -> 4731.234872, sse -> 736.810246, sde -> 3.084993, rse -> 3.595344, mse0 -> 9.446285, rmse -> 3.073481, mae -> 2.067561, smape -> 8.496649, bmae -> 36.174889, m -> 78.000000, dfr -> 20.000000, df -> 57.000000, fStat -> 15.450532, aic -> -170.769447, bic -> -121.278562, mape -> 8.450674, mase -> 0.950608, smapeC -> 9.035111, picp -> -1.000000, pinc -> -1.000000, ace -> -1.000000, pinaw -> -1.000000, mis -> -1.000000, wis -> -1.000000)
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+| forwardSelAll: (l = 20) ADD variable (14, origin^-1.0) => cols = LinkedHashSet(0, 11, 27, 20, 9, 25, 17, 12, 2, 23, 18, 4, 3, 10, 5, 26, 13, 6, 22, 28, 14) @ 7.433203589404964 |
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+DEBUG @ Regression.buildModel: 392 by 22
+DEBUG @ Regression.buildModel: 392 by 22
+DEBUG @ Regression.buildModel: 392 by 22
+DEBUG @ Regression.buildModel: 392 by 22
+DEBUG @ Regression.buildModel: 392 by 22
+DEBUG @ Regression.buildModel: 392 by 22
+DEBUG @ Regression.buildModel: 392 by 22
+DEBUG @ Regression.buildModel: 392 by 22
+DEBUG @ Regression.validate: n_test = 78, rando = true
+LinkedHashMap(rSq -> 0.848886, rSqBar -> 0.792218, sst -> 4731.234872, sse -> 714.955088, sde -> 3.038807, rse -> 3.573102, mse0 -> 9.166091, rmse -> 3.027555, mae -> 2.030542, smape -> 8.303792, bmae -> 36.326184, m -> 78.000000, dfr -> 21.000000, df -> 56.000000, fStat -> 14.980073, aic -> -167.732546, bic -> -115.884952, mape -> 8.246326, mase -> 0.954584, smapeC -> 8.867894, picp -> -1.000000, pinc -> -1.000000, ace -> -1.000000, pinaw -> -1.000000, mis -> -1.000000, wis -> -1.000000)
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+| forwardSelAll: (l = 21) ADD variable (1, displacement^-2.0) => cols = LinkedHashSet(0, 11, 27, 20, 9, 25, 17, 12, 2, 23, 18, 4, 3, 10, 5, 26, 13, 6, 22, 28, 14, 1) @ 7.3874452419968275 |
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+DEBUG @ Regression.buildModel: 392 by 23
+DEBUG @ Regression.buildModel: 392 by 23
+DEBUG @ Regression.buildModel: 392 by 23
+DEBUG @ Regression.buildModel: 392 by 23
+DEBUG @ Regression.buildModel: 392 by 23
+DEBUG @ Regression.buildModel: 392 by 23
+DEBUG @ Regression.buildModel: 392 by 23
+DEBUG @ Regression.validate: n_test = 78, rando = true
+LinkedHashMap(rSq -> 0.861150, rSqBar -> 0.805610, sst -> 4731.234872, sse -> 656.931781, sde -> 2.913964, rse -> 3.456040, mse0 -> 8.422202, rmse -> 2.902103, mae -> 1.959925, smape -> 8.204868, bmae -> 36.269755, m -> 78.000000, dfr -> 22.000000, df -> 55.000000, fStat -> 15.505046, aic -> -161.617880, bic -> -107.413577, mape -> 8.133390, mase -> 0.953101, smapeC -> 8.794611, picp -> -1.000000, pinc -> -1.000000, ace -> -1.000000, pinaw -> -1.000000, mis -> -1.000000, wis -> -1.000000)
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+| forwardSelAll: (l = 22) ADD variable (15, displacement^0.5) => cols = LinkedHashSet(0, 11, 27, 20, 9, 25, 17, 12, 2, 23, 18, 4, 3, 10, 5, 26, 13, 6, 22, 28, 14, 1, 15) @ 7.184317624394718 |
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+DEBUG @ Regression.buildModel: 392 by 24
+DEBUG @ Regression.buildModel: 392 by 24
+DEBUG @ Regression.buildModel: 392 by 24
+DEBUG @ Regression.buildModel: 392 by 24
+DEBUG @ Regression.buildModel: 392 by 24
+DEBUG @ Regression.buildModel: 392 by 24
+DEBUG @ Regression.validate: n_test = 78, rando = true
+LinkedHashMap(rSq -> 0.853234, rSqBar -> 0.790723, sst -> 4731.234872, sse -> 694.382083, sde -> 2.995620, rse -> 3.585935, mse0 -> 8.902334, rmse -> 2.983678, mae -> 2.023095, smape -> 8.553385, bmae -> 36.399337, m -> 78.000000, dfr -> 23.000000, df -> 54.000000, fStat -> 13.649298, aic -> -164.844538, bic -> -108.283526, mape -> 8.493313, mase -> 0.956506, smapeC -> 9.168770, picp -> -1.000000, pinc -> -1.000000, ace -> -1.000000, pinaw -> -1.000000, mis -> -1.000000, wis -> -1.000000)
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+| forwardSelAll: (l = 23) ADD variable (24, horsepower^2.0) => cols = LinkedHashSet(0, 11, 27, 20, 9, 25, 17, 12, 2, 23, 18, 4, 3, 10, 5, 26, 13, 6, 22, 28, 14, 1, 15, 24) @ 7.135205869414229 |
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+DEBUG @ Regression.buildModel: 392 by 25
+DEBUG @ Regression.buildModel: 392 by 25
+DEBUG @ Regression.buildModel: 392 by 25
+DEBUG @ Regression.buildModel: 392 by 25
+DEBUG @ Regression.buildModel: 392 by 25
+DEBUG @ Regression.validate: n_test = 78, rando = true
+LinkedHashMap(rSq -> 0.853896, rSqBar -> 0.787736, sst -> 4731.234872, sse -> 691.250575, sde -> 2.988489, rse -> 3.611435, mse0 -> 8.862187, rmse -> 2.976943, mae -> 2.022173, smape -> 8.541161, bmae -> 36.380384, m -> 78.000000, dfr -> 24.000000, df -> 53.000000, fStat -> 12.906509, aic -> -162.455275, bic -> -103.537554, mape -> 8.483322, mase -> 0.956008, smapeC -> 9.182186, picp -> -1.000000, pinc -> -1.000000, ace -> -1.000000, pinaw -> -1.000000, mis -> -1.000000, wis -> -1.000000)
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+| forwardSelAll: (l = 24) ADD variable (19, acceleration^0.5) => cols = LinkedHashSet(0, 11, 27, 20, 9, 25, 17, 12, 2, 23, 18, 4, 3, 10, 5, 26, 13, 6, 22, 28, 14, 1, 15, 24, 19) @ 7.1454378836619865 |
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+DEBUG @ Regression.buildModel: 392 by 26
+DEBUG @ Regression.buildModel: 392 by 26
+DEBUG @ Regression.buildModel: 392 by 26
+DEBUG @ Regression.buildModel: 392 by 26
+DEBUG @ Regression.validate: n_test = 78, rando = true
+LinkedHashMap(rSq -> 0.854124, rSqBar -> 0.783991, sst -> 4731.234872, sse -> 690.173155, sde -> 2.986504, rse -> 3.643153, mse0 -> 8.848374, rmse -> 2.974622, mae -> 2.021767, smape -> 8.539984, bmae -> 36.380174, m -> 78.000000, dfr -> 25.000000, df -> 52.000000, fStat -> 12.178695, aic -> -160.404585, bic -> -99.130156, mape -> 8.486679, mase -> 0.956002, smapeC -> 9.206651, picp -> -1.000000, pinc -> -1.000000, ace -> -1.000000, pinaw -> -1.000000, mis -> -1.000000, wis -> -1.000000)
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+| forwardSelAll: (l = 25) ADD variable (8, displacement^-1.0) => cols = LinkedHashSet(0, 11, 27, 20, 9, 25, 17, 12, 2, 23, 18, 4, 3, 10, 5, 26, 13, 6, 22, 28, 14, 1, 15, 24, 19, 8) @ 7.162199546627293 |
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+DEBUG @ Regression.buildModel: 392 by 27
+DEBUG @ Regression.buildModel: 392 by 27
+DEBUG @ Regression.buildModel: 392 by 27
+DEBUG @ Regression.validate: n_test = 78, rando = true
+LinkedHashMap(rSq -> 0.853388, rSqBar -> 0.778645, sst -> 4731.234872, sse -> 693.654479, sde -> 2.987414, rse -> 3.687963, mse0 -> 8.893006, rmse -> 2.982114, mae -> 2.023898, smape -> 8.547099, bmae -> 36.382330, m -> 78.000000, dfr -> 26.000000, df -> 51.000000, fStat -> 11.417600, aic -> -158.815102, bic -> -95.183964, mape -> 8.461377, mase -> 0.956059, smapeC -> 9.239407, picp -> -1.000000, pinc -> -1.000000, ace -> -1.000000, pinaw -> -1.000000, mis -> -1.000000, wis -> -1.000000)
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+| forwardSelAll: (l = 26) ADD variable (21, origin^0.5) => cols = LinkedHashSet(0, 11, 27, 20, 9, 25, 17, 12, 2, 23, 18, 4, 3, 10, 5, 26, 13, 6, 22, 28, 14, 1, 15, 24, 19, 8, 21) @ 7.190811969947622 |
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+DEBUG @ Regression.buildModel: 392 by 28
+DEBUG @ Regression.buildModel: 392 by 28
+DEBUG @ Regression.validate: n_test = 78, rando = true
+LinkedHashMap(rSq -> 0.853252, rSqBar -> 0.774008, sst -> 4731.234872, sse -> 694.301028, sde -> 2.987608, rse -> 3.726395, mse0 -> 8.901295, rmse -> 2.983504, mae -> 2.026019, smape -> 8.562051, bmae -> 36.390582, m -> 78.000000, dfr -> 27.000000, df -> 50.000000, fStat -> 10.767381, aic -> -156.704493, bic -> -90.716646, mape -> 8.472396, mase -> 0.956276, smapeC -> 9.280000, picp -> -1.000000, pinc -> -1.000000, ace -> -1.000000, pinaw -> -1.000000, mis -> -1.000000, wis -> -1.000000)
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+| forwardSelAll: (l = 27) ADD variable (7, origin^-2.0) => cols = LinkedHashSet(0, 11, 27, 20, 9, 25, 17, 12, 2, 23, 18, 4, 3, 10, 5, 26, 13, 6, 22, 28, 14, 1, 15, 24, 19, 8, 21, 7) @ 7.19262295808379 |
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+DEBUG @ Regression.buildModel: 392 by 29
+DEBUG @ Regression.validate: n_test = 78, rando = true
+LinkedHashMap(rSq -> 0.857380, rSqBar -> 0.775883, sst -> 4731.234872, sse -> 674.767304, sde -> 2.950641, rse -> 3.710898, mse0 -> 8.650863, rmse -> 2.941235, mae -> 2.022816, smape -> 8.584123, bmae -> 36.167851, m -> 78.000000, dfr -> 28.000000, df -> 49.000000, fStat -> 10.520395, aic -> -152.469721, bic -> -84.125165, mape -> 8.546315, mase -> 0.950423, smapeC -> 9.327713, picp -> -1.000000, pinc -> -1.000000, ace -> -1.000000, pinaw -> -1.000000, mis -> -1.000000, wis -> -1.000000)
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+| forwardSelAll: (l = 28) ADD variable (16, cylinders^0.5) => cols = LinkedHashSet(0, 11, 27, 20, 9, 25, 17, 12, 2, 23, 18, 4, 3, 10, 5, 26, 13, 6, 22, 28, 14, 1, 15, 24, 19, 8, 21, 7, 16) @ 7.34089659622212 |
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Selected term indexes: 0, 11, 27, 20, 9, 25, 17, 12, 2, 23, 18, 4, 3, 10, 5, 26, 13, 6, 22, 28, 14, 1, 15, 24, 19, 8, 21, 7, 16
+DEBUG @ Regression.validate: n_test = 78, rando = true
+LinkedHashMap(rSq -> 0.882746, rSqBar -> 0.832804, sst -> 4531.937949, sse -> 531.388804, sde -> 2.622741, rse -> 3.136962, mse0 -> 6.812677, rmse -> 2.610111, mae -> 1.991362, smape -> 8.509847, bmae -> 40.141256, m -> 78.000000, dfr -> 23.000000, df -> 54.000000, fStat -> 17.675558, aic -> -144.341090, bic -> -87.780078, mape -> 8.491166, mase -> 0.997245, smapeC -> 9.125232, picp -> -1.000000, pinc -> -1.000000, ace -> -1.000000, pinaw -> -1.000000, mis -> -1.000000, wis -> -1.000000)
+WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
+WARNING: sun.misc.Unsafe::objectFieldOffset has been called by scala.runtime.LazyVals$ (file:/Users/adithyalakshmikanth/scalation/target/bg-jobs/sbt_3b326253/target/0988085d/97ac0ce1/scala-library-3.8.4.jar)
+WARNING: Please consider reporting this to the maintainers of class scala.runtime.LazyVals$
+WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
+fname = Array(one, weight^-1.0, model_year^2.0, model_year^0.5, cylinders^-1.0, weight^2.0, horsepower^0.5, acceleration^-1.0, cylinders^-2.0, cylinders^2.0, weight^0.5, weight^-2.0, horsepower^-2.0, horsepower^-1.0, acceleration^-2.0, acceleration^2.0, model_year^-1.0, model_year^-2.0, displacement^2.0, origin^2.0, origin^-1.0, displacement^-2.0, displacement^0.5, horsepower^2.0)
+SUMMARY
+    Parameters/Coefficients:
+    Var      Estimate    Std. Error 	 t value 	 Pr(>|t|) 	 VIF
+----------------------------------------------------------------------------------
+    x0	 -1016807.195089	 517225.160174	 -1.965889	 0.049311	 NA
+    x1	 908334.529457	 426892.079394	 2.127785	 0.033355	 71677.243808
+    x2	 -10.116971	 4.991243	 -2.026944	 0.042668	 330526455.851732
+    x3	 83706.682324	 42238.639501	 1.981756	 0.047507	 3370571803.805774
+    x4	 -1665.037781	 1157.543166	 -1.438424	 0.150314	 575.396623
+    x5	 -0.000003	 0.000002	 -1.220359	 0.222329	 5283.415767
+    x6	 -12.247586	 7.295018	 -1.678897	 0.093172	 6757.698465
+    x7	 808.995811	 331.613276	 2.439576	 0.014705	 692.591973
+    x8	 129732.114985	 56783.319990	 2.284687	 0.022331	 301.456416
+    x9	 -0.000010	 0.000022	 -0.455959	 0.648419	 45.284140
+    x10	 7.309779	 4.474484	 1.633658	 0.102331	 46727.509323
+    x11	 -626524289.432607	 262993286.548557	 -2.382282	 0.017206	 15490.504636
+    x12	 141120.054452	 88680.728814	 1.591327	 0.111536	 2129.130978
+    x13	 -6699.373650	 4432.416679	 -1.511449	 0.130674	 9654.920197
+    x14	 -3554.882277	 1663.967785	 -2.136389	 0.032648	 383.395473
+    x15	 0.028627	 0.013843	 2.068040	 0.038636	 59.962864
+    x16	 33645089.073377	 17418137.918867	 1.931612	 0.053407	 5268757581.526468
+    x17	 -562556965.712757	 296690726.040376	 -1.896106	 0.057946	 1069949696.102876
+    x18	 1.183377	 0.246384	 4.802974	 0.000002	 985.342524
+    x19	 0.045617	 0.182748	 0.249618	 0.802883	 13.185851
+    x20	 -1.436112	 2.238201	 -0.641637	 0.521109	 16.773998
+    x21	 -765.531645	 127.720439	 -5.993807	 0.000000	 316.060376
+    x22	 -114.126790	 21.520689	 -5.303120	 0.000002	 2342.538608
+    x23	 0.000709	 0.000471	 1.502817	 0.132886	 851.038146
+
+    Residual standard error: 3.136962 on 54.0 degrees of freedom
+    Multiple R-squared:  0.882746,	Adjusted R-squared:  0.832804
+    F-statistic: 17.675558037721476 on 23.0 and 54.0 DF,  p-value: 0.0
+----------------------------------------------------------------------------------
+        
+Selected-model test metrics: VectorD(0.882746,	0.832804,	4531.94,	531.389,	2.62274,	3.13696,	6.81268,	2.61011,	1.99136,	8.50985,	40.1413,	78.0000,	23.0000,	54.0000,	17.6756,	-144.341,	-87.7801,	8.49117,	0.997245,	9.12523,	-1.00000,	-1.00000,	-1.00000,	-1.00000,	-1.00000,	-1.00000)
+Test metrics: VectorD(0.856759,	0.774907,	4731.23,	677.706,	2.95268,	3.71897,	8.68854,	2.94763,	2.03043,	8.62059,	36.5987,	78.0000,	28.0000,	49.0000,	10.4672,	-136.997,	-68.6526,	8.55070,	0.961746,	9.36418,	-1.00000,	-1.00000,	-1.00000,	-1.00000,	-1.00000,	-1.00000)
+[success] Total time: 1 s, completed Oct 6, 2026, 8:21:01 PM
+[info] running (fork) scalation.modeling.project2RegularizedRegression 
+readFileIntoArray: data/auto_mpg.csv
+readFileIntoArray: number lines = 393
+readFileIntoArray: lines 0 = cylinders,displacement,horsepower,weight,acceleration,modelyear,origin,mpg
+readFileIntoArray: lines 1 = 8.0,307.0,130.0,3504.0,12.0,70.0,1.0,18.0
+load: read in an 392-by-8 matrix from data/auto_mpg.csv
+--------------------
+| RIDGE REGRESSION |
+--------------------
+WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
+WARNING: sun.misc.Unsafe::objectFieldOffset has been called by scala.runtime.LazyVals$ (file:/Users/adithyalakshmikanth/scalation/target/bg-jobs/sbt_3b326253/target/0988085d/97ac0ce1/scala-library-3.8.4.jar)
+WARNING: Please consider reporting this to the maintainers of class scala.runtime.LazyVals$
+WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
+Ridge lambda tuning:
+| RidgeRegression with lambda = 0.1 has sse = 713.7525699365118 |
+| RidgeRegression with lambda = 0.2 has sse = 713.5365867814872 |
+| RidgeRegression with lambda = 0.4 has sse = 713.1495239145677 |
+| RidgeRegression with lambda = 0.8 has sse = 712.5362970863046 |
+| RidgeRegression with lambda = 1.6 has sse = 711.8303659095648 |
+| RidgeRegression with lambda = 3.2 has sse = 711.8153255080763 |
+| RidgeRegression with lambda = 6.4 has sse = 714.4740228233744 |
+| RidgeRegression with lambda = 12.8 has sse = 722.4991830313115 |
+| RidgeRegression with lambda = 25.6 has sse = 737.7183111025892 |
+| RidgeRegression with lambda = 51.2 has sse = 762.7016504571261 |
+| RidgeRegression with lambda = 102.4 has sse = 807.6552158726756 |
+| RidgeRegression with lambda = 204.8 has sse = 897.1513975453229 |
+| RidgeRegression with lambda = 409.6 has sse = 1076.40580565289 |
+| RidgeRegression with lambda = 819.2 has sse = 1409.7306277835444 |
+| RidgeRegression with lambda = 1638.4 has sse = 1919.7235723580118 |
+| RidgeRegression with lambda = 3276.8 has sse = 2505.485491122153 |
+| RidgeRegression with lambda = 6553.6 has sse = 3010.629751886936 |
+| RidgeRegression with lambda = 13107.2 has sse = 3359.4603911741638 |
+| RidgeRegression with lambda = 26214.4 has sse = 3567.8769296775936 |
+| RidgeRegression with lambda = 52428.8 has sse = 3682.349877269195 |
+
+Best Ridge Lambda: 3.2
+Best Ridge CV SSE: 711.8153
+
+Ridge coefficients:
+Intercept = 23.416561
+cylinders       -1.078994
+displacement    1.232053
+horsepower      -0.542461
+weight          -4.738602
+acceleration    0.007586
+model_year      2.651239
+origin          1.139237
+
+Ridge actual vs predicted MPG:
+Actual: 34.300  Predicted: 31.613
+Actual: 19.000  Predicted: 26.525
+Actual: 15.000  Predicted: 15.493
+Actual: 33.700  Predicted: 33.805
+Actual: 29.800  Predicted: 33.607
+
+Ridge RMSE: 3.556045
+Ridge R²:   0.779972
+--------------------
+| LASSO REGRESSION |
+--------------------
+Lasso lambda tuning:
+| LassoRegression with lambda = 3.2 has sse = 716.4706211833529 |
+| LassoRegression with lambda = 6.4 has sse = 715.9913823683123 |
+| LassoRegression with lambda = 12.8 has sse = 716.2214580015408 |
+| LassoRegression with lambda = 25.6 has sse = 715.414402699883 |
+| LassoRegression with lambda = 51.2 has sse = 718.6457373741941 |
+| LassoRegression with lambda = 102.4 has sse = 739.1994583170452 |
+| LassoRegression with lambda = 204.8 has sse = 827.8038274144692 |
+| LassoRegression with lambda = 409.6 has sse = 1147.4621449313456 |
+| LassoRegression with lambda = 819.2 has sse = 2378.1516869310367 |
+| LassoRegression with lambda = 1638.4 has sse = 6140.51301731296 |
+| LassoRegression with lambda = 3276.8 has sse = 14132.35192204406 |
+| LassoRegression with lambda = 6553.6 has sse = 37826.29469091059 |
+| LassoRegression with lambda = 13107.2 has sse = 37826.29469091059 |
+| LassoRegression with lambda = 26214.4 has sse = 37826.29469091059 |
+| LassoRegression with lambda = 52428.8 has sse = 37826.29469091059 |
+| LassoRegression with lambda = 104857.6 has sse = 37826.29469091059 |
+| LassoRegression with lambda = 209715.2 has sse = 37826.29469091059 |
+| LassoRegression with lambda = 419430.4 has sse = 37826.29469091059 |
+| LassoRegression with lambda = 838860.8 has sse = 37826.29469091059 |
+| LassoRegression with lambda = 1677721.6 has sse = 37826.29469091059 |
+
+Best Lasso Lambda: 25.6
+Best Lasso CV SSE: 715.4144
+DEBUG @ LassoRegression.train: LassoAdmm estimates parameter b = VectorD(23.3350,	-0.250666,	-0.143925,	-0.121958,	-4.64340,	0.0505250,	2.60157,	0.943053)
+
+Lasso coefficients:
+const           23.335032
+cylinders       -0.250666
+displacement    -0.143925
+horsepower      -0.121958
+weight          -4.643400
+acceleration    0.050525
+model_year      2.601568
+origin          0.943053
+
+Lasso actual vs predicted MPG:
+Actual: 34.300  Predicted: 31.550
+Actual: 19.000  Predicted: 26.369
+Actual: 15.000  Predicted: 15.727
+Actual: 33.700  Predicted: 33.301
+Actual: 29.800  Predicted: 33.434
+
+Lasso RMSE: 3.544011
+Lasso R²:   0.781459
+-----------
+| SUMMARY |
+-----------
+Ridge lambda = 3.200000
+Ridge CV SSE = 711.815326
+Ridge RMSE   = 3.556045
+Ridge R²     = 0.779972
+
+Lasso lambda = 25.600000
+Lasso CV SSE = 715.414403
+Lasso RMSE   = 3.544011
+Lasso R²     = 0.781459
+[success] Total time: 4 s, completed Oct 6, 2026, 8:21:05 PM
