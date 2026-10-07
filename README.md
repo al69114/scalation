@@ -1,3 +1,98 @@
+# Data Science Projects: ScalaTion, statsmodels and PySR
+
+This repository contains Project 1 (EDA and simple regression) and Project 2 (regression and symbolic regression). The Project 2 submission and run instructions are below; the existing Project 1 documentation follows.
+
+## Project 2: Regression and Symbolic Regression
+
+Project 2 covers **20 required cases** using ScalaTion, statsmodels and PySR. The full report includes model setup, numerical results, evaluation, interpretation and symbolic expressions.
+
+### Datasets
+
+The Project 2 programs use the numeric CSV files in the repository's `data/` directory. Column counts include the target.
+
+| Dataset | Rows | Columns | Target | CSV |
+| --- | ---: | ---: | --- | --- |
+| Auto MPG | 392 | 8 | Miles per gallon (`mpg`) | [auto_mpg.csv](data/auto_mpg.csv) |
+| Concrete Compressive Strength | 1,030 | 9 | Compressive strength in MPa (`compressive_strength_mpa`) | [concrete.csv](data/concrete.csv) |
+| Airfoil Self-Noise | 1,503 | 6 | Sound pressure level in decibels (`scaled_sound_pressure_db`) | [airfoil.csv](data/airfoil.csv) |
+
+Auto MPG excludes the six rows with missing horsepower and the car-name field. These datasets originate from the UCI Machine Learning Repository.
+
+### Required Models
+
+| Method | Datasets | Tools | Cases |
+| --- | --- | --- | ---: |
+| Multiple linear regression | All three | ScalaTion and statsmodels | 6 |
+| Ridge and Lasso regression | Auto MPG | ScalaTion and statsmodels | 4 |
+| Forward feature selection | Auto MPG and Concrete | ScalaTion | 2 |
+| Transformed regression | Auto MPG and Concrete | ScalaTion | 2 |
+| Symbolic regression | All three | ScalaTion and PySR | 6 |
+| **Total** | | | **20** |
+
+Transformed regression evaluates log, square-root and Box–Cox transformations of the target, with predictions evaluated on the original target scale. Reciprocal transformation is also explored, including domain checks. Box–Cox tuning uses five-fold cross-validation within the training data.
+
+ScalaTion symbolic regression constructs nonlinear basis terms and selects terms using training data. PySR searches for mathematical expressions. The report provides the resulting expressions, fit metrics and interpretations for both tools. ScalaTion regularized and symbolic workflows reserve test rows before fitting preprocessing or tuning; regularization leaves the intercept unpenalized. Forward-selection results include a full-data refit, and their validation is not nested feature-selection validation. Splits and procedures differ across tools, so cross-tool scores should be read with their stated evaluation setup.
+
+### Report, Code and Results
+
+- **Final report:** [project2_full_report.pdf](project2/report/project2_full_report.pdf).
+- **LaTeX source:** [project2_full_report.tex](project2/report/project2_full_report.tex), with report images in [overleaf_images](project2/report/overleaf_images) and [overleaf_images.zip](project2/report/overleaf_images.zip).
+- **ScalaTion models:** [regression](src/main/scala/scalation/modeling/Project2_Regression.scala), [Ridge/Lasso](src/main/scala/scalation/modeling/Project2_Regular_Regression.scala), [forward selection](src/main/scala/scalation/modeling/Project2_Forward.scala), [transformed regression](src/main/scala/scalation/modeling/Project2_Transformed_Regression.scala), and [symbolic regression](src/main/scala/scalation/modeling/Project2_Symbolic_Regression.scala).
+- **statsmodels:** [OLS analysis script](project2/analysis_statsmodels_regression.py) and [Ridge/Lasso notebook](project2/Project2_Regular_Regression.ipynb).
+- **PySR:** [symbolic regression notebook](project2/symbolic_regression-2.ipynb), including saved outputs for all three datasets.
+- **Exported results:** [project2/results](project2/results), including [regularized results](project2/results/regularized), [symbolic results](project2/results/symbolic) and [plots](project2/results/plots). Regularized and symbolic exports include split assignments, coefficients, test predictions and evaluation metrics; symbolic coefficient tables also include training means and scales needed to evaluate the standardized expressions.
+
+### Running Project 2
+
+Run the commands from the repository root. Scala commands require a JDK and sbt; `build.sbt` specifies the Scala version. Some analyses open plot windows.
+
+```bash
+# Multiple linear regression: all three datasets
+sbt "runMain scalation.modeling.Project2_Regression"
+
+# Auto MPG Ridge and Lasso, including tuning and result exports
+sbt "runMain scalation.modeling.project2RegularizedRegression"
+
+# Auto MPG and Concrete forward selection
+sbt "runMain scalation.modeling.project2_Forward"
+
+# Auto MPG and Concrete transformed regression
+sbt "runMain scalation.modeling.project2TransformedRegression"
+
+# Symbolic regression: all three datasets
+sbt "runMain scalation.modeling.project2SymbolicRegression"
+```
+
+For a single ScalaTion symbolic dataset, use `scalation.modeling.project2Symbolic` (Auto MPG), `scalation.modeling.project2ConcreteSymbolic`, or `scalation.modeling.project2AirfoilSymbolic` with `sbt "runMain ..."`.
+
+Python analyses use NumPy, pandas, Matplotlib, statsmodels and scikit-learn. The notebooks also require Jupyter; the symbolic notebook requires PySR and its Julia backend.
+
+```bash
+# Generate statsmodels OLS results and plots
+python3 project2/analysis_statsmodels_regression.py
+
+# Open the regularized regression and PySR notebooks
+jupyter notebook project2/Project2_Regular_Regression.ipynb
+jupyter notebook project2/symbolic_regression-2.ipynb
+```
+
+Running the Scala export workflows or Python OLS script regenerates the corresponding result files. Repeating the PySR searches may produce different expressions, particularly for multithreaded runs; the report documents the saved runs.
+
+### Verifying the Report Results
+
+```bash
+# Independently check ScalaTion symbolic and regularized exports
+python3 project2/verify_corrected_results.py
+
+# Recalculate OLS, forward-selection, transformed and statsmodels
+# regularized results, and evaluate the printed PySR equations
+python3 project2/verify_full_report.py
+```
+
+These checks compare saved results with independently calculated predictions, metrics and model fits. Evaluating the printed PySR expressions does not repeat the evolutionary searches.
+
+---
+
 # Project 1: EDA and Simple Regression
 
 This project provides an exploratory data analysis (EDA) and simple linear regression study across the three required UCI Machine Learning Repository datasets:
