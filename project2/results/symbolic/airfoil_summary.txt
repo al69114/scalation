@@ -1,0 +1,8 @@
+Response: scaled_sound_pressure_db
+Training rows: 1203; test rows: 300
+Candidate terms: 41; after training rank screening: 40
+Rejected terms: free_stream_velocity_ms^2.0
+Selected terms: one, suction_displacement_thickness_m_chord_length_m_frequency_hz, chord_length_m_frequency_hz, free_stream_velocity_ms^0.5, angle_attack_deg^2.0, x2^1.0x0^-1.0x4^-1.5, chord_length_m_angle_attack_deg_frequency_hz, free_stream_velocity_ms_chord_length_m_frequency_hz, suction_displacement_thickness_m^2.0, suction_displacement_thickness_m_frequency_hz, suction_displacement_thickness_m_angle_attack_deg_frequency_hz, free_stream_velocity_ms_chord_length_m, free_stream_velocity_ms_frequency_hz, free_stream_velocity_ms_chord_length_m_angle_attack_deg, frequency_hz^2.0, chord_length_m^2.0, chord_length_m_angle_attack_deg, free_stream_velocity_ms_angle_attack_deg, free_stream_velocity_ms_angle_attack_deg_frequency_hz, suction_displacement_thickness_m, suction_displacement_thickness_m_chord_length_m_angle_attack_deg, suction_displacement_thickness_m^0.5, log1p(suction_displacement_thickness_m)
+Training metrics (R2, RMSE, MAE): (0.7070959151019116,3.650392594058056,2.745930377920214)
+Test metrics (R2, RMSE, MAE): (0.7113201223829997,3.998473788398955,3.093955484336617)
+Test rows used in selection: 0

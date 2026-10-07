@@ -1,0 +1,8 @@
+Response: compressive_strength_mpa
+Training rows: 824; test rows: 206
+Candidate terms: 24; after training rank screening: 24
+Rejected terms:
+Selected terms: one, age^0.5, superplasticizer, cement^2.0, age, blast_furnace_slag^2.0, superplasticizer^2.0, water^0.5, water^2.0, coarse_aggregate^2.0, water, coarse_aggregate, coarse_aggregate^0.5, fly_ash^2.0, superplasticizer^0.5, blast_furnace_slag^0.5, cement, blast_furnace_slag, fine_aggregate^0.5
+Training metrics (R2, RMSE, MAE): (0.8555950219829154,6.388627546202866,4.993372355987457)
+Test metrics (R2, RMSE, MAE): (0.8236512171674965,6.809847194171549,5.0506599288715135)
+Test rows used in selection: 0

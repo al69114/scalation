@@ -6,11 +6,12 @@
 \usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage{threeparttable}
+\usepackage{longtable}
 \graphicspath{{./}{overleaf_images/}}
 
 \title{Project 2}
 \author{Disha Dhangar, Adithya Lakshmikanth, Aastha Mishra, Ellie Truong, Amy Vu}
-\date{September 2026}
+\date{October 2026}
 
 \begin{document}
 
@@ -20,6 +21,9 @@
 
 This report presents a regression and symbolic regression analysis across three benchmark datasets. The analysis includes multiple regression, regularized regression using Ridge and Lasso, forward feature selection, transformed regression, and symbolic regression. ScalaTion (Scala 3) is used across all five modeling approaches, while Python's \texttt{statsmodels} is used for multiple and regularized regression and \texttt{PySR} is used for symbolic regression. Across the required cases, model results and evaluation measures are presented and discussed to examine model fit, predictive performance, and the effects of different regression techniques.
 
+
+
+The cleaned UCI data contain 392 rows and 8 numeric columns for Auto MPG (target MPG), 1,030 rows and 9 columns for Concrete (target compressive strength in MPa), and 1,503 rows and 6 columns for Airfoil (target scaled sound pressure in dB). Auto MPG's 398-row numeric source has six missing-horsepower rows; removing those rows and excluding car names yields the 392-row modeling file. Direct comparison with the supplied UCI archives confirms the cleaned values and row order (Concrete differs only at floating-point roundoff). The report covers 12 ScalaTion cases, 5 \texttt{statsmodels} cases, and 3 PySR cases: 20 total. Log, square root, and Box--Cox are applied to the response for each of the two transformed-regression datasets.
 
 \section{Multiple Regression}
 
@@ -56,19 +60,9 @@ Origin       & 1.4261   & 0.2781  & 5.13   & $<$0.001 & 1.77 \\
 
 For Auto MPG, weight, model year, and origin were statistically significant predictors in the full model at $p<0.001$. Weight had a negative coefficient, while model year and origin had positive coefficients. Displacement also had a positive coefficient and was significant at $p=0.008$, despite its negative simple-regression relationship with MPG. This difference illustrates the effect of controlling for correlated predictors in a multiple regression model. The high VIF values for displacement, cylinders, and weight indicate substantial multicollinearity, so individual coefficient estimates should be interpreted with caution.
 
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.45\textwidth]{MLR Figures/auto-MPG_weight_sr.png}
-    \caption{Auto MPG simple regression using vehicle weight.}
-    \label{fig:auto-weight-simple}
-\end{figure}
 
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.45\textwidth]{MLR Figures/auto-MPG_displacement_sr.png}
-    \caption{Auto MPG simple regression using vehicle displacement.}
-    \label{fig:auto-displacement-simple}
-\end{figure}
+
+
 
 \subsubsection{Concrete}
 
@@ -98,19 +92,9 @@ Age                 & 0.1142   & 0.0054  & 21.05 & $<$0.001 & 1.12 \\
 
 For Concrete, cement, blast furnace slag, fly ash, water, superplasticizer, and age were statistically significant predictors at the 0.05 level. Water had a negative coefficient, while the other significant predictors had positive coefficients. Coarse aggregate and fine aggregate were not significant at the 0.05 level, with p-values of approximately 0.055 and 0.060, respectively. The elevated VIF values for several material variables indicate substantial correlation among some of the predictors.
 
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.45\textwidth]{MLR Figures/Concrete_cement_sr.png}
-    \caption{Concrete simple regression using cement.}
-    \label{fig:concrete-cement-simple}
-\end{figure}
 
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.45\textwidth]{MLR Figures/Concrete_sp_sr.png}
-    \caption{Concrete simple regression using superplasticizer.}
-    \label{fig:concrete-superplasticizer-simple}
-\end{figure}
+
+
 
 \subsubsection{Airfoil}
 
@@ -137,19 +121,9 @@ Suction displacement thickness & -147.3005 & 15.0147 & -9.81 & $<$0.001 & 2.53 \
 
 For Airfoil, all five predictors were statistically significant at $p<0.001$. Frequency, angle of attack, chord length, and suction displacement thickness had negative coefficients, while free-stream velocity had a positive coefficient. Despite the statistical significance of the predictors, the model explained approximately 51.6\% of the variation in scaled sound pressure. The relatively modest VIF values suggest that multicollinearity was less severe than in the Auto MPG and Concrete models.
 
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.45\textwidth]{MLR Figures/airfoil_frequency_sr.png}
-    \caption{Airfoil simple regression using frequency.}
-    \label{fig:airfoil-frequency-simple}
-\end{figure}
 
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.45\textwidth]{MLR Figures/airfoil_displacement_sr.png}
-    \caption{Airfoil simple regression using suction displacement thickness.}
-    \label{fig:airfoil-displacement-simple}
-\end{figure}
+
+
 
 \subsection{\texttt{statsmodels}}
 
@@ -234,6 +208,48 @@ Suction displacement thickness & -147.3005 & 15.015 & -9.810 & $<$0.001 \\
 
 The \texttt{statsmodels} simple regression results were consistent with the correlation analysis. For Auto MPG, weight produced an $R^2$ of 0.6926, while displacement produced an $R^2$ of 0.6482. For Concrete, cement produced an $R^2$ of 0.2478, while superplasticizer produced an $R^2$ of 0.1340. For Airfoil, frequency produced an $R^2$ of 0.1527, while suction displacement thickness produced an $R^2$ of 0.0978. All six simple regression models had statistically significant predictor coefficients with $p<0.001$.
 
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.45\textwidth]{MLR Figures/auto-MPG_weight_sr.png}
+    \caption{Auto MPG simple regression using vehicle weight (\texttt{statsmodels} output).}
+    \label{fig:auto-weight-simple}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.45\textwidth]{MLR Figures/auto-MPG_displacement_sr.png}
+    \caption{Auto MPG simple regression using vehicle displacement (\texttt{statsmodels} output).}
+    \label{fig:auto-displacement-simple}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.45\textwidth]{MLR Figures/Concrete_cement_sr.png}
+    \caption{Concrete simple regression using cement (\texttt{statsmodels} output).}
+    \label{fig:concrete-cement-simple}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.45\textwidth]{MLR Figures/Concrete_sp_sr.png}
+    \caption{Concrete simple regression using superplasticizer (\texttt{statsmodels} output).}
+    \label{fig:concrete-superplasticizer-simple}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.45\textwidth]{MLR Figures/airfoil_frequency_sr.png}
+    \caption{Airfoil simple regression using frequency (\texttt{statsmodels} output).}
+    \label{fig:airfoil-frequency-simple}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.45\textwidth]{MLR Figures/airfoil_displacement_sr.png}
+    \caption{Airfoil simple regression using suction displacement thickness (\texttt{statsmodels} output).}
+    \label{fig:airfoil-displacement-simple}
+\end{figure}
+
 \subsection{Results Comparison}
 
 The ScalaTion and \texttt{statsmodels} implementations produced consistent results across all three datasets. Both implementations produced the same full-model $R^2$, adjusted $R^2$, residual standard error, and F-statistic to the displayed precision. The agreement between the two implementations is expected because both fit the same ordinary least squares multiple regression model using the same data and predictors.
@@ -266,192 +282,82 @@ Figure~\ref{fig:mlr-actual-pred} plots predicted against actual values for the t
 
 \section{Regularized Regression}
 
-Regularized regression is used to reduce overfitting by adding a penalty to the regression coefficients. For the Auto MPG dataset, Ridge and Lasso regression are applied to examine how coefficient shrinkage affects model performance when predicting MPG. Ridge shrinks predictor coefficients toward zero, while Lasso can additionally reduce coefficients to exactly zero, effectively performing variable selection. Both methods are implemented using ScalaTion and \texttt{statsmodels}.
+Ridge and Lasso were fitted to Auto MPG in both ScalaTion and \texttt{statsmodels}, giving four required cases. Ridge penalizes squared slope coefficients; Lasso penalizes their absolute values and can yield sparse models. Both implementations standardize predictors using training statistics and leave the intercept unpenalized. Origin is retained as a numeric predictor, matching the multiple regression setup.
 
+\subsection{statsmodels}
 
-\subsection{Statsmodels}
-
-\subsubsection{Ridge Regression}
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.45\textwidth]{Regular Regression Images/Ridge Alpha Tuning.png}
-    \caption{Ridge alpha tuning using 5-fold cross-validation.}
-    \label{fig:ridge-alpha}
-\end{figure}
-
-The Ridge regularization parameter was tuned using 5-fold cross-validation on the training data. Candidate values of $\alpha \in \{0.001, 0.01, 0.1, 1, 10, 100\}$ were evaluated using average validation RMSE. The value $\alpha = 0.01$ produced the lowest average RMSE and was selected for the final Ridge model.
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.45\textwidth]{Regular Regression Images/Ridge Coefficients.png}
-    \caption{Ridge regression coefficients.}
-    \label{fig:ridge-coefficients}
-\end{figure}
-
-The fitted Ridge model retains all predictors while shrinking their coefficients through regularization. Among the standardized predictors, weight has the largest coefficient magnitude at approximately $-4.67$, indicating a strong negative association with MPG, while model year has a relatively large positive coefficient of approximately $2.72$. Acceleration has a coefficient close to zero, indicating a relatively small contribution to the fitted model.
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.45\textwidth]{Regular Regression Images/Ridge Fitted Output.png}
-    \caption{Actual and predicted MPG values from the Ridge model.}
-    \label{fig:ridge-fitted}
-\end{figure}
-
-The fitted output compares the actual MPG values from the test data with the MPG values predicted by the Ridge model. The predictions generally follow the observed MPG values, although some prediction error remains.
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.45\textwidth]{Regular Regression Images/Ridge Evaluation.png}
-    \caption{Ridge regression evaluation metrics.}
-    \label{fig:ridge-evaluation}
-\end{figure}
-
-Ridge regression achieved an $R^2$ of 0.787, meaning the model explains approximately 78.7\% of the variation in MPG in the test data. The RMSE of 3.297 indicates that the model's MPG predictions have a typical error magnitude of about 3.3 MPG.
-
-\vspace{0.3cm}
-
-Overall, Ridge regression provides a reasonably strong fit while using regularization to shrink the predictor coefficients and reduce the risk of overfitting. This is particularly useful for the Auto MPG data because several predictors, including weight, displacement, horsepower, and cylinders, are strongly related to one another, as shown in Project 1. Ridge allows the model to retain all of these predictors while shrinking their coefficients rather than eliminating them. Thus, Ridge maintains information from the different vehicle characteristics while controlling the influence of highly related predictors.
-
-
-\subsubsection{Lasso Regression}
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.45\textwidth]{Regular Regression Images/Lasso Alpha Tuning.png}
-    \caption{Lasso alpha tuning using 5-fold cross-validation.}
-    \label{fig:lasso-alpha}
-\end{figure}
-
-The Lasso regularization parameter was tuned using 5-fold cross-validation on the training data. Candidate values of $\alpha \in \{0.001, 0.01, 0.1, 1, 10, 100\}$ were evaluated using average validation RMSE. The value $\alpha = 0.01$ produced the lowest average RMSE and was selected for the final Lasso model.
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.45\textwidth]{Regular Regression Images/Lasso Coefficients.png}
-    \caption{Lasso regression coefficients.}
-    \label{fig:lasso-coefficients}
-\end{figure}
-
-The fitted Lasso model shrinks the predictor coefficients through regularization and reduces the coefficient for acceleration to zero, effectively removing it as a predictor. Weight has the largest coefficient magnitude among the remaining standardized predictors, while model year has a relatively large positive coefficient.
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.45\textwidth]{Regular Regression Images/Lasso Fitted Output.png}
-    \caption{Actual and predicted MPG values from the Lasso model.}
-    \label{fig:lasso-fitted}
-\end{figure}
-
-The fitted output compares the actual MPG values from the test data with the MPG values predicted by the Lasso model. The predicted values generally follow the actual MPG values while still showing some prediction error.
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.45\textwidth]{Regular Regression Images/Lasso Evaluation.png}
-    \caption{Lasso regression evaluation metrics.}
-    \label{fig:lasso-evaluation}
-\end{figure}
-
-Lasso regression achieved an $R^2$ of 0.7878, meaning the model explains approximately 78.8\% of the variation in MPG in the test data. The RMSE of 3.291 indicates that the model's MPG predictions have a typical error magnitude of about 3.29 MPG.
-
-\vspace{0.3cm}
-
-Overall, Lasso regression provides a reasonably strong fit while using regularization to shrink coefficients. In this model, Lasso reduced the coefficient for acceleration to zero, effectively removing it as a predictor. This is consistent with the Auto MPG analysis in Project 1, where acceleration had a weaker relationship with MPG than predictors such as weight, displacement, horsepower, and cylinders. Thus, Lasso maintained strong predictive performance while producing a more selective model.
-
+The notebook uses a scikit-learn seed-42 80/20 split (313 training, 79 test rows). Five-fold CV with shuffled seed-42 folds considers $\alpha\in\{0.001,0.01,0.1,1,10,100\}$. A new scaler is fitted inside each fold, and the intercept has zero penalty weight. The tuning score is mean fold RMSE. Both methods select $\alpha=0.01$. Final scalers and coefficients are fitted using the complete training set, then evaluated once on test data.
 
 \subsection{ScalaTion}
 
-\subsubsection{Ridge Regression}
+The ScalaTion implementation uses Scala's seed-42 shuffle (314 training, 78 test rows). For both methods, five contiguous folds of the shuffled training rows evaluate the same grid $\lambda=0.1\,2^i$, $i=0,\ldots,19$. Each fold estimates predictor means and sample standard deviations, and centers the response, using only its fitting rows. Validation predictions add that fold's response mean back. Lambda minimizes pooled CV RMSE, $\sqrt{\sum e_i^2/n_{train}}$. The final model uses complete-training statistics and adds the training response mean back, so the intercept is unpenalized.
 
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.55\textwidth]{Regular Regression Images/Ridge Lambda Tuning.png}
-    \caption{ScalaTion Ridge lambda tuning using cross-validation.}
-    \label{fig:scalation-ridge-tuning}
-\end{figure}
+\begin{table}[H]
+\centering\small
+\caption{Auto MPG Ridge and Lasso test-set results. The two tools use different test rows.}
+\label{tab:regularized-results}
+\begin{tabular}{lllrr}
+\toprule
+Tool & Method & Penalty & Test RMSE & Test $R^2$ \\
+\midrule
+statsmodels & Ridge & $\alpha=0.01$ & 3.2973 & 0.7870 \\
+ScalaTion & Ridge & $\lambda=0.8$ & 3.5348 & 0.7826 \\
+statsmodels & Lasso & $\alpha=0.01$ & 3.2907 & 0.7878 \\
+ScalaTion & Lasso & $\lambda=0.8$ & 3.5295 & 0.7832 \\
+\bottomrule
+\end{tabular}
+\end{table}
 
-The ScalaTion Ridge regularization parameter was tuned using cross-validation on the training data. Candidate lambda values were evaluated using cross-validated SSE, where lower SSE indicates better validation performance. The lowest CV SSE of 711.815 was obtained at $\lambda = 3.2$, which was selected for the final Ridge model.
+\begin{table}[H]
+\centering\small
+\caption{Coefficients on standardized predictors; intercepts are in MPG. Each tool uses its own training scaler.}
+\label{tab:regularized-coefficients}
+\begin{tabular}{lrrrr}
+\toprule
+Term & SM Ridge & SM Lasso & Scala Ridge & Scala Lasso \\
+\midrule
+intercept & 23.599361 & 23.599361 & 23.416561 & 23.416561 \\
+cylinders & -0.469692 & -0.382769 & -1.177008 & -1.177037 \\
+displacement & 0.977049 & 1.128755 & 1.726830 & 1.824915 \\
+horsepower & -0.908489 & -0.839027 & -0.469544 & -0.421403 \\
+weight & -4.667132 & -4.975586 & -5.145695 & -5.274320 \\
+acceleration & 0.006313 & 0.000000 & 0.091504 & 0.118477 \\
+model year & 2.722611 & 2.764608 & 2.697029 & 2.710472 \\
+origin & 1.268601 & 1.258881 & 1.161311 & 1.159458 \\
+\bottomrule
+\end{tabular}
+\end{table}
 
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.50\textwidth]{Regular Regression Images/Ridge ScalaTion.png}
-    \caption{ScalaTion Ridge regression coefficients, fitted output, and evaluation metrics.}
-    \label{fig:scalation-ridge}
-\end{figure}
+Weight has a large negative coefficient and model year a positive coefficient in all four fitted models. statsmodels Lasso sets acceleration exactly to zero. The Scala Lasso keeps a small nonzero acceleration coefficient; sparsity depends on the chosen penalty and solver tolerance. Because these are coefficients on standardized, correlated predictors, their signs describe conditional fitted associations rather than independent causal effects. Ridge penalization discourages large slope estimates among correlated cylinders, displacement, horsepower, and weight, allowing their shared information to remain in the fitted model. Lasso can remove a redundant predictor, as with acceleration in \texttt{statsmodels}; a zero conditional coefficient does not establish that the variable has no marginal association with MPG.
 
-The ScalaTion Ridge model achieved an $R^2$ of 0.7800, meaning the model explains approximately 78.0\% of the variation in MPG in the test data. The RMSE of 3.556 indicates that the model's MPG predictions have a typical error magnitude of about 3.56 MPG. The fitted output also shows that the predicted MPG values generally follow the actual test values, although some prediction error remains.
+\subsection{Evaluation and Interpretation}
 
-\vspace{0.3cm}
-
-Overall, the ScalaTion Ridge model provides a reasonably strong fit while retaining all predictors and shrinking their coefficients through regularization. Weight has the largest coefficient magnitude among the standardized predictors at approximately $-4.739$, indicating a strong negative association with MPG in the fitted model. Model year has a positive coefficient of approximately $2.651$, while acceleration has a coefficient close to zero. As with the Statsmodels Ridge model, Ridge retains these predictors rather than eliminating them.
-
-
-\subsubsection{Lasso Regression}
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.55\textwidth]{Regular Regression Images/Lasso Lambda Tuning.png}
-    \caption{ScalaTion Lasso lambda tuning using cross-validation.}
-    \label{fig:scalation-lasso-tuning}
-\end{figure}
-
-The ScalaTion Lasso regularization parameter was tuned using cross-validation on the training data. Candidate lambda values were evaluated using cross-validated SSE, where lower SSE indicates better validation performance. The lowest CV SSE of 715.414 was obtained at $\lambda = 25.6$, which was selected for the final Lasso model.
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.50\textwidth]{Regular Regression Images/Lasso ScalaTion.png}
-    \caption{ScalaTion Lasso regression coefficients, fitted output, and evaluation metrics.}
-    \label{fig:scalation-lasso}
-\end{figure}
-
-The ScalaTion Lasso model achieved an $R^2$ of 0.7815, meaning the model explains approximately 78.1\% of the variation in MPG in the test data. The RMSE of 3.544 indicates that the model's MPG predictions have a typical error magnitude of about 3.54 MPG. The fitted output similarly shows that the predicted MPG values generally follow the actual test values.
-
-\vspace{0.3cm}
-
-Overall, the ScalaTion Lasso model provides a reasonably strong fit while shrinking the predictor coefficients through regularization. Weight has the largest coefficient magnitude among the standardized predictors at approximately $-4.643$, while model year has a positive coefficient of approximately $2.602$. Unlike the Statsmodels Lasso model, the ScalaTion Lasso model did not reduce acceleration exactly to zero. Its coefficient remained small at approximately $0.051$. The ScalaTion Ridge and Lasso models therefore produced very similar predictive performance, although the two regularization methods produced different coefficient estimates.
-
-\subsection{Summary}
-
-Overall, \texttt{statsmodels} and ScalaTion produced similar Ridge and Lasso results for the Auto MPG dataset. Ridge achieved an RMSE of 3.297 and $R^2$ of 0.7870 in \texttt{statsmodels}, compared with an RMSE of 3.556 and $R^2$ of 0.7800 in ScalaTion. Lasso achieved an RMSE of 3.291 and $R^2$ of 0.7878 in \texttt{statsmodels}, compared with an RMSE of 3.544 and $R^2$ of 0.7815 in ScalaTion. These test metrics should not be read as a comparison between the two tools, however: the \texttt{statsmodels} models were evaluated on a split produced by scikit-learn's \texttt{train\_test\_split}, while the ScalaTion models used a different split produced by Scala's random shuffle. The two test sets contain different cars, and the split alone changes the result noticeably; unregularized regression scores a test RMSE of 3.273 on the \texttt{statsmodels} split but 3.528 on the ScalaTion split.
-
-\vspace{0.3cm}
-
-The two implementations also used different regularization parameters and tuning procedures. In \texttt{statsmodels}, the penalty strength is controlled by $\alpha$, and was selected using 5-fold cross-validation with average validation RMSE. In ScalaTion, the penalty strength is controlled by $\lambda$, and the built-in tuning procedure selects $\lambda$ using cross-validated SSE. Because the implementations and tuning criteria differ, the numerical values of $\alpha$ and $\lambda$ should not be directly compared.
-
-\vspace{0.3cm}
-
-Ridge behaved similarly across both implementations by shrinking coefficients while retaining all predictors. Lasso showed a larger difference: the \texttt{statsmodels} model reduced acceleration to exactly zero, while ScalaTion retained acceleration with a small coefficient of approximately $0.051$. Within both implementations, Ridge and Lasso had very similar predictive performance, with Lasso having a slightly lower RMSE and slightly higher $R^2$. Overall, the results show that both methods provide similar predictive performance, while Lasso can produce a more selective model depending on the implementation and selected regularization strength.
-
-\subsection{Visual Comparison}
-
-Figure~\ref{fig:reg-tuning} shows the tuning curves for both tools. In \texttt{statsmodels}, cross-validated RMSE is nearly flat for $\alpha \leq 0.1$ and rises sharply for $\alpha \geq 1$; at $\alpha = 10$ and $100$ the Lasso error reaches the same value (7.914), consistent with all predictor coefficients being shrunk to zero. ScalaTion's cross-validated SSE is similarly flat for small $\lambda$ and increases once $\lambda$ exceeds roughly 100, with the Lasso SSE levelling off for $\lambda \geq 6553.6$. In both tools, the selected penalty lies in the flat region, so regularization changes the fit only slightly.
+On the statsmodels test split, unregularized OLS has RMSE 3.2727~MPG; on the ScalaTion split it has RMSE 3.5276~MPG. The regularized fits do not improve test RMSE over these matched-split baselines. Regularization shrinks coefficients and can reduce variance in other samples, but this experiment does not demonstrate reduced overfitting. Alpha and lambda values cannot be compared numerically across implementations because their penalty normalizations differ. Differences between tools also reflect different test rows, scaler conventions, solvers, and tuning objectives. The two tuning scores are mean fold RMSE (statsmodels) and pooled RMSE (ScalaTion); neither is a test-set score.
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=\textwidth]{Regular Regression Images/regularization_tuning.png}
-\caption{Penalty tuning for Ridge and Lasso: average 5-fold cross-validated RMSE versus $\alpha$ in \texttt{statsmodels} (left) and cross-validated SSE versus $\lambda$ in ScalaTion (right).}
+\includegraphics[width=\textwidth]{Regular Regression Images/tuning_comparison.png}
+\caption{Training CV tuning curves for Ridge and Lasso. Each candidate in the ScalaTion curves uses the same folds and fold-specific preprocessing.}
 \label{fig:reg-tuning}
 \end{figure}
-
-Figure~\ref{fig:reg-coef} compares the standardized coefficients of unregularized OLS, Ridge, and Lasso. All models agree on the dominant effects: weight has the largest negative coefficient and model year the largest positive one, followed by origin. Ridge and Lasso shrink the weight and displacement coefficients relative to OLS. The \texttt{statsmodels} Lasso sets acceleration exactly to zero, while the ScalaTion Lasso keeps a small acceleration coefficient and shrinks displacement to a small negative value.
 
 \begin{figure}[H]
 \centering
 \includegraphics[width=\textwidth]{Regular Regression Images/coefficient_comparison.png}
-\caption{Coefficients on standardized predictors for OLS, Ridge, and Lasso (Auto MPG). OLS is fitted on the \texttt{statsmodels} training split.}
+\caption{Ridge/Lasso slope coefficients on standardized predictors for all four Auto MPG models.}
 \label{fig:reg-coef}
 \end{figure}
-
-Figure~\ref{fig:reg-test} shows predicted against actual MPG on each tool's test set. All four models follow the diagonal closely for low and middle MPG values and under-predict the most fuel-efficient cars, the same pattern seen in the unregularized model.
 
 \begin{figure}[H]
 \centering
 \includegraphics[width=\textwidth]{Regular Regression Images/test_actual_vs_predicted.png}
-\caption{Predicted versus actual MPG on the test set for Ridge and Lasso in both tools. The \texttt{statsmodels} and ScalaTion panels use different test splits. ScalaTion predictions were computed from the reported ScalaTion coefficients and reproduce its reported RMSE and $R^2$ exactly.}
+\caption{Observed versus predicted test MPG. Each ScalaTion panel uses the coefficients and untouched outer test rows; statsmodels uses its own split.}
 \label{fig:reg-test}
 \end{figure}
 
 \section{Forward Feature Selection}
 
-Forward feature selection was run in ScalaTion on two datasets, Auto MPG ($n = 392$) and Concrete ($n = 1{,}030$). For each dataset, the rows were shuffled once with a fixed random seed (42), and a multiple regression model with an intercept column was built over the available predictors. ScalaTion's \texttt{forwardSelAll} routine then started from an intercept-only model and added one variable at a time, at each step choosing the addition that maximized adjusted $R^2$ (\texttt{QoF.rSqBar}). Each candidate model was fitted on ScalaTion's default 80\% training split (314 rows for Auto MPG and 824 for Concrete), so the path $R^2$ and adjusted $R^2$ values are training-set measures; adjusted $R^2$ was recomputed with the training-set size, because \texttt{forwardSelAll} reports it using the full dataset size. Every candidate model was also evaluated with the default 5-fold cross-validation, so $R^2_{cv}$ is the average out-of-sample $R^2$ across the five folds. The best model is the step where adjusted $R^2$ is maximized over the full selection path, and that subset of variables was refit with \texttt{trainNtest()} on the full dataset.
+Forward feature selection was run in ScalaTion on two datasets, Auto MPG ($n = 392$) and Concrete ($n = 1{,}030$). For each dataset, the rows were shuffled once with a fixed random seed (42), and a multiple regression model with an intercept column was built over the available predictors. ScalaTion's \texttt{forwardSelAll} routine then started from an intercept-only model and added one variable at a time, at each step choosing the addition that maximized adjusted $R^2$ (\texttt{QoF.rSqBar}). At steps 1 onward, candidate models were fitted on ScalaTion's default training range (313 rows for Auto MPG and 823 for Concrete), so the path $R^2$ and adjusted $R^2$ values are training-set measures; adjusted $R^2$ was recomputed with the training-set size, because \texttt{forwardSelAll} reports it using the full dataset size. The intercept-only step is fitted on the full dataset. Each candidate subset was also evaluated with the default 5-fold cross-validation on the full dataset, so $R^2_{cv}$ is the average out-of-sample $R^2$ across the five folds. The best model is the step where adjusted $R^2$ is maximized over the full selection path, and that subset of variables was refit with \texttt{trainNtest()} on the full dataset.
 
 \subsection{ScalaTion}
 
@@ -461,7 +367,7 @@ Forward selection considered the seven predictors (cylinders, displacement, hors
 
 \begin{table}[H]
     \centering
-    \caption{Forward selection path for Auto MPG (values in \%). Adjusted $R^2$ peaks at step 6. Adjusted $R^2$ is computed with the training-set size used by \texttt{forwardSelAll} (314 rows).}
+    \caption{Forward selection path for Auto MPG (values in \%). Adjusted $R^2$ peaks at step 6. Adjusted $R^2$ is computed with the training-set size used by \texttt{forwardSelAll} (313 rows).}
     \label{tab:fs-auto-path}
     \begin{tabular}{clcccc}
         \hline
@@ -518,7 +424,7 @@ The maximum adjusted $R^2$ occurs at step 6, so the best model keeps six predict
     \label{fig:fs-auto-fit}
 \end{figure}
 
-The selected model achieved an $R^2$ of 0.8212, an adjusted $R^2$ of 0.8184, and an RMSE of 3.296 MPG on the full dataset. Its 5-fold cross-validated $R^2_{cv}$ was 0.8106, which is the more honest estimate of out-of-sample performance. This is a large improvement over the best simple regression (weight alone, $R^2 = 0.6926$), and it is essentially the same fit as the full seven-predictor model from the multiple regression section (adjusted $R^2$ of 0.8182), so dropping acceleration costs nothing. Heavier cars and cars with more cylinders are associated with lower MPG, while later model years are associated with higher MPG, which is consistent with improvements in fuel efficiency over the 1970--1982 sample period. The displacement coefficient is slightly positive even though displacement is negatively correlated with MPG on its own. This is likely because weight, cylinders, and displacement are strongly correlated with one another, so once weight and cylinders are in the model, displacement no longer plays its marginal role.
+The selected model achieved an $R^2$ of 0.8212, an adjusted $R^2$ of 0.8184, and an RMSE of 3.296 MPG on the full dataset. Its 5-fold cross-validated $R^2_{cv}$ was 0.8106, which evaluates the fixed selected subset across folds; selection was not repeated inside each fold, so this is not a nested-CV estimate of the complete selection procedure. This is a large improvement over the best simple regression (weight alone, $R^2 = 0.6926$), and it is essentially the same fit as the full seven-predictor model from the multiple regression section (adjusted $R^2$ of 0.8182), so dropping acceleration changes the descriptive fit very little. Heavier cars and cars with more cylinders are associated with lower MPG, while later model years are associated with higher MPG, which is consistent with improvements in fuel efficiency over the 1970--1982 sample period. The displacement coefficient is slightly positive even though displacement is negatively correlated with MPG on its own. This is likely because weight, cylinders, and displacement are strongly correlated with one another, so once weight and cylinders are in the model, displacement no longer plays its marginal role.
 
 \subsubsection{Concrete}
 
@@ -526,7 +432,7 @@ Forward selection considered all eight predictors (cement, blast furnace slag, f
 
 \begin{table}[H]
     \centering
-    \caption{Forward selection path for Concrete (values in \%). Adjusted $R^2$ peaks at step 8. Adjusted $R^2$ is computed with the training-set size used by \texttt{forwardSelAll} (824 rows).}
+    \caption{Forward selection path for Concrete (values in \%). Adjusted $R^2$ peaks at step 8. Adjusted $R^2$ is computed with the training-set size used by \texttt{forwardSelAll} (823 rows).}
     \label{tab:fs-concrete-path}
     \begin{tabular}{clcccc}
         \hline
@@ -590,7 +496,7 @@ The selected model achieved an $R^2$ of 0.6155, an adjusted $R^2$ of 0.6125, and
 
 \subsection{Summary}
 
-In both datasets, forward selection guided by adjusted $R^2$ chose the same leading predictors as the correlation analysis in the multiple regression section: weight came first for Auto MPG, and cement and superplasticizer came first for Concrete. The two datasets behave differently after that. For Auto MPG, adjusted $R^2$ saturates quickly and declines when acceleration is forced in, so selection stops at six of seven predictors. For Concrete, adjusted $R^2$ keeps climbing, however modestly, to the full model, so no variables are excluded. In both cases the selected model performs about as well as the full multiple regression model, and the cross-validated $R^2_{cv}$ (0.8106 and 0.5975) is a little lower than the full-data $R^2$, as expected. This highlights why adjusted $R^2$ is a better selection criterion than raw $R^2$, which never decreases as predictors are added.
+In both datasets, forward selection guided by adjusted $R^2$ chose the same leading predictors as the correlation analysis in the multiple regression section: weight came first for Auto MPG, and cement and superplasticizer came first for Concrete. The two datasets behave differently after that. For Auto MPG, adjusted $R^2$ saturates quickly and declines when acceleration is forced in, so the retained subset contains six of seven predictors even though the path visits all seven. For Concrete, adjusted $R^2$ keeps climbing, however modestly, to the full model, so no variables are excluded. In both cases the selected model performs about as well as the full multiple regression model, and the cross-validated $R^2_{cv}$ (0.8106 and 0.5975) is a little lower than the full-data $R^2$, as expected. This highlights why adjusted $R^2$ is a better selection criterion than raw $R^2$, which never decreases as predictors are added.
 
 \section{Transformed Regression}
 
@@ -696,254 +602,173 @@ were Auto MPG, Concrete Compressive Strength, and Airfoil Self-Noise.
 
 \subsection{ScalaTion}
 
-ScalaTion symbolic regression was applied to all three datasets. Candidate
-features were constructed from nonlinear transformations of the original
-predictors, including square-root, squared, inverse, logarithmic, and
-interaction terms depending on the dataset. Forward feature selection was
-then used to identify a subset of transformed predictors for the final
-regression model.
+ScalaTion's \texttt{SymbolicRegression} builds candidate basis functions, and forward selection retains a subset for a linear combination of nonlinear terms. Predictor names are read from the CSV headers, so cylinders and displacement are identified in the repository's actual order. Each dataset is shuffled with Scala seed 42 and split \emph{before} any fitting or selection. The training/test sizes are 314/78 for Auto MPG, 824/206 for Concrete, and 1203/300 for Airfoil. Feature construction uses predefined operators; means, scales, numerical-rank screening, and feature selection use training rows only. The test rows are reserved until the final selected model is fitted.
+
+Auto MPG uses powers $-2,-1,1/2,2$; Concrete uses $1,1/2,2$; Airfoil uses $1,1/2,2$, $\log(1+x)$, two-way and three-way products of distinct predictors, and $c/(f d^{3/2})$. Here $c$, $f$, and $d$ denote chord length, frequency, and suction displacement thickness. Powers and operator sets are fixed before evaluation. All transformations are finite for the observed predictors.
+
+Each nonconstant basis function is centered and scaled using its training mean and population standard deviation. In candidate order, two-pass Gram--Schmidt screening rejects columns whose residual norm is at most $10^{-6}$ of their original standardized norm. This removes numerically redundant functions using only the training design. There are 28/24/41 initial nonconstant candidates for Auto MPG/Concrete/Airfoil and 26/24/40 after screening. Forward selection minimizes the library's training $\mathrm{sMAPE}_{IC}$ criterion over the complete selection path. The final subset is refitted by QR least squares on all outer training rows; test predictions use those same training scaling constants. No random validation calls or test responses enter selection.
+
+These results describe predictive performance on one fixed split. Selecting correlated nonlinear features does not establish confirmatory effects or causal relationships.
 
 \begin{table}[H]
-\centering
-\caption{ScalaTion symbolic regression performance.}
+\centering\small
+\caption{ScalaTion symbolic regression: training fit and untouched test-set performance. RMSE/MAE use each response's original units.}
 \label{tab:scalation-symbolic-results}
+\begin{tabular}{lrrrrrrr}
+\toprule
+Dataset & $n_{tr}$ & $n_{te}$ & Terms & Train $R^2$ & Test $R^2$ & RMSE & MAE \\
+\midrule
+Auto MPG & 314 & 78 & 17 & 0.8918 & 0.8650 & 2.7853 & 2.0858 \\
+Concrete & 824 & 206 & 18 & 0.8556 & 0.8237 & 6.8098 & 5.0507 \\
+Airfoil & 1203 & 300 & 22 & 0.7071 & 0.7113 & 3.9985 & 3.0940 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[H]
+\centering\small
+\caption{Linear baseline and symbolic regression on identical Scala test rows. Positive reductions indicate lower symbolic RMSE.}
+\label{tab:symbolic-baseline}
 \begin{tabular}{lrrrr}
 \toprule
-Dataset & $R^2$ & Adjusted $R^2$ & RMSE & MAE \\
+Dataset & Linear $R^2$ & Linear RMSE & Symbolic RMSE & RMSE reduction (\%) \\
 \midrule
-Auto MPG & 0.8827 & 0.8328 & 2.6101 & 1.9914 \\
-Concrete & 0.8180 & 0.8015 & 6.9646 & 5.6196 \\
-Airfoil  & 0.6826 & 0.6321 & 3.9647 & 2.9289 \\
+Auto MPG & 0.7835 & 3.5276 & 2.7853 & 21.0 \\
+Concrete & 0.5957 & 10.3108 & 6.8098 & 34.0 \\
+Airfoil & 0.5377 & 5.0598 & 3.9985 & 21.0 \\
 \bottomrule
 \end{tabular}
 \end{table}
 
 \subsubsection{Auto MPG}
 
-For Auto MPG, ScalaTion generated nonlinear transformations of vehicle
-characteristics including weight, model year, displacement, horsepower,
-acceleration, cylinders, and origin. The final selected model included
-inverse, square-root, and squared transformations.
-\begin{table}[H]
-\centering
-\small
-\caption{Selected significant coefficients from the ScalaTion symbolic regression model for Auto MPG.}
-\label{tab:auto-symbolic-coefficients}
-\begin{tabular}{lrrrr}
+The model retained 17 nonconstant terms plus an intercept. Test $R^2=0.8650$, RMSE $=2.7853$~MPG, and MAE $=2.0858$~MPG. Against linear regression on the same training/test rows, RMSE falls from 3.5276 to 2.7853~MPG (21.0\%). The selected expression includes inverse weight, nonlinear model year, inverse displacement and horsepower, acceleration, origin, and cylinder terms. Individual signs belong to a joint nonlinear combination and should not be interpreted as isolated effects. Numeric origin coding follows the other ScalaTion models.
+
+$C,D,H,W,A,Y,O$ are cylinders, displacement, horsepower, weight, acceleration, model year (70--82), and numeric origin, respectively.
+The complete fitted expression is
+\begin{equation}
+\widehat{y}= 23.41656051 + \sum_{j=1}^{17} b_j\frac{\phi_j-\mu_j}{s_j}.
+\end{equation}
+The following table specifies \emph{every} term and its fitted coefficient and training scaling constants. Values are rounded to 11 significant digits; full double-precision constants and predictions are exported in the dataset-specific \texttt{project2/results/symbolic/} CSVs. The intercept above is not centered or scaled.
+
+{\scriptsize\setlength{\tabcolsep}{3pt}
+\begin{longtable}{rlrrr}
+\caption{Complete Auto MPG ScalaTion symbolic expression parameters.}\label{tab:auto-mpg-symbolic-complete}\\
 \toprule
-Term & Estimate & Std. Error & $t$ & $p$ \\
-\midrule
-Intercept
-& -1016807.1951 & 517225.1602 & -1.97 & 0.0493 \\
+$j$ & $\phi_j$ & $b_j$ & $\mu_j$ & $s_j$ \\
+\midrule\endfirsthead
+\toprule
+$j$ & $\phi_j$ & $b_j$ & $\mu_j$ & $s_j$ \\
+\midrule\endhead
+1 & $W^{-1}$ & $1.8615882098$ & $0.00036088109269$ & $0.00010023526341$ \\
+2 & $Y^{2}$ & $29.797474083$ & $5781.1050955$ & $555.03854096$ \\
+3 & $\sqrt{Y}$ & $-27.062913016$ & $8.7121722882$ & $0.20955641849$ \\
+4 & $D^{-1}$ & $2.2799083543$ & $0.0066972548638$ & $0.0032418450901$ \\
+5 & $H^{-1}$ & $5.4453586983$ & $0.010731868546$ & $0.0035451860794$ \\
+6 & $\sqrt{A}$ & $-10.833743774$ & $3.9275763597$ & $0.35007368107$ \\
+7 & $H^{-2}$ & $-2.8720099973$ & $0.00012774134683$ & $8.2206002648\times10^{-5}$ \\
+8 & $D^{2}$ & $0.44763104365$ & $50103.752389$ & $50732.708911$ \\
+9 & $O^{-1}$ & $-2.4951861577$ & $0.78503184713$ & $0.2872354299$ \\
+10 & $W^{2}$ & $-0.002618093047$ & $9773975.3185$ & $5631807.4713$ \\
+11 & $A^{2}$ & $6.2719398213$ & $249.35197452$ & $88.977326479$ \\
+12 & $A^{-1}$ & $-3.7782361382$ & $0.066444714752$ & $0.01250025077$ \\
+13 & $O^{-2}$ & $2.1327499778$ & $0.69877919321$ & $0.39846216897$ \\
+14 & $C^{-1}$ & $-211.39430164$ & $0.19816878981$ & $0.055715123421$ \\
+15 & $C^{2}$ & $86.96592285$ & $33.439490446$ & $20.413039912$ \\
+16 & $\sqrt{C}$ & $-220.70956558$ & $2.3225501851$ & $0.3578458204$ \\
+17 & $C^{-2}$ & $77.087687267$ & $0.042375044232$ & $0.021491373332$ \\
+\bottomrule\end{longtable}}
 
-Weight$^{-1}$
-& 908334.5295 & 426892.0794 & 2.13 & 0.0334 \\
-
-Model year$^2$
-& -10.1170 & 4.9912 & -2.03 & 0.0427 \\
-
-$\sqrt{\mathrm{model\ year}}$
-& 83706.6823 & 42238.6395 & 1.98 & 0.0475 \\
-
-Acceleration$^{-1}$
-& 808.9958 & 331.6133 & 2.44 & 0.0147 \\
-
-Displacement$^{-2}$
-& 129732.1150 & 56783.3200 & 2.28 & 0.0223 \\
-
-Weight$^{-2}$
-& -626524289.4326 & 262993286.5486 & -2.38 & 0.0172 \\
-
-Acceleration$^{-2}$
-& -3554.8823 & 1663.9678 & -2.14 & 0.0326 \\
-
-Acceleration$^2$
-& 0.02863 & 0.01384 & 2.07 & 0.0386 \\
-
-Cylinders$^2$
-& 1.1834 & 0.2464 & 4.80 & $<0.001$ \\
-
-Cylinders$^{-2}$
-& -765.5316 & 127.7204 & -5.99 & $<0.001$ \\
-
-$\sqrt{\mathrm{cylinders}}$
-& -114.1268 & 21.5207 & -5.30 & $<0.001$ \\
-\bottomrule
-\end{tabular}
-\end{table}
-The final selected model achieved an $R^2$ of 0.8827 and an adjusted
-$R^2$ of 0.8328. The RMSE was 2.6101 MPG and the MAE was 1.9914 MPG.
-The residual standard error was approximately 3.1370, and the overall
-$F$-statistic was 17.6756.
-
-Several transformed predictors were statistically significant, including
-inverse weight, squared model year, inverse acceleration, inverse
-displacement, squared acceleration, and multiple nonlinear transformations
-of cylinders. These results indicate that the relationship between vehicle
-characteristics and MPG contains important nonlinear structure.
-
-However, many of the generated transformed terms had extremely large VIF
-values, with several exceeding millions or even billions. This indicates
-severe multicollinearity among the symbolic basis functions. Therefore,
-individual coefficient magnitudes should be interpreted cautiously, and
-the model is better viewed as a predictive combination of nonlinear
-transformed features.
 \subsubsection{Concrete}
 
-For the Concrete dataset, ScalaTion generated transformations of cement,
-slag, fly ash, water, superplasticizer, coarse aggregate, fine aggregate,
-and age. The selected model contained terms such as $\sqrt{\text{age}}$,
-cement squared, slag squared, fly ash squared, square-root transformations,
-and other transformed material variables.
-\begin{table}[H]
-\centering
-\small
-\caption{Selected significant coefficients from the ScalaTion symbolic regression model for Concrete.}
-\label{tab:concrete-symbolic-coefficients}
-\begin{tabular}{lrrrr}
+The model retained 18 nonconstant terms plus an intercept. Test $R^2=0.8237$, RMSE $=6.8098$~MPa, and MAE $=5.0507$~MPa. Against linear regression on the same training/test rows, RMSE falls from 10.3108 to 6.8098~MPa (34.0\%). The selected expression includes square-root age, linear age, material powers, and square-root material terms. The opposing age functions allow curvature in the fitted response. Terms involving water and superplasticizer occur together with correlated material variables, so coefficient signs alone do not determine monotone or causal effects.
+
+$C,S,F,W,P,G,Q,A$ are cement, slag, fly ash, water, superplasticizer, coarse aggregate, fine aggregate, and age, respectively.
+The complete fitted expression is
+\begin{equation}
+\widehat{y}= 35.656915953 + \sum_{j=1}^{18} b_j\frac{\phi_j-\mu_j}{s_j}.
+\end{equation}
+The following table specifies \emph{every} term and its fitted coefficient and training scaling constants. Values are rounded to 11 significant digits; full double-precision constants and predictions are exported in the dataset-specific \texttt{project2/results/symbolic/} CSVs. The intercept above is not centered or scaled.
+
+{\scriptsize\setlength{\tabcolsep}{3pt}
+\begin{longtable}{rlrrr}
+\caption{Complete Concrete ScalaTion symbolic expression parameters.}\label{tab:concrete-symbolic-complete}\\
 \toprule
-Term & Estimate & Std. Error & $t$ & $p$ \\
-\midrule
-$\sqrt{\mathrm{age}}$
-& 6.6596 & 0.2074 & 32.11 & $<0.001$ \\
-
-Superplasticizer
-& -1.6063 & 0.4672 & -3.44 & $<0.001$ \\
-
-Cement$^2$
-& 0.000105 & 0.000007 & 14.14 & $<0.001$ \\
-
-Age
-& -0.2441 & 0.0119 & -20.52 & $<0.001$ \\
-
-Slag$^2$
-& 0.000142 & 0.000022 & 6.30 & $<0.001$ \\
-
-$\sqrt{\mathrm{water}}$
-& 564.3547 & 79.3692 & 7.11 & $<0.001$ \\
-
-$\sqrt{\mathrm{fine\ aggregate}}$
-& -2.1050 & 0.3517 & -5.99 & $<0.001$ \\
-
-$\sqrt{\mathrm{superplasticizer}}$
-& 6.5834 & 1.2153 & 5.42 & $<0.001$ \\
-
-Water
-& -32.4357 & 4.4639 & -7.27 & $<0.001$ \\
-
-Water$^2$
-& 0.03036 & 0.00414 & 7.34 & $<0.001$ \\
-\bottomrule
-\end{tabular}
-\end{table}
-The final selected model achieved an $R^2$ of 0.8180 and an adjusted
-$R^2$ of 0.8015. The RMSE was 6.9646 MPa and the MAE was 5.6196 MPa.
-The residual standard error was approximately 7.2904, and the overall
-$F$-statistic was 49.6891.
-
-For comparison, the full 24-term candidate model produced a slightly higher
-test $R^2$ of 0.8378, with an RMSE of 6.4876 and an MAE of 5.0248.
-However, the reported symbolic regression results focus on the selected
-feature-subset model, which represents the final model retained by the
-ScalaTion selection procedure.
-
-Several nonlinear terms were statistically significant, including
-$\sqrt{\mathrm{age}}$, cement$^2$, slag$^2$, $\sqrt{\mathrm{water}}$,
-and water$^2$.
+$j$ & $\phi_j$ & $b_j$ & $\mu_j$ & $s_j$ \\
+\midrule\endfirsthead
+\toprule
+$j$ & $\phi_j$ & $b_j$ & $\mu_j$ & $s_j$ \\
+\midrule\endhead
+1 & $\sqrt{A}$ & $23.656155389$ & $5.7254280183$ & $3.5375665251$ \\
+2 & $P$ & $-12.67585707$ & $6.196717233$ & $6.0055418546$ \\
+3 & $C^{2}$ & $-4.0693818011$ & $89457.152566$ & $66553.724173$ \\
+4 & $A$ & $-15.943274124$ & $45.294902913$ & $64.080173336$ \\
+5 & $S^{2}$ & $-5.80934771$ & $13067.958839$ & $19733.387683$ \\
+6 & $P^{2}$ & $2.2705664907$ & $74.465837433$ & $121.70369017$ \\
+7 & $\sqrt{W}$ & $498.93892269$ & $13.450751397$ & $0.79442410832$ \\
+8 & $W^{2}$ & $264.52288688$ & $33416.792537$ & $7814.2275531$ \\
+9 & $G^{2}$ & $-75.418638832$ & $955887.37625$ & $151035.31552$ \\
+10 & $W$ & $-766.53178093$ & $181.55382282$ & $21.330774894$ \\
+11 & $G$ & $221.83800242$ & $974.62109223$ & $77.466785271$ \\
+12 & $\sqrt{G}$ & $-145.92291111$ & $31.194126992$ & $1.2439989626$ \\
+13 & $F^{2}$ & $2.5587841018$ & $7177.1080962$ & $9530.0833989$ \\
+14 & $\sqrt{P}$ & $11.315055059$ & $1.9281674319$ & $1.5744483439$ \\
+15 & $\sqrt{S}$ & $-4.8415549755$ & $6.1801313222$ & $6.0860142189$ \\
+16 & $C$ & $16.211006443$ & $279.63561893$ & $106.11820386$ \\
+17 & $S$ & $17.980109105$ & $75.233592233$ & $86.068957463$ \\
+18 & $\sqrt{Q}$ & $1.1268903315$ & $27.733307052$ & $1.460479483$ \\
+\bottomrule\end{longtable}}
 
 \subsubsection{Airfoil}
 
-The Airfoil symbolic regression model included transformed versions and interactions among frequency, angle of attack, chord length, free-stream velocity, and displacement thickness. Candidate terms included logarithmic, square-root, squared, and multi-variable interaction terms.
+The model retained 22 nonconstant terms plus an intercept. Test $R^2=0.7113$, RMSE $=3.9985$~dB, and MAE $=3.0940$~dB. Against linear regression on the same training/test rows, RMSE falls from 5.0598 to 3.9985~dB (21.0\%). The selected expression combines frequency, chord length, angle of attack, velocity, and displacement thickness through powers and interaction terms. The custom function is explicitly $c/(f d^{3/2})$. Training-only screening removes a redundant velocity-squared term. The $d$ and $\log(1+d)$ terms have large opposing standardized coefficients because their basis functions are nearly collinear, so their contributions must be read together. Individual coefficients remain sensitive to this correlation.
 
-\begin{table}[H]
-\centering
-\small
-\caption{Selected significant coefficients from the ScalaTion symbolic regression model for Airfoil.}
-\label{tab:airfoil-symbolic-coefficients}
-\begin{tabular}{lrrrr}
+$f,a,c,v,d$ are frequency (Hz), attack angle (degrees), chord length (m), free-stream velocity (m/s), and suction displacement thickness (m), respectively.
+The complete fitted expression is
+\begin{equation}
+\widehat{y}= 124.98748878 + \sum_{j=1}^{22} b_j\frac{\phi_j-\mu_j}{s_j}.
+\end{equation}
+The following table specifies \emph{every} term and its fitted coefficient and training scaling constants. Values are rounded to 11 significant digits; full double-precision constants and predictions are exported in the dataset-specific \texttt{project2/results/symbolic/} CSVs. The intercept above is not centered or scaled.
+
+{\scriptsize\setlength{\tabcolsep}{3pt}
+\begin{longtable}{rlrrr}
+\caption{Complete Airfoil ScalaTion symbolic expression parameters.}\label{tab:airfoil-symbolic-complete}\\
 \toprule
-Term & Estimate & Std. Error & $t$ & $p$ \\
-\midrule
-Displacement thickness $\times$ chord length $\times$ frequency
-    & 0.7788 & 0.1640 & 4.75 & $<0.001$ \\
+$j$ & $\phi_j$ & $b_j$ & $\mu_j$ & $s_j$ \\
+\midrule\endfirsthead
+\toprule
+$j$ & $\phi_j$ & $b_j$ & $\mu_j$ & $s_j$ \\
+\midrule\endhead
+1 & $d\,c\,f$ & $2.0907331538$ & $2.5583964616$ & $4.3923585896$ \\
+2 & $c\,f$ & $-6.3563869786$ & $387.41693101$ & $593.00017373$ \\
+3 & $\sqrt{v}$ & $2.63246161$ & $7.0477528943$ & $1.0899688109$ \\
+4 & $a^{2}$ & $-1.5976476721$ & $77.848246052$ & $109.54757171$ \\
+5 & $c/(f d^{3/2})$ & $-1.8476031911$ & $0.55386125824$ & $0.8793875252$ \\
+6 & $c\,a\,f$ & $-2.5420196669$ & $1418.358518$ & $2110.3893069$ \\
+7 & $v\,c\,f$ & $5.1768231317$ & $20800.60363$ & $36734.349383$ \\
+8 & $d^{2}$ & $144.07756335$ & $0.0002766722994$ & $0.00059945257934$ \\
+9 & $d\,f$ & $-7.5183251247$ & $21.240659688$ & $35.407511328$ \\
+10 & $d\,a\,f$ & $4.7023305598$ & $231.15085714$ & $523.0025419$ \\
+11 & $v\,c$ & $-4.0300029837$ & $6.9692954946$ & $5.418806216$ \\
+12 & $v\,f$ & $-3.644800794$ & $152817.85869$ & $194136.65947$ \\
+13 & $v\,c\,a$ & $4.2722395003$ & $32.951027493$ & $30.827999053$ \\
+14 & $f^{2}$ & $1.391969626$ & $18232037.032$ & $43553709.121$ \\
+15 & $c^{2}$ & $1.8939173576$ & $0.027583673682$ & $0.030617990612$ \\
+16 & $c\,a$ & $-2.0522278615$ & $0.63581077307$ & $0.5345085506$ \\
+17 & $v\,a$ & $-3.7240894811$ & $342.42382377$ & $340.70206773$ \\
+18 & $v\,a\,f$ & $1.6424787077$ & $760339.98674$ & $1213676.2184$ \\
+19 & $d$ & $-6662.8265773$ & $0.010641921767$ & $0.012783653644$ \\
+20 & $d\,c\,a$ & $-3.5575207366$ & $0.01125908998$ & $0.020087724236$ \\
+21 & $\sqrt{d}$ & $-7.6438418281$ & $0.088161660887$ & $0.053567185076$ \\
+22 & $\log(1+d)$ & $6536.7249606$ & $0.010506878897$ & $0.012508642097$ \\
+\bottomrule\end{longtable}}
 
-Chord length $\times$ frequency
-    & -0.0127 & 0.0016 & -7.81 & $<0.001$ \\
-
-Attack angle$^2$
-    & 0.1499 & 0.0302 & 4.96 & $<0.001$ \\
-
-Velocity $\times$ chord length $\times$ frequency
-    & 0.000171 & 0.000027 & 6.34 & $<0.001$ \\
-
-Custom transformed term
-    & -2.2738 & 0.2685 & -8.47 & $<0.001$ \\
-
-Chord length $\times$ attack angle $\times$ frequency
-    & -0.00159 & 0.00020 & -8.09 & $<0.001$ \\
-
-Displacement thickness $\times$ velocity $\times$ attack angle
-    & -0.6896 & 0.2485 & -2.78 & 0.0055 \\
-
-Displacement thickness $\times$ frequency
-    & -0.1888 & 0.0456 & -4.14 & $<0.001$ \\
-
-Displacement thickness $\times$ attack angle $\times$ frequency
-    & 0.00714 & 0.00192 & 3.71 & $<0.001$ \\
-
-Velocity $\times$ chord length $\times$ attack angle
-    & 0.1275 & 0.0352 & 3.62 & $<0.001$ \\
-
-Attack angle$^{1/2}$
-    & -24.9059 & 7.6452 & -3.26 & 0.0011 \\
-
-Frequency
-    & 0.00577 & 0.00142 & 4.07 & $<0.001$ \\
-
-Velocity $\times$ chord length
-    & -0.7778 & 0.1716 & -4.53 & $<0.001$ \\
-
-Velocity$^{1/2}$
-    & -3.5519 & 0.8407 & -4.22 & $<0.001$ \\
-
-Attack angle
-    & 280.2162 & 124.8255 & 2.24 & 0.0248 \\
-
-Displacement thickness$^{1/2}$
-    & 35.0415 & 10.3336 & 3.39 & $<0.001$ \\
-
-Displacement thickness $\times$ velocity
-    & 18.7152 & 5.5923 & 3.35 & $<0.001$ \\
-
-Velocity $\times$ attack angle
-    & -0.01508 & 0.00450 & -3.35 & $<0.001$ \\
-
-Displacement thickness $\times$ velocity $\times$ frequency
-    & -0.000908 & 0.000452 & -2.01 & 0.0445 \\
-
-Displacement thickness $\times$ chord length
-    & -6170.3137 & 2631.6606 & -2.34 & 0.0190 \\
-
-$\log(1+\mathrm{frequency})$
-    & 8.6614 & 1.8632 & 4.65 & $<0.001$ \\
-
-$\sqrt{\mathrm{frequency}}$
-    & -0.9257 & 0.2086 & -4.44 & $<0.001$ \\
-\bottomrule
-\end{tabular}
-\end{table}
-
-
-The final model achieved an $R^2$ of 0.6826 and an adjusted $R^2$ of 0.6321.
-The RMSE was 3.9647 dB and the MAE was 2.9289 dB. The residual standard error
-was approximately 4.2752 and the overall $F$-statistic was 13.5314.
-
-Although the Airfoil model explained less variation than the Auto MPG and
-Concrete ScalaTion models, it still captured substantial nonlinear structure
-in the response.
-
-Many of the selected transformed features were statistically significant, indicating that the Airfoil response contains substantial nonlinear and interaction effects. However, several transformed terms had extremely large
-VIF values, with some approaching infinity. This indicates severe multicollinearity among the generated symbolic features. Therefore, the individual coefficient magnitudes should not be interpreted independently; the model is better viewed as a predictive combination of nonlinear basis functions.
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{Symbolic Regression Images/scalation_symbolic_test_predictions.png}
+\caption{ScalaTion symbolic predictions on test rows reserved before fitting and selection. The diagonal represents perfect prediction.}
+\label{fig:scalation-symbolic-test}
+\end{figure}
 
 \subsection{PySR}
 
@@ -952,6 +777,8 @@ Each dataset was divided into training and testing sets using an 80/20 split
 with \texttt{random\_state=42}. PySR searches for mathematical expressions
 through an evolutionary procedure and evaluates candidate expressions based
 on predictive loss and expression complexity.
+
+The reported PySR scores are from the saved search outputs. Auto MPG used serial deterministic search with seed 42; Concrete and Airfoil used multithreading, so their search trajectories are not guaranteed repeatable from a seed alone.
 
 The operator set included the binary operators
 
@@ -1028,7 +855,8 @@ PySR was run for 300 iterations with arithmetic operators and the nonlinear
 operators \texttt{square}, \texttt{sqrt}, and \texttt{log}. The final
 equation selected using the lowest training loss was
 
-\begin{align}
+\begin{equation}
+\begin{aligned}
 \widehat{\mathrm{Strength}}
 ={}&-0.200393\,\mathrm{water}
 +\sqrt{\mathrm{age}\,
@@ -1046,7 +874,8 @@ equation selected using the lowest training loss was
 &+1.201766
 \log^2(\mathrm{cement})
 \log^2\left(\log\left(\sqrt{\mathrm{cement}}\right)\right).
-\end{align}
+\end{aligned}
+\end{equation}
 
 The expression captures several nonlinear relationships. Water contributes
 negatively, while age enters through both square-root and logarithmic terms.
@@ -1091,7 +920,8 @@ PySR was run for 500 iterations using arithmetic operators together with
 square, square-root, and logarithmic transformations. The selected symbolic
 expression was
 
-\begin{align}
+\begin{equation}
+\begin{aligned}
 \widehat{\mathrm{SPL}}
 ={}&
 -\frac{
@@ -1111,7 +941,8 @@ f+
 }{
 cf\log(195.3614d/c)
 },
-\end{align}
+\end{aligned}
+\end{equation}
 
 where $f$ represents frequency, $v$ represents velocity, $c$ represents
 chord length, and $d$ represents displacement thickness.
@@ -1147,41 +978,25 @@ on the test set.
 \subsection{Comparison of ScalaTion and PySR}
 
 \begin{table}[H]
-\centering
-\caption{Comparison of ScalaTion and PySR symbolic regression performance on each tool's own held-out test set.}
+\centering\small
+\caption{Symbolic regression on each tool's own test split. ScalaTion scores use the split-first procedure.}
 \label{tab:symbolic-comparison}
 \begin{tabular}{llrr}
 \toprule
-Dataset & Method & $R^2$ & RMSE \\
+Dataset & Method & Test $R^2$ & RMSE \\
 \midrule
-Auto MPG & ScalaTion & 0.8827 & 2.6101 \\
-         & PySR      & 0.8519 & 2.7495 \\
-Concrete & ScalaTion & 0.8180 & 6.9646 \\
-         & PySR      & 0.8357 & 6.5062 \\
-Airfoil  & ScalaTion & 0.6826 & 3.9647 \\
-         & PySR      & 0.8159 & 3.0372 \\
+Auto MPG & ScalaTion & 0.8650 & 2.7853 \\
+ & PySR & 0.8519 & 2.7495 \\
+Concrete & ScalaTion & 0.8237 & 6.8098 \\
+ & PySR & 0.8357 & 6.5062 \\
+Airfoil & ScalaTion & 0.7113 & 3.9985 \\
+ & PySR & 0.8159 & 3.0372 \\
 \bottomrule
 \end{tabular}
 \end{table}
 
-The two symbolic regression implementations produced different equation
-structures because they use different search procedures. ScalaTion constructs
-a large transformed feature matrix and performs feature selection, whereas
-PySR directly searches over mathematical expressions. The two tools were also
-evaluated on different 80/20 splits (Scala's random shuffle for ScalaTion and
-scikit-learn's \texttt{train\_test\_split} for PySR), so small differences in
-$R^2$ and RMSE partly reflect which observations fell in each test set.
+Both methods provide explicit nonlinear expressions, but their search strategies and evaluation splits differ. ScalaTion builds a predefined nonlinear basis and selects terms from it, whereas PySR searches expression structures directly. ScalaTion uses Scala seed-42 shuffling and PySR uses scikit-learn's seed-42 split, so their test rows differ. These scores describe each experiment; they do not establish that one tool is better on a common test population.
 
-For Auto MPG, both methods produced strong predictive performance. ScalaTion
-reported the larger $R^2$, while PySR produced a substantially more compact
-equation involving only model year and weight. For Concrete, PySR achieved a
-higher $R^2$ and lower RMSE than the ScalaTion selected model. The largest
-difference occurred for the Airfoil dataset, where PySR achieved an
-$R^2$ of 0.8159 compared with 0.6826 for ScalaTion.
-
-Overall, the results demonstrate one of the major advantages of symbolic
-regression: the ability to discover nonlinear functional relationships while
-still producing explicit mathematical expressions that can be inspected and
-interpreted.
+Auto MPG has the largest ScalaTion test $R^2$ among its three datasets, and PySR gives a compact two-variable equation using weight and model year. For Concrete and Airfoil, PySR has lower reported test RMSE than the ScalaTion model on its own split. Within ScalaTion, all three selected symbolic models improve RMSE over linear regression evaluated on identical rows. The complete ScalaTion equations above expose every selected term, coefficient, and scaling constant; individual nonlinear coefficients require joint interpretation.
 
 \end{document}

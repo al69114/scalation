@@ -40,6 +40,12 @@ private def loadFS (key: String): (MatrixD, VectorD, Array [String]) =
 
     val (cols, rSq) = mod.forwardSelAll ()(using QoF.rSqBar.ordinal)
     val order = cols.toArray                          // variable added at each step, in order
+    // The library retains full-data DF while testing training-range candidates.
+    // Correct the displayed adjusted R^2 to the actual candidate fitting size.
+    val selectionSize = Model.trSize (y.dim)
+    for (r, k) <- rSq.zipWithIndex if k > 0 do
+      r(1) = 100.0 * (1.0 - (1.0 - r(0) / 100.0) *
+             (selectionSize - 1).toDouble / (selectionSize - k - 1))
 
     // ---- selection table --------------------------------------------------
     println ()
@@ -50,9 +56,8 @@ private def loadFS (key: String): (MatrixD, VectorD, Array [String]) =
       println (f"$k%-6d${varName}%-18s${r(0)}%9.3f${r(1)}%9.3f${r(2)}%9.3f${r(3)}%9.3f")
     end for
 
-    // x-axis = number of predictors actually in the model at each step (includes intercept):
-    // step 0 -> 1 predictor (intercept only), step 1 -> 2 predictors, etc.
-    val nVars = VectorD (for k <- rSq.indices yield (k + 1).toDouble)
+    // x-axis counts nonconstant predictors; step 0 is the intercept-only model.
+    val nVars = VectorD (for k <- rSq.indices yield k.toDouble)
 
     new PlotM (nVars, rSq, Regression.metrics, s"R^2 vs n: $key", lines = true)
 
@@ -104,7 +109,7 @@ private def loadFS (key: String): (MatrixD, VectorD, Array [String]) =
 
   for s <- summaries do
     println (s.key.toUpperCase)
-    println (f"  # predictors = ${s.nVars}")
+    println (f"  # predictors (excluding intercept) = ${s.nVars - 1}")
     println (s"  variables    = ${s.bestNames.mkString (", ")}")
     println (f"  adjR^2       = ${s.rSqBar}%.6f")
     println (f"  RMSE         = ${s.rmse}%.6f")

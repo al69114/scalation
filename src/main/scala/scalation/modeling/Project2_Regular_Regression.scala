@@ -1,329 +1,90 @@
 package scalation
 package modeling
 
+import java.io.PrintWriter
+import java.nio.file.{Files, Paths}
 import scala.util.Random
 import scalation.mathstat._
-import java.io.{ByteArrayOutputStream, PrintStream}
 
-// To execute: runMain scalation.modeling.project2RegularizedRegression
-
+// Fold preprocessing is fitted inside each CV fold. The intercept is recovered
+// from the training response mean and is unpenalized for both Ridge and Lasso.
 @main def project2RegularizedRegression (): Unit =
-
-    // -------------------------------------------------------------------------
-    // SETUP
-    // -------------------------------------------------------------------------
-
-    // load cleaned data from project 1
-    val filePath = "data/auto_mpg.csv"
-
-    val xy = MatrixD.load(
-        filePath,
-        skip = 1,
-        sp = ',',
-        fullPath = true
-    )
-
-    // separate predictors and target
-    val x = xy(?, 0 until xy.dim2 - 1)
-    val y = xy(?, xy.dim2 - 1)
-
-    val featureNames = Array(
-        "cylinders",
-        "displacement",
-        "horsepower",
-        "weight",
-        "acceleration",
-        "model_year",
-        "origin"
-    )
-
-    // split data into 80% training and 20% testing
-    val n = x.dim
-    val testSize = (n * 0.20).toInt
-    val trainSize = n - testSize
-
-    // shuffle rows before splitting
-    val random = new Random(42)
-    val indices = random.shuffle((0 until n).toList)
-
-    val trainIdx = indices.take(trainSize)
-    val testIdx = indices.drop(trainSize)
-
-    val xTrain = new MatrixD(trainSize, x.dim2)
-    val yTrain = new VectorD(trainSize)
-
-    val xTest = new MatrixD(testSize, x.dim2)
-    val yTest = new VectorD(testSize)
-
-    // create training set
-    for i <- trainIdx.indices do
-        val row = trainIdx(i)
-
-        for j <- x.indices2 do
-            xTrain(i, j) = x(row, j)
-        end for
-
-        yTrain(i) = y(row)
-    end for
-
-    // create testing set
-    for i <- testIdx.indices do
-        val row = testIdx(i)
-
-        for j <- x.indices2 do
-            xTest(i, j) = x(row, j)
-        end for
-
-        yTest(i) = y(row)
-    end for
-
-
-    // -------------------------------------------------------------------------
-    // STANDARDIZE PREDICTORS
-    // -------------------------------------------------------------------------
-
-    // calculate training means
-    val means = xTrain.mean 
-
-    // calculate training standard deviations
-    val stds = new VectorD(xTrain.dim2)
-
-    for j <- xTrain.indices2 do
-        stds(j) = xTrain(?, j).stdev
-    end for
-
-    val xTrainScaled = xTrain.copy
-    val xTestScaled = xTest.copy
-
-    // standardize training data
-    for i <- xTrain.indices do
-        for j <- xTrain.indices2 do
-            xTrainScaled(i, j) =
-                (xTrain(i, j) - means(j)) / stds(j)
-        end for
-    end for
-
-    // standardize test data using training mean/std
-    for i <- xTest.indices do
-        for j <- xTest.indices2 do
-            xTestScaled(i, j) =
-                (xTest(i, j) - means(j)) / stds(j)
-        end for
-    end for
-
-
-    // =========================================================================
-    // RIDGE REGRESSION
-    // =========================================================================
-
-    banner("RIDGE REGRESSION")
-
-    // center target using training mean
-    val yMean = yTrain.mean
-    val yTrainCentered = yTrain - yMean
-
-    // create ridge model for lambda tuning
-    val ridgeBase = new RidgeRegression(
-        xTrainScaled,
-        yTrainCentered,
-        featureNames
-    )
-
-    // tune ridge lambda using cross-validation
-    val ridgeOutput = new ByteArrayOutputStream()
-
-    val (bestRidgeLambda, bestRidgeCVSSE) =
-        Console.withOut(new PrintStream(ridgeOutput)) {
-            ridgeBase.findLambda
+    val out = "project2/results/regularized/"
+    Files.createDirectories (Paths.get (out))
+    val (xy, header) = MatrixD.loadH ("data/auto_mpg.csv", fullPath = true)
+    val p = xy.dim2 - 1
+    val x = xy(?, 0 until p)
+    val y = xy(?, p)
+    val nTest = (y.dim * 0.2).toInt
+    val order = new Random (42).shuffle ((0 until y.dim).toList)
+    val train = order.take (y.dim - nTest).toIndexedSeq
+    val test = order.drop (y.dim - nTest).toIndexedSeq
+    val xTr = x(train)
+    val yTr = y(train)
+    val xTe = x(test)
+    val yTe = y(test)
+    val folds = (0 until train.size).grouped ((train.size + 4) / 5).map (_.toIndexedSeq).toArray
+    val lambdas = Array.tabulate (20)(i => 0.1 * math.pow (2, i))
+    def scaled (a: MatrixD, b: MatrixD): (MatrixD, MatrixD) =
+        val mu = a.mean
+        val sd = VectorD (a.indices2.map (j => a(?, j).stdev).toIndexedSeq)
+        require (sd.indices.forall (j => sd(j) > 0))
+        val sa = a.copy
+        val sb = b.copy
+        for j <- a.indices2 do
+            sa(?, j) = (a(?, j) - mu(j)) / sd(j)
+            sb(?, j) = (b(?, j) - mu(j)) / sd(j)
+        (sa, sb)
+    def model (method: String, a: MatrixD, b: VectorD, lambda: Double): Predictor =
+        if method == "ridge" then new RidgeRegression (a, b, header.take (p),
+            RidgeRegression.hp.updateReturn ("lambda", lambda))
+        else new LassoRegression (a, b, header.take (p),
+            LassoRegression.hp.updateReturn ("lambda", lambda))
+    val (sxTr, sxTe) = scaled (xTr, xTe)
+    val metricOut = new PrintWriter (s"${out}auto_mpg_metrics.csv")
+    metricOut.println ("method,lambda,cv_rmse,test_rmse,test_r2,test_mae")
+    val coefOut = new PrintWriter (s"${out}auto_mpg_coefficients.csv")
+    coefOut.println ("method,term,coefficient")
+    val cvOut = new PrintWriter (s"${out}auto_mpg_tuning.csv")
+    cvOut.println ("method,lambda,cv_rmse")
+    val predOut = new PrintWriter (s"${out}auto_mpg_test_predictions.csv")
+    predOut.println ("method,row_index,y,prediction")
+    for method <- Array ("ridge", "lasso") do
+        val cv = lambdas.map { lambda =>
+            var sse = 0.0
+            for validation <- folds do
+                val training = (0 until train.size).filterNot (validation.contains).toIndexedSeq
+                val (sx, sv) = scaled (xTr(training), xTr(validation))
+                val yt = yTr(training)
+                val m = model (method, sx, yt - yt.mean, lambda)
+                m.train ()
+                val prediction = m.predict (sv) + yt.mean
+                sse += (yTr(validation) - prediction).normSq
+            val rmse = math.sqrt (sse / train.size)
+            cvOut.println (s"$method,$lambda,$rmse")
+            rmse
         }
-
-    // display lambda and CV SSE for each candidate
-    println("Ridge lambda tuning:")
-
-    ridgeOutput
-        .toString
-        .linesIterator
-        .filter(line =>
-            line.contains("RidgeRegression with lambda") &&
-            line.contains("sse")
-        )
-        .foreach(println)
-
-    println(s"\nBest Ridge Lambda: $bestRidgeLambda")
-    println(f"Best Ridge CV SSE: $bestRidgeCVSSE%.4f")
-
-    // set best ridge lambda
-    val ridgeHP = RidgeRegression.hp.updateReturn(
-        "lambda",
-        bestRidgeLambda
-    )
-
-    // train final ridge model
-    val ridgeModel = new RidgeRegression(
-        xTrainScaled,
-        yTrainCentered,
-        featureNames,
-        ridgeHP
-    )
-
-    ridgeModel.train()
-
-    // display ridge coefficients
-    println("\nRidge coefficients:")
-    println(f"Intercept = $yMean%.6f")
-
-    for j <- featureNames.indices do
-        println(
-            f"${featureNames(j)}%-15s ${ridgeModel.parameter(j)}%.6f"
-        )
-    end for
-
-    // predict MPG for test data
-    val ridgePredCentered = ridgeModel.predict(xTestScaled)
-
-    // add target mean back to predictions
-    val ridgePred = ridgePredCentered + yMean
-
-    // display actual vs predicted MPG
-    println("\nRidge actual vs predicted MPG:")
-
-    for i <- 0 until math.min(5, yTest.dim) do
-        println(
-            f"Actual: ${yTest(i)}%.3f  Predicted: ${ridgePred(i)}%.3f"
-        )
-    end for
-
-    // calculate ridge prediction errors
-    val ridgeError = yTest - ridgePred
-
-    // calculate RMSE
-    val ridgeMSE = ridgeError.normSq / yTest.dim.toDouble
-    val ridgeRMSE = math.sqrt(ridgeMSE)
-
-    // calculate R^2
-    val ridgeSST = (yTest - yTest.mean).normSq
-    val ridgeSSE = ridgeError.normSq
-    val ridgeR2 = 1.0 - ridgeSSE / ridgeSST
-
-    println(f"\nRidge RMSE: $ridgeRMSE%.6f")
-    println(f"Ridge R²:   $ridgeR2%.6f")
-
-
-    // =========================================================================
-    // LASSO REGRESSION
-    // =========================================================================
-
-    banner("LASSO REGRESSION")
-
-    // add intercept column
-    val onesTrain = VectorD.one(xTrainScaled.dim)
-    val onesTest = VectorD.one(xTestScaled.dim)
-
-    val xTrainLasso = onesTrain +^: xTrainScaled
-    val xTestLasso = onesTest +^: xTestScaled
-
-    val lassoFeatureNames =
-        Array("const") ++ featureNames
-
-    // create lasso model for lambda tuning
-    val lassoBase = new LassoRegression(
-        xTrainLasso,
-        yTrain,
-        lassoFeatureNames
-    )
-
-    // tune lasso lambda using cross-validation
-    val lassoOutput = new ByteArrayOutputStream()
-
-    val (bestLassoLambda, bestLassoCVSSE) =
-        Console.withOut(new PrintStream(lassoOutput)) {
-            lassoBase.findLambda
-        }
-
-    // display lambda and CV SSE for each candidate
-    println("Lasso lambda tuning:")
-
-    lassoOutput
-        .toString
-        .linesIterator
-        .filter(line =>
-            line.contains("LassoRegression with lambda") &&
-            line.contains("sse")
-        )
-        .foreach(println)
-
-    println(s"\nBest Lasso Lambda: $bestLassoLambda")
-    println(f"Best Lasso CV SSE: $bestLassoCVSSE%.4f")
-
-    // set best lasso lambda
-    val lassoHP = LassoRegression.hp.updateReturn(
-        "lambda",
-        bestLassoLambda
-    )
-
-    // train final lasso model
-    val lassoModel = new LassoRegression(
-        xTrainLasso,
-        yTrain,
-        lassoFeatureNames,
-        lassoHP
-    )
-
-    lassoModel.train()
-
-    // display lasso coefficients
-    println("\nLasso coefficients:")
-
-    for j <- lassoFeatureNames.indices do
-        println(
-            f"${lassoFeatureNames(j)}%-15s ${lassoModel.parameter(j)}%.6f"
-        )
-    end for
-
-    // predict MPG for test data
-    val lassoPred = lassoModel.predict(xTestLasso)
-
-    // display actual vs predicted MPG
-    println("\nLasso actual vs predicted MPG:")
-
-    for i <- 0 until math.min(5, yTest.dim) do
-        println(
-            f"Actual: ${yTest(i)}%.3f  Predicted: ${lassoPred(i)}%.3f"
-        )
-    end for
-
-    // calculate lasso prediction errors
-    val lassoError = yTest - lassoPred
-
-    // calculate RMSE
-    val lassoMSE = lassoError.normSq / yTest.dim.toDouble
-    val lassoRMSE = math.sqrt(lassoMSE)
-
-    // calculate R^2
-    val lassoSST = (yTest - yTest.mean).normSq
-    val lassoSSE = lassoError.normSq
-    val lassoR2 = 1.0 - lassoSSE / lassoSST
-
-    println(f"\nLasso RMSE: $lassoRMSE%.6f")
-    println(f"Lasso R²:   $lassoR2%.6f")
-
-
-    // =========================================================================
-    // SUMMARY
-    // =========================================================================
-
-    banner("SUMMARY")
-
-    println(f"Ridge lambda = $bestRidgeLambda%.6f")
-    println(f"Ridge CV SSE = $bestRidgeCVSSE%.6f")
-    println(f"Ridge RMSE   = $ridgeRMSE%.6f")
-    println(f"Ridge R²     = $ridgeR2%.6f")
-
-    println()
-
-    println(f"Lasso lambda = $bestLassoLambda%.6f")
-    println(f"Lasso CV SSE = $bestLassoCVSSE%.6f")
-    println(f"Lasso RMSE   = $lassoRMSE%.6f")
-    println(f"Lasso R²     = $lassoR2%.6f")
-
+        val best = cv.indices.minBy (cv(_))
+        val m = model (method, sxTr, yTr - yTr.mean, lambdas(best))
+        m.train ()
+        val yp = m.predict (sxTe) + yTr.mean
+        require (yp.indices.forall (i => yp(i).isFinite))
+        val e = yTe - yp
+        val rmse = math.sqrt (e.normSq / yTe.dim)
+        val r2 = 1 - e.normSq / (yTe - yTe.mean).normSq
+        val mae = e.map (math.abs).mean
+        metricOut.println (s"$method,${lambdas(best)},${cv(best)},$rmse,$r2,$mae")
+        coefOut.println (s"$method,intercept,${yTr.mean}")
+        for j <- x.indices2 do coefOut.println (s"$method,${header(j)},${m.parameter(j)}")
+        for i <- test.indices do predOut.println (s"$method,${test(i)},${yTe(i)},${yp(i)}")
+        println (s"$method: lambda=${lambdas(best)}, CV RMSE=${cv(best)}, test RMSE=$rmse, R2=$r2, MAE=$mae")
+    metricOut.close ()
+    coefOut.close ()
+    cvOut.close ()
+    predOut.close ()
+    val split = new PrintWriter (s"${out}auto_mpg_split.csv")
+    split.println ("row_index,split")
+    for i <- train do split.println (s"$i,train")
+    for i <- test do split.println (s"$i,test")
+    split.close ()
 end project2RegularizedRegression

@@ -1,0 +1,17 @@
+method,term,coefficient
+ridge,intercept,23.416560509554134
+ridge,cylinders,-1.177007782996969
+ridge,displacement,1.7268297641133135
+ridge,horsepower,-0.4695435049516466
+ridge,weight,-5.145694974602225
+ridge,acceleration,0.09150445767095232
+ridge,modelyear,2.6970291063827383
+ridge,origin,1.161311185852707
+lasso,intercept,23.416560509554134
+lasso,cylinders,-1.1770369226817885
+lasso,displacement,1.8249148515122053
+lasso,horsepower,-0.42140282472134283
+lasso,weight,-5.274319757704969
+lasso,acceleration,0.11847718241961053
+lasso,modelyear,2.7104720161795126
+lasso,origin,1.1594576197838737

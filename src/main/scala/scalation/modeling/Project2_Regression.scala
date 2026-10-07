@@ -32,7 +32,7 @@ import scalation.mathstat._
         val mod = new Regression(
             x_,
             y,
-            colNames.dropRight(1) :+ "y"
+            Array("intercept") ++ colNames.dropRight(1)
         )
 
         mod.trainNtest()()

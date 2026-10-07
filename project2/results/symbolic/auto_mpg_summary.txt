@@ -1,0 +1,8 @@
+Response: mpg
+Training rows: 314; test rows: 78
+Candidate terms: 28; after training rank screening: 26
+Rejected terms: origin^0.5, origin^2.0
+Selected terms: one, weight^-1.0, modelyear^2.0, modelyear^0.5, displacement^-1.0, horsepower^-1.0, acceleration^0.5, horsepower^-2.0, displacement^2.0, origin^-1.0, weight^2.0, acceleration^2.0, acceleration^-1.0, origin^-2.0, cylinders^-1.0, cylinders^2.0, cylinders^0.5, cylinders^-2.0
+Training metrics (R2, RMSE, MAE): (0.891818405815196,2.5809634979315463,1.8076970189338708)
+Test metrics (R2, RMSE, MAE): (0.8650133228240601,2.785311534741302,2.085820424689876)
+Test rows used in selection: 0
