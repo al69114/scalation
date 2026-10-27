@@ -1,3 +1,4 @@
+import os
 import random
 import numpy as np
 import pandas as pd
@@ -8,6 +9,8 @@ from torch.utils.data import DataLoader, TensorDataset
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
 
+# Graphs are saved next to this script, regardless of where it is run from
+GRAPH_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "outputs", "graphs")
 
 # Make results more repeatable
 def set_seed(seed=42):
@@ -57,7 +60,9 @@ def load_dataset(path, target):
 
 
 def train_model(x_train, y_train, hidden_sizes, activation, learning_rate,
-                batch_size, epochs=100, seed=42):
+                batch_size, epochs=300, seed=42, x_val=None, y_val=None, patience=20):
+    # When validation data is given, track the validation MSE each epoch and stop
+    # early once it has not improved for `patience` epochs
     set_seed(seed)
 
     model = NeuralNet5L(
@@ -75,6 +80,10 @@ def train_model(x_train, y_train, hidden_sizes, activation, learning_rate,
     dataset = TensorDataset(x_tensor, y_tensor)
     loader = DataLoader(dataset, batch_size=batch_size, shuffle=True)
 
+    best_val_mse = float("inf")
+    best_epoch = epochs
+    wait = 0
+
     for epoch in range(epochs):
         model.train()
 
@@ -86,7 +95,20 @@ def train_model(x_train, y_train, hidden_sizes, activation, learning_rate,
             loss.backward()
             optimizer.step()
 
-    return model
+        if x_val is not None:
+            val_mse = np.mean((y_val - predict(model, x_val)) ** 2)
+
+            if val_mse < best_val_mse:
+                best_val_mse = val_mse
+                best_epoch = epoch + 1
+                wait = 0
+            else:
+                wait += 1
+
+            if wait >= patience:
+                break
+
+    return model, best_epoch, best_val_mse
 
 
 def predict(model, x):
@@ -126,6 +148,12 @@ def tune_hyperparameters(x, y, seed=42):
     x_train = scaler.fit_transform(x_train)
     x_val = scaler.transform(x_val)
 
+    # Standardize the target too; hidden layers train poorly on raw targets (~125 dB for Airfoil)
+    y_scaler = StandardScaler()
+    y_train = y_scaler.fit_transform(y_train.reshape(-1, 1)).ravel()
+    y_val = y_scaler.transform(y_val.reshape(-1, 1)).ravel()
+    y_var = y_scaler.scale_[0] ** 2  # converts scaled MSE back to original units
+
     # Candidate settings to compare
     hidden_sizes_options = [
         (8, 8, 8),
@@ -134,8 +162,8 @@ def tune_hyperparameters(x, y, seed=42):
         (64, 32, 16),
     ]
     activation_options = ["relu", "tanh"]
-    learning_rates = [0.001, 0.01, 0.05]
-    batch_sizes = [32, 64]
+    learning_rates = [0.001, 0.005, 0.01, 0.05]
+    batch_sizes = [16, 32, 64]
 
     best_params = None
     best_mse = float("inf")
@@ -144,23 +172,23 @@ def tune_hyperparameters(x, y, seed=42):
         for activation in activation_options:
             for learning_rate in learning_rates:
                 for batch_size in batch_sizes:
-                    model = train_model(
+                    _, best_epoch, val_mse = train_model(
                         x_train,
                         y_train,
                         hidden_sizes,
                         activation,
                         learning_rate,
                         batch_size,
-                        seed=seed
+                        seed=seed,
+                        x_val=x_val,
+                        y_val=y_val
                     )
-
-                    val_predictions = predict(model, x_val)
-                    val_mse = np.mean((y_val - val_predictions) ** 2)
+                    val_mse *= y_var
 
                     print(
                         f"Trying layers={hidden_sizes}, activation={activation}, "
                         f"learning_rate={learning_rate}, batch_size={batch_size}: "
-                        f"validation MSE={val_mse:.5f}"
+                        f"validation MSE={val_mse:.5f}, best epoch={best_epoch}"
                     )
 
                     if np.isfinite(val_mse) and val_mse < best_mse:
@@ -170,7 +198,8 @@ def tune_hyperparameters(x, y, seed=42):
                             "activation": activation,
                             "learning_rate": learning_rate,
                             "batch_size": batch_size,
-                            "validation_mse": val_mse
+                            "validation_mse": val_mse,
+                            "best_epoch": best_epoch
                         }
 
     return best_params
@@ -193,7 +222,8 @@ def plot_actual_vs_predicted(name, y_train, train_predictions, y_val, val_predic
         ax.set_ylabel("Predicted values")
 
     fig.tight_layout()
-    filename = name.lower().replace(" ", "_") + "_5l_graph.png"
+    os.makedirs(GRAPH_DIR, exist_ok=True)
+    filename = os.path.join(GRAPH_DIR, name.lower().replace(" ", "_") + "_5l_graph.png")
     fig.savefig(filename, dpi=300)
     plt.show()
 
@@ -209,28 +239,33 @@ def run_experiment(name, path, target, seed=42):
         x, y, test_size=0.20, random_state=seed
     )
 
-    best = tune_hyperparameters(x_train, y_train, seed + 1)
+    # Same inner split seed as the 2L and 4L models
+    best = tune_hyperparameters(x_train, y_train, seed)
     print("\nSelected hyperparameters:")
     print(best)
 
-    # Fit the final scaler only on the full outer training data
+    # Fit the final scalers only on the full outer training data
     scaler = StandardScaler()
     x_train_scaled = scaler.fit_transform(x_train)
     x_val_scaled = scaler.transform(x_val)
+    y_scaler = StandardScaler()
+    y_train_scaled = y_scaler.fit_transform(y_train.reshape(-1, 1)).ravel()
 
-    # Train the final model using the selected settings
-    model = train_model(
+    # Train the final model using the selected settings for the best number of epochs
+    model, _, _ = train_model(
         x_train_scaled,
-        y_train,
+        y_train_scaled,
         best["hidden_sizes"],
         best["activation"],
         best["learning_rate"],
         best["batch_size"],
+        epochs=best["best_epoch"],
         seed=seed
     )
 
-    train_predictions = predict(model, x_train_scaled)
-    val_predictions = predict(model, x_val_scaled)
+    # Convert predictions back to the original scale for QoF
+    train_predictions = y_scaler.inverse_transform(predict(model, x_train_scaled).reshape(-1, 1)).ravel()
+    val_predictions = y_scaler.inverse_transform(predict(model, x_val_scaled).reshape(-1, 1)).ravel()
 
     train_results = calculate_qof(y_train, train_predictions)
     val_results = calculate_qof(y_val, val_predictions)
@@ -253,9 +288,9 @@ def run_experiment(name, path, target, seed=42):
 
 if __name__ == "__main__":
     datasets = [
-        ("Airfoil", "data/airfoil.csv", "scaled-sound-pressure"),
+        ("Airfoil", "data/airfoil.csv", "scaled_sound_pressure_db"),
         ("Auto MPG", "data/auto_mpg.csv", "mpg"),
-        ("Concrete", "data/concrete.csv", "Concrete compressive strength"),
+        ("Concrete", "data/concrete.csv", "compressive_strength_mpa"),
     ]
 
     for name, path, target in datasets:

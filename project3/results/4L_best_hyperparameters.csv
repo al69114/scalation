@@ -1,0 +1,4 @@
+Dataset,Hidden Nodes,Activation,Learning Rate,Batch Size,Validation MSE,Epochs,Best Epoch
+Airfoil,"(128, 64)",ReLU,0.001,16,3.0190112703582908,245,225
+Auto MPG,"(64, 32)",Tanh,0.05,32,5.931294743071596,34,14
+Concrete,"(64, 32)",ReLU,0.005,64,15.828056014558427,106,86
