@@ -60,9 +60,11 @@ def load_dataset(path, target):
 
 
 def train_model(x_train, y_train, hidden_sizes, activation, learning_rate,
-                batch_size, epochs=300, seed=42, x_val=None, y_val=None, patience=20):
+                batch_size, epochs=300, seed=42, x_val=None, y_val=None, patience=20,
+                history=None):
     # When validation data is given, track the validation MSE each epoch and stop
-    # early once it has not improved for `patience` epochs
+    # early once it has not improved for `patience` epochs.
+    # If a history dict is given, the training and validation MSE of every epoch are saved in it
     set_seed(seed)
 
     model = NeuralNet5L(
@@ -97,6 +99,10 @@ def train_model(x_train, y_train, hidden_sizes, activation, learning_rate,
 
         if x_val is not None:
             val_mse = np.mean((y_val - predict(model, x_val)) ** 2)
+
+            if history is not None:
+                history["train"].append(np.mean((y_train - predict(model, x_train)) ** 2))
+                history["val"].append(val_mse)
 
             if val_mse < best_val_mse:
                 best_val_mse = val_mse
@@ -166,12 +172,14 @@ def tune_hyperparameters(x, y, seed=42):
     batch_sizes = [16, 32, 64]
 
     best_params = None
+    best_history = None
     best_mse = float("inf")
 
     for hidden_sizes in hidden_sizes_options:
         for activation in activation_options:
             for learning_rate in learning_rates:
                 for batch_size in batch_sizes:
+                    history = {"train": [], "val": []}
                     _, best_epoch, val_mse = train_model(
                         x_train,
                         y_train,
@@ -181,7 +189,8 @@ def tune_hyperparameters(x, y, seed=42):
                         batch_size,
                         seed=seed,
                         x_val=x_val,
-                        y_val=y_val
+                        y_val=y_val,
+                        history=history
                     )
                     val_mse *= y_var
 
@@ -199,10 +208,13 @@ def tune_hyperparameters(x, y, seed=42):
                             "learning_rate": learning_rate,
                             "batch_size": batch_size,
                             "validation_mse": val_mse,
-                            "best_epoch": best_epoch
+                            "best_epoch": best_epoch,
+                            "epochs": len(history["val"])
                         }
+                        # loss curves in original units for the loss plot
+                        best_history = {k: [v * y_var for v in vals] for k, vals in history.items()}
 
-    return best_params
+    return best_params, best_history
 
 def plot_actual_vs_predicted(name, y_train, train_predictions, y_val, val_predictions):
     fig, axes = plt.subplots(1, 2, figsize=(12, 5))
@@ -227,6 +239,32 @@ def plot_actual_vs_predicted(name, y_train, train_predictions, y_val, val_predic
     fig.savefig(filename, dpi=300)
     plt.show()
 
+def plot_loss(name, history):
+    plt.figure(figsize=(6, 3))
+    plt.plot(history["train"], label="Training Loss")
+    plt.plot(history["val"], label="Validation Loss")
+    plt.xlabel("Epoch")
+    plt.ylabel("MSE Loss")
+    plt.title(f"{name} - 5L Neural Network Loss")
+    plt.legend()
+    plt.grid(True)
+    plt.tight_layout()
+    plt.savefig(os.path.join(GRAPH_DIR, name.lower().replace(" ", "_") + "_5l_loss.png"), dpi=150)
+    plt.show()
+
+def plot_residuals(name, y_val, val_predictions):
+    residuals = y_val - val_predictions
+    plt.figure(figsize=(7, 5))
+    plt.scatter(val_predictions, residuals, alpha=0.5)
+    plt.axhline(y=0, color="red", linestyle="--")
+    plt.xlabel("Predicted Values")
+    plt.ylabel("Residuals")
+    plt.title(f"{name} - 5L Validation Residual Plot")
+    plt.grid(True)
+    plt.tight_layout()
+    plt.savefig(os.path.join(GRAPH_DIR, name.lower().replace(" ", "_") + "_5l_residual.png"), dpi=150)
+    plt.show()
+
 def run_experiment(name, path, target, seed=42):
     print(f"\n========== {name}: 5L PYTORCH NEURAL NETWORK ==========")
 
@@ -240,7 +278,7 @@ def run_experiment(name, path, target, seed=42):
     )
 
     # Same inner split seed as the 2L and 4L models
-    best = tune_hyperparameters(x_train, y_train, seed)
+    best, history = tune_hyperparameters(x_train, y_train, seed)
     print("\nSelected hyperparameters:")
     print(best)
 
@@ -282,8 +320,40 @@ def run_experiment(name, path, target, seed=42):
     plot_actual_vs_predicted(
     name, y_train, train_predictions, y_val, val_predictions
 )
-    return best, train_results, val_results
-    
+    plot_loss(name, history)
+    plot_residuals(name, y_val, val_predictions)
+
+    # Retrain with other seeds to check how much the validation R² depends on the random initialization
+    seed_r2 = []
+    for s in range(5):
+        seed_model, _, _ = train_model(
+            x_train_scaled, y_train_scaled, best["hidden_sizes"], best["activation"],
+            best["learning_rate"], best["batch_size"], epochs=best["best_epoch"], seed=s
+        )
+        seed_pred = y_scaler.inverse_transform(predict(seed_model, x_val_scaled).reshape(-1, 1)).ravel()
+        seed_r2.append(calculate_qof(y_val, seed_pred)["r2"])
+    print(f"\nValidation R² over seeds 0-4: mean={np.mean(seed_r2):.4f}, sd={np.std(seed_r2):.4f}, "
+          f"min={min(seed_r2):.4f}, max={max(seed_r2):.4f}")
+
+    return {
+        "Dataset": name,
+        "Hidden Layers": str(best["hidden_sizes"]),
+        "Activation": best["activation"],
+        "Learning Rate": best["learning_rate"],
+        "Batch Size": best["batch_size"],
+        "Inner-Validation MSE": best["validation_mse"],
+        "Epochs": best["epochs"],
+        "Best Epoch": best["best_epoch"],
+        "Train R2": train_results["r2"],
+        "Validation R2": val_results["r2"],
+        "Train MSE": train_results["mse"],
+        "Validation MSE": val_results["mse"],
+        "Train RMSE": train_results["rmse"],
+        "Validation RMSE": val_results["rmse"],
+        "Seed Mean Validation R2": np.mean(seed_r2),
+        "Seed SD Validation R2": np.std(seed_r2),
+    }
+
 
 
 if __name__ == "__main__":
@@ -293,5 +363,9 @@ if __name__ == "__main__":
         ("Concrete", "data/concrete.csv", "compressive_strength_mpa"),
     ]
 
-    for name, path, target in datasets:
-        run_experiment(name, path, target)
+    results = [run_experiment(name, path, target) for name, path, target in datasets]
+
+    # Save all numbers used in the report
+    results_path = os.path.join(os.path.dirname(GRAPH_DIR), "5L_results.csv")
+    pd.DataFrame(results).to_csv(results_path, index=False)
+    print(f"\nSaved results to {results_path}")

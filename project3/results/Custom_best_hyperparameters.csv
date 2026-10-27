@@ -1,0 +1,4 @@
+Dataset,Hidden Nodes,Activation,Dropout,Weight Decay,Learning Rate,Batch Size,Validation MSE,Epochs,Best Epoch
+Airfoil,"(64, 64, 32)",ReLU,0.0,0.0001,0.005,32,4.854495268172579,95,75
+Auto MPG,"(64, 64, 32)",SiLU,0.0,0.0001,0.001,16,5.63576691398,31,11
+Concrete,"(128, 128, 64)",ReLU,0.0,0.001,0.001,32,19.21732331710611,111,91
