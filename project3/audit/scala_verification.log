@@ -1,0 +1,47 @@
+optimize2: bSize = 16, nB = 75
+DEBUG @ Optimizer_Adam.optimize2: parameters b = b.w = 
+MatrixD (124.933,
+ 	-3.93107,
+ 	-2.58398,
+ 	-3.41947,
+ 	1.49464,
+ 	-2.06587) 
+ b.b = null
+ending epoch = (27354.662498564667,400)
+AUDIT 2L Airfoil optimizer=Optimizer_Adam train=QoF(0.5214624114483517,22.7576227109523,4.770495017390994) validation=QoF(0.48818182974440405,24.269664061575718,4.926425079261403)
+optimize3: bSize = 64, nB = 18
+ending epoch = (3807.387649490744,400)
+AUDIT 3L Airfoil optimizer=Optimizer_SGDM train=QoF(0.9333942392978078,3.1675438015729984,1.7797594785737196) validation=QoF(0.91141165003149,4.200729123062102,2.0495680332846)
+optimize2: bSize = 16, nB = 19
+DEBUG @ Optimizer_Adam.optimize2: parameters b = b.w = 
+MatrixD (23.3405,
+ 	-0.303810,
+ 	1.32777,
+ 	-0.467279,
+ 	-5.41784,
+ 	0.367450,
+ 	2.77117,
+ 	0.950447) 
+ b.b = null
+ending epoch = (3253.893764660513,400)
+AUDIT 2L Auto MPG optimizer=Optimizer_Adam train=QoF(0.8247718242638771,10.395826724154993,3.224255995443754) validation=QoF(0.8039013427200692,12.986871592676659,3.6037302330608294)
+optimize3: bSize = 32, nB = 9
+ending epoch = (1201.1346574076586,400)
+AUDIT 3L Auto MPG optimizer=Optimizer_SGDM train=QoF(0.9353166851613743,3.8374909182353307,1.9589514844006042) validation=QoF(0.8389331112566719,10.666850201608263,3.266014421524844)
+optimize2: bSize = 16, nB = 51
+DEBUG @ Optimizer_Adam.optimize2: parameters b = b.w = 
+MatrixD (35.7954,
+ 	11.4429,
+ 	7.78930,
+ 	4.69783,
+ 	-4.02551,
+ 	1.72970,
+ 	0.502566,
+ 	0.713998,
+ 	7.49566) 
+ b.b = null
+ending epoch = (89340.74166339621,400)
+AUDIT 2L Concrete optimizer=Optimizer_Adam train=QoF(0.6157119201728765,108.42323017402452,10.41264760634991) validation=QoF(0.6074317266405237,104.21492353764154,10.20857108206832)
+optimize3: bSize = 64, nB = 12
+ending epoch = (14268.850187176278,400)
+AUDIT 3L Concrete optimizer=Optimizer_SGDM train=QoF(0.9386243169949254,17.31656576113626,4.161317791413708) validation=QoF(0.8865395617774514,30.120291669833108,5.488195666139565)

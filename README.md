@@ -1,6 +1,111 @@
-# Data Science Projects: ScalaTion, statsmodels and PySR
+# Data Science Projects: ScalaTion, statsmodels, PySR and PyTorch
 
-This repository contains Project 1 (EDA and simple regression) and Project 2 (regression and symbolic regression). The Project 2 submission and run instructions are below; the existing Project 1 documentation follows.
+This repository contains Project 1 (EDA and simple regression), Project 2 (regression and symbolic regression) and Project 3 (neural networks). The Project 3 documentation comes first, followed by Project 2 and Project 1.
+
+## Project 3: Neural Networks
+
+Project 3 trains neural networks for regression on the same three datasets used in Project 2 ([airfoil.csv](data/airfoil.csv), [auto_mpg.csv](data/auto_mpg.csv), [concrete.csv](data/concrete.csv)). Every model tunes its hyperparameters (hidden nodes, activation function, mini-batch size and learning rate), then reports R², MSE and RMSE in-sample and on an 80/20 validation split.
+
+| Model | Hidden layers | Tools | Code |
+| --- | ---: | --- | --- |
+| 2L | 0 | ScalaTion and PyTorch | [NeuralNet_2L.scala](project3/NeuralNet_2L.scala), [NeuralNet_2L.ipynb](project3/NeuralNet_2L.ipynb) |
+| 3L | 1 | ScalaTion and PyTorch | [NeuralNet_3L.scala](project3/NeuralNet_3L.scala), [NeuralNet_3L.ipynb](project3/NeuralNet_3L.ipynb) |
+| 4L | 2 | PyTorch | [NeuralNet_4L.ipynb](project3/NeuralNet_4L.ipynb) |
+| 5L (supplementary) | 3 | PyTorch | [NeuralNet_5L.py](project3/NeuralNet_5L.py) |
+| Picked architecture | 3 (batch normalization, dropout, weight decay) | PyTorch | [NeuralNet_Custom.ipynb](project3/NeuralNet_Custom.ipynb) |
+
+For tuning, the PyTorch models split the 80% training portion again (inner 80/20 split), so the 20% validation set is never used to choose hyperparameters. All PyTorch models use the same outer split (`random_state=42`), so they are evaluated on the same validation rows. The ScalaTion models use ScalaTion's own split, so their validation rows differ.
+
+### Project 3 Structure
+
+```
+project3/
+├── NeuralNet_2L.scala, NeuralNet_3L.scala   # ScalaTion 2L and 3L
+├── NeuralNet_2L.ipynb, NeuralNet_3L.ipynb   # PyTorch 2L and 3L
+├── NeuralNet_4L.ipynb                       # PyTorch 4L
+├── NeuralNet_5L.py                          # PyTorch 5L (script)
+├── NeuralNet_Custom.ipynb                   # PyTorch picked architecture
+├── results/        # tuning grids, selected hyperparameters, QoF and seed-stability CSVs
+├── figures/        # plots saved by the 3L, 4L and Custom notebooks (3L/, 4L/, Custom/)
+├── outputs/        # 5L results CSV and plots (outputs/5L_results.csv, outputs/graphs/)
+├── audit/          # independent verification scripts and logs
+└── report/
+    ├── main.tex                 # full report (LaTeX source)
+    ├── 3L/, 4L/, 5L/, Custom/   # report images, named as main.tex references them
+    └── overleaf_upload/         # main.tex plus image folders, ready to upload to Overleaf
+```
+
+The final report is [Data_Science_2_Project_3.pdf](Data_Science_2_Project_3.pdf). The 2L report images live in the team's Overleaf project and are not stored in `report/`.
+
+### Running Project 3
+
+Python requirements: Python 3, PyTorch, scikit-learn, pandas, NumPy, Matplotlib and Jupyter.
+
+```bash
+pip install torch scikit-learn pandas numpy matplotlib jupyter
+```
+
+**Notebooks (2L, 3L, 4L, picked architecture).** Run them with `project3/` as the working directory, because they read `../data/*.csv` and write to `figures/` and `results/`.
+
+```bash
+cd project3
+jupyter notebook                      # open and run a notebook interactively, or:
+jupyter nbconvert --to notebook --execute --inplace NeuralNet_3L.ipynb
+jupyter nbconvert --to notebook --execute --inplace NeuralNet_4L.ipynb
+jupyter nbconvert --to notebook --execute --inplace NeuralNet_Custom.ipynb
+jupyter nbconvert --to notebook --execute --inplace NeuralNet_2L.ipynb
+```
+
+The 3L, 4L and picked-architecture notebooks run full grid searches (180, 144 and 144 configurations per dataset), each with up to 300 epochs, so on a CPU they can take a while.
+
+**5L script.** Run it from the repository root, because it reads `data/*.csv`.
+
+```bash
+MPLBACKEND=Agg python3 project3/NeuralNet_5L.py
+```
+
+**ScalaTion (2L and 3L).** sbt does not compile `project3/` by default, so add it as a source directory when running. Run from the repository root; a JDK and sbt are required. The programs print the tuning results and QoF, and open ScalaTion plot windows.
+
+```bash
+sbt 'set Compile / unmanagedSourceDirectories += baseDirectory.value / "project3"' \
+    'runMain scalation.modeling.neuralnet.runNeuralNet2L'
+
+sbt 'set Compile / unmanagedSourceDirectories += baseDirectory.value / "project3"' \
+    'runMain scalation.modeling.neuralnet.runNeuralNet3L'
+```
+
+Do not copy these files into `src/main/scala/scalation/modeling/neuralnet/`: that directory already contains ScalaTion's own `NeuralNet_2L.scala` and `NeuralNet_3L.scala`, and the copies would overwrite them.
+
+### Expected Output
+
+| Program | Console output | Files written |
+| --- | --- | --- |
+| `NeuralNet_2L.scala` / `NeuralNet_3L.scala` | Best hyperparameters, training and validation R², MSE, RMSE per dataset | None (plots open in windows) |
+| `NeuralNet_2L.ipynb` | Tuning table and QoF table | None (plots shown inline) |
+| `NeuralNet_3L.ipynb` | Tuning, QoF and seed-stability tables | `results/3L_tuning_*.csv`, `3L_best_hyperparameters.csv`, `3L_qof.csv`, `3L_seed_stability.csv`; `figures/3L/*.png` |
+| `NeuralNet_4L.ipynb` | Tuning, QoF and seed-stability tables | `results/4L_tuning_*.csv`, `4L_best_hyperparameters.csv`, `4L_qof.csv`, `4L_seed_stability.csv`; `figures/4L/*.png` |
+| `NeuralNet_5L.py` | Selected configuration, QoF and seed summary per dataset | `outputs/5L_results.csv`; `outputs/graphs/*_5l_{graph,loss,residual}.png` |
+| `NeuralNet_Custom.ipynb` | Tuning, QoF and seed-stability tables | `results/Custom_tuning_*.csv`, `Custom_best_hyperparameters.csv`, `Custom_qof.csv`, `Custom_seed_stability.csv`; `figures/Custom/*.png` |
+
+Each figures folder contains a loss curve, plus actual-vs-predicted and residual plots for both training and validation data, for every dataset. The 4L and Custom folders also include `tuning_sensitivity.png`.
+
+The PyTorch runs are seeded, so rerunning on CPU should reproduce these validation R² values:
+
+| Model | Airfoil | Auto MPG | Concrete |
+| --- | ---: | ---: | ---: |
+| PyTorch 2L | 0.5528 | 0.7829 | 0.6236 |
+| PyTorch 3L | 0.9072 | 0.8526 | 0.8923 |
+| PyTorch 4L | 0.9643 | 0.8317 | 0.8691 |
+| PyTorch 5L | 0.9618 | 0.8813 | 0.8723 |
+| Picked architecture | 0.8688 | 0.8717 | 0.8677 |
+
+The report's ScalaTion results are ScalaTion 2L: 0.4880 / 0.8035 / 0.6076 and ScalaTion 3L: 0.9287 / 0.8479 / 0.8986. ScalaTion's mini-batch order is not seeded, so a rerun gives close but not identical values. Different hardware or library versions can also shift the PyTorch values slightly.
+
+### Updating the Report in Overleaf
+
+Upload the contents of [project3/report/overleaf_upload](project3/report/overleaf_upload): replace `main.tex`, and add the `3L/`, `4L/`, `5L/` and `Custom/` folders at the top level of the project, next to the existing `2L/` folder.
+
+---
 
 ## Project 2: Regression and Symbolic Regression
 

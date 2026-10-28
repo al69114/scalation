@@ -23,7 +23,7 @@ A \textbf{2-Layer Neural Network (2L)} is a basic neural network architecture co
 For this project, a 2L Neural Network is implemented using \textbf{ScalaTion} and \textbf{PyTorch} to perform regression on three datasets: Airfoil Self-Noise, Auto MPG, and Concrete Compressive Strength. The goal is to evaluate and compare the predictive performance of both implementations through hyperparameter tuning and Quality of Fit (QoF) measures, including R², MSE, and RMSE, for both in-sample and validation data.
 
 \subsection{ScalaTion}
-The ScalaTion implementation uses the built-in NeuralNet\_2L class with an identity activation function to predict numerical values across the three datasets. Each dataset was split into 80\% training and 20\% validation data, with predictors standardized using training data statistics. Hyperparameter tuning was performed by testing seven learning rates and three mini-batch sizes, selecting the combination with the lowest validation MSE. The final models were trained using ScalaTion's built-in Adam optimizer for 400 epochs and evaluated using R², MSE, and RMSE for both in-sample and validation data.
+The ScalaTion implementation uses the built-in NeuralNet\_2L class with an identity activation function to predict numerical values across the three datasets. Each dataset was split into 80\% training and 20\% validation data, with predictors standardized using training data statistics. Hyperparameter tuning was performed by testing seven learning rates and three mini-batch sizes on an inner 80/20 split of the training data, selecting the combination with the lowest inner-validation MSE. The final models were trained using ScalaTion's built-in Adam optimizer for 400 epochs and evaluated using R², MSE, and RMSE for both in-sample and validation data. ScalaTion draws the mini-batch order from an unseeded random stream, so repeated runs give slightly different results; the reported values come from a single run.
 \medskip
 \begin{table}[H]
     \centering
@@ -31,7 +31,7 @@ The ScalaTion implementation uses the built-in NeuralNet\_2L class with an ident
     \label{tab:scala_hyperparameters}
     \begin{tabular}{lccc}
         \hline
-        \textbf{Dataset} & \textbf{Learning Rate} & \textbf{Batch Size} & \textbf{Validation MSE} \\
+        \textbf{Dataset} & \textbf{Learning Rate} & \textbf{Batch Size} & \textbf{Inner-Validation MSE} \\
         \hline
         Airfoil  & 0.30 & 16 & 21.8925 \\
         Auto MPG & 0.30 & 16 & 12.6056 \\
@@ -146,7 +146,7 @@ Overall, ScalaTion  produced reasonable results for a 2L Neural Network across a
 
 
 \subsection{PyTorch}
-The PyTorch implementation uses a 2L Neural Network with an input layer and an output layer, with no hidden layers, to predict numerical values across the three datasets. Each dataset was split into 80\% training and 20\% validation data, with predictors standardized using training data statistics. Hyperparameter tuning was performed by testing seven learning rates and three mini-batch sizes, selecting the combination with the lowest validation MSE. Each configuration was trained using the Adam optimizer for a maximum of 100 epochs, with early stopping (patience = 10) to prevent unnecessary training, and the final model was retrained on the full training set for the best number of epochs found during tuning. Model performance was evaluated using R², MSE, and RMSE for both in-sample and validation data.
+The PyTorch implementation uses a 2L Neural Network with an input layer and an output layer, with no hidden layers, to predict numerical values across the three datasets. Each dataset was split into 80\% training and 20\% validation data, with predictors standardized using training data statistics. Hyperparameter tuning was performed by testing seven learning rates and three mini-batch sizes on an inner 80/20 split of the training data, selecting the combination with the lowest inner-validation MSE. Each configuration was trained using the Adam optimizer for a maximum of 100 epochs, with early stopping (patience = 10) to prevent unnecessary training, and the final model was retrained on the full training set for the best number of epochs found during tuning. Model performance was evaluated using R², MSE, and RMSE for both in-sample and validation data.
 \medskip
 \begin{table}[H]
     \centering
@@ -155,7 +155,7 @@ The PyTorch implementation uses a 2L Neural Network with an input layer and an o
     \small
     \begin{tabular}{lccccc}
         \hline
-        \textbf{Dataset} & \textbf{Learning Rate} & \textbf{Batch Size} & \textbf{Validation MSE} & \textbf{Epochs} & \textbf{Best Epoch} \\
+        \textbf{Dataset} & \textbf{Learning Rate} & \textbf{Batch Size} & \textbf{Inner-Val. MSE} & \textbf{Epochs} & \textbf{Best Epoch} \\
         \hline
         Airfoil  & 0.30 & 16 & 31.5125 & 51 & 41 \\
         Auto MPG & 0.30 & 64 & 7.8051 & 55 & 45 \\
@@ -207,11 +207,11 @@ The Quality of Fit (QoF) results were evaluated using R², MSE, and RMSE for bot
         \small (c) Concrete
     \end{minipage}
 
-    \caption{PyTorch 2L Neural Network Training and Validation Loss vs. Epoch}
+    \caption{PyTorch 2L Neural Network Training and Validation Loss vs. Epoch (Tuning Run, Selected Configuration)}
     \label{fig:pytorch_loss}
 \end{figure}
 
-Figure 4 shows the training and validation loss vs epoch plots for the Airfoil, Auto MPG, and Concrete datasets. Across all three datasets, the training and validation losses decrease as the number of epochs increases, indicating that the models are learning and reducing prediction errors. Airfoil shows a rapid decrease in loss before stabilizing around 10–15 epochs, while Auto MPG decreases more gradually and stabilizes around 25–30 epochs. Concrete shows a sharp initial decrease followed by small fluctuations in loss. Overall, the training and validation curves remain relatively close across all three datasets, suggesting that the models converged without significant signs of overfitting. Early stopping also helped prevent unnecessary training once validation performance stopped improving.
+Figure 4 shows the training and validation loss vs epoch plots for the Airfoil, Auto MPG, and Concrete datasets. These curves come from the tuning run of the selected configuration, so they are computed on the inner training and inner validation sets. Across all three datasets, the training and validation losses decrease as the number of epochs increases, indicating that the models are learning and reducing prediction errors. Airfoil shows a rapid decrease in loss before stabilizing around 10–15 epochs, while Auto MPG decreases more gradually and stabilizes around 25–30 epochs. Concrete shows a sharp initial decrease followed by small fluctuations in loss. Overall, the training and validation curves remain relatively close across all three datasets, suggesting that the models converged without significant signs of overfitting. Early stopping also helped prevent unnecessary training once validation performance stopped improving.
 \medskip
 \begin{figure}[H]
     \centering
@@ -289,7 +289,7 @@ A three-layer neural network (3L) was implemented using ScalaTion's built-in Neu
 The input features were standardized using the means and standard deviations calculated from the corresponding training data. The same scaling parameters were applied to the associated validation data. Each dataset was divided into an outer 80/20 training-validation split. Hyperparameter selection was conducted using an additional validation split within the outer training portion, keeping the final held-out validation data separate from hyperparameter selection.
 \medskip
 
-The hyperparameter search evaluated 36 configurations per dataset. The search considered 8, 16, and 32 hidden nodes; sigmoid and hyperbolic tangent (tanh) activation functions; learning rates of 0.01, 0.05, and 0.1; and mini-batch sizes of 32 and 64. The configuration with the lowest inner-validation mean squared error (MSE) was selected for each dataset. The final model was then trained using the selected configuration on the outer training set and evaluated on the held-out validation set.
+The hyperparameter search evaluated 36 configurations per dataset. The search considered 8, 16, and 32 hidden nodes; sigmoid and hyperbolic tangent (tanh) activation functions; learning rates of 0.01, 0.05, and 0.1; and mini-batch sizes of 32 and 64. Each configuration was trained with ScalaTion's default optimizer for NeuralNet\_3L, stochastic gradient descent with momentum (SGDM), for a maximum of 400 epochs. The configuration with the lowest inner-validation mean squared error (MSE) was selected for each dataset. The final model was then trained using the selected configuration on the outer training set and evaluated on the held-out validation set. As with the 2L model, ScalaTion's mini-batch order is not controlled by the split seed, so repeated runs give slightly different results; the reported values come from a single run.
 
 \subsubsection{Hyperparameter-Tuning Results}
 Table \ref{tab:scala3l_hyperparameters} summarizes the selected hyperparameters for each dataset.
@@ -467,7 +467,7 @@ The selected configurations differ across the three datasets, so no single set o
 The Quality of Fit (QoF) results were evaluated using R², MSE, and RMSE for both the training (in-sample) and validation data. As shown in Table \ref{tab:pytorch3l_qof}, Airfoil achieved the highest validation R² of 0.9072, followed by Concrete at 0.8923 and Auto MPG at 0.8526. Airfoil shows a small gap between training and validation R² (0.9189 versus 0.9072), which suggests the model generalized well on this split. Auto MPG also shows a small gap (0.8785 versus 0.8526), and its validation MSE is slightly lower than its training MSE. Concrete shows the largest gap: its training R² is 0.9570, but its validation MSE (27.75) is more than twice its training MSE (12.23), indicating that the model fit the training data more closely than the held-out data. RMSE values should be compared only within a dataset because the response variables have different units and scales. The inner-validation MSE in Table \ref{tab:pytorch3l_hyperparameters} should also not be compared directly with the validation MSE in Table \ref{tab:pytorch3l_qof}, since they are computed on different validation sets and, for the final model, after retraining on more data.
 \medskip
 
-To check how much these results depend on the random initialization, the final models were retrained with five different seeds. The mean validation R² values were 0.9026 ($\pm$0.0055) for Airfoil, 0.8277 ($\pm$0.0197) for Auto MPG, and 0.8746 ($\pm$0.0169) for Concrete. Airfoil is very stable, while the single-seed Auto MPG result in Table \ref{tab:pytorch3l_qof} is on the high end of its range (0.7959 to 0.8453).
+To check how much these results depend on the random initialization, the final models were retrained with five different seeds. The mean validation R² values were 0.9026 ($\pm$0.0055) for Airfoil, 0.8277 ($\pm$0.0197) for Auto MPG, and 0.8746 ($\pm$0.0169) for Concrete. Airfoil is very stable, while the single-seed Auto MPG result in Table \ref{tab:pytorch3l_qof} (0.8526) is higher than all five seeded runs (0.7959 to 0.8453), so the five-seed mean of 0.8277 is a more reliable estimate.
 \medskip
 \begin{figure}[H]
     \centering
@@ -566,7 +566,7 @@ Figure \ref{fig:pytorch3l_residual} shows the validation residuals (actual minus
     \end{tabular}
 \end{table}
 
-Adding a hidden layer substantially improved the PyTorch results compared with the 2L network (Table \ref{tab:3l_comparison}). Validation R² increased from 0.5528 to 0.9072 for Airfoil, from 0.7829 to 0.8526 for Auto MPG, and from 0.6236 to 0.8923 for Concrete. The largest gains were on Airfoil and Concrete, which were the two datasets where the linear 2L model performed worst, so a nonlinear hidden layer appears to help most where the relationships are more complex. Compared with the ScalaTion 3L results, PyTorch had a slightly higher validation R² on Auto MPG (0.8526 versus 0.8479), while ScalaTion was higher on Airfoil (0.9287 versus 0.9072) and slightly higher on Concrete (0.8986 versus 0.8923). The two implementations did not use identical settings: the PyTorch search was larger (180 configurations, including ReLU, 4 hidden nodes, smaller learning rates, and a batch size of 16) and used Adam with early stopping and a standardized target, while the ScalaTion search used 36 configurations trained for 400 epochs. The two implementations also used different random 80/20 splits, so their validation sets contain different observations. These differences may contribute to the differences in performance, so these comparisons should be interpreted with caution.
+Adding a hidden layer substantially improved the PyTorch results compared with the 2L network (Table \ref{tab:3l_comparison}). Validation R² increased from 0.5528 to 0.9072 for Airfoil, from 0.7829 to 0.8526 for Auto MPG, and from 0.6236 to 0.8923 for Concrete. The largest gains were on Airfoil and Concrete, which were the two datasets where the linear 2L model performed worst, so a nonlinear hidden layer appears to help most where the relationships are more complex. Compared with the ScalaTion 3L results, PyTorch had a slightly higher validation R² on Auto MPG (0.8526 versus 0.8479), while ScalaTion was higher on Airfoil (0.9287 versus 0.9072) and slightly higher on Concrete (0.8986 versus 0.8923). The two implementations did not use identical settings: the PyTorch search was larger (180 configurations, including ReLU, 4 hidden nodes, smaller learning rates, and a batch size of 16) and used Adam with early stopping and a standardized target, while the ScalaTion search used 36 configurations trained with SGD with momentum for up to 400 epochs. The two implementations also used different random 80/20 splits, so their validation sets contain different observations. These differences may contribute to the differences in performance, so these comparisons should be interpreted with caution.
 \medskip
 
 Overall, the 3L neural network produced strong regression results on all three datasets in both implementations, with validation R² values between 0.85 and 0.93. In PyTorch, Airfoil showed the closest agreement between training and validation performance, while Concrete showed the largest generalization gap.
@@ -591,7 +591,7 @@ Hyperparameter tuning was performed with a grid search over the number of nodes 
     \small
     \begin{tabular}{lcccccc}
         \hline
-        \textbf{Dataset} & \textbf{Hidden Nodes} & \textbf{Activation} & \textbf{Learning Rate} & \textbf{Batch Size} & \textbf{Validation MSE} & \textbf{Best Epoch} \\
+        \textbf{Dataset} & \textbf{Hidden Nodes} & \textbf{Activation} & \textbf{Learning Rate} & \textbf{Batch Size} & \textbf{Inner-Val. MSE} & \textbf{Best Epoch} \\
         \hline
         Airfoil  & (128, 64) & ReLU & 0.001 & 16 & 3.0190 & 225 \\
         Auto MPG & (64, 32) & Tanh & 0.050 & 32 & 5.9313 & 14 \\
@@ -652,11 +652,11 @@ The Quality of Fit (QoF) results were evaluated using R², MSE, and RMSE for bot
         \small (c) Concrete
     \end{minipage}
 
-    \caption{PyTorch 4L Neural Network Training and Validation Loss vs. Epoch}
+    \caption{PyTorch 4L Neural Network Training and Validation Loss vs. Epoch (Tuning Run, Selected Configuration)}
     \label{fig:pytorch4l_loss}
 \end{figure}
 
-Figure \ref{fig:pytorch4l_loss} shows the training and validation loss vs epoch plots for the best configuration of each dataset. Airfoil shows a steady decrease in both losses over about 225 epochs, with the validation loss remaining close to the training loss. Auto MPG drops sharply within the first few epochs and reaches its best validation loss at epoch 14; after that, the training loss keeps decreasing while the validation loss slowly rises, which is an early sign of overfitting that early stopping prevents. Concrete decreases steadily, but the gap between the training and validation losses widens after roughly 70 epochs, consistent with its larger training--validation gap in Table \ref{tab:pytorch4l_qof}. Compared with the 2L loss curves (Figure \ref{fig:pytorch_loss}), the 4L curves are noisier, which is expected from the larger number of parameters and the use of mini-batches.
+Figure \ref{fig:pytorch4l_loss} shows the training and validation loss vs epoch plots for the best configuration of each dataset. These curves come from the tuning run, so they are computed on the inner training and inner validation sets. Airfoil shows a steady decrease in both losses over about 225 epochs, with the validation loss remaining close to the training loss. Auto MPG drops sharply within the first few epochs and reaches its best validation loss at epoch 14; after that, the training loss keeps decreasing while the validation loss slowly rises, which is an early sign of overfitting that early stopping prevents. Concrete decreases steadily, but the gap between the training and validation losses widens after roughly 70 epochs, consistent with its larger training--validation gap in Table \ref{tab:pytorch4l_qof}. Compared with the 2L loss curves (Figure \ref{fig:pytorch_loss}), the 4L curves are noisier, which is expected from the larger number of parameters and the use of mini-batches.
 \medskip
 \begin{figure}[H]
     \centering
@@ -807,7 +807,7 @@ The final models were evaluated using the coefficient of determination (R²), MS
 The Airfoil model achieved the strongest validation R² at 0.9618 and close agreement between training and validation scores. Its validation RMSE was 1.3826 dB. The Auto MPG model achieved a validation R² of 0.8813, close to its training R² of 0.8902, and its validation MSE was slightly lower than its training MSE, which can occur with a small validation set of 79 observations. The Concrete model achieved a validation R² of 0.8723 and a validation RMSE of 5.7358 MPa. Its validation MSE (32.90) is more than twice its training MSE (14.46), giving the largest training--validation gap of the three datasets and indicating some overfitting.
 \medskip
 
-To check how much these results depend on the random initialization, the final models were retrained with five different seeds (Table \ref{tab:pytorch5l_seeds}). Airfoil and Concrete are stable, but the Auto MPG validation R² ranges from 0.7540 to 0.8758 depending on the seed. Its single-seed result in Table \ref{tab:pytorch5l_qof} is therefore on the high end, and the five-seed mean of 0.8269 is a more reliable estimate. This instability is likely caused by the combination of a small dataset and the high learning rate of 0.05, which also makes its loss curve noisy (Figure \ref{fig:pytorch5l_loss}).
+To check how much these results depend on the random initialization, the final models were retrained with five different seeds (Table \ref{tab:pytorch5l_seeds}). Airfoil and Concrete are stable, but the Auto MPG validation R² ranges from 0.7540 to 0.8758 depending on the seed. Its single-seed result in Table \ref{tab:pytorch5l_qof} (0.8813) is therefore higher than all five seeded runs, and the five-seed mean of 0.8269 is a more reliable estimate. This instability is likely caused by the combination of a small dataset and the high learning rate of 0.05, which also makes its loss curve noisy (Figure \ref{fig:pytorch5l_loss}).
 \begin{table}[H]
     \centering
     \caption{PyTorch 5L Validation $R^2$ over Five Random Seeds}
@@ -958,10 +958,10 @@ Figure \ref{fig:picked_tuning} shows the best tuning validation MSE for each dro
     }
 \end{table}
 
-As shown in Table \ref{tab:picked_qof}, the picked architecture achieved validation R² values of 0.8688 for Airfoil, 0.8717 for Auto MPG, and 0.8677 for Concrete. For Concrete, the training--validation R² gap decreased slightly compared with the 4L model (0.0790 versus 0.0932), but the validation R² did not improve (0.8677 versus 0.8691), so the added regularization did not solve the overfitting problem. For Airfoil, the validation R² is clearly lower than that of the 4L model (0.8688 versus 0.9643); batch normalization adds noise to each mini-batch, which appears to limit how precisely the network can fit the smooth Airfoil relationship. For Auto MPG, the picked architecture achieved a higher validation R² than the 4L model (0.8717 versus 0.8317).
+As shown in Table \ref{tab:picked_qof}, the picked architecture achieved validation R² values of 0.8688 for Airfoil, 0.8717 for Auto MPG, and 0.8677 for Concrete. For Concrete, the training--validation R² gap decreased slightly compared with the 4L model (0.0790 versus 0.0932), but the validation R² did not improve (0.8677 versus 0.8691), so the added regularization did not solve the overfitting problem. For Airfoil, the validation R² is clearly lower than that of the 4L model (0.8688 versus 0.9643); one possible explanation is that batch normalization adds noise to each mini-batch, which may limit how precisely the network can fit the smooth Airfoil relationship. For Auto MPG, the picked architecture achieved a higher validation R² than the 4L model (0.8717 versus 0.8317).
 \medskip
 
-When the final models were retrained with five different seeds, the mean validation R² values were 0.8886 ($\pm$0.0220) for Airfoil, 0.8737 ($\pm$0.0082) for Auto MPG, and 0.8757 ($\pm$0.0026) for Concrete. The picked architecture was the most stable model for Auto MPG and Concrete (compared with standard deviations of 0.0255 and 0.0111 for the 4L model), which shows that batch normalization and weight decay make the results less sensitive to the random initialization, even when they do not increase the average accuracy.
+When the final models were retrained with five different seeds, the mean validation R² values were 0.8886 ($\pm$0.0220) for Airfoil, 0.8737 ($\pm$0.0082) for Auto MPG, and 0.8757 ($\pm$0.0026) for Concrete. The picked architecture was the most stable model for Auto MPG and Concrete (compared with standard deviations of 0.0255 and 0.0111 for the 4L model), which suggests that the selected configuration is less sensitive to the random initialization, even though it does not increase the average accuracy. Because the picked architecture also differs from the 4L model in width, depth, activation function, and learning rate, this comparison does not isolate the effect of batch normalization or weight decay; an ablation study would be needed for that.
 \medskip
 \begin{figure}[H]
     \centering
@@ -988,7 +988,7 @@ When the final models were retrained with five different seeds, the mean validat
     \label{fig:picked_loss}
 \end{figure}
 
-Figure \ref{fig:picked_loss} shows the training and inner-validation loss for the selected configuration of each dataset. All three datasets drop sharply in the first few epochs. Auto MPG has the smoothest curves of all the PyTorch models, with almost no gap between training and validation loss, consistent with its low variability across seeds. Airfoil and Concrete keep a visible gap between training and validation loss and are noisier, which reflects the mini-batch noise added by batch normalization.
+Figure \ref{fig:picked_loss} shows the training and inner-validation loss for the selected configuration of each dataset. All three datasets drop sharply in the first few epochs. Auto MPG has the smoothest curves of all the PyTorch models, with almost no gap between training and validation loss, consistent with its low variability across seeds. Airfoil and Concrete keep a visible gap between training and validation loss and are noisier, which may reflect the mini-batch noise added by batch normalization.
 \medskip
 \begin{figure}[H]
     \centering
@@ -1043,7 +1043,7 @@ Figure \ref{fig:picked_loss} shows the training and inner-validation loss for th
 Figures \ref{fig:picked_actual} and \ref{fig:picked_residual} show the validation actual vs predicted values and residuals. Auto MPG follows the diagonal closely, and its residuals are spread fairly evenly around zero within about $\pm$7 mpg. The Airfoil residuals are more widely spread than for the 4L model, and many of the largest errors are negative for predicted values between about 120 and 135 dB, meaning that the model tends to overpredict sound pressure in that range, which is consistent with its lower validation R². The Concrete residuals are mostly within $\pm$10 MPa, with a few large errors near $-$20 MPa, similar to the 4L and 5L models.
 
 \subsection{Conclusion}
-The picked architecture shows that adding regularization does not automatically improve predictive accuracy. Dropout consistently hurt performance on these small tabular datasets, and batch normalization reduced the accuracy on Airfoil. However, the architecture produced the most stable Auto MPG and Concrete results across random seeds and the best average Auto MPG validation R² of all the PyTorch models (0.8737). Overall, it is a reasonable choice for the small, noisy Auto MPG dataset, while the simpler 4L network remains the better choice for Airfoil.
+The picked architecture shows that adding regularization does not automatically improve predictive accuracy. Dropout consistently increased the tuning validation MSE on these small tabular datasets (Figure \ref{fig:picked_tuning}), and the batch-normalized network was less accurate than the 4L network on Airfoil. However, the architecture produced the most stable Auto MPG and Concrete results across random seeds and the best average Auto MPG validation R² of all the PyTorch models (0.8737). Overall, it is a reasonable choice for the small, noisy Auto MPG dataset, while the simpler 4L network remains the better choice for Airfoil.
 
 \section{Comparison of Models and Discussion}
 \begin{table}[H]
@@ -1087,15 +1087,15 @@ Table \ref{tab:all_models} summarizes the validation R² of every model on every
 \textbf{Effect of hidden layers.} The largest improvement for every dataset came from adding the first hidden layer. Moving from 2L to 3L raised the validation R² from about 0.49--0.55 to 0.91--0.93 for Airfoil and from about 0.61--0.62 to about 0.89--0.90 for Concrete, while Auto MPG improved only from about 0.78--0.80 to 0.85. This confirms that Airfoil and Concrete have strongly nonlinear relationships that a linear 2L model cannot capture, while Auto MPG is much closer to linear.
 \medskip
 
-\textbf{Effect of depth.} Additional hidden layers gave diminishing returns. Airfoil benefited from a second hidden layer (mean validation R² of 0.9026 for 3L versus 0.9610 for 4L), but a third hidden layer (5L) did not improve it further. For Concrete, all models with hidden layers reached a very similar validation R² (about 0.87--0.90), and the five-seed means of the PyTorch models differ by less than 0.006, so depth had almost no effect. All of these Concrete models also show a clear training--validation gap, which suggests that the remaining error is limited by the size and noise of the dataset rather than by the network architecture. For Auto MPG, the differences between models are of the same size as the variation across random seeds (up to $\pm$0.047 for 5L), so no architecture is clearly better than the others on this small dataset; the picked architecture had the highest and most stable average.
+\textbf{Effect of depth.} Additional hidden layers gave diminishing returns. Airfoil benefited from a second hidden layer (mean validation R² of 0.9026 for 3L versus 0.9610 for 4L), but a third hidden layer (5L) did not improve it further. For Concrete, all models with hidden layers reached a very similar validation R² (about 0.87--0.90), and the five-seed means of the PyTorch models differ by less than 0.006, so depth had almost no effect. All of these Concrete models also show a clear training--validation gap. Within the tested architectures and grids, extra depth did not materially improve Concrete validation performance, and the remaining error may be limited by the size and noise of the dataset. For Auto MPG, the differences between models are of the same size as the variation across random seeds (up to $\pm$0.047 for 5L), so no architecture is clearly better than the others on this small dataset; the picked architecture had the highest and most stable average.
 \medskip
 
 \textbf{Best model for each dataset.} Based on both the single-run and five-seed results, the 4L network is the best model for Airfoil (validation R² of 0.9643, five-seed mean of 0.9610). For Auto MPG, the picked architecture gives the best and most stable average (0.8737 $\pm$ 0.0082), although the 5L network had the highest single-run value. For Concrete, the ScalaTion 3L network had the highest single-run validation R² (0.8986), and among the PyTorch models the 3L network had the highest single-run value (0.8923), while the five-seed averages of all PyTorch models are nearly identical; the simpler 3L network is therefore a reasonable choice for Concrete.
 \medskip
 
-\textbf{Software comparison.} ScalaTion and PyTorch produced similar results for the same architectures. For 2L, both are close to linear regression, and for 3L the validation R² values differ by at most about 0.02. The remaining differences are likely due to the different random splits, optimizer settings, number of epochs, and hyperparameter grids rather than the software itself.
+\textbf{Software comparison.} ScalaTion and PyTorch produced similar results for the same architectures. For 2L, both are close to linear regression, and for 3L the validation R² values differ by at most about 0.02. The remaining differences are likely due to the different random splits, optimizers (ScalaTion 3L used SGD with momentum, while PyTorch used Adam), number of epochs, and hyperparameter grids rather than the software itself. ScalaTion's mini-batch order is also not seeded, so its results vary slightly between runs.
 
 \subsection{Conclusion}
-Across the three datasets, neural networks with at least one hidden layer clearly outperformed the 2L network, with the largest gains on the nonlinear Airfoil and Concrete datasets. Adding more hidden layers helped Airfoil up to two hidden layers but gave little or no further improvement for Auto MPG and Concrete. The picked architecture showed that regularization techniques such as dropout and batch normalization do not always improve accuracy on small tabular datasets, although they can make the results more stable. Standardizing the target, using early stopping, and checking several random seeds were all important for obtaining reliable results. These conclusions are based on a single 80/20 split per dataset, so cross-validation or additional splits would be needed to confirm them.
+Across the three datasets, neural networks with at least one hidden layer clearly outperformed the 2L network, with the largest gains on the nonlinear Airfoil and Concrete datasets. Adding more hidden layers helped Airfoil up to two hidden layers but gave little or no further improvement for Auto MPG and Concrete. The picked architecture showed that regularization techniques such as dropout and batch normalization do not always improve accuracy on small tabular datasets, although the regularized configuration gave more stable results across random seeds. Standardizing the target, using early stopping, and checking several random seeds were all important for obtaining reliable results. These conclusions are based on a single 80/20 split per dataset, so cross-validation or additional splits would be needed to confirm them.
 
 \end{document}
