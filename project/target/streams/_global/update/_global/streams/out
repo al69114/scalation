@@ -1,4 +1,3 @@
-[warn] jline-2.14.6.jar no longer exists at /Users/adithyalakshmikanth/Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/jline/jline/2.14.6/jline-2.14.6.jar
-[debug] not up to date. inChanged = false, force = false
-[debug] Updating ProjectRef(uri("file:/Users/adithyalakshmikanth/scalation/project/"), "scalation-build")...
-[debug] Done updating ProjectRef(uri("file:/Users/adithyalakshmikanth/scalation/project/"), "scalation-build")
+[0m[[0m[0mdebug[0m] [0m[0mnot up to date. inChanged = true, force = false[0m
+[0m[[0m[0mdebug[0m] [0m[0mUpdating ProjectRef(uri("file:/Users/aasthamishra/UGA/CS%20Classes/Fall%202026/CSCI6360%20-%20Data%20Science%20and%20ML%202/scalation/project/"), "scalation-build")...[0m
+[0m[[0m[0mdebug[0m] [0m[0mDone updating ProjectRef(uri("file:/Users/aasthamishra/UGA/CS%20Classes/Fall%202026/CSCI6360%20-%20Data%20Science%20and%20ML%202/scalation/project/"), "scalation-build")[0m
