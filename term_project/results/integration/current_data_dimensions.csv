@@ -1,0 +1,3 @@
+dataset,train_rows,test_rows,features
+global,39102,13104,14
+beijing,236547,79830,35
