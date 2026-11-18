@@ -34,26 +34,27 @@ Speaker notes: Replace the earlier heatmap with the refreshed `eda/figures/beiji
 - **NN tuning:** Hidden-layer size and weight decay, chronological validation, early stopping, and five random seeds.
 - **Evaluation:** Test R², RMSE, and MAE for every location and forecast horizon.
 
-Speaker notes: RF is implemented, but its saved scores use the earlier data version. Refresh RF before including it in the current comparison. Transformed regression was proposed but has not been implemented. RMSE/MAE have PM2.5 units; R² is dimensionless.
+Speaker notes: RF uses 100 trees, min_samples_leaf=5, max_features=0.5, and five random seeds; scores are averaged over seeds. Transformed regression was proposed but has not been implemented. RMSE/MAE have PM2.5 units; R² is dimensionless.
 
 ## Current Results — RMSE (µg/m³)
 
-| Dataset | Horizon | Persistence | Linear regression | Neural network |
-|---|---:|---:|---:|---:|
-| Global | 1h | 2.402 | 2.189 | 2.357 |
-| Global | 6h | 7.341 | 6.213 | 6.367 |
-| Global | 24h | 8.215 | 7.476 | 7.491 |
-| Beijing | 1h | 18.874 | 17.799 | 17.500 |
-| Beijing | 6h | 54.154 | 49.335 | 48.966 |
-| Beijing | 24h | 86.476 | 71.020 | 71.461 |
+| Dataset | Horizon | Persistence | Linear regression | Random forest | Neural network |
+|---|---:|---:|---:|---:|---:|
+| Global | 1h | 2.402 | 2.189 | 2.247 | 2.357 |
+| Global | 6h | 7.341 | 6.213 | 6.161 | 6.367 |
+| Global | 24h | 8.215 | 7.476 | 7.782 | 7.491 |
+| Beijing | 1h | 18.874 | 17.799 | 17.833 | 17.500 |
+| Beijing | 6h | 54.154 | 49.335 | 48.970 | 48.966 |
+| Beijing | 24h | 86.476 | 71.020 | 71.705 | 71.461 |
 
-Footer: Equal-weight averages over locations; NN metrics averaged over five seeds. Matching current test samples; NN reserves part of training for validation. RF pending a current-data rerun.
+Footer: Equal-weight averages over locations; RF and NN metrics averaged over five seeds. Matching current test samples; NN reserves part of training for validation.
 
 ## Conclusions Supported by the Current Comparison
 
 - Forecast errors increase with the forecast horizon in these experiments.
-- Linear regression and the NN both improve on persistence in average RMSE at all three horizons in both datasets.
-- Linear regression has lower average RMSE for Global at all horizons; the NN has lower average RMSE for Beijing at 1h and 6h, with linear regression slightly lower at 24h.
+- Linear regression, random forest, and the NN all improve on persistence in average RMSE at all three horizons in both datasets.
+- Linear regression has lower average RMSE than the NN for Global at all horizons; the NN has lower average RMSE for Beijing at 1h and 6h, with linear regression slightly lower at 24h.
+- Random forest has the lowest average RMSE for Global at 6h but the highest of the three learned models for Global at 24h; in Beijing the three learned models are within about 1 µg/m³ at every horizon.
 - No single learned model is best across all settings. These results compare known locations over time and do not establish generalization to unseen cities.
 
-Source: `results/integration/CURRENT_RESULTS.md`. Full NN/random forest training was not rerun during integration; NN evidence and saved-score aggregation were checked, and simple baselines were recomputed.
+Source: `results/integration/CURRENT_RESULTS.md`. Random forest was rerun on the current data in the baseline notebook; full NN training was not rerun during integration; NN evidence and saved-score aggregation were checked, and simple baselines were recomputed.
