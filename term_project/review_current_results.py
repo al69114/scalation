@@ -62,7 +62,19 @@ def main():
     nn = runs.loc[runs.model == "Neural Network", simple.columns]
     assert len(nn) == 18 * 3 * 5
     assert nn.groupby(["dataset", "location", "horizon"]).seed.apply(lambda s: set(s) == set(range(5))).all()
-    combined = pd.concat([simple, nn], ignore_index=True)
+        # Random Forest comes from the rerun baseline notebook (baseline_results.csv, current data).
+    baseline = pd.read_csv(ROOT / "baseline_results.csv")
+    keys = ["dataset", "location", "horizon", "model"]
+    # Check the notebook used the same data: its deterministic LR must match the LR recomputed above.
+    lr_check = simple.loc[simple.model == "Linear Regression"].merge(
+        baseline.loc[baseline.model == "Linear Regression"], on=keys, suffixes=("", "_nb"))
+    assert len(lr_check) == 18 * 3, "baseline_results.csv is missing locations/horizons"
+    np.testing.assert_allclose(lr_check[["r2", "rmse", "mae"]].to_numpy(),
+                               lr_check[["r2_nb", "rmse_nb", "mae_nb"]].to_numpy(), rtol=1e-6, atol=1e-6)
+    rf = baseline.loc[baseline.model == "Random Forest", simple.columns]
+    assert len(rf) == 18 * 3 * 5
+    assert rf.groupby(["dataset", "location", "horizon"]).seed.apply(lambda s: set(s) == set(range(5))).all()
+    combined = pd.concat([simple, rf, nn], ignore_index=True)
     # Average seeds within locations first, then give each location equal weight.
     per_location = combined.groupby(["dataset", "location", "horizon", "model"])[["r2", "rmse", "mae"]].mean()
     summary = per_location.groupby(["dataset", "horizon", "model"]).mean().reset_index()
@@ -74,12 +86,10 @@ def main():
     recomputed = runs.groupby(["dataset", "location", "horizon", "model"])[["r2", "rmse", "mae"]].mean().sort_index()
     saved_summary = saved_summary.set_index(["dataset", "location", "horizon", "model"]).sort_index()
     np.testing.assert_allclose(saved_summary[["r2", "rmse", "mae"]], recomputed, rtol=1e-10, atol=1e-10)
-    historical = pd.read_csv(ROOT / "baseline_results.csv")
-    historical.groupby(["dataset", "horizon", "model"])[["r2", "rmse", "mae"]].mean().to_csv(OUT / "historical_baseline_summary.csv")
     lines = ["# Current model comparison", "",
              "Current exported data; metrics averaged equally over locations after averaging NN seeds within each location. RMSE and MAE are in µg/m³; R² is dimensionless. Linear regression, mean, and persistence were recalculated. NN scores are the saved per-seed results; their summary aggregation, targets, and baseline predictions were checked. The NN was not retrained.", "",
              "NN uses a chronological validation block and trains on the preceding portion; the baselines fit the full exported training period. The test observations match, but training budgets differ. The saved NN prediction file averages five seed predictions; its ensemble metrics are exported separately and must not be confused with mean per-seed scores.", "",
-             "The original `baseline_results.csv` and `nn_nolag` outputs describe the earlier data version. Their Beijing test row counts differ from the current NN run, so the old Random Forest scores are excluded from this table. Rerun the baseline notebook for a current Random Forest comparison.", "",
+             "the `nn_nolag` outputs describe the earlier data version and are not part of this table.", "",             "The `nn_nolag` outputs describe the earlier data version and are not part of this table.", "",
              "| Dataset | Horizon | Model | R² | RMSE | MAE |", "|---|---:|---|---:|---:|---:|"]
     for r in summary.itertuples():
         lines.append(f"| {r.dataset} | {r.horizon}h | {r.model} | {r.r2:.3f} | {r.rmse:.3f} | {r.mae:.3f} |")
@@ -88,7 +98,8 @@ def main():
     matplotlib.use("Agg")
     import matplotlib.pyplot as plt
     colors = {"Mean": "tab:gray", "Persistence": "tab:orange",
-              "Linear Regression": "tab:blue", "Neural Network": "tab:red"}
+          "Linear Regression": "tab:blue", "Random Forest": "tab:green",
+          "Neural Network": "tab:red"}
     fig, axes = plt.subplots(1, 2, figsize=(11, 4.5))
     for ax, key in zip(axes, ["global", "beijing"]):
         for model, color in colors.items():
@@ -98,7 +109,7 @@ def main():
         ax.legend(fontsize=8)
         ax.grid(alpha=.25)
     fig.suptitle("Current test data: RMSE averaged over locations")
-    fig.text(.5, .01, "NN: mean over five seeds; validation reserved from training. Other models fit full training. RF excluded pending rerun.",
+    fig.text(.5, .01, "RF and NN: mean over five seeds. NN reserves a validation block from training; other models fit full training.",
              ha="center", fontsize=8)
     fig.tight_layout(rect=(0, .05, 1, .95))
     fig.savefig(OUT / "current_rmse_comparison.png", dpi=170)
