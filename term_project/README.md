@@ -10,7 +10,7 @@ The local branch includes the six upstream commits through `de819d26`. See [INTE
 - Global has 14 predictors, 39,102 training rows, and 13,104 test rows. Beijing has 35 predictors, 236,547 training rows, and 79,830 test rows.
 - `baseline_model.ipynb` implements mean, persistence, linear regression, and random forest per location/horizon.
 - `3lnn_model.ipynb` implements a one-hidden-layer PyTorch MLP with chronological validation, tuning, five seeds, and permutation importance.
-- [Current comparison](results/integration/CURRENT_RESULTS.md) combines recalculated simple baselines with checked saved NN results on the current test rows. Historical random forest scores use an older data version and are excluded pending a rerun.
+- [Current comparison](results/integration/CURRENT_RESULTS.md) combines recalculated simple baselines with checked saved NN results on the current test rows. It includes the current random-forest rerun integrated on November 18.
 
 ## Preprocessing
 
@@ -36,7 +36,7 @@ The script reconstructs current measurements, lag/time features, timestamps, and
 
 Global's training period is January–September 2023, so its monthly plot is an incomplete annual profile. Global hourly patterns use UTC rather than each city's local time. Beijing's monthly plot pools multiple training years. All calendar averages describe retained observations; counts are saved to show unequal coverage.
 
-The EDA is descriptive. It does not select a final feature subset, fit predictive models, or establish causal relationships. Separate modeling notebooks now implement prediction and interpretation; their test-set permutation importance must not be used to select features while continuing to call the same test set independent.
+The EDA is descriptive. Run `python3 term_project/feature_selection.py` for the separate linear-regression feature-set comparison. It selects among pre-specified groups on chronological validation data within training. The NN permutation rankings summarize test-set model reliance. See [validation scores](results/feature_selection/validation_summary.csv) and [slide notes](SLIDE_UPDATES.md).
 
 ## Checking current model results
 

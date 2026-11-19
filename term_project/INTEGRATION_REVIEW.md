@@ -1,4 +1,14 @@
-# Repository integration — November 17, 2026
+# Repository integration and verification
+
+## November 18 verification
+
+Local main includes the baseline rerun and results PR through `b6f0f949`. Rebuilding preprocessing reproduced all 12 exported data tables. Rerunning EDA reproduced all 23 summary tables. The evaluation audit checked all 54 location–horizon combinations, including all five seeds for each random forest and neural network. It also recalculated the mean, persistence, and linear regression scores.
+
+Six independent random forest refits using scikit-learn 1.9.1 reproduced the saved R², RMSE, and MAE to floating-point precision. The six checks cover London, Dubai, Dongsi, and Wanliu. Two seed-0 neural networks were refit using local PyTorch 2.10. The Dongsi 24-hour RMSE matched to six decimals. For London at 6 hours, the refit gave 3.41094 µg/m³ and the saved run gave 3.41453 µg/m³. The reported scores use the original saved runs. The independent refits covered a sample of those runs.
+
+The new feature-selection experiment scores predictor groups on a validation period drawn from each location’s training history. The five-model results and figures use the original held-out test scores. [Current slide notes](SLIDE_UPDATES.md)
+
+## November 17 review (historical)
 
 Updated local `main` by fast-forward from `56a101bd` to `de819d26`, preserving the local EDA work and unrelated untracked `SimpleTransformer.scala`. No commits were created or pushed, and no Google Slides document was edited.
 

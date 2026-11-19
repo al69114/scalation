@@ -28,6 +28,8 @@ def main():
         itr, ite = [pd.read_csv(ROOT / f"processed/{key}_{s}_info.csv") for s in ["train", "test"]]
         counts.append(dict(dataset=key, train_rows=len(xtr), test_rows=len(xte), features=xtr.shape[1]))
         assert len(xtr) == len(ytr) == len(itr) and len(xte) == len(yte) == len(ite)
+        assert not itr.duplicated([loc_col, "Date"]).any() and not ite.duplicated([loc_col, "Date"]).any()
+        assert pd.to_datetime(itr.Date).max() + pd.Timedelta(hours=24) < pd.to_datetime(ite.Date).min()
         assert len(pred.loc[pred.dataset == key]) == 3 * len(xte)
         for loc in sorted(itr[loc_col].unique()):
             tr, te = itr[loc_col] == loc, ite[loc_col] == loc
@@ -58,22 +60,22 @@ def main():
                 ensembles.append(dict(dataset=key, location=loc, horizon=h,
                                       **score(actual, evidence.nn_pred)))
     simple = pd.DataFrame(rows)
-    simple.to_csv(OUT / "current_baselines.csv", index=False)
-    nn = runs.loc[runs.model == "Neural Network", simple.columns]
-    assert len(nn) == 18 * 3 * 5
-    assert nn.groupby(["dataset", "location", "horizon"]).seed.apply(lambda s: set(s) == set(range(5))).all()
-        # Random Forest comes from the rerun baseline notebook (baseline_results.csv, current data).
+    metrics = ["r2", "rmse", "mae"]
+    keys = ["dataset", "location", "horizon"]
+    lr = simple.loc[simple.model == "Linear Regression"].set_index(keys).sort_index()
     baseline = pd.read_csv(ROOT / "baseline_results.csv")
-    keys = ["dataset", "location", "horizon", "model"]
-    # Check the notebook used the same data: its deterministic LR must match the LR recomputed above.
-    lr_check = simple.loc[simple.model == "Linear Regression"].merge(
-        baseline.loc[baseline.model == "Linear Regression"], on=keys, suffixes=("", "_nb"))
-    assert len(lr_check) == 18 * 3, "baseline_results.csv is missing locations/horizons"
-    np.testing.assert_allclose(lr_check[["r2", "rmse", "mae"]].to_numpy(),
-                               lr_check[["r2_nb", "rmse_nb", "mae_nb"]].to_numpy(), rtol=1e-6, atol=1e-6)
+    saved_lr = baseline.loc[baseline.model == "Linear Regression"].set_index(keys).sort_index()
+    pd.testing.assert_index_equal(saved_lr.index, lr.index)
+    np.testing.assert_allclose(saved_lr[metrics], lr[metrics], rtol=1e-6, atol=1e-6)
+
     rf = baseline.loc[baseline.model == "Random Forest", simple.columns]
-    assert len(rf) == 18 * 3 * 5
-    assert rf.groupby(["dataset", "location", "horizon"]).seed.apply(lambda s: set(s) == set(range(5))).all()
+    nn = runs.loc[runs.model == "Neural Network", simple.columns]
+    expected = lr.reset_index()[keys].merge(pd.DataFrame({"seed": range(5)}), how="cross")
+    expected_keys = expected.set_index(keys + ["seed"]).sort_index().index
+    for scores in (rf, nn):
+        pd.testing.assert_index_equal(scores.set_index(keys + ["seed"]).sort_index().index, expected_keys)
+        assert np.isfinite(scores[metrics].to_numpy()).all()
+    simple.to_csv(OUT / "current_baselines.csv", index=False)
     combined = pd.concat([simple, rf, nn], ignore_index=True)
     # Average seeds within locations first, then give each location equal weight.
     per_location = combined.groupby(["dataset", "location", "horizon", "model"])[["r2", "rmse", "mae"]].mean()
@@ -85,11 +87,12 @@ def main():
     saved_summary = pd.read_csv(ROOT / "results/nn/nn_summary.csv")
     recomputed = runs.groupby(["dataset", "location", "horizon", "model"])[["r2", "rmse", "mae"]].mean().sort_index()
     saved_summary = saved_summary.set_index(["dataset", "location", "horizon", "model"]).sort_index()
+    pd.testing.assert_index_equal(saved_summary.index, recomputed.index)
     np.testing.assert_allclose(saved_summary[["r2", "rmse", "mae"]], recomputed, rtol=1e-10, atol=1e-10)
     lines = ["# Current model comparison", "",
-             "Current exported data; metrics averaged equally over locations after averaging NN seeds within each location. RMSE and MAE are in µg/m³; R² is dimensionless. Linear regression, mean, and persistence were recalculated. NN scores are the saved per-seed results; their summary aggregation, targets, and baseline predictions were checked. The NN was not retrained.", "",
+             "Current exported data; metrics averaged equally over locations after averaging RF and NN scores across five seeds within each location. RMSE and MAE are in µg/m³; R² is dimensionless. Linear regression, mean, and persistence were recalculated. NN scores are the saved per-seed results; their summary aggregation, targets, and baseline predictions were checked. The NN was not retrained.", "",
              "NN uses a chronological validation block and trains on the preceding portion; the baselines fit the full exported training period. The test observations match, but training budgets differ. The saved NN prediction file averages five seed predictions; its ensemble metrics are exported separately and must not be confused with mean per-seed scores.", "",
-             "the `nn_nolag` outputs describe the earlier data version and are not part of this table.", "",             "The `nn_nolag` outputs describe the earlier data version and are not part of this table.", "",
+             "The random-forest scores come from the current baseline notebook run. The earlier experiment in nn_nolag used a different Beijing test sample.", "",
              "| Dataset | Horizon | Model | R² | RMSE | MAE |", "|---|---:|---|---:|---:|---:|"]
     for r in summary.itertuples():
         lines.append(f"| {r.dataset} | {r.horizon}h | {r.model} | {r.r2:.3f} | {r.rmse:.3f} | {r.mae:.3f} |")

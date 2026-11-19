@@ -1,12 +1,10 @@
 # Current model comparison
 
-Current exported data; metrics averaged equally over locations after averaging NN seeds within each location. RMSE and MAE are in µg/m³; R² is dimensionless. Linear regression, mean, and persistence were recalculated. NN scores are the saved per-seed results; their summary aggregation, targets, and baseline predictions were checked. The NN was not retrained.
+Current exported data; metrics averaged equally over locations after averaging RF and NN scores across five seeds within each location. RMSE and MAE are in µg/m³; R² is dimensionless. Linear regression, mean, and persistence were recalculated. NN scores are the saved per-seed results; their summary aggregation, targets, and baseline predictions were checked. The NN was not retrained.
 
 NN uses a chronological validation block and trains on the preceding portion; the baselines fit the full exported training period. The test observations match, but training budgets differ. The saved NN prediction file averages five seed predictions; its ensemble metrics are exported separately and must not be confused with mean per-seed scores.
 
-the `nn_nolag` outputs describe the earlier data version and are not part of this table.
-
-The `nn_nolag` outputs describe the earlier data version and are not part of this table.
+The random-forest scores come from the current baseline notebook run. The earlier experiment in nn_nolag used a different Beijing test sample.
 
 | Dataset | Horizon | Model | R² | RMSE | MAE |
 |---|---:|---|---:|---:|---:|

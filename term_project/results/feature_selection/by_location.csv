@@ -1,0 +1,253 @@
+dataset,location,horizon,feature_set,predictors,validation_rmse
+global,Brasilia,1,Current PM2.5,1,1.4080905937848212
+global,Brasilia,6,Current PM2.5,1,3.5965173706024163
+global,Brasilia,24,Current PM2.5,1,3.3185424119656646
+global,Brasilia,1,PM2.5 with history,5,1.421455737969943
+global,Brasilia,6,PM2.5 with history,5,3.198178800361605
+global,Brasilia,24,PM2.5 with history,5,3.317954333993949
+global,Brasilia,1,Pollutants and history,10,1.421149983755547
+global,Brasilia,6,Pollutants and history,10,3.1456415164503215
+global,Brasilia,24,Pollutants and history,10,4.269981748289386
+global,Brasilia,1,"Pollutants, history and time",14,1.4207318410170242
+global,Brasilia,6,"Pollutants, history and time",14,3.127712641867886
+global,Brasilia,24,"Pollutants, history and time",14,4.7788233506889135
+global,Cairo,1,Current PM2.5,1,3.0444427873881614
+global,Cairo,6,Current PM2.5,1,9.182707184419518
+global,Cairo,24,Current PM2.5,1,13.370742120051396
+global,Cairo,1,PM2.5 with history,5,3.0692960361691957
+global,Cairo,6,PM2.5 with history,5,9.88033821902952
+global,Cairo,24,PM2.5 with history,5,13.364598155483044
+global,Cairo,1,Pollutants and history,10,2.9264040403883946
+global,Cairo,6,Pollutants and history,10,9.525683216388847
+global,Cairo,24,Pollutants and history,10,13.162030589674488
+global,Cairo,1,"Pollutants, history and time",14,2.913326022423807
+global,Cairo,6,"Pollutants, history and time",14,9.494813376029699
+global,Cairo,24,"Pollutants, history and time",14,13.77013260962391
+global,Dubai,1,Current PM2.5,1,3.862031746951861
+global,Dubai,6,Current PM2.5,1,12.114883322382257
+global,Dubai,24,Current PM2.5,1,12.959082473539695
+global,Dubai,1,PM2.5 with history,5,3.2843842745145095
+global,Dubai,6,PM2.5 with history,5,10.834259722618375
+global,Dubai,24,PM2.5 with history,5,12.44032745146682
+global,Dubai,1,Pollutants and history,10,3.324221347581955
+global,Dubai,6,Pollutants and history,10,11.217596011942874
+global,Dubai,24,Pollutants and history,10,12.69492777319591
+global,Dubai,1,"Pollutants, history and time",14,3.337628674857043
+global,Dubai,6,"Pollutants, history and time",14,11.329386217735228
+global,Dubai,24,"Pollutants, history and time",14,12.103192787277763
+global,London,1,Current PM2.5,1,1.665592649689423
+global,London,6,Current PM2.5,1,5.669864723326099
+global,London,24,Current PM2.5,1,5.6623402703043935
+global,London,1,PM2.5 with history,5,1.4473132931712667
+global,London,6,PM2.5 with history,5,5.177593178187659
+global,London,24,PM2.5 with history,5,5.650926492132854
+global,London,1,Pollutants and history,10,1.4209624193575954
+global,London,6,Pollutants and history,10,4.665441634988539
+global,London,24,Pollutants and history,10,5.7004464918559785
+global,London,1,"Pollutants, history and time",14,1.4166181687071862
+global,London,6,"Pollutants, history and time",14,4.75234046925489
+global,London,24,"Pollutants, history and time",14,5.8475745322756065
+global,New York,1,Current PM2.5,1,3.172552547554815
+global,New York,6,Current PM2.5,1,9.437542881850087
+global,New York,24,Current PM2.5,1,8.765625027346369
+global,New York,1,PM2.5 with history,5,2.704975123353149
+global,New York,6,PM2.5 with history,5,8.924025993396425
+global,New York,24,PM2.5 with history,5,8.77038895720508
+global,New York,1,Pollutants and history,10,2.6671839614949455
+global,New York,6,Pollutants and history,10,8.283710703879223
+global,New York,24,Pollutants and history,10,8.85707818267229
+global,New York,1,"Pollutants, history and time",14,2.6558497517417274
+global,New York,6,"Pollutants, history and time",14,8.067108813598773
+global,New York,24,"Pollutants, history and time",14,9.653896879852134
+global,Sydney,1,Current PM2.5,1,2.6200232022095116
+global,Sydney,6,Current PM2.5,1,6.489692466584128
+global,Sydney,24,Current PM2.5,1,6.997910830225395
+global,Sydney,1,PM2.5 with history,5,2.5302537065631543
+global,Sydney,6,PM2.5 with history,5,6.211700475613119
+global,Sydney,24,PM2.5 with history,5,6.972684851103985
+global,Sydney,1,Pollutants and history,10,2.5670961966787984
+global,Sydney,6,Pollutants and history,10,6.205956443408954
+global,Sydney,24,Pollutants and history,10,7.248046590175524
+global,Sydney,1,"Pollutants, history and time",14,2.5430988455148325
+global,Sydney,6,"Pollutants, history and time",14,6.114122152989467
+global,Sydney,24,"Pollutants, history and time",14,7.4052646709917935
+beijing,Aotizhongxin,1,Current PM2.5,1,21.536790014272672
+beijing,Aotizhongxin,6,Current PM2.5,1,62.41244223759178
+beijing,Aotizhongxin,24,Current PM2.5,1,83.01903170897012
+beijing,Aotizhongxin,1,PM2.5 with history,5,20.30829779845042
+beijing,Aotizhongxin,6,PM2.5 with history,5,61.81889562209359
+beijing,Aotizhongxin,24,PM2.5 with history,5,82.86728477010622
+beijing,Aotizhongxin,1,Pollutants and history,10,20.128886400644223
+beijing,Aotizhongxin,6,Pollutants and history,10,62.57889342007476
+beijing,Aotizhongxin,24,Pollutants and history,10,85.9163086346519
+beijing,Aotizhongxin,1,"Pollutants, history and time",14,20.106823296197536
+beijing,Aotizhongxin,6,"Pollutants, history and time",14,61.1233426357113
+beijing,Aotizhongxin,24,"Pollutants, history and time",14,85.0272588734613
+beijing,Aotizhongxin,1,"Pollutants, history, time and weather",34,19.98220864424351
+beijing,Aotizhongxin,6,"Pollutants, history, time and weather",34,59.9406931250344
+beijing,Aotizhongxin,24,"Pollutants, history, time and weather",34,83.64791464567175
+beijing,Changping,1,Current PM2.5,1,18.73191391879864
+beijing,Changping,6,Current PM2.5,1,43.95656654959107
+beijing,Changping,24,Current PM2.5,1,69.89821866804077
+beijing,Changping,1,PM2.5 with history,5,18.56639565902342
+beijing,Changping,6,PM2.5 with history,5,43.93738276931075
+beijing,Changping,24,PM2.5 with history,5,69.8179065409842
+beijing,Changping,1,Pollutants and history,10,18.517293183821735
+beijing,Changping,6,Pollutants and history,10,44.941333568441486
+beijing,Changping,24,Pollutants and history,10,71.0191563931698
+beijing,Changping,1,"Pollutants, history and time",14,18.504015178866158
+beijing,Changping,6,"Pollutants, history and time",14,44.63460076544703
+beijing,Changping,24,"Pollutants, history and time",14,71.33486779436308
+beijing,Changping,1,"Pollutants, history, time and weather",34,18.183026581695337
+beijing,Changping,6,"Pollutants, history, time and weather",34,44.08692450599555
+beijing,Changping,24,"Pollutants, history, time and weather",34,71.44542556745108
+beijing,Dingling,1,Current PM2.5,1,17.525885539802893
+beijing,Dingling,6,Current PM2.5,1,48.36858577502767
+beijing,Dingling,24,Current PM2.5,1,79.67916746530989
+beijing,Dingling,1,PM2.5 with history,5,17.184476185182632
+beijing,Dingling,6,PM2.5 with history,5,48.31027975597813
+beijing,Dingling,24,PM2.5 with history,5,79.37525467261591
+beijing,Dingling,1,Pollutants and history,10,17.14988908332729
+beijing,Dingling,6,Pollutants and history,10,48.80735334419209
+beijing,Dingling,24,Pollutants and history,10,79.37830777359966
+beijing,Dingling,1,"Pollutants, history and time",14,17.091825295085588
+beijing,Dingling,6,"Pollutants, history and time",14,48.241889424449724
+beijing,Dingling,24,"Pollutants, history and time",14,79.38420640898963
+beijing,Dingling,1,"Pollutants, history, time and weather",34,17.067984571234604
+beijing,Dingling,6,"Pollutants, history, time and weather",34,48.11311914703299
+beijing,Dingling,24,"Pollutants, history, time and weather",34,78.97574170974009
+beijing,Dongsi,1,Current PM2.5,1,23.640135162914543
+beijing,Dongsi,6,Current PM2.5,1,72.61430537284097
+beijing,Dongsi,24,Current PM2.5,1,100.07168128088044
+beijing,Dongsi,1,PM2.5 with history,5,21.83915926257943
+beijing,Dongsi,6,PM2.5 with history,5,71.6162074496036
+beijing,Dongsi,24,PM2.5 with history,5,99.99172218139748
+beijing,Dongsi,1,Pollutants and history,10,21.775803809275533
+beijing,Dongsi,6,Pollutants and history,10,72.29672936104782
+beijing,Dongsi,24,Pollutants and history,10,102.16114862042153
+beijing,Dongsi,1,"Pollutants, history and time",14,21.67564210726914
+beijing,Dongsi,6,"Pollutants, history and time",14,70.92896894622673
+beijing,Dongsi,24,"Pollutants, history and time",14,101.65143862940717
+beijing,Dongsi,1,"Pollutants, history, time and weather",34,21.699741317518964
+beijing,Dongsi,6,"Pollutants, history, time and weather",34,69.96737663577443
+beijing,Dongsi,24,"Pollutants, history, time and weather",34,101.33543765292839
+beijing,Guanyuan,1,Current PM2.5,1,22.83397023375747
+beijing,Guanyuan,6,Current PM2.5,1,67.49878415238643
+beijing,Guanyuan,24,Current PM2.5,1,98.81740287676173
+beijing,Guanyuan,1,PM2.5 with history,5,21.585945506694394
+beijing,Guanyuan,6,PM2.5 with history,5,66.54758069918843
+beijing,Guanyuan,24,PM2.5 with history,5,98.76550459313411
+beijing,Guanyuan,1,Pollutants and history,10,21.52792379918422
+beijing,Guanyuan,6,Pollutants and history,10,67.61697368210399
+beijing,Guanyuan,24,Pollutants and history,10,100.71607460663027
+beijing,Guanyuan,1,"Pollutants, history and time",14,21.47557777948012
+beijing,Guanyuan,6,"Pollutants, history and time",14,66.64552700847561
+beijing,Guanyuan,24,"Pollutants, history and time",14,99.94185739724281
+beijing,Guanyuan,1,"Pollutants, history, time and weather",34,21.439887709888907
+beijing,Guanyuan,6,"Pollutants, history, time and weather",34,66.0329839645655
+beijing,Guanyuan,24,"Pollutants, history, time and weather",34,99.43027867236773
+beijing,Gucheng,1,Current PM2.5,1,22.66620718417979
+beijing,Gucheng,6,Current PM2.5,1,66.00108298544541
+beijing,Gucheng,24,Current PM2.5,1,98.01748596457756
+beijing,Gucheng,1,PM2.5 with history,5,21.655857112399755
+beijing,Gucheng,6,PM2.5 with history,5,65.38257984454603
+beijing,Gucheng,24,PM2.5 with history,5,97.93828613481173
+beijing,Gucheng,1,Pollutants and history,10,21.673341656049306
+beijing,Gucheng,6,Pollutants and history,10,65.6046009172239
+beijing,Gucheng,24,Pollutants and history,10,97.06974286561056
+beijing,Gucheng,1,"Pollutants, history and time",14,21.54411066420602
+beijing,Gucheng,6,"Pollutants, history and time",14,64.09500736477385
+beijing,Gucheng,24,"Pollutants, history and time",14,96.81716228503481
+beijing,Gucheng,1,"Pollutants, history, time and weather",34,21.552059614621744
+beijing,Gucheng,6,"Pollutants, history, time and weather",34,63.339462126300134
+beijing,Gucheng,24,"Pollutants, history, time and weather",34,95.4465697724725
+beijing,Huairou,1,Current PM2.5,1,21.847337825913588
+beijing,Huairou,6,Current PM2.5,1,55.76484335101663
+beijing,Huairou,24,Current PM2.5,1,81.92247594072461
+beijing,Huairou,1,PM2.5 with history,5,21.985539870242103
+beijing,Huairou,6,PM2.5 with history,5,55.62761017416553
+beijing,Huairou,24,PM2.5 with history,5,81.49562260364002
+beijing,Huairou,1,Pollutants and history,10,21.83729068362583
+beijing,Huairou,6,Pollutants and history,10,56.13014742395705
+beijing,Huairou,24,Pollutants and history,10,81.92360766863113
+beijing,Huairou,1,"Pollutants, history and time",14,21.780726020150027
+beijing,Huairou,6,"Pollutants, history and time",14,55.228585674183684
+beijing,Huairou,24,"Pollutants, history and time",14,81.72496839720692
+beijing,Huairou,1,"Pollutants, history, time and weather",34,21.592514867224644
+beijing,Huairou,6,"Pollutants, history, time and weather",34,54.52394987106147
+beijing,Huairou,24,"Pollutants, history, time and weather",34,80.9376619988256
+beijing,Nongzhanguan,1,Current PM2.5,1,22.57831952483142
+beijing,Nongzhanguan,6,Current PM2.5,1,68.55076568581919
+beijing,Nongzhanguan,24,Current PM2.5,1,96.0658036803253
+beijing,Nongzhanguan,1,PM2.5 with history,5,21.067327936834936
+beijing,Nongzhanguan,6,PM2.5 with history,5,67.5275357383191
+beijing,Nongzhanguan,24,PM2.5 with history,5,95.98815616538283
+beijing,Nongzhanguan,1,Pollutants and history,10,20.925056406945114
+beijing,Nongzhanguan,6,Pollutants and history,10,67.65020088338143
+beijing,Nongzhanguan,24,Pollutants and history,10,97.38175281459526
+beijing,Nongzhanguan,1,"Pollutants, history and time",14,20.880841541153707
+beijing,Nongzhanguan,6,"Pollutants, history and time",14,66.46506856480075
+beijing,Nongzhanguan,24,"Pollutants, history and time",14,96.083676213941
+beijing,Nongzhanguan,1,"Pollutants, history, time and weather",34,20.898377162550773
+beijing,Nongzhanguan,6,"Pollutants, history, time and weather",34,65.30834893367665
+beijing,Nongzhanguan,24,"Pollutants, history, time and weather",34,95.56013570553738
+beijing,Shunyi,1,Current PM2.5,1,22.310741209529905
+beijing,Shunyi,6,Current PM2.5,1,64.25932830647017
+beijing,Shunyi,24,Current PM2.5,1,89.53199356251817
+beijing,Shunyi,1,PM2.5 with history,5,21.171784367073883
+beijing,Shunyi,6,PM2.5 with history,5,63.34805761670222
+beijing,Shunyi,24,PM2.5 with history,5,89.3955008163637
+beijing,Shunyi,1,Pollutants and history,10,20.94970760859895
+beijing,Shunyi,6,Pollutants and history,10,63.51202078717341
+beijing,Shunyi,24,Pollutants and history,10,90.73808629595891
+beijing,Shunyi,1,"Pollutants, history and time",14,20.91468585878903
+beijing,Shunyi,6,"Pollutants, history and time",14,61.93984915333979
+beijing,Shunyi,24,"Pollutants, history and time",14,90.5264137888427
+beijing,Shunyi,1,"Pollutants, history, time and weather",34,20.70544748190275
+beijing,Shunyi,6,"Pollutants, history, time and weather",34,60.692010595261564
+beijing,Shunyi,24,"Pollutants, history, time and weather",34,89.24174596070209
+beijing,Tiantan,1,Current PM2.5,1,22.31064591617407
+beijing,Tiantan,6,Current PM2.5,1,66.45140450094556
+beijing,Tiantan,24,Current PM2.5,1,87.43506455526881
+beijing,Tiantan,1,PM2.5 with history,5,20.555123757435275
+beijing,Tiantan,6,PM2.5 with history,5,65.58095356969336
+beijing,Tiantan,24,PM2.5 with history,5,87.37610107251767
+beijing,Tiantan,1,Pollutants and history,10,20.485048280333757
+beijing,Tiantan,6,Pollutants and history,10,65.19271688730791
+beijing,Tiantan,24,Pollutants and history,10,87.19269245657249
+beijing,Tiantan,1,"Pollutants, history and time",14,20.45147530226108
+beijing,Tiantan,6,"Pollutants, history and time",14,65.03290595130449
+beijing,Tiantan,24,"Pollutants, history and time",14,87.62475745289905
+beijing,Tiantan,1,"Pollutants, history, time and weather",34,20.290695947408757
+beijing,Tiantan,6,"Pollutants, history, time and weather",34,63.03309371627227
+beijing,Tiantan,24,"Pollutants, history, time and weather",34,86.68317698227314
+beijing,Wanliu,1,Current PM2.5,1,20.169326815573587
+beijing,Wanliu,6,Current PM2.5,1,56.54917700379751
+beijing,Wanliu,24,Current PM2.5,1,92.09091039664477
+beijing,Wanliu,1,PM2.5 with history,5,18.887277181376525
+beijing,Wanliu,6,PM2.5 with history,5,56.33233221032609
+beijing,Wanliu,24,PM2.5 with history,5,91.80787982508282
+beijing,Wanliu,1,Pollutants and history,10,18.85533090429423
+beijing,Wanliu,6,Pollutants and history,10,56.40310404937124
+beijing,Wanliu,24,Pollutants and history,10,91.95234536198379
+beijing,Wanliu,1,"Pollutants, history and time",14,18.795428775570674
+beijing,Wanliu,6,"Pollutants, history and time",14,55.275789337448415
+beijing,Wanliu,24,"Pollutants, history and time",14,91.30718008397123
+beijing,Wanliu,1,"Pollutants, history, time and weather",34,18.717717414457553
+beijing,Wanliu,6,"Pollutants, history, time and weather",34,55.211094856278784
+beijing,Wanliu,24,"Pollutants, history, time and weather",34,91.45216611526918
+beijing,Wanshouxigong,1,Current PM2.5,1,22.57167594609735
+beijing,Wanshouxigong,6,Current PM2.5,1,64.55911406656904
+beijing,Wanshouxigong,24,Current PM2.5,1,92.98721957862406
+beijing,Wanshouxigong,1,PM2.5 with history,5,21.112383508975253
+beijing,Wanshouxigong,6,PM2.5 with history,5,63.5753065901934
+beijing,Wanshouxigong,24,PM2.5 with history,5,92.90660418137121
+beijing,Wanshouxigong,1,Pollutants and history,10,21.00815676026656
+beijing,Wanshouxigong,6,Pollutants and history,10,63.50804889998942
+beijing,Wanshouxigong,24,Pollutants and history,10,94.90081060818373
+beijing,Wanshouxigong,1,"Pollutants, history and time",14,20.928607876745208
+beijing,Wanshouxigong,6,"Pollutants, history and time",14,62.640071253795576
+beijing,Wanshouxigong,24,"Pollutants, history and time",14,94.44134664393226
+beijing,Wanshouxigong,1,"Pollutants, history, time and weather",34,20.745695464306653
+beijing,Wanshouxigong,6,"Pollutants, history, time and weather",34,61.04931763393568
+beijing,Wanshouxigong,24,"Pollutants, history, time and weather",34,93.43920156531135

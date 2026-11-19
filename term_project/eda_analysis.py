@@ -266,7 +266,7 @@ def main():
               "- Calendar averages use retained complete cases and are observation-weighted. Missingness and target availability can alter their composition. Daily/monthly counts are exported alongside means.",
               "- Global and Beijing differ in period, locations, available predictors, and sampling. EDA does not isolate a geographic cause for differences or demonstrate transfer to unseen locations.",
               "- PM2.5 is labeled in µg/m³ following the project definition (and UCI metadata for Beijing). Other pollutant axes retain source values; confirm Global source units before making cross-dataset concentration comparisons.",
-              "- Feature selection and tuning still require chronological validation within training, with a horizon-aware gap. The final test period remains reserved for model evaluation.", ""]
+              "- The separate linear-regression feature-set comparison uses chronological validation within training, with a 24-hour gap. See the feature-selection results linked in the project README.", ""]
     report += sections
     report += ["## Implications for modeling", "",
                "1. Compare the implemented mean and persistence baselines with learned models at each horizon. Use matching data versions and test rows; see `../INTEGRATION_REVIEW.md` for the current result audit.",

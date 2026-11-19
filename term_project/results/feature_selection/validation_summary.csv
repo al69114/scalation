@@ -1,0 +1,28 @@
+dataset,horizon,feature_set,predictors,validation_rmse,selected
+beijing,1,Current PM2.5,1,21.560245774320492,False
+beijing,1,PM2.5 with history,5,20.493297345522336,False
+beijing,1,Pollutants and history,10,20.402810714697228,False
+beijing,1,"Pollutants, history and time",14,20.345813307981192,False
+beijing,1,"Pollutants, history, time and weather",34,20.23961306475452,True
+beijing,6,Current PM2.5,1,61.41553333229178,False
+beijing,6,PM2.5 with history,5,60.80039350334335,False
+beijing,6,Pollutants and history,10,61.186843602022044,False
+beijing,6,"Pollutants, history and time",14,60.187633839996415,False
+beijing,6,"Pollutants, history, time and weather",34,59.27486459259912,True
+beijing,24,Current PM2.5,1,89.12803797322051,False
+beijing,24,PM2.5 with history,5,88.97715196311732,False
+beijing,24,Pollutants and history,10,90.02916950833408,False
+beijing,24,"Pollutants, history and time",14,89.65542783077433,False
+beijing,24,"Pollutants, history, time and weather",34,88.96628802904586,True
+global,1,Current PM2.5,1,2.628788921263099,False
+global,1,PM2.5 with history,5,2.409613028623536,False
+global,1,Pollutants and history,10,2.387836324876206,False
+global,1,"Pollutants, history and time",14,2.381208884043603,True
+global,6,Current PM2.5,1,7.748534658194084,False
+global,6,PM2.5 with history,5,7.371016064867784,False
+global,6,Pollutants and history,10,7.174004921176459,False
+global,6,"Pollutants, history and time",14,7.147580611912658,True
+global,24,Current PM2.5,1,8.512373855572152,False
+global,24,PM2.5 with history,5,8.419480040230956,True
+global,24,Pollutants and history,10,8.655418562643929,False
+global,24,"Pollutants, history and time",14,8.926480805118354,False
